@@ -1,0 +1,903 @@
+[
+    {
+      "Category": "BLOQUES",
+      "Code": "BK09ENTLISO",
+      "Description": "BLOCK ENTERO LISO 9X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 1.5,
+      "Weight": 10.6,
+      "UnitForPari": 192,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK09MEDLISO",
+      "Description": "BLOCK MEDIO LISO 9X19X19 NAT.",
+      "Unit": "PZA",
+      "Price": 1.03,
+      "Weight": 6,
+      "UnitForPari": 360,
+      "Quantity":0
+      
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK09VIGLISO",
+      "Description": "BLOCK VIGA LISO 9X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 1.5,
+      "Weight": 10.6,
+      "UnitForPari": 192,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK12ENTLISO",
+      "Description": "BLOCK ENTERO LISO 12X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 1.61,
+      "Weight": 11.7,
+      "UnitForPari": 156,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK12MEDLISO",
+      "Description": "BLOCK MEDIO LISO 12X19X19 NAT.",
+      "Unit": "PZA",
+      "Price": 1.04,
+      "Weight": 7,
+      "UnitForPari": 300,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK12VIGLISO",
+      "Description": "BLOCK VIGA LISO 12X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 1.61,
+      "Weight": 11.7,
+      "UnitForPari": 156,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14ENTLISO",
+      "Description": "BLOCK ENTERO LISO 15X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 1.85,
+      "Weight": 12.5,
+      "UnitForPari": 110,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14MEDLISO",
+      "Description": "BLOCK MEDIO LISO 15X19X19 NAT.",
+      "Unit": "PZA",
+      "Price": 1.21,
+      "Weight": 7.5,
+      "UnitForPari": 240,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14VIGLISO",
+      "Description": "BLOCK VIGA LISO 15X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 1.85,
+      "Weight": 12.5,
+      "UnitForPari": 114,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14ESQLISO",
+      "Description": "BLOCK ESQUINERO LISO 15X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 2.21,
+      "Weight": 17,
+      "UnitForPari": 105,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK19ENTLISO",
+      "Description": "BLOCK ENTERO LISO 20X19X39 NAT.  ",
+      "Unit": "PZA",
+      "Price": 2.21,
+      "Weight": 16.5,
+      "UnitForPari": 90,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK19MEDLISO",
+      "Description": "BLOCK MEDIO LISO 20X19X19 NAT.  ",
+      "Unit": "PZA",
+      "Price": 1.33,
+      "Weight": 9,
+      "UnitForPari": 180,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK19VIGLISO",
+      "Description": "BLOCK VIGA LISO 20X19X39 NAT.   ",
+      "Unit": "PZA",
+      "Price": 2.21,
+      "Weight": 16.5,
+      "UnitForPari": 90,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14ENTTEXT",
+      "Description": "BLOCK ENTERO TEXT 15X19X39 NAT. ",
+      "Unit": "PZA",
+      "Price": 2.87,
+      "Weight": 13.5,
+      "UnitForPari": 110,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14MEDTEXT",
+      "Description": "BLOCK MEDIO TEXT 15X19X19 NAT. ",
+      "Unit": "PZA",
+      "Price": 2.18,
+      "Weight": 10.5,
+      "UnitForPari": 240,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK14VIGTEXT",
+      "Description": "BLOCK VIGA TEXT 15X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 0,
+      "Weight": 13.5,
+      "UnitForPari": 114,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK19ENTTEXT",
+      "Description": "BLOCK ENTERO TEXT 20X19X39  NAT.",
+      "Unit": "PZA",
+      "Price": 3.06,
+      "Weight": 17.2,
+      "UnitForPari": 90,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK19MEDTEXT",
+      "Description": "BLOCK MEDIO TEXT 20X19X19  NAT.",
+      "Unit": "PZA",
+      "Price": 2.27,
+      "Weight": 11,
+      "UnitForPari": 180,
+      "Quantity":0
+    },
+    {
+      "Category": "BLOQUES",
+      "Code": "BK19VIGTEXT",
+      "Description": "BLOCK VIGA TEXT 20X19X39 NAT.",
+      "Unit": "PZA",
+      "Price": 0,
+      "Weight": 17.2,
+      "UnitForPari": 90,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO4RECNAT",
+      "Description": "ADOKING RECT.  4X10X20 NAT. ",
+      "Unit": "MT2",
+      "Price": 24.7,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO4RECROJ",
+      "Description": "ADOKING RECT.  4X10X20 ROJO   ",
+      "Unit": "MT2",
+      "Price": 29.2,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO4RECAMA",
+      "Description": "ADOKING RECT.  4X10X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 27,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO4RECNEG",
+      "Description": "ADOKING  RECT.  4X10X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 29.3,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO6RECNAT",
+      "Description": "ADOKING  RECT.   6X10X20 NAT. ",
+      "Unit": "MT2",
+      "Price": 28.7,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO6RECROJ",
+      "Description": "ADOKING RECT.   6X10X20 ROJO  ",
+      "Unit": "MT2",
+      "Price": 35.9,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO6RECAMA",
+      "Description": "ADOKING   RECT.     6X10X20 AMARILLO ",
+      "Unit": "MT2",
+      "Price": 32.8,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO6RECNEG",
+      "Description": "ADOKING RECT.  6X10X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 36.1,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO8RECNAT",
+      "Description": "ADOKING RECT. 8X10X20 NAT.",
+      "Unit": "MT2",
+      "Price": 33.1,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO8RECROJ",
+      "Description": "ADOKING RECT. 8X10X20 ROJO",
+      "Unit": "MT2",
+      "Price": 41.5,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO8RECAMA",
+      "Description": "ADOKING RECT. 8X10X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 38.7,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUINES RECT.",
+      "Code": "ADO8RECNEG",
+      "Description": "ADOKING RECT. 8X10X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 41.7,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO4RECNAT",
+      "Description": "ADOKING LONDRES  4X10X20 NAT. ",
+      "Unit": "MT2",
+      "Price": 24.7,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO4RECROJ",
+      "Description": "ADOKING LONDRES  4X10X20 ROJO   ",
+      "Unit": "MT2",
+      "Price": 29.2,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO4RECAMA",
+      "Description": "ADOKING LONDRES  4X10X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 27,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO4RECNEG",
+      "Description": "ADOKING  LONDRES  4X10X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 29.3,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO6RECNAT",
+      "Description": "ADOKING  LONDRES  6X10X20 NAT. ",
+      "Unit": "MT2",
+      "Price": 28.7,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO6RECROJ",
+      "Description": "ADOKING LONDRES  6X10X20 ROJO  ",
+      "Unit": "MT2",
+      "Price": 35.9,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO6RECAMA",
+      "Description": "ADOKING   LONDRES  6X10X20 AMARILLO ",
+      "Unit": "MT2",
+      "Price": 32.8,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN LONDRES",
+      "Code": "ADO6RECNEG",
+      "Description": "ADOKING LONDRES 6X10X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 36.1,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "KING KONCRETO",
+      "Code": "KK25%NAT",
+      "Description": "KING KONCRETO25% 13X9X22 NAT.-TIPO I",
+      "Unit": "MLL",
+      "Price": 559.32,
+      "Weight": 4500,
+      "UnitForPari": 0.5,
+      "Quantity":0
+    },
+    {
+      "Category": "KING KONCRETO",
+      "Code": "KK25%NAT-V",
+      "Description": "KING KONCRETO25% 13X9X22 NAT. TIPO V",
+      "Unit": "MLL",
+      "Price": 712,
+      "Weight": 4500,
+      "UnitForPari": 0.5,
+      "Quantity":0
+    },
+    {
+      "Category": "KING KONCRETO",
+      "Code": "KK25%NAT-HS",
+      "Description": "KING KONCRETO25% 13X9X22 NAT. TIPO HS",
+      "Unit": "MLL",
+      "Price": 636,
+      "Weight": 4500,
+      "UnitForPari": 0.5,
+      "Quantity":0
+    },
+    {
+      "Category": "GRASS  MICHI",
+      "Code": "BKGRASS-#-HS",
+      "Description": "KING BLOCK GRASS TIPO MICHI -HS",
+      "Unit": "MT2",
+      "Price": 25.9,
+      "Weight": 123.2,
+      "UnitForPari": 14.625,
+      "Quantity":0
+    },
+    {
+      "Category": "GRASS  MICHI",
+      "Code": "BKGRASS-#",
+      "Description": "KING BLOCK GRASS TIPO MICHI Tipo I",
+      "Unit": "MT2",
+      "Price": 26.2,
+      "Weight": 123.2,
+      "UnitForPari": 14.625,
+      "Quantity":0
+    },
+    {
+      "Category": "GRASS  MICHI",
+      "Code": "BKGRASS-8",
+      "Description": "KING BLOCK GRASS TIPO 8",
+      "Unit": "MT2",
+      "Price": 26.2,
+      "Weight": 132,
+      "UnitForPari": 17.727272727272727,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO4RECNAT-V",
+      "Description": "ADOKING RECT. 4X10X20 NAT. TIPO V",
+      "Unit": "MT2",
+      "Price": 26.8,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO4RECROJ-V",
+      "Description": "ADOKING RECT. 4X10X20 ROJO TIPO V",
+      "Unit": "MT2",
+      "Price": 31.2,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO4RECAMA-V",
+      "Description": "ADOKING RECT. 4X10X20 AMARILLO TIPO V",
+      "Unit": "MT2",
+      "Price": 29.1,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO4RECNEG-V",
+      "Description": "ADOKING RECT. 4X10X20 NEGRO TIPO V ",
+      "Unit": "MT2",
+      "Price": 31.3,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO6RECNAT-V",
+      "Description": "ADOKING RECT.  6X10X20 NAT. TIPO V",
+      "Unit": "MT2",
+      "Price": 32.9,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO6RECROJ-V",
+      "Description": "ADOKING RECT. 6X10X20 ROJO TIPO V",
+      "Unit": "MT2",
+      "Price": 40.1,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO6RECAMA-V",
+      "Description": "ADOKING  RECT. 6X10X20 AMARILLO TIPO V",
+      "Unit": "MT2",
+      "Price": 37,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO6RECNEG-V",
+      "Description": "ADOKING  RECT. 6X10X20 NEGRO TIPO V",
+      "Unit": "MT2",
+      "Price": 40.3,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO8RECNAT-V",
+      "Description": "ADOKING RECT. 8X10X20 NAT. TIPO V",
+      "Unit": "MT2",
+      "Price": 38.4,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO8RECROJ-V",
+      "Description": "ADOKING RECT. 8X10X20 ROJO TIPO V",
+      "Unit": "MT2",
+      "Price": 46.8,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO8RECAMA-V",
+      "Description": "ADOKING RECT. 8X10X20 AMARILLO TIPO V",
+      "Unit": "MT2",
+      "Price": 43.9,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO V",
+      "Code": "ADO8RECNEG-V",
+      "Description": "ADOKING RECT. 8X10X20 NEGRO TIPO V ",
+      "Unit": "MT2",
+      "Price": 47,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO4RECNAT-HS",
+      "Description": "ADOKING RECT. 4X10X20 NAT. TIPO HS",
+      "Unit": "MT2",
+      "Price": 25.8,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO4RECROJ-HS",
+      "Description": "ADOKING RECT. 4X10X20 ROJO TIPO HS",
+      "Unit": "MT2",
+      "Price": 30.2,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO4RECAMA-HS",
+      "Description": "ADOKING RECT. 4X10X20 AMARILLO TIPO HS",
+      "Unit": "MT2",
+      "Price": 28.1,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO4RECNEG-HS",
+      "Description": "ADOKING RECT. 4X10X20 NEGRO TIPO HS",
+      "Unit": "MT2",
+      "Price": 30.4,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO6RECNAT-HS",
+      "Description": "ADOKING RECT. 6X10X20 NAT.  TIPO HS",
+      "Unit": "MT2",
+      "Price": 30.8,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO6RECROJ-HS",
+      "Description": "ADOKING RECT.   6X10X20 ROJO TIPO HS",
+      "Unit": "MT2",
+      "Price": 38,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO6RECAMA-HS",
+      "Description": "ADOKING RECT. 6X10X20 AMARILLO TIPO HS",
+      "Unit": "MT2",
+      "Price": 34.9,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO6RECNEG-HS",
+      "Description": "ADOKING RECT.   6X10X20 NEGRO TIPO HS",
+      "Unit": "MT2",
+      "Price": 38.2,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO8RECNAT-HS",
+      "Description": "ADOKING RECT. 8X10X20 NAT. - HS",
+      "Unit": "MT2",
+      "Price": 36.3,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO8RECROJ-HS",
+      "Description": "ADOKING RECT. 8X10X20 ROJO - HS",
+      "Unit": "MT2",
+      "Price": 44.7,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO8RECAMA-HS",
+      "Description": "ADOKING RECT. 8X10X20 AMARILLO - HS",
+      "Unit": "MT2",
+      "Price": 41.8,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN -  TIPO HS",
+      "Code": "ADO8RECNEG-HS",
+      "Description": "ADOKING RECT. 8X10X20 NEGRO - HS",
+      "Unit": "MT2",
+      "Price": 44.9,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO4CUANAT",
+      "Description": "ADOKING CUADRADO  4X20X20 NAT.",
+      "Unit": "MT2",
+      "Price": 28,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO4CUAROJ",
+      "Description": "ADOKING CUADRADO 4X20X20  ROJO",
+      "Unit": "MT2",
+      "Price": 31.9,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO4CUAAMA",
+      "Description": "ADOKING CUADRADO 4X20X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 30.9,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO4CUANEG",
+      "Description": "ADOKING CUADRADO 4X20X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 32.4,
+      "Weight": 90,
+      "UnitForPari": 24,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO6CUANAT",
+      "Description": "ADOKING CUADRADO 6X20X20 NAT.",
+      "Unit": "MT2",
+      "Price": 33.3,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO6CUAROJ",
+      "Description": "ADOKING CUADRADO 6X20X20 ROJO",
+      "Unit": "MT2",
+      "Price": 38.3,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO6CUAAMA",
+      "Description": "ADOKING CUADRADO 6X20X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 35.7,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO6CUANEG",
+      "Description": "ADOKING CUADRADO 6X20X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 39,
+      "Weight": 135,
+      "UnitForPari": 18,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO8CUANAT",
+      "Description": "ADOKING CUADRADO 8X20X20 NAT.",
+      "Unit": "MT2",
+      "Price": 37.6,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO8CUAROJ",
+      "Description": "ADOKING CUADRADO 8X20X20 ROJO",
+      "Unit": "MT2",
+      "Price": 46.5,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO8CUAAMA",
+      "Description": "ADOKING CUADRADO 8X20X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 40.3,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ADOQUIN CUADRADO",
+      "Code": "ADO8CUANEG",
+      "Description": "ADOKING CUADRADO 8X20X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 46.8,
+      "Weight": 180,
+      "UnitForPari": 15.6,
+      "Quantity":0
+    },
+    {
+      "Category": "ENCHAPE",
+      "Code": "ENCH3TEXTNAT",
+      "Description": "ENCHAPE TEXT 3X10X20 NAT.",
+      "Unit": "MT2",
+      "Price": 33.1,
+      "Weight": 68,
+      "UnitForPari": 36,
+      "Quantity":0
+    },
+    {
+      "Category": "ENCHAPE",
+      "Code": "ENCH3TEXTROJ",
+      "Description": "ENCHAPE TEXT 3X10X20 ROJO",
+      "Unit": "MT2",
+      "Price": 41.5,
+      "Weight": 68,
+      "UnitForPari": 36,
+      "Quantity":0
+    },
+    {
+      "Category": "ENCHAPE",
+      "Code": "ENCH3TEXTAMA",
+      "Description": "ENCHAPE TEXT 3X10X20 AMARILLO",
+      "Unit": "MT2",
+      "Price": 38.7,
+      "Weight": 68,
+      "UnitForPari": 36,
+      "Quantity":0
+    },
+    {
+      "Category": "ENCHAPE",
+      "Code": "ENCH3TEXTNEG",
+      "Description": "ENCHAPE TEXT 3X10X20 NEGRO",
+      "Unit": "MT2",
+      "Price": 41.7,
+      "Weight": 68,
+      "UnitForPari": 36,
+      "Quantity":0
+    },
+    {
+      "Category": "AISLADORES",
+      "Code": "AISL8MM",
+      "Description": "AISLADOR DE VARILLA 8 mm ",
+      "Unit": "PZA",
+      "Price": 1.07,
+      "Weight": 0.05,
+      "UnitForPari": 250,
+      "Quantity":0
+    },
+    {
+      "Category": "AISLADORES",
+      "Code": "AISL10MM",
+      "Description": "AISLADOR DE VARILLA 3/8\" (10mm)",
+      "Unit": "PZA",
+      "Price": 1.07,
+      "Weight": 0.055,
+      "UnitForPari": 250,
+      "Quantity":0
+    },
+    {
+      "Category": "AISLADORES",
+      "Code": "AISL13MM",
+      "Description": "AISLADOR DE VARILLA  1/2\" (13mm)",
+      "Unit": "PZA",
+      "Price": 1.07,
+      "Weight": 0.065,
+      "UnitForPari": 250,
+      "Quantity":0
+    },
+    {
+      "Category": "AISLADORES",
+      "Code": "AISL16MM",
+      "Description": "AISLADOR DE VARILLA  5/8\" (16mm)",
+      "Unit": "PZA",
+      "Price": 1.2,
+      "Weight": 0.065,
+      "UnitForPari": 250,
+      "Quantity":0
+    },
+    {
+      "Category": "AISLADORES",
+      "Code": "AISL19MM",
+      "Description": "AISLADOR DE VARILLA  3/4\" (19mm)",
+      "Unit": "PZA",
+      "Price": 1.8,
+      "Weight": 0,
+      "UnitForPari": 0,
+      "Quantity":0
+    }
+  ]
