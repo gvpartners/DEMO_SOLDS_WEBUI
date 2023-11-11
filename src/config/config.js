@@ -1,4 +1,4 @@
-let API_BASE_URL = 'https://localhost:7123';
+let API_BASE_URL = 'https://localhost:7123'; //el puerto magico
 let TOKEN = '';
 
 if (typeof sessionStorage !== 'undefined') {
