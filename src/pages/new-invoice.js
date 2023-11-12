@@ -16,7 +16,17 @@ import {
     IconButton,
     InputAdornment,
     Chip,
-    Grid
+    Grid,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    TableContainer,
+    Paper,
+    Table,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody
 } from '@mui/material';
 import Swal from 'sweetalert2';
 import SearchIcon from '@mui/icons-material/Search';
@@ -28,6 +38,9 @@ import invoiceService from 'src/services/invoiceService';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useRouter } from 'next/router';
+import customerService from 'src/services/customerService';
+import Visibility from '@mui/icons-material/Visibility';
+import { padding } from '@mui/system';
 const Page = () => {
     const tableStyle = {
         width: '100%',
@@ -50,6 +63,7 @@ const Page = () => {
     const router = useRouter();
     const { InvoiceId } = router.query;
     const [parsedInvoice, setParsedInvoice] = useState(null);
+    const [customers, setCustomers] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,10 +80,26 @@ const Page = () => {
             }
         };
 
+        const customerData = async () => {
+            try {
+                const customersResponse = await customerService.getCustomers();
+                if (customersResponse.status == 200) {
+                    const auxCustomers = await customersResponse.data;
+                    console.log(auxCustomers);
+                    setCustomers(auxCustomers);
+                }
+            } catch (error) {
+                console.error('Error fetching customers:', error);
+            }
+        };
+
+        customerData();
         fetchData();
     }, [InvoiceId]);
 
+
     useEffect(() => {
+
         const uniqueCategories = Array.from(new Set(uniconJson.map(item => item.Category)));
         setCategories(uniqueCategories);
 
@@ -100,6 +130,8 @@ const Page = () => {
 
     const handleIdentificationTypeChange = (event) => {
         setIdentificationType(event.target.value);
+        setIdentificationInfo('');
+        setDocumentInfo('');
     };
 
     const handleIdentificationInfoChange = (event) => {
@@ -385,7 +417,7 @@ const Page = () => {
             });
             return;
         }
-    
+
         const productsData = selectedMeasures.map((measure, index) => {
             const measureInfo = uniconJson.find(item => item.Description === measure);
             let pu = 0;
@@ -400,7 +432,7 @@ const Page = () => {
             }
             const priceUnit = measureInfo ? pu : 0;
             const totalPrice = measureQuantities[index] * priceUnit;
-    
+
             return {
                 Product: measure,
                 Quantity: measureQuantities[index],
@@ -408,7 +440,7 @@ const Page = () => {
                 TotalPrice: totalPrice
             };
         });
-    
+
         const fleteList = fletesJson
             .filter(district => district.District === selectedDistrict)
             .map(district => ({
@@ -429,9 +461,9 @@ const Page = () => {
                 TructQuantity: truck32TN,
                 TruckPrice: fletesJson[0]['32_TN'],
             });
-    
+
         const unitPiece = uniconJson.find(item => item.Category === selectedCategory)?.Unit;
-    
+
         const viewData = {
             identificationType,
             documentInfo,
@@ -447,8 +479,8 @@ const Page = () => {
             truck20TN,
             truck32TN,
             isParihuelaNeeded,
-            cantParihuela:deliveryType === "PUESTO EN OBRA"?cantParihuela:0,
-            costParihuela:deliveryType === "PUESTO EN OBRA"?costParihuela:0,
+            cantParihuela: deliveryType === "PUESTO EN OBRA" ? cantParihuela : 0,
+            costParihuela: deliveryType === "PUESTO EN OBRA" ? costParihuela : 0,
             address,
             totalPriceParihuela: updateTotalParihuela() || 0,
             productsList: productsData,
@@ -465,15 +497,15 @@ const Page = () => {
             createdBy: sessionStorage.getItem('userEmail'),
             userId: sessionStorage.getItem('identificator')
         };
-    
+
         if (action === "update") {
             updateInvoice(viewData);
         } else if (action === "create") {
             createInvoice(viewData);
         }
     };
-    
-    
+
+
     const AutopopulatedFunction = (viewData) => {
 
         setIdentificationType(viewData.identificationType);
@@ -543,6 +575,38 @@ const Page = () => {
             setCantParihuela(0);
         }
     }
+    const [selectedOption, setSelectedOption] = useState('');
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
+    const handleAutocompleteCustomer = (value) => {
+        console.log(value);
+
+        setIdentificationInfo(value?.value?.customerName || "");
+        setDocumentInfo(value?.value?.identificationInfo || "");
+
+    }
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
+    const handleCloseEditModal = () => {
+        setEditModalOpen(false);
+    };
+
+    const [filterValueCustomer, setFilterValueCustomer] = useState('');
+    const [selectedCustomer, setSelectedCustomer] = useState(null);
+
+    const filteredCustomers = customers
+    ?.filter((customer) =>
+      customer.identificationType === identificationType && (
+      customer.customerName.toLowerCase().includes(filterValueCustomer.toLowerCase()) ||
+      customer.identificationInfo.toLowerCase().includes(filterValueCustomer.toLowerCase()))
+    );
+
+    const handleRowClick = (customer) => {
+        setIdentificationInfo(customer?.customerName || "");
+        setDocumentInfo(customer?.identificationInfo || "");
+        setSelectedCustomer(customer);
+        setEditModalOpen(false);
+    };
     return (
         <Container>
             <Box display={{ xs: 'block', md: 'flex' }}>
@@ -564,11 +628,15 @@ const Page = () => {
                             value={documentInfo}
                             onChange={handleDocumentInfoChange}
                             type='number'
+                            disabled={!identificationType}
                             fullWidth
                             InputProps={{
                                 endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton edge="end" onClick={getSunatValue}>
+                                    <InputAdornment position="end" >
+                                        <IconButton edge="start" onClick={() => { setEditModalOpen(true) }} disabled={!identificationType}>
+                                            <Visibility />
+                                        </IconButton>
+                                        <IconButton edge="end" onClick={getSunatValue} disabled={!identificationType}>
                                             {isLoading ? (
                                                 <CircularProgress size={24} />
                                             ) : (
@@ -580,6 +648,8 @@ const Page = () => {
                             }}
                         />
                     </FormControl>
+
+
                     <br /><br />
 
                     <FormControl fullWidth>
@@ -711,142 +781,142 @@ const Page = () => {
                         )}
                         {deliveryType === "PUESTO EN OBRA" && (
                             <Box >
-                            <label>Dirección</label>
-                            <FormControl fullWidth>
-                                <TextField
-                                    multiline
-                                    type="text"
-                                    value={address}
-                                    onChange={handleAddressChange}
-                                    fullWidth
-                                />
-                            </FormControl>
-                            <br /><br />
-                            <FormControl fullWidth>
-                                <label>Seleccione distrito<font color="red"> *</font></label>
-                                <Autocomplete
-                                    value={selectedDistrict}
-                                    onChange={(event, value) => handleDistrictChange({ target: { value } })}
-                                    options={fletesJson.map((district) => district.District)}
-                                    renderInput={(params) => (
-                                        <TextField {...params} variant="outlined" />
-                                    )}
-                                />
-                            </FormControl>
-                            <br /><br />
-                            {deliveryType === "PUESTO EN OBRA" && selectedDistrict && (
-                                <table style={tableStyle}>
-                                    <thead>
-                                        <tr>
-                                            <th style={thTdStyle}>Camion</th>
-                                            <th style={thTdStyle}>N° de carros</th>
-                                            <th style={thTdStyle}>Cantidad</th>
-                                            <th style={thTdStyle}>Costo</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {fletesJson.map((district) => {
-                                            if (district.District === selectedDistrict) {
-                                                return (
-                                                    <React.Fragment key={district.District}>
-                                                        <tr style={hoverStyle}>
-                                                            <td style={thTdStyle}>9 TN</td>
-                                                            <td style={thTdStyle}>{(getTotalWeight() / 9000).toFixed(3)} </td>
-                                                            <td style={thTdStyle}>
-                                                                <TextField
-                                                                    error={truck9TN === null || truck9TN === '' || truck9TN < 0}
-                                                                    type="number"
-                                                                    fullWidth
-                                                                    value={truck9TN}
-                                                                    onChange={handleTruck9TNChange}
-                                                                />
-                                                            </td>
-                                                            <td style={thTdStyle}>{(district["09_TN"]).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
-                                                        </tr>
-                                                        <tr style={hoverStyle}>
-                                                            <td style={thTdStyle}>20 TN</td>
-                                                            <td style={thTdStyle}>{(getTotalWeight() / 20000).toFixed(3)} </td>
-                                                            <td style={thTdStyle}>
-                                                                <TextField
-                                                                    error={truck20TN === null || truck20TN === '' || truck20TN < 0}
-                                                                    type="number"
-                                                                    fullWidth
-                                                                    value={truck20TN}
-                                                                    onChange={handleTruck20TNChange}
-                                                                />
-                                                            </td>
-                                                            <td style={thTdStyle}>{(district["20_TN"]).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
-                                                        </tr>
-                                                        <tr style={hoverStyle}>
-                                                            <td style={thTdStyle}>32 TN</td>
-                                                            <td style={thTdStyle}>{(getTotalWeight() / 32000).toFixed(3)}</td>
-                                                            <td style={thTdStyle}>
-                                                                <TextField
-                                                                    error={truck32TN === null || truck32TN === '' || truck32TN < 0}
-                                                                    type="number"
-                                                                    fullWidth
-                                                                    value={truck32TN}
-                                                                    onChange={handleTruck32TNChange}
-                                                                />
-                                                            </td>
-                                                            <td style={thTdStyle}>{(district["32_TN"]).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
-                                                        </tr>
-                                                    </React.Fragment>
-                                                );
-                                            }
-                                            return null;
-                                        })}
-                                    </tbody>
-                                </table>
-                            )}
-                            <FormControl fullWidth>
-                                <label>
-                                    ¿Requiere Parihuela?<font color="red"> *</font>
-                                </label>
-                                <Select value={isParihuelaNeeded} onChange={handleParihuelaChange}>
-                                    <MenuItem value="Sí">Sí</MenuItem>
-                                    <MenuItem value="No">No</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <br></br><br></br>
-                            {isParihuelaNeeded == "Sí" && (
-                                <table style={tableStyle}>
-                                    <thead>
-                                        <tr>
-                                            <th style={thTdStyle}>Cant. Parihuela</th>
-                                            <th style={thTdStyle}>Precio</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr style={hoverStyle}>
-                                            <td style={thTdStyle}>
-                                                <TextField
-                                                    error={cantParihuela === null || cantParihuela === '' || cantParihuela < 0}
-                                                    type='number'
-                                                    value={cantParihuela}
-                                                    onChange={handleCantParihuelaChange}
-                                                    fullWidth
-                                                />
-                                            </td>
-                                            <td style={thTdStyle}>
-                                                <TextField
-                                                    error={costParihuela === null || costParihuela === '' || costParihuela < 0}
-                                                    label="S/."
-                                                    type='number'
-                                                    value={costParihuela}
-                                                    onChange={handlecostParihuelaChange}
-                                                    fullWidth
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr style={hoverStyle}>
-                                            <td style={thTdStyle}>Total S/.</td>
-                                            <td style={thTdStyle}>{(updateTotalParihuela() || 0).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            )}
-                        </Box>
+                                <label>Dirección</label>
+                                <FormControl fullWidth>
+                                    <TextField
+                                        multiline
+                                        type="text"
+                                        value={address}
+                                        onChange={handleAddressChange}
+                                        fullWidth
+                                    />
+                                </FormControl>
+                                <br /><br />
+                                <FormControl fullWidth>
+                                    <label>Seleccione distrito<font color="red"> *</font></label>
+                                    <Autocomplete
+                                        value={selectedDistrict}
+                                        onChange={(event, value) => handleDistrictChange({ target: { value } })}
+                                        options={fletesJson.map((district) => district.District)}
+                                        renderInput={(params) => (
+                                            <TextField {...params} variant="outlined" />
+                                        )}
+                                    />
+                                </FormControl>
+                                <br /><br />
+                                {deliveryType === "PUESTO EN OBRA" && selectedDistrict && (
+                                    <table style={tableStyle}>
+                                        <thead>
+                                            <tr>
+                                                <th style={thTdStyle}>Camion</th>
+                                                <th style={thTdStyle}>N° de carros</th>
+                                                <th style={thTdStyle}>Cantidad</th>
+                                                <th style={thTdStyle}>Costo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {fletesJson.map((district) => {
+                                                if (district.District === selectedDistrict) {
+                                                    return (
+                                                        <React.Fragment key={district.District}>
+                                                            <tr style={hoverStyle}>
+                                                                <td style={thTdStyle}>9 TN</td>
+                                                                <td style={thTdStyle}>{(getTotalWeight() / 9000).toFixed(3)} </td>
+                                                                <td style={thTdStyle}>
+                                                                    <TextField
+                                                                        error={truck9TN === null || truck9TN === '' || truck9TN < 0}
+                                                                        type="number"
+                                                                        fullWidth
+                                                                        value={truck9TN}
+                                                                        onChange={handleTruck9TNChange}
+                                                                    />
+                                                                </td>
+                                                                <td style={thTdStyle}>{(district["09_TN"]).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
+                                                            </tr>
+                                                            <tr style={hoverStyle}>
+                                                                <td style={thTdStyle}>20 TN</td>
+                                                                <td style={thTdStyle}>{(getTotalWeight() / 20000).toFixed(3)} </td>
+                                                                <td style={thTdStyle}>
+                                                                    <TextField
+                                                                        error={truck20TN === null || truck20TN === '' || truck20TN < 0}
+                                                                        type="number"
+                                                                        fullWidth
+                                                                        value={truck20TN}
+                                                                        onChange={handleTruck20TNChange}
+                                                                    />
+                                                                </td>
+                                                                <td style={thTdStyle}>{(district["20_TN"]).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
+                                                            </tr>
+                                                            <tr style={hoverStyle}>
+                                                                <td style={thTdStyle}>32 TN</td>
+                                                                <td style={thTdStyle}>{(getTotalWeight() / 32000).toFixed(3)}</td>
+                                                                <td style={thTdStyle}>
+                                                                    <TextField
+                                                                        error={truck32TN === null || truck32TN === '' || truck32TN < 0}
+                                                                        type="number"
+                                                                        fullWidth
+                                                                        value={truck32TN}
+                                                                        onChange={handleTruck32TNChange}
+                                                                    />
+                                                                </td>
+                                                                <td style={thTdStyle}>{(district["32_TN"]).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
+                                                            </tr>
+                                                        </React.Fragment>
+                                                    );
+                                                }
+                                                return null;
+                                            })}
+                                        </tbody>
+                                    </table>
+                                )}
+                                <FormControl fullWidth>
+                                    <label>
+                                        ¿Requiere Parihuela?<font color="red"> *</font>
+                                    </label>
+                                    <Select value={isParihuelaNeeded} onChange={handleParihuelaChange}>
+                                        <MenuItem value="Sí">Sí</MenuItem>
+                                        <MenuItem value="No">No</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <br></br><br></br>
+                                {isParihuelaNeeded == "Sí" && (
+                                    <table style={tableStyle}>
+                                        <thead>
+                                            <tr>
+                                                <th style={thTdStyle}>Cant. Parihuela</th>
+                                                <th style={thTdStyle}>Precio</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style={hoverStyle}>
+                                                <td style={thTdStyle}>
+                                                    <TextField
+                                                        error={cantParihuela === null || cantParihuela === '' || cantParihuela < 0}
+                                                        type='number'
+                                                        value={cantParihuela}
+                                                        onChange={handleCantParihuelaChange}
+                                                        fullWidth
+                                                    />
+                                                </td>
+                                                <td style={thTdStyle}>
+                                                    <TextField
+                                                        error={costParihuela === null || costParihuela === '' || costParihuela < 0}
+                                                        label="S/."
+                                                        type='number'
+                                                        value={costParihuela}
+                                                        onChange={handlecostParihuelaChange}
+                                                        fullWidth
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr style={hoverStyle}>
+                                                <td style={thTdStyle}>Total S/.</td>
+                                                <td style={thTdStyle}>{(updateTotalParihuela() || 0).toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                )}
+                            </Box>
                         )}
                     </Box>
 
@@ -953,7 +1023,46 @@ const Page = () => {
 
                     </Box>
                 )}
-
+                <Dialog open={isEditModalOpen} onClose={handleCloseEditModal} maxWidth="md" fullWidth>
+                    <DialogTitle style={{ textAlign: 'center' }}>
+                        Lista de clientes
+                    </DialogTitle>
+                    <DialogContent>
+                        <TextField
+                            label="Filtrar por nombre o número de identificación"
+                            value={filterValueCustomer}
+                            onChange={(e) => setFilterValueCustomer(e.target.value)}
+                            fullWidth
+                            margin="normal"
+                        />
+                        <TableContainer component={Paper}>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Nombre del Cliente</TableCell>
+                                        <TableCell>Número de Identificación</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody style={{ cursor:'pointer' }}>
+                                    {filteredCustomers?.map((customer) => (
+                                        <TableRow key={customer.id} onClick={() => handleRowClick(customer)}>
+                                            <TableCell>{customer.customerName}</TableCell>
+                                            <TableCell>{customer.identificationInfo}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <br></br>
+                        {selectedCustomer && (
+                            <div style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
+                                <p style={{ fontSize: '16px', fontWeight: 'bold', margin: '0' }}>
+                                    CLIENTE SELECCIONADO: {selectedCustomer.customerName}
+                                </p>                                
+                            </div>
+                        )}
+                    </DialogContent>
+                </Dialog>
 
 
             </Box>
@@ -964,6 +1073,7 @@ const Page = () => {
                 </Box>
             </Box>
         </Container>
+
     );
 
 

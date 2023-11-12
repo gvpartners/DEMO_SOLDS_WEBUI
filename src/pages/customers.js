@@ -47,6 +47,9 @@ const Page = () => {
   const [editedName, setEditedName] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [filterName, setFilterName] = useState('');
+  const [filterIdentificationType, setFilterIdentificationType] = useState('');
+  const [filterIdentificationInfo, setFilterIdentificationInfo] = useState('');
   const authToken = sessionStorage.getItem('authToken');
 
   const getCustomers = async () => {
@@ -56,15 +59,23 @@ const Page = () => {
       if (response.status === 200) {
         const fetchedData = await response.data;
         setData(fetchedData);
+
       }
     } catch (err) {
       console.error('Error fetching data:', err);
     }
   };
+  const filteredCustomers = data.filter((item) => {
+    const matchesName = item.customerName.toLowerCase().includes(filterName.toLowerCase());
+    const matchesIdentificationType =
+      !filterIdentificationType || item.identificationType === filterIdentificationType;
+    const matchesIdentificationInfo = item.identificationInfo.includes(filterIdentificationInfo);
 
+    return matchesName && matchesIdentificationType && matchesIdentificationInfo;
+  });
   const auxCustomers = useMemo(() => {
-    return applyPagination(data, page, rowsPerPage);
-  }, [data, page, rowsPerPage]);
+    return applyPagination(filteredCustomers, page, rowsPerPage);
+  }, [data, page, rowsPerPage, filterName, filterIdentificationType, filterIdentificationInfo]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -136,6 +147,7 @@ const Page = () => {
       console.error('Error deleting customer:', error);
     }
   };
+
   const getSunatValue = async () => {
     setIsLoading(true);
     try {
@@ -163,6 +175,7 @@ const Page = () => {
       setIsLoading(false);
     }
   };
+
   const handleMenuOpen = (event, customer) => {
     setAnchorEl(event.currentTarget);
     setSelectedCustomer(customer);
@@ -233,6 +246,12 @@ const Page = () => {
     getCustomers();
   };
 
+  const clearFilters = () => {
+    setFilterName('');
+    setFilterIdentificationType('');
+    setFilterIdentificationInfo('');
+  };
+
   return (
     <>
       <Head>
@@ -250,16 +269,21 @@ const Page = () => {
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
-                <Typography variant="h4">Total de clientes [{data.length}]</Typography>
+                <Typography variant="h4">Total de clientes [{filteredCustomers.length}]</Typography>
               </Stack>
-              <Button variant="contained" color="primary" onClick={handleOpenNewCustomerModal}
-                startIcon={
-                  <SvgIcon fontSize="small">
-                    <PlusIcon />
-                  </SvgIcon>
-                }>
-                Añadir Nuevo Cliente
-              </Button>
+              <Stack direction="row" spacing={2}>
+                <Button variant="contained" color="primary" onClick={handleOpenNewCustomerModal}
+                  startIcon={
+                    <SvgIcon fontSize="small">
+                      <PlusIcon />
+                    </SvgIcon>
+                  }>
+                  Añadir Nuevo Cliente
+                </Button>
+                <Button variant="outlined" onClick={clearFilters}>
+                  Limpiar Filtros
+                </Button>
+              </Stack>
             </Stack>
             {data.length === 0 ? (
               <Typography variant="body1">No hay clientes en la aplicación.</Typography>
@@ -268,9 +292,35 @@ const Page = () => {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Cliente</TableCell>
-                      <TableCell>Tipo de Identificación</TableCell>
-                      <TableCell>Número de Identificación</TableCell>
+                      <TableCell>
+                        <TextField
+                          label="Cliente"
+                          value={filterName}
+                          onChange={(event) => setFilterName(event.target.value)}
+                          sx={{ width: '240px' }}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          label="Tipo de Identificación"
+                          select
+                          value={filterIdentificationType}
+                          onChange={(event) => setFilterIdentificationType(event.target.value)}
+                          sx={{ width: '240px' }}
+                        >
+                          <MenuItem value="">Todos</MenuItem>
+                          <MenuItem value="DNI">DNI</MenuItem>
+                          <MenuItem value="RUC">RUC</MenuItem>
+                        </TextField>
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          sx={{ width: '240px' }}
+                          label="Número de Identificación"
+                          value={filterIdentificationInfo}
+                          onChange={(event) => setFilterIdentificationInfo(event.target.value)}
+                        />
+                      </TableCell>
                       <TableCell>Acciones</TableCell>
                     </TableRow>
                   </TableHead>
@@ -308,7 +358,7 @@ const Page = () => {
             )}
             <TablePagination
               component="div"
-              count={data.length}
+              count={filteredCustomers.length}
               onPageChange={handlePageChange}
               onRowsPerPageChange={handleRowsPerPageChange}
               page={page}
