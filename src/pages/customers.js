@@ -374,28 +374,6 @@ const Page = () => {
           {isEditModalOpen ? 'Editar Cliente' : 'Añadir Nuevo Cliente'}
         </DialogTitle>
         <DialogContent>
-
-          <TextField
-            label="Número de Identificación"
-            value={selectedCustomer ? selectedCustomer.identificationInfo : ''}
-            type="number"
-            onChange={(event) => handleFieldChange('identificationInfo', event.target.value)}
-            fullWidth
-            margin="normal"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton edge="end" onClick={getSunatValue}>
-                    {isLoading ? (
-                      <CircularProgress size={24} />
-                    ) : (
-                      <SearchIcon />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
           <TextField
             label="Tipo de Identificación"
             select
@@ -407,6 +385,28 @@ const Page = () => {
             <MenuItem value="DNI">DNI</MenuItem>
             <MenuItem value="RUC">RUC</MenuItem>
           </TextField>
+          <TextField
+            disabled={!selectedCustomer?.identificationType}
+            label="Número de Identificación"
+            value={selectedCustomer ? selectedCustomer.identificationInfo : ''}
+            type="number"
+            onChange={(event) => handleFieldChange('identificationInfo', event.target.value)}
+            fullWidth
+            margin="normal"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton edge="end" onClick={getSunatValue} disabled={!selectedCustomer?.identificationType}>
+                    {isLoading ? (
+                      <CircularProgress size={24} />
+                    ) : (
+                      <SearchIcon />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
           <TextField
             label="Nombre del Cliente"
             value={selectedCustomer ? selectedCustomer.customerName : editedName}

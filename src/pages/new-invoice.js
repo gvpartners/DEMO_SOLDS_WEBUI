@@ -595,11 +595,11 @@ const Page = () => {
     const [selectedCustomer, setSelectedCustomer] = useState(null);
 
     const filteredCustomers = customers
-    ?.filter((customer) =>
-      customer.identificationType === identificationType && (
-      customer.customerName.toLowerCase().includes(filterValueCustomer.toLowerCase()) ||
-      customer.identificationInfo.toLowerCase().includes(filterValueCustomer.toLowerCase()))
-    );
+        ?.filter((customer) =>
+            customer.identificationType === identificationType && (
+                customer.customerName.toLowerCase().includes(filterValueCustomer.toLowerCase()) ||
+                customer.identificationInfo.toLowerCase().includes(filterValueCustomer.toLowerCase()))
+        );
 
     const handleRowClick = (customer) => {
         setIdentificationInfo(customer?.customerName || "");
@@ -1035,7 +1035,7 @@ const Page = () => {
                             fullWidth
                             margin="normal"
                         />
-                        <TableContainer component={Paper}>
+                        <TableContainer component={Paper} style={{ maxHeight: '400px', overflowY: 'auto' }}>
                             <Table>
                                 <TableHead>
                                     <TableRow>
@@ -1043,7 +1043,7 @@ const Page = () => {
                                         <TableCell>Número de Identificación</TableCell>
                                     </TableRow>
                                 </TableHead>
-                                <TableBody style={{ cursor:'pointer' }}>
+                                <TableBody style={{ cursor: 'pointer' }}>
                                     {filteredCustomers?.map((customer) => (
                                         <TableRow key={customer.id} onClick={() => handleRowClick(customer)}>
                                             <TableCell>{customer.customerName}</TableCell>
@@ -1058,7 +1058,7 @@ const Page = () => {
                             <div style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
                                 <p style={{ fontSize: '16px', fontWeight: 'bold', margin: '0' }}>
                                     CLIENTE SELECCIONADO: {selectedCustomer.customerName}
-                                </p>                                
+                                </p>
                             </div>
                         )}
                     </DialogContent>
