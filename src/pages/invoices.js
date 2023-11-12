@@ -642,6 +642,7 @@ const Page = () => {
                 page={page}
                 rowsPerPage={rowsPerPage}
                 rowsPerPageOptions={[5, 10, 25]}
+                labelRowsPerPage={"Elementos por página"}
               />
             </Card>
             <Dialog open={isDialogOpen} onClose={handleDialogClose} fullWidth maxWidth="sm">

@@ -249,6 +249,7 @@ const Page = () => {
               page={page}
               rowsPerPage={rowsPerPage}
               rowsPerPageOptions={[5, 10, 25]}
+              labelRowsPerPage={"Elementos por página"}
             />
           </Stack>
 

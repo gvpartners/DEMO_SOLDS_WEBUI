@@ -4,18 +4,24 @@ import 'jspdf-autotable';
 import { fontSize } from '@mui/system';
 
 const generatePDF = (invoice) => {
-    const formattedDate = new Date(invoice.createdOn).toLocaleDateString("es-ES", {
+    // Obtener la fecha de creación de la factura ajustada según la zona horaria
+    const adjustedDate = new Date(invoice.createdOn);
+    adjustedDate.setHours(adjustedDate.getHours() - 5);
+
+    // Formatear la fecha de creación en el formato deseado
+    const formattedDate = adjustedDate.toLocaleDateString("es-PE", {
         weekday: 'long',
         day: 'numeric',
         month: 'long',
         year: 'numeric'
     });
-    // Calcular la fecha válida hasta un mes después
-    const validUntilDate = new Date(invoice.createdOn);
+
+    // Calcular la fecha válida hasta un mes después de la fecha de creación
+    const validUntilDate = new Date(adjustedDate);
     validUntilDate.setMonth(validUntilDate.getMonth() + 1);
 
     // Formatear la fecha válida hasta en el formato deseado
-    const validUntilFormatted = validUntilDate.toLocaleDateString("es-ES", {
+    const validUntilFormatted = validUntilDate.toLocaleDateString("es-PE", {
         weekday: 'long',
         day: 'numeric',
         month: 'long',
