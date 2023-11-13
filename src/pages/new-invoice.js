@@ -265,62 +265,90 @@ const Page = () => {
     };
     const updateInvoice = async (viewData) => {
         try {
-            const response = await invoiceService.updateInvoice(InvoiceId, viewData);
-            if (response.ok) {
-                router.push('/invoices');
-                Swal.fire({
-                    title: 'Actualización de Cotización',
-                    text: 'Se actualizó satisfactoriamente la cotización',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
-            }
-            else {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Hubo un error al actualizar la cotización',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
+            // Mostrar el diálogo de confirmación
+            const confirmAction = await Swal.fire({
+                title: 'Confirmar actualización',
+                text: '¿Está seguro de actualizar esta cotización?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, actualizar',
+                cancelButtonText: 'Cancelar',
+            });
+
+            // Verificar si el usuario confirmó la actualización
+            if (confirmAction.isConfirmed) {
+                const response = await invoiceService.updateInvoice(InvoiceId, viewData);
+
+                if (response.ok) {
+                    router.push('/invoices');
+                    Swal.fire({
+                        title: 'Actualización de Cotización',
+                        text: 'Se actualizó satisfactoriamente la cotización',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Hubo un error al actualizar la cotización',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                    });
+                }
             }
         } catch (error) {
             Swal.fire({
                 title: 'Error',
                 text: 'Hubo un error al actualizar la cotización',
                 icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
-    }
-    const createInvoice = async (data) => {
-        try {
-            const response = await invoiceService.createInvoice(data);
-            if (response.ok) {
-                router.push('/invoices');
-                Swal.fire({
-                    title: 'Creación de Cotización',
-                    text: 'Se creó satisfactoriamente la cotización',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
-            }
-            else {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Hubo un error al crear la cotización',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        } catch (error) {
-            Swal.fire({
-                title: 'Error',
-                text: 'Hubo un error al crear la cotización',
-                icon: 'error',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
             });
         }
     };
+
+    const createInvoice = async (data) => {
+        try {
+          // Mostrar el diálogo de confirmación
+          const confirmAction = await Swal.fire({
+            title: 'Confirmar creación',
+            text: '¿Está seguro de crear esta cotización?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, crear',
+            cancelButtonText: 'Cancelar',
+          });
+      
+          // Verificar si el usuario confirmó la creación
+          if (confirmAction.isConfirmed) {
+            const response = await invoiceService.createInvoice(data);
+      
+            if (response.ok) {
+              router.push('/invoices');
+              Swal.fire({
+                title: 'Creación de Cotización',
+                text: 'Se creó satisfactoriamente la cotización',
+                icon: 'success',
+                confirmButtonText: 'OK',
+              });
+            } else {
+              Swal.fire({
+                title: 'Error',
+                text: 'Hubo un error al crear la cotización',
+                icon: 'error',
+                confirmButtonText: 'OK',
+              });
+            }
+          }
+        } catch (error) {
+          Swal.fire({
+            title: 'Error',
+            text: 'Hubo un error al crear la cotización',
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+        }
+      };
+      
     const getTotalWeight = () => {
         let totalWeight = 0;
 
@@ -492,8 +520,6 @@ const Page = () => {
             subtotal: getSubtotal() || 0,
             igvRate: getIGV(getSubtotal()) || 0,
             totalInvoice: getTotal(getSubtotal(), getIGV(getSubtotal())) || 0,
-            totalFletesPrice: getFleteCost() || 0,
-            totalWithFletes: (getFleteCost() + (getTotal(getSubtotal(), getIGV(getSubtotal())))) || 0,
             createdBy: sessionStorage.getItem('userEmail'),
             userId: sessionStorage.getItem('identificator')
         };
@@ -612,7 +638,7 @@ const Page = () => {
             <Box display={{ xs: 'block', md: 'flex' }}>
 
                 <Box flex={1} marginRight={5} marginLeft={{ md: -20 }}>
-                    <Typography variant="h4">{!InvoiceId ? "Nueva Cotización" : "Editar Cotización / \n" + parsedInvoice?.invoiceCode}</Typography><br />
+                    <Typography variant="h4" style={{ fontSize:'28px'}}>{!InvoiceId ? "Nueva Cotización" : "Edición " + parsedInvoice?.invoiceCode}</Typography><br />
                     <label>Tipo de identificación<font color="red"> *</font></label>
                     <FormControl fullWidth>
                         <Select value={identificationType} onChange={handleIdentificationTypeChange}>

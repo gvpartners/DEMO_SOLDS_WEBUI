@@ -180,76 +180,101 @@ const Page = () => {
   };
   const updateStatus = async (orderStatus) => {
     try {
-      const response = await invoiceService.updateStatus(selectedInvoiceId, orderStatus);
-      if (response.ok) {
-        setAnchorEl(null);
-        if (orderStatus == 2) {
-          Swal.fire({
-            title: 'Cotización aprobada',
-            text: 'Se aprobó satisfactoriamente la cotización',
-            icon: 'success',
-            confirmButtonText: 'OK'
-          });
+      setAnchorEl(null);
+      const confirmAction = await Swal.fire({
+        title: 'Confirmar acción',
+        text: '¿Está seguro de realizar esta acción?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, realizar',
+        cancelButtonText: 'Cancelar',
+      });
+
+      // Verificar si el usuario confirmó la acción
+      if (confirmAction.isConfirmed) {
+        const response = await invoiceService.updateStatus(selectedInvoiceId, orderStatus);
+
+        if (response.ok) {
+          setAnchorEl(null);
+          if (orderStatus === 2) {
+            Swal.fire({
+              title: 'Cotización aprobada',
+              text: 'Se aprobó satisfactoriamente la cotización',
+              icon: 'success',
+              confirmButtonText: 'OK',
+            });
+          } else if (orderStatus === 3) {
+            Swal.fire({
+              title: 'Cotización rechazada',
+              text: 'Se rechazó satisfactoriamente la cotización',
+              icon: 'success',
+              confirmButtonText: 'OK',
+            });
+          } else {
+            Swal.fire({
+              title: 'Error',
+              text: error.message || 'Hubo un error al actualizar el estado de la cotización',
+              icon: 'error',
+              confirmButtonText: 'OK',
+            });
+          }
+          getInvoices();
         }
-        else if (orderStatus == 3) {
-          Swal.fire({
-            title: 'Cotización rechazada',
-            text: 'Se rechazó satisfactoriamente la cotización',
-            icon: 'success',
-            confirmButtonText: 'OK'
-          });
-        }
-        else {
-          Swal.fire({
-            title: 'Error',
-            text: error.message || 'Hubo un error al actualizar el estado de la cotización',
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
-        }
-        getInvoices();
       }
     } catch (error) {
       Swal.fire({
         title: 'Error',
         text: error.message || 'Hubo un error al actualizar el estado de la cotización',
         icon: 'error',
-        confirmButtonText: 'OK'
+        confirmButtonText: 'OK',
       });
     }
+  };
 
-  }
 
   const removeInvoice = async () => {
     try {
-      const response = await invoiceService.removeInvoice(selectedInvoiceId);
-      if (response.ok) {
-        setAnchorEl(null);
-        Swal.fire({
-          title: 'Eliminación de Cotización',
-          text: 'Se eliminó satisfactoriamente la cotización',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-      } else {
-        Swal.fire({
-          title: 'Error',
-          text: error.message || 'Hubo un error al eliminar la cotización',
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-      }
-      getInvoices()
+      // Mostrar el diálogo de confirmación
+      const confirmAction = await Swal.fire({
+        title: 'Confirmar eliminación',
+        text: '¿Está seguro de eliminar esta cotización?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+      });
 
+      if (confirmAction.isConfirmed) {
+        const response = await invoiceService.removeInvoice(selectedInvoiceId);
+
+        if (response.ok) {
+          setAnchorEl(null);
+          Swal.fire({
+            title: 'Eliminación de Cotización',
+            text: 'Se eliminó satisfactoriamente la cotización',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          });
+          getInvoices();
+        } else {
+          Swal.fire({
+            title: 'Error',
+            text: error.message || 'Hubo un error al eliminar la cotización',
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+        }
+      }
     } catch (error) {
       Swal.fire({
         title: 'Error',
         text: error.message || 'Hubo un error al eliminar la cotización',
         icon: 'error',
-        confirmButtonText: 'OK'
+        confirmButtonText: 'OK',
       });
     }
   };
+
 
   const formatter = new Intl.NumberFormat('es-PE', {
     style: 'currency',
@@ -331,7 +356,7 @@ const Page = () => {
 
       const priceFilter =
         filterPrice.trim() === '' ||
-        (invoice.totalWithFletes || invoice.totalInvoice)
+        (invoice.totalInvoice)
           .toString()
           .toLowerCase()
           .includes(filterPrice.toLowerCase());
@@ -428,11 +453,11 @@ const Page = () => {
             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
               <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
                 <div hidden={selectedStatusNumber !== 1}>
-                  <MenuItem onClick={() => updateStatus(2)}>
-                    <CheckCircle style={{ marginRight: '8px' }} /> Aprobado
+                  <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
+                    <CheckCircle style={{ marginRight: '8px' }} /> Aprobar
                   </MenuItem>
-                  <MenuItem onClick={() => updateStatus(3)}>
-                    <Close style={{ marginRight: '8px' }} /> Rechazado
+                  <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
+                    <Close style={{ marginRight: '8px' }} /> Rechazar
                   </MenuItem>
                   <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
                     <EditIcon style={{ marginRight: '8px' }} /> Editar
@@ -705,7 +730,7 @@ const Page = () => {
                     fullWidth
                     style={{ marginBottom: '20px' }}
                   /> */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px',marginTop:'30px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', marginTop: '30px' }}>
                     <DatePicker
                       label="Fecha de inicio *"
                       value={startDate}

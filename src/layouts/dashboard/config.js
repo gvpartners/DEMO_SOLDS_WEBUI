@@ -49,13 +49,13 @@ export const items = [
       </SvgIcon>
     )
   },
-  {
-    title: 'Configuración',
-    path: '/settings',
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    )
-  }
+  // {
+  //   title: 'Configuración',
+  //   path: '/settings',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <CogIcon />
+  //     </SvgIcon>
+  //   )
+  // }
 ];

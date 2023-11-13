@@ -48,14 +48,14 @@ export const SideNav = (props) => {
             href="/"
             sx={{
               display: 'inline-flex',
-              height: 32,
-              width: 32,
-              marginRight: 7.5
+              height: 30,
+              width: 30,
+              marginRight: 6.5
             }}
           >
-            <img src="/assets/avatars/unicon_tras.png" style={{ width: 'auto', height: '50px' }} />
+            <img src="/assets/avatars/unicon_tras.png" style={{ width: 'auto', height: '40px' }} />
           </Box>
-          <Typography variant="h4" style={{ color: '#FFF',marginTop:'15px' }}>
+          <Typography variant="h4" style={{ color: '#FFF',marginTop:'10px' }}>
             UNICON
           </Typography>
         </Box>
