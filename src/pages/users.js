@@ -115,26 +115,39 @@ const Page = () => {
 
   const handleDelete = async (id) => {
     setAnchorEl(null);
-    const response = await userService.removeUser(id);
-    if (response.status == 200) {
-      setEditModalOpen(false);
-      Swal.fire({
-        title: 'Eliminación de usuario.',
-        text: 'Se eliminó satisfactoriamente al usuario.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      }).then(() => {
-        getUsers();
-      });
-    } else {
-      Swal.fire({
-        title: 'Eliminación de usuario.',
-        text: 'No se pudo eliminar al usuario.',
-        icon: 'warning',
-        confirmButtonText: 'OK',
-      });
+    const confirmDelete = await Swal.fire({
+      title: 'Confirmación',
+      text: '¿Estás seguro de que deseas eliminar a este usuario?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    });
+  
+    if (confirmDelete.isConfirmed) {
+      setAnchorEl(null);
+      const response = await userService.removeUser(id);
+      if (response.status === 200) {
+        setEditModalOpen(false);
+        Swal.fire({
+          title: 'Eliminación de usuario',
+          text: 'Se eliminó satisfactoriamente al usuario.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          getUsers();
+        });
+      } else {
+        Swal.fire({
+          title: 'Eliminación de usuario',
+          text: 'No se pudo eliminar al usuario.',
+          icon: 'warning',
+          confirmButtonText: 'OK',
+        });
+      }
     }
   };
+  
   const handleMenuOpen = (event, customer) => {
     setAnchorEl(event.currentTarget);
     setSelectedCustomer(customer);

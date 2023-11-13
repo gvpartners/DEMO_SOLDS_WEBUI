@@ -24,7 +24,7 @@ const useChartOptions = () => {
         show: false
       }
     },
-    colors: [theme.palette.primary.main, alpha(theme.palette.primary.main, 0.25)],
+    colors: [alpha(theme.palette.primary.main, 0.25),theme.palette.primary.main],
     dataLabels: {
       enabled: false
     },
@@ -94,7 +94,7 @@ const useChartOptions = () => {
     },
     yaxis: {
       labels: {
-        formatter: (value) => (value > 0 ? `${value}K` : `${value}`),
+        formatter: (value) => (value > 0 ? `${value}mil` : `${value}`),
         offsetX: -10,
         style: {
           colors: theme.palette.text.secondary
@@ -111,20 +111,8 @@ export const OverviewSales = (props) => {
   return (
     <Card sx={sx}>
       <CardHeader
-        action={(
-          <Button
-            color="inherit"
-            size="small"
-            startIcon={(
-              <SvgIcon fontSize="small">
-                <ArrowPathIcon />
-              </SvgIcon>
-            )}
-          >
-            Sincronizar
-          </Button>
-        )}
-        title="Ventas"
+        
+        title="Ventas generales"
       />
       <CardContent>
         <Chart
@@ -135,20 +123,6 @@ export const OverviewSales = (props) => {
           width="100%"
         />
       </CardContent>
-      <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <Button
-          color="inherit"
-          endIcon={(
-            <SvgIcon fontSize="small">
-              <ArrowRightIcon />
-            </SvgIcon>
-          )}
-          size="small"
-        >
-          Resumen
-        </Button>
-      </CardActions>
     </Card>
   );
 };

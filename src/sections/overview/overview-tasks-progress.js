@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import ListBulletIcon from '@heroicons/react/24/solid/ListBulletIcon';
+import FlagIcon from '@heroicons/react/24/solid/FlagIcon';
 import {
   Avatar,
   Box,
@@ -43,7 +43,7 @@ export const OverviewTasksProgress = (props) => {
             }}
           >
             <SvgIcon>
-              <ListBulletIcon />
+              <FlagIcon />
             </SvgIcon>
           </Avatar>
         </Stack>

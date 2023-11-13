@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
 import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
-import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
+import DocumentIcon from '@heroicons/react/24/solid/DocumentIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 
 export const OverviewTotalCustomers = (props) => {
@@ -21,7 +21,7 @@ export const OverviewTotalCustomers = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              COTIZACIONES DEL DIA DE HOY
+              COTIZACIONES DEL DÍA DE HOY
             </Typography>
             <Typography variant="h4">
               {value}
@@ -35,7 +35,7 @@ export const OverviewTotalCustomers = (props) => {
             }}
           >
             <SvgIcon>
-              <UsersIcon />
+              <DocumentIcon />
             </SvgIcon>
           </Avatar>
         </Stack>

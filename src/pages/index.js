@@ -83,13 +83,13 @@ const Page = () => (
             <OverviewSales
               chartSeries={[
                 {
-                  name: 'This year',
-                  data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
+                  name: 'Año pasado',
+                  data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
                 },
                 {
-                  name: 'Last year',
-                  data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
-                }
+                  name: 'Año Actual',
+                  data: [18.5, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
+                },
               ]}
               sx={{ height: '100%' }}
             />
@@ -100,8 +100,8 @@ const Page = () => (
             lg={4}
           >
             <OverviewTraffic
-              chartSeries={[63, 15, 17,5]}
-              labels={['Bloques', 'Adoking', 'Grass Michi','hola']}
+              chartSeries={[63, 15, 17, 5]}
+              labels={['Bloques', 'Adoking', 'Grass Michi', 'hola']}
               sx={{ height: '100%' }}
             />
           </Grid>
