@@ -49,16 +49,6 @@ export const items = [
       </SvgIcon>
     )
   },
-  
-  // {
-  //   title: 'Cuenta',
-  //   path: '/account',
-  //   icon: (
-  //     <SvgIcon fontSize="small">
-  //       <UserIcon />
-  //     </SvgIcon>
-  //   )
-  // },
   {
     title: 'Configuración',
     path: '/settings',
