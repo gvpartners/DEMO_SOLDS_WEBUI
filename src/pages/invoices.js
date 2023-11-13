@@ -234,7 +234,7 @@ const Page = () => {
 
   const removeInvoice = async () => {
     try {
-      // Mostrar el diálogo de confirmación
+      setAnchorEl(null);
       const confirmAction = await Swal.fire({
         title: 'Confirmar eliminación',
         text: '¿Está seguro de eliminar esta cotización?',
