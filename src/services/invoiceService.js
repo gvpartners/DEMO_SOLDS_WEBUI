@@ -134,6 +134,22 @@ const generateExcel = async (data) => {
         console.error('Error generating Excel:', error);
       }
 }
+const duplicateInvoice = async (Id) => {
+    try {
+        const authToken = sessionStorage.getItem('authToken');
+        const response = await fetch(API_BASE_URL + '/api/Invoice/DuplicateInvoice/' + Id, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + authToken
+            }
+        });
+
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 export default {
     getSunatValue,
@@ -143,5 +159,6 @@ export default {
     updateInvoice,
     removeInvoice,
     updateStatus,
-    generateExcel
+    generateExcel,
+    duplicateInvoice
 };

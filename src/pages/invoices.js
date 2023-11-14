@@ -31,7 +31,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import FileCopyIcon from '@mui/icons-material/FileCopy';
 import { saveAs } from 'file-saver';
 import {
   Avatar,
@@ -176,6 +176,46 @@ const Page = () => {
   const editInvoice = () => {
     if (selectedInvoiceId) {
       router.push(`/new-invoice?InvoiceId=${selectedInvoiceId}`);
+    }
+  };
+  const duplicateInvoice = async () => {
+    // Cierra el menú contextual si está abierto
+    setAnchorEl(null);
+
+    // Pregunta al usuario para confirmar la acción
+    const confirmAction = await Swal.fire({
+      title: 'Confirmar',
+      text: '¿Está seguro de duplicar la cotización?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, duplicar',
+      cancelButtonText: 'Cancelar',
+    });
+
+    // Si el usuario confirma, intenta duplicar la factura utilizando el servicio correspondiente
+    if (confirmAction.isConfirmed) {
+      try {
+        await invoiceService.duplicateInvoice(selectedInvoiceId);
+
+        // Muestra un mensaje de éxito al usuario
+        Swal.fire({
+          title: 'Cotización duplicada',
+          text: 'Se duplicó satisfactoriamente la cotización',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+        getInvoices();
+      } catch (error) {
+        // Si hay un error al duplicar la factura, muestra un mensaje de error
+        console.error('Error al duplicar la cotización:', error);
+
+        Swal.fire({
+          title: 'Error al duplicar la cotización',
+          text: 'No se pudo duplicar la cotización. Por favor, inténtelo de nuevo.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
     }
   };
   const updateStatus = async (orderStatus) => {
@@ -467,6 +507,11 @@ const Page = () => {
                   </MenuItem>
                 </div>
               </div>
+              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                  <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
+                </MenuItem>
+              </div>
               <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
                 <Visibility style={{ marginRight: '8px' }} /> Ver PDF
               </MenuItem>
@@ -649,7 +694,7 @@ const Page = () => {
                             onChange={(e) => setFilterContact(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell> Acciones</TableCell>
+                        <TableCell sx={{ width: '140px' }} style={{fontSize:'14px',color:'grey'}}> Acciones</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
