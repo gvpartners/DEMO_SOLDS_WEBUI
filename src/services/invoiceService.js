@@ -150,7 +150,21 @@ const duplicateInvoice = async (Id) => {
         console.log(err);
     }
 }
-
+const summaryInfo = async (Id) => {
+    try {
+        const authToken = sessionStorage.getItem('authToken');
+        const response = await fetch(API_BASE_URL + '/api/Invoice/SummaryInfo', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + authToken
+            },
+        });
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+}
 export default {
     getSunatValue,
     getAllInvoices,
@@ -160,5 +174,6 @@ export default {
     removeInvoice,
     updateStatus,
     generateExcel,
-    duplicateInvoice
+    duplicateInvoice,
+    summaryInfo
 };
