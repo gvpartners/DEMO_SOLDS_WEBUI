@@ -420,6 +420,27 @@ const Page = () => {
       const selectedDateMidnight = new Date(selectedDate);
       selectedDateMidnight.setHours(0, 0, 0, 0);
 
+      const filterCantPiecesFilter =
+        filterCantPieces.trim() === '' ||
+        (invoice.totalOfPieces)
+          .toString()
+          .toLowerCase()
+          .includes(filterCantPieces.toLowerCase());
+
+      const unitPieceFilter =
+        filterUnitPiece.trim() === '' ||
+        invoice.unitPiece.toLowerCase().includes(filterUnitPiece.toLowerCase());
+
+      const districtFilter = filterDistrict.trim() === '' ||
+        invoice.selectedDistrict.toLowerCase().includes(filterDistrict.toLowerCase());
+      const addressFilter = filterAddress.trim() === '' ||
+        invoice.address.toLowerCase().includes(filterAddress.toLowerCase());
+
+      const phonefilter = filterPhone.trim() === '' ||
+        invoice.telephone.toLowerCase().includes(filterPhone.toLowerCase());
+
+      const contactfilter = filterContact.trim() === '' ||
+        invoice.contact.toLowerCase().includes(filterContact.toLowerCase());
       return (
         codeFilter &&
         clientFilter &&
@@ -429,6 +450,12 @@ const Page = () => {
         deliveryFilter &&
         employeeFilter &&
         statusFilter &&
+        filterCantPiecesFilter &&
+        unitPieceFilter &&
+        districtFilter &&
+        addressFilter &&
+        phonefilter &&
+        contactfilter &&
         (selectedDate === null || invoiceDate.getTime() === selectedDateMidnight.getTime())
       );
 
@@ -694,7 +721,7 @@ const Page = () => {
                             onChange={(e) => setFilterContact(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell sx={{ width: '140px' }} style={{fontSize:'14px',color:'grey'}}> Acciones</TableCell>
+                        <TableCell sx={{ width: '140px' }} style={{ fontSize: '14px', color: 'grey' }}> Acciones</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
