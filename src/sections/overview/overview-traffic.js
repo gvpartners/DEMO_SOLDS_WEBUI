@@ -15,19 +15,14 @@ import {
 import { Chart } from 'src/components/chart';
 import { red } from '@mui/material/colors';
 
-const useChartOptions = (labels) => {
+const useChartOptions = (labels, colors) => {
   const theme = useTheme();
 
   return {
     chart: {
       background: 'transparent'
     },
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.success.main,
-      theme.palette.warning.main,
-      theme.palette.success.main,
-    ],
+    colors,
     dataLabels: {
       enabled: false
     },
@@ -83,8 +78,8 @@ const iconMap = {
 };
 
 export const OverviewTraffic = (props) => {
-  const { chartSeries, labels, sx } = props;
-  const chartOptions = useChartOptions(labels);
+  const { chartSeries, labels, colors, sx } = props;
+  const chartOptions = useChartOptions(labels, colors);
 
   return (
     <Card sx={sx}>
@@ -116,7 +111,7 @@ export const OverviewTraffic = (props) => {
                   alignItems: 'center'
                 }}
               >
-                {iconMap[label]}
+                
                 <Typography
                   sx={{ my: 1 }}
                   variant="h6"
@@ -141,5 +136,6 @@ export const OverviewTraffic = (props) => {
 OverviewTraffic.propTypes = {
   chartSeries: PropTypes.array.isRequired,
   labels: PropTypes.array.isRequired,
+  colors: PropTypes.array.isRequired,
   sx: PropTypes.object
 };

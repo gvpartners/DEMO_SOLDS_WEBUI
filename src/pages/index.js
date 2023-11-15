@@ -100,8 +100,9 @@ const Page = () => (
             lg={4}
           >
             <OverviewTraffic
-              chartSeries={[63, 15, 17, 5]}
-              labels={['Bloques', 'Adoking', 'Grass Michi', 'hola']}
+              chartSeries={[63, 15, 17, 5, 0]}
+              colors={['#bee9e8', '#62b6cb', '#1b4965', '#cae9ff', '#5fa8d3']}
+              labels={['Bloques', 'Adoking', 'Grass Michi', 'Enchape', 'Aisladores']}
               sx={{ height: '100%' }}
             />
           </Grid>
