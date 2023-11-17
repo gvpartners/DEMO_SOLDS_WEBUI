@@ -7,6 +7,9 @@ import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/mate
 export const OverviewBudget = (props) => {
   const { difference, positive = false, sx, value } = props;
 
+  const isValueGreaterThanMillion = parseFloat(value.replace(/[^\d.]/g, '')) > 100000;
+  const typographyVariant = isValueGreaterThanMillion ? 'h5' : 'h4';
+
   return (
     <Card sx={sx}>
       <CardContent>
@@ -23,7 +26,8 @@ export const OverviewBudget = (props) => {
             >
               Ventas del día
             </Typography>
-            <Typography variant="h4">
+            
+            <Typography  style={{ fontSize: isValueGreaterThanMillion ? '25px' : 'undefined' }} variant={typographyVariant}>
               {value}
             </Typography>
           </Stack>

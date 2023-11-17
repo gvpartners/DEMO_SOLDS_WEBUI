@@ -27,11 +27,13 @@ import { SeverityPill } from 'src/components/severity-pill';
 import { es } from 'date-fns/locale'
 import Autocomplete from '@mui/material/Autocomplete';
 import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
+import fletesJson from 'src/config/fletes.json';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import uniconJson from 'src/config/unicon.json';
 import { saveAs } from 'file-saver';
 import {
   Avatar,
@@ -65,7 +67,10 @@ const Page = () => {
   const [invoices, setInvoices] = useState([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [statusOptions, setstatusOptions] = useState(['En progreso', 'Aprobada', 'Rechazada']);
+  const [categoryOptions, setCategoryOptions] = useState([])
+  const [UMOptions, setUMOptions] = useState(['MT2','PZA'])
   const [deliveryOptions, setdeliveryOptions] = useState(['Puesto en planta', 'Puesto en obra']);
+  const [districtOptions, setDistrictOptions] = useState([])
 
   // Filters Export
   const [startDate, setStartDate] = useState(null);
@@ -118,6 +123,11 @@ const Page = () => {
 
   useEffect(() => {
     getInvoices();
+    const uniqueCategories = Array.from(new Set(uniconJson.map(item => item.Category)));
+    setCategoryOptions(uniqueCategories);
+    const districtOpt = fletesJson.map((district) => district.District);
+    setDistrictOptions(districtOpt);
+
   }, []);
 
 
@@ -391,8 +401,8 @@ const Page = () => {
         invoice.documentInfo.toLowerCase().includes(filterIdentification.toLowerCase());
 
       const categoryFilter =
-        filterCategory.trim() === '' ||
-        invoice.selectedCategory.toLowerCase().includes(filterCategory.toLowerCase());
+        filterCategory === null ||
+        invoice.selectedCategory?.toLowerCase().includes(filterCategory?.toLowerCase());
 
       const priceFilter =
         filterPrice.trim() === '' ||
@@ -402,8 +412,8 @@ const Page = () => {
           .includes(filterPrice.toLowerCase());
 
       const deliveryFilter =
-        filterDelivery.trim() === '' ||
-        invoice.deliveryType.toLowerCase().includes(filterDelivery.toLowerCase());
+        filterDelivery === null ||
+        invoice.deliveryType?.toLowerCase().includes(filterDelivery?.toLowerCase());
 
       const employeeFilter =
         filterEmployee.trim() === '' ||
@@ -428,11 +438,13 @@ const Page = () => {
           .includes(filterCantPieces.toLowerCase());
 
       const unitPieceFilter =
-        filterUnitPiece.trim() === '' ||
-        invoice.unitPiece.toLowerCase().includes(filterUnitPiece.toLowerCase());
+        filterUnitPiece === null ||
+        invoice.unitPiece?.toLowerCase().includes(filterUnitPiece?.toLowerCase());
 
-      const districtFilter = filterDistrict.trim() === '' ||
-        invoice.selectedDistrict.toLowerCase().includes(filterDistrict.toLowerCase());
+      const districtFilter = 
+        filterDistrict === null ||
+        invoice.selectedDistrict?.toLowerCase().includes(filterDistrict?.toLowerCase());
+
       const addressFilter = filterAddress.trim() === '' ||
         invoice.address.toLowerCase().includes(filterAddress.toLowerCase());
 
@@ -623,11 +635,18 @@ const Page = () => {
                             onChange={(e) => setFilterIdentification(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '150px' }}
-                            label="Categoria"
+                        <TableCell >
+                          <Autocomplete
                             value={filterCategory}
-                            onChange={(e) => setFilterCategory(e.target.value)}
+                            onChange={(event, newValue) => setFilterCategory(newValue)}
+                            options={categoryOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '200px' }}
+                                {...params}
+                                label="Categoria"
+                                variant="standard"
+                              />
+                            )}
                           />
                         </TableCell>
                         <TableCell >
@@ -665,11 +684,18 @@ const Page = () => {
                             onChange={(e) => setFilterCantPieces(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '150px' }}
-                            label="U.M"
+                        <TableCell >
+                          <Autocomplete
                             value={filterUnitPiece}
-                            onChange={(e) => setFilterUnitPiece(e.target.value)}
+                            onChange={(event, newValue) => setFilterUnitPiece(newValue)}
+                            options={UMOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '120px' }}
+                                {...params}
+                                label="U.M"
+                                variant="standard"
+                              />
+                            )}
                           />
                         </TableCell>
                         <TableCell>
@@ -679,22 +705,36 @@ const Page = () => {
                             onChange={(e) => setFilterPrice(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '120px' }}
-                            label="Entrega"
+                        <TableCell >
+                          <Autocomplete
                             value={filterDelivery}
-                            onChange={(e) => setFilterDelivery(e.target.value)}
+                            onChange={(event, newValue) => setFilterDelivery(newValue)}
+                            options={deliveryOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '200px' }}
+                                {...params}
+                                label="Entrega"
+                                variant="standard"
+                              />
+                            )}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '140px' }}
-                            label="Distrito"
+                        <TableCell >
+                          <Autocomplete
                             value={filterDistrict}
-                            onChange={(e) => setFilterDistrict(e.target.value)}
+                            onChange={(event, newValue) => setFilterDistrict(newValue)}
+                            options={districtOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '200px' }}
+                                {...params}
+                                label="Distrito"
+                                variant="standard"
+                              />
+                            )}
                           />
                         </TableCell>
                         <TableCell>
-                          <TextField sx={{ width: '140px' }}
+                          <TextField sx={{ width: '240px' }}
                             label="Dirección"
                             value={filterAddress}
                             onChange={(e) => setFilterAddress(e.target.value)}

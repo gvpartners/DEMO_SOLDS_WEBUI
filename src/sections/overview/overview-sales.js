@@ -115,7 +115,7 @@ export const OverviewSales = (props) => {
   return (
     <Card sx={sx}>
       <CardHeader
-        title={`Ventas generales   ${year}`}
+        title={`VENTAS - ${year}`}
       />
       <CardContent>
         <Chart

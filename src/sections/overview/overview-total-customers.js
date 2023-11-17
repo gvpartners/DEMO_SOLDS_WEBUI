@@ -23,7 +23,7 @@ export const OverviewTotalCustomers = (props) => {
             >
               COTIZACIONES DEL DÍA DE HOY
             </Typography>
-            <Typography variant="h4">
+            <Typography style={{ fontSize: '27px' }}  variant="h4">
               {value}
             </Typography>
           </Stack>

@@ -31,7 +31,7 @@ export const OverviewTasksProgress = (props) => {
             >
               Meta del mes
             </Typography>
-            <Typography variant="h4">
+            <Typography style={{ fontSize: '27px' }} variant="h4">
               {value}%
             </Typography>
           </Stack>
