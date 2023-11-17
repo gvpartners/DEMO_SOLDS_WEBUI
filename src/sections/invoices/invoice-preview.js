@@ -6,7 +6,6 @@ import { fontSize } from '@mui/system';
 const generatePDF = (invoice) => {
     // Obtener la fecha de creación de la factura ajustada según la zona horaria
     const adjustedDate = new Date(invoice.createdOn);
-    adjustedDate.setHours(adjustedDate.getHours() - 5);
 
     // Formatear la fecha de creación en el formato deseado
     const formattedDate = adjustedDate.toLocaleDateString("es-PE", {
@@ -41,7 +40,7 @@ const generatePDF = (invoice) => {
     doc.text(title, titleX, 15);
     const underlineX = titleX;
     doc.setDrawColor(0);
-    doc.line(underlineX, 17, underlineX + titleWidth, 17);
+    doc.line(underlineX, 18, underlineX + titleWidth, 18);
 
     const logoX = 15;
     const logoY = 25;
@@ -213,8 +212,8 @@ const generatePDF = (invoice) => {
     const tableData11 = [
         [`Nombre:`, invoice.identificationInfo],
         [`${invoice.identificationType}:`, invoice.documentInfo],
-        [`Correo electrónico:`, invoice.email],
-        [`Teléfono:`, invoice.telephone || 'XXX-XXX-XXX'],
+        [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
+        [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
     ];
 
     // Configurar la tabla 2

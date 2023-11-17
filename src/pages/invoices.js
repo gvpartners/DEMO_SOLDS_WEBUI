@@ -414,7 +414,7 @@ const Page = () => {
         invoice.statusName?.toLowerCase().includes(filterStatus?.toLowerCase());
 
       const invoiceDate = new Date(invoice.createdOn);
-      invoiceDate.setHours(invoiceDate.getHours() - 5);
+      // Establecer las horas a medianoche (00:00:00)
       invoiceDate.setHours(0, 0, 0, 0);
 
       const selectedDateMidnight = new Date(selectedDate);
@@ -470,7 +470,6 @@ const Page = () => {
     .map((invoice) => {
 
       const adjustedDate = new Date(invoice.createdOn);
-      adjustedDate.setHours(adjustedDate.getHours() - 5);
 
       const formattedDate = adjustedDate.toLocaleString('es-PE', {
         month: '2-digit',
@@ -510,8 +509,8 @@ const Page = () => {
           <TableCell>{invoice.selectedDistrict}</TableCell>
           <TableCell>{invoice.address}</TableCell>
           <TableCell>{invoice.employee}</TableCell>
-          <TableCell>{invoice.telephone || "000-000-000"}</TableCell>
-          <TableCell>{invoice.contact || "Anónimo"}</TableCell>
+          <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
           <TableCell>
             <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
               <MoreVertIcon />

@@ -226,7 +226,7 @@ const Page = () => {
                         <TableCell>{item.secondLastName}</TableCell>
                         <TableCell>{item.email}</TableCell>
                         <TableCell>{item.prefix}</TableCell>
-                        <TableCell>{item.phone || 'xxx-xxx-xxx'}</TableCell>
+                        <TableCell>{item.phone || 'No proporcionado'}</TableCell>
                         <TableCell>{item.isApproved ? 'Sí' : 'No'}</TableCell>
                         <TableCell>
                           <IconButton

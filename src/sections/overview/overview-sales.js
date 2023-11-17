@@ -12,7 +12,10 @@ import {
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Chart } from 'src/components/chart';
-
+const formatter = new Intl.NumberFormat('es-PE', {
+  style: 'currency',
+  currency: 'PEN'
+});
 const useChartOptions = () => {
   const theme = useTheme();
 
@@ -24,7 +27,7 @@ const useChartOptions = () => {
         show: false
       }
     },
-    colors: [alpha(theme.palette.primary.main, 0.25),theme.palette.primary.main],
+    colors: [alpha(theme.palette.primary.main, 0.25), theme.palette.primary.main],
     dataLabels: {
       enabled: false
     },
@@ -94,7 +97,7 @@ const useChartOptions = () => {
     },
     yaxis: {
       labels: {
-        formatter: (value) => (value > 0 ? `${value}mil` : `${value}`),
+        formatter: (value) => (value > 0 ? `${formatter.format(value)}` : `${formatter.format(value)}`),
         offsetX: -10,
         style: {
           colors: theme.palette.text.secondary
@@ -107,12 +110,12 @@ const useChartOptions = () => {
 export const OverviewSales = (props) => {
   const { chartSeries, sx } = props;
   const chartOptions = useChartOptions();
-
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
   return (
     <Card sx={sx}>
       <CardHeader
-        
-        title="Ventas generales"
+        title={`Ventas generales   ${year}`}
       />
       <CardContent>
         <Chart
