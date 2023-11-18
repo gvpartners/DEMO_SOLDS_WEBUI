@@ -120,19 +120,19 @@ const updateStatus = async (Id, orderStatus) => {
 const generateExcel = async (data) => {
     try {
         const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL+'/api/Invoice/GenerateExcel', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + authToken
-          },
-          body: JSON.stringify(data),
+        const response = await fetch(API_BASE_URL + '/api/Invoice/GenerateExcel', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + authToken
+            },
+            body: JSON.stringify(data),
         });
-  
+
         return response;
-      } catch (error) {
+    } catch (error) {
         console.error('Error generating Excel:', error);
-      }
+    }
 }
 const duplicateInvoice = async (Id) => {
     try {
@@ -150,7 +150,7 @@ const duplicateInvoice = async (Id) => {
         console.log(err);
     }
 }
-const summaryInfo = async (Id) => {
+const summaryInfo = async () => {
     try {
         const authToken = sessionStorage.getItem('authToken');
         const response = await fetch(API_BASE_URL + '/api/Invoice/SummaryInfo', {
@@ -165,6 +165,38 @@ const summaryInfo = async (Id) => {
         console.log(err);
     }
 }
+const updateCommentbyId = async (Id, Comment) => {
+    try {
+        const authToken = sessionStorage.getItem('authToken');
+        const response = await fetch(API_BASE_URL + '/api/Invoice/UpdateCommentbyId/' + Id+'/'+ Comment, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + authToken
+            },
+            
+        });
+
+        return response;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+const getCommentById = async (Id) => {
+    try {
+        const authToken = sessionStorage.getItem('authToken');
+        const response = await fetch(API_BASE_URL + '/api/Invoice/GetCommentById/' + Id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + authToken
+            },
+        });
+        return response.text();
+    } catch (err) {
+        console.log(err);
+    }
+}
 export default {
     getSunatValue,
     getAllInvoices,
@@ -175,5 +207,7 @@ export default {
     updateStatus,
     generateExcel,
     duplicateInvoice,
-    summaryInfo
+    summaryInfo,
+    updateCommentbyId,
+    getCommentById
 };

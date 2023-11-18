@@ -208,6 +208,7 @@ const Page = () => {
             !identificationInfo ||
             !selectedCategory ||
             selectedMeasures.length === 0 ||
+            !address||
             !isQuantityValid ||
             !validateLengthQuantities ||
             (isPuestoEnObra)

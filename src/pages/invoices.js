@@ -34,6 +34,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import uniconJson from 'src/config/unicon.json';
+import CommentIcon from '@mui/icons-material/Comment';
 import { saveAs } from 'file-saver';
 import {
   Avatar,
@@ -52,7 +53,8 @@ import {
   TablePagination,
   Hidden,
   InputLabel,
-  Select
+  Select,
+  TextareaAutosize
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
 
@@ -68,7 +70,7 @@ const Page = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [statusOptions, setstatusOptions] = useState(['En progreso', 'Aprobada', 'Rechazada']);
   const [categoryOptions, setCategoryOptions] = useState([])
-  const [UMOptions, setUMOptions] = useState(['MT2','PZA'])
+  const [UMOptions, setUMOptions] = useState(['MT2', 'PZA'])
   const [deliveryOptions, setdeliveryOptions] = useState(['Puesto en planta', 'Puesto en obra']);
   const [districtOptions, setDistrictOptions] = useState([])
 
@@ -87,7 +89,30 @@ const Page = () => {
   const handleEndDateChange = (date) => {
     setEndDate(date);
   };
+  const [isDialogOpenComment, setIsDialogOpenComment] = useState(false);
+  const [comment, setComment] = useState('');
+  const getCommentById = async () => {
+    setComment('');
+    try {
+      const response = await invoiceService.getCommentById(selectedInvoiceId);
 
+      if (response) {
+        setComment(response);
+      }
+      setIsDialogOpenComment(true);
+    } catch (err) {
+      console.error('Error fetching data:', err);
+    }
+  };
+
+  const handleDialogCommentOpen = () => {
+    setIsDialogOpenComment(true);
+  };
+
+  const handleDialogCommentClose = () => {
+    setAnchorEl(null);
+    setIsDialogOpenComment(false);
+  };
   const router = useRouter();
 
   const [filterCode, setFilterCode] = useState('');
@@ -346,6 +371,33 @@ const Page = () => {
     setEndDate(null);
     setIsDialogOpen(false);
   }
+  const saveComment = async () => {
+    setIsDialogOpenComment(false);
+    setAnchorEl(null);
+    if (!comment.trim()) {
+      // Mostrar mensaje de advertencia con Swal
+      Swal.fire({
+        title: 'Advertencia',
+        text: 'El comentario no puede estar vacío',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+  
+    const response = await invoiceService.updateCommentbyId(selectedInvoiceId, comment);
+    if (response.ok) {
+      setIsDialogOpenComment(false);
+      setAnchorEl(null);
+      Swal.fire({
+        title: 'Actualización de comentario',
+        text: 'Se actualizó satisfactoriamente el comentario',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+      setComment('');
+    }
+  };
   const exportReport = async () => {
     if (!startDate || !endDate || endDate < startDate) {
       setIsDialogOpen(false);
@@ -441,7 +493,7 @@ const Page = () => {
         filterUnitPiece === null ||
         invoice.unitPiece?.toLowerCase().includes(filterUnitPiece?.toLowerCase());
 
-      const districtFilter = 
+      const districtFilter =
         filterDistrict === null ||
         invoice.selectedDistrict?.toLowerCase().includes(filterDistrict?.toLowerCase());
 
@@ -545,9 +597,19 @@ const Page = () => {
                   </MenuItem>
                 </div>
               </div>
+              <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3}>
+                <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
+                  <Close style={{ marginRight: '8px' }} /> Rechazar
+                </MenuItem>
+              </div>
               <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
                 <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
                   <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
+                </MenuItem>
+              </div>
+              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
+                  <CommentIcon  style={{ marginRight: '8px' }} /> Comentario
                 </MenuItem>
               </div>
               <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
@@ -868,7 +930,32 @@ const Page = () => {
                 </Button>
               </DialogActions>
             </Dialog>
-
+            <Dialog open={isDialogOpenComment} onClose={handleDialogCommentClose} fullWidth maxWidth="sm">
+              <DialogTitle style={{ textAlign: 'center' }}>Comentario de la cotización</DialogTitle>
+              <DialogContent>
+                <div>
+                  <TextareaAutosize
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    style={{
+                      width: '100%',
+                      height: '300px',
+                      padding: '10px',
+                      fontSize: '16px',
+                      fontFamily: 'sans-serif',
+                    }}
+                  />
+                </div>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleDialogCommentClose} color="error">
+                  Cancelar
+                </Button>
+                <Button onClick={saveComment} color="primary">
+                  Guardar
+                </Button>
+              </DialogActions>
+            </Dialog>
 
           </Stack>
         </Container>
