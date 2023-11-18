@@ -127,6 +127,7 @@ const Page = () => {
   const [filterUnitPiece, setFilterUnitPiece] = useState('');
   const [filterDistrict, setFilterDistrict] = useState('');
   const [filterAddress, setFilterAddress] = useState('');
+  const [filterReference, setFilterReference] = useState('');
   const [filterPhone, setFilterPhone] = useState('');
   const [filterContact, setFilterContact] = useState('');
 
@@ -384,7 +385,7 @@ const Page = () => {
       });
       return;
     }
-  
+
     const response = await invoiceService.updateCommentbyId(selectedInvoiceId, comment);
     if (response.ok) {
       setIsDialogOpenComment(false);
@@ -500,6 +501,9 @@ const Page = () => {
       const addressFilter = filterAddress.trim() === '' ||
         invoice.address.toLowerCase().includes(filterAddress.toLowerCase());
 
+      const referenceFilter = filterReference.trim() === '' ||
+        invoice.reference?.toLowerCase().includes(filterReference.toLowerCase());
+
       const phonefilter = filterPhone.trim() === '' ||
         invoice.telephone.toLowerCase().includes(filterPhone.toLowerCase());
 
@@ -520,6 +524,7 @@ const Page = () => {
         addressFilter &&
         phonefilter &&
         contactfilter &&
+        referenceFilter &&
         (selectedDate === null || invoiceDate.getTime() === selectedDateMidnight.getTime())
       );
 
@@ -571,6 +576,7 @@ const Page = () => {
             </SeverityPill>
           </TableCell>
           <TableCell>{invoice.selectedDistrict}</TableCell>
+          <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
           <TableCell>{invoice.address}</TableCell>
           <TableCell>{invoice.employee}</TableCell>
           <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
@@ -609,7 +615,7 @@ const Page = () => {
               </div>
               <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
                 <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <CommentIcon  style={{ marginRight: '8px' }} /> Comentario
+                  <CommentIcon style={{ marginRight: '8px' }} /> Comentario
                 </MenuItem>
               </div>
               <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
@@ -793,6 +799,13 @@ const Page = () => {
                                 variant="standard"
                               />
                             )}
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <TextField sx={{ width: '240px' }}
+                            label="Referencia"
+                            value={filterReference}
+                            onChange={(e) => setFilterReference(e.target.value)}
                           />
                         </TableCell>
                         <TableCell>

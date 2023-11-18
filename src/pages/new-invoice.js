@@ -116,6 +116,7 @@ const Page = () => {
     const [email, setEmail] = useState('');
     const [contact, setContact] = useState('');
     const [address, setAddress] = useState('');
+    const [reference, setReference] = useState('');
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedMeasures, setSelectedMeasures] = useState([]);
@@ -161,7 +162,9 @@ const Page = () => {
             setSelectedDistrict('LURIGANCHO (AV.CAJAMARQUILLA)')
         }
     };
-
+    const handleReferenceChange = (event) => {
+        setReference(event.target.value);
+    };
     const handleCategoryChange = (event) => {
         const selectedCategory = event.target.value;
         setSelectedCategory(selectedCategory);
@@ -511,6 +514,7 @@ const Page = () => {
             cantParihuela: deliveryType === "PUESTO EN OBRA" ? cantParihuela : 0,
             costParihuela: deliveryType === "PUESTO EN OBRA" ? costParihuela : 0,
             address,
+            reference,
             totalPriceParihuela: updateTotalParihuela() || 0,
             productsList: productsData,
             fleteList,
@@ -556,6 +560,7 @@ const Page = () => {
         setCantParihuela(viewData.cantParihuela);
         setCostParihuela(viewData.costParihuela);
         setAddress(viewData.address);
+        setReference(viewData.reference);
         setContact(viewData.contact);
         setIsAutopopulated(true);
 
@@ -764,7 +769,7 @@ const Page = () => {
                         </FormControl>
                     )}
 
-                    {selectedCategory && selectedMeasures && deliveryType === '' && (
+                    {selectedCategory && selectedMeasures && (
                         <FormControl fullWidth>
                             <br></br>
                             <label>
@@ -783,7 +788,7 @@ const Page = () => {
                 </Box>
                 {selectedMeasures && deliveryType !== '' && (
                     <Box flex={0.6} marginRight={5} marginTop={{ xs: 1.8, md: 0 }}>
-                        <FormControl fullWidth>
+                        {/* <FormControl fullWidth>
                             <label>
                                 Tipo de entrega
                                 <font color="red"> *</font>
@@ -793,7 +798,7 @@ const Page = () => {
                                 <MenuItem value="PUESTO EN OBRA">PUESTO EN OBRA</MenuItem>
                             </Select>
                         </FormControl>
-                        <br></br><br></br>
+                        <br></br><br></br> */}
                         {deliveryType === "PUESTO EN PLANTA" && (
                             <FormControl fullWidth>
                                 <label>
@@ -803,7 +808,17 @@ const Page = () => {
                                 <Select value={address} onChange={handleAddressChange}>
                                     <MenuItem value="Jr Placido Jiménez 790 Cercado de Lima">Jr Placido Jiménez 790 Cercado de Lima</MenuItem>
                                     <MenuItem value="Av. Camino Principal Lote 80 Urb. Parcela Cajamarquilla">Av. Camino Principal Lote 80 Urb. Parcela Cajamarquilla</MenuItem>
-                                </Select>
+                                </Select><br />
+                                <label>Referencia</label>
+                                <FormControl fullWidth>
+                                    <TextField
+                                        multiline
+                                        type="text"
+                                        value={reference}
+                                        onChange={handleReferenceChange}
+                                        fullWidth
+                                    />
+                                </FormControl>
                             </FormControl>
                         )}
                         {deliveryType === "PUESTO EN OBRA" && (
@@ -819,6 +834,16 @@ const Page = () => {
                                     />
                                 </FormControl>
                                 <br /><br />
+                                <label>Referencia</label>
+                                <FormControl fullWidth>
+                                    <TextField
+                                        multiline
+                                        type="text"
+                                        value={reference}
+                                        onChange={handleReferenceChange}
+                                        fullWidth
+                                    />
+                                </FormControl><br /><br />
                                 <FormControl fullWidth>
                                     <label>Seleccione distrito<font color="red"> *</font></label>
                                     <Autocomplete

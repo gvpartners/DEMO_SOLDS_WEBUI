@@ -236,6 +236,7 @@ const generatePDF = (invoice) => {
     const tableData12 = [
         [`Tipo de entrega:`, invoice.deliveryType],
         [`Distrito:`, invoice.selectedDistrict],
+        [`Referencia:`, invoice.reference || "NO PROPORCIONADO"],
         [`Dirección:`, invoice.address]
     ];
 
@@ -281,7 +282,7 @@ const generatePDF = (invoice) => {
 
 
     doc.autoTable({
-        startY: table2Y + 80,
+        startY: table2Y + 90,
         body: tableInfo,
         theme: 'plain',
         tableLineColor: [255, 255, 255],
