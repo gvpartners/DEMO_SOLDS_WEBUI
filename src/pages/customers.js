@@ -152,10 +152,11 @@ const Page = () => {
     setIsLoading(true);
     try {
       const response = await invoiceService.getSunatValue(selectedCustomer.identificationType.toLowerCase(), selectedCustomer.identificationInfo);
-      if (response != "error") {
-        selectedCustomer.customerName = response;
+      if (response.data != "error") {        
+        selectedCustomer.customerName = response.data;
       }
       else {
+        handleCloseEditModal();
         Swal.fire({
           title: 'No se encontró resultados en la búsqueda.',
           text: 'Ingresa manualmente',
@@ -165,6 +166,7 @@ const Page = () => {
       }
 
     } catch (error) {
+      handleCloseEditModal();
       Swal.fire({
         title: 'No se pudo realiza la busqueda',
         text: 'Ingresa manualmente',

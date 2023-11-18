@@ -21,8 +21,8 @@ const Page = () => {
   const fetchData = async () => {
     try {
       const response = await invoiceService.summaryInfo();
-      if (response.ok) {
-        const fetchedData = await response.json();
+      if (response.status == 200) {
+        const fetchedData = await response.data;
         setData(fetchedData);
       } else {
         setError('Error fetching data');
@@ -41,7 +41,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Resumen | Demo App</title>
+        <title>Resumen</title>
       </Head>
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">

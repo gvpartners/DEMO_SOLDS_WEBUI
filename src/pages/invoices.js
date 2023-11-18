@@ -95,9 +95,8 @@ const Page = () => {
     setComment('');
     try {
       const response = await invoiceService.getCommentById(selectedInvoiceId);
-
-      if (response) {
-        setComment(response);
+      if (response.status == 200) {
+        setComment(response.data);
       }
       setIsDialogOpenComment(true);
     } catch (err) {
@@ -138,8 +137,8 @@ const Page = () => {
     try {
       const response = await invoiceService.getAllInvoices();
 
-      if (response.ok) {
-        const fetchedData = await response.json();
+      if (response.status == 200) {
+        const fetchedData = await response.data;
         setInvoices(fetchedData);
       }
     } catch (err) {
@@ -270,7 +269,7 @@ const Page = () => {
       if (confirmAction.isConfirmed) {
         const response = await invoiceService.updateStatus(selectedInvoiceId, orderStatus);
 
-        if (response.ok) {
+        if (response.status == 200) {
           setAnchorEl(null);
           if (orderStatus === 2) {
             Swal.fire({
@@ -323,7 +322,7 @@ const Page = () => {
       if (confirmAction.isConfirmed) {
         const response = await invoiceService.removeInvoice(selectedInvoiceId);
 
-        if (response.ok) {
+        if (response.status == 200) {
           setAnchorEl(null);
           Swal.fire({
             title: 'Eliminación de Cotización',
@@ -387,7 +386,7 @@ const Page = () => {
     }
 
     const response = await invoiceService.updateCommentbyId(selectedInvoiceId, comment);
-    if (response.ok) {
+    if (response.status == 200) {
       setIsDialogOpenComment(false);
       setAnchorEl(null);
       Swal.fire({

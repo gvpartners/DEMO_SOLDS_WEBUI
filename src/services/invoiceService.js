@@ -1,122 +1,36 @@
 import { API_BASE_URL, TOKEN } from 'src/config/config';
+import axios from 'src/config/axios';
 
-const getSunatValue = async (Name, Code) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/GetSunatValue', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-            body: JSON.stringify({
-                Name,
-                Code
-            })
-        });
-        const responseData = await response.text();
+const getSunatValue = (Name, Code) => {
+    const data = {
+        Name,
+        Code
+    };
+    return axios.post('/api/Invoice/GetSunatValue', data)
+}
+const getAllInvoices = () => {
+    return axios.get('/api/Invoice/GetAllInvoices');
+}
 
-        return responseData;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const getAllInvoices = async () => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/GetAllInvoices', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-        });
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const getInvoiceById = async (Id) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/GetInvoiceById/' + Id, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-        });
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const createInvoice = async (data) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/CreateInvoice', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-            body: JSON.stringify(data),
-        });
+const getInvoiceById = (id) => {
+    return axios.get(`/api/Invoice/GetInvoiceById/${id}`);
+};
 
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const updateInvoice = async (Id, data) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/UpdateInvoice/' + Id, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-            body: JSON.stringify(data),
-        });
+const createInvoice = (data) => {
+    return axios.post('/api/Invoice/CreateInvoice', data);
+};
 
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const removeInvoice = async (Id) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/RemoveInvoice/' + Id, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            }
-        });
+const updateInvoice = (Id, data) => {
+    return axios.post(`/api/Invoice/UpdateInvoice/${Id}`, data);
+};
 
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
+const removeInvoice = (Id) => {
+    return axios.post(`/api/Invoice/RemoveInvoice/${Id}`);
 }
-const updateStatus = async (Id, orderStatus) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/UpdateStatusInvoice/' + Id + '/' + orderStatus, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            }
-        });
+const updateStatus = (Id, orderStatus) => {
+    return axios.post(`/api/Invoice/UpdateStatusInvoice/${Id}/${orderStatus}`);
+}
 
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
 const generateExcel = async (data) => {
     try {
         const authToken = sessionStorage.getItem('authToken');
@@ -134,69 +48,19 @@ const generateExcel = async (data) => {
         console.error('Error generating Excel:', error);
     }
 }
-const duplicateInvoice = async (Id) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/DuplicateInvoice/' + Id, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            }
-        });
+const duplicateInvoice = (id) => {
+    return axios.post(`/api/Invoice/DuplicateInvoice/${id}`);
+}
+const summaryInfo = () => {
+    return axios.get('/api/Invoice/SummaryInfo');
+};
+const updateCommentbyId = (Id, Comment) => {
+    return axios.post(`/api/Invoice/UpdateCommentbyId/${Id}/${Comment}`);
+}
+const getCommentById = (id) => {
+    return axios.get(`/api/Invoice/GetCommentById/${id}`);
+}
 
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const summaryInfo = async () => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/SummaryInfo', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-        });
-        return response;
-    } catch (err) {
-        console.log(err);
-    }
-}
-const updateCommentbyId = async (Id, Comment) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/UpdateCommentbyId/' + Id+'/'+ Comment, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-            
-        });
-
-        return response;
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-const getCommentById = async (Id) => {
-    try {
-        const authToken = sessionStorage.getItem('authToken');
-        const response = await fetch(API_BASE_URL + '/api/Invoice/GetCommentById/' + Id, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + authToken
-            },
-        });
-        return response.text();
-    } catch (err) {
-        console.log(err);
-    }
-}
 export default {
     getSunatValue,
     getAllInvoices,

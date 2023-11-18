@@ -80,7 +80,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Registrarse | App Demo</title>
+        <title>Registrarse</title>
       </Head>
       <Box
         sx={{

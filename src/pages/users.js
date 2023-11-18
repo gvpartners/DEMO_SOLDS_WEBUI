@@ -244,8 +244,8 @@ const Page = () => {
                             open={Boolean(anchorEl) && selectedCustomer && selectedCustomer.id === item.id}
                             onClose={handleMenuClose}
                           >
-                            <MenuItem onClick={() => handleEdit(item.id)}><EditIcon /> Editar</MenuItem>
-                            <MenuItem onClick={() => handleDelete(item.id)}> <DeleteIcon /> Eliminar</MenuItem>
+                            <MenuItem style={{ display: 'flex', alignItems: 'center' }} onClick={() => handleEdit(item.id)}><EditIcon style={{ marginRight: '8px' }} /> Editar</MenuItem>
+                            {/* <MenuItem onClick={() => handleDelete(item.id)}> <DeleteIcon /> Eliminar</MenuItem> */}
                           </Menu>
                         </TableCell>
                       </TableRow>

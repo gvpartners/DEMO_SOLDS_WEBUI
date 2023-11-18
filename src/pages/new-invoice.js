@@ -70,8 +70,8 @@ const Page = () => {
             if (InvoiceId) {
                 try {
                     const response = await invoiceService.getInvoiceById(InvoiceId);
-                    if (response.ok) {
-                        const fetchedData = await response.json();
+                    if (response.status == 200) {
+                        const fetchedData = await response.data;
                         setParsedInvoice(fetchedData);
                     }
                 } catch (error) {
@@ -211,7 +211,7 @@ const Page = () => {
             !identificationInfo ||
             !selectedCategory ||
             selectedMeasures.length === 0 ||
-            !address||
+            !address ||
             !isQuantityValid ||
             !validateLengthQuantities ||
             (isPuestoEnObra)
@@ -244,8 +244,8 @@ const Page = () => {
         setIsLoading(true);
         try {
             const response = await invoiceService.getSunatValue(identificationType.toLowerCase(), documentInfo);
-            if (response != "error") {
-                setIdentificationInfo(response);
+            if (response.data != "error") {
+                setIdentificationInfo(response.data);
             }
             else {
                 Swal.fire({
@@ -282,8 +282,7 @@ const Page = () => {
             // Verificar si el usuario confirmó la actualización
             if (confirmAction.isConfirmed) {
                 const response = await invoiceService.updateInvoice(InvoiceId, viewData);
-
-                if (response.ok) {
+                if (response.status == 200) {
                     router.push('/invoices');
                     Swal.fire({
                         title: 'Actualización de Cotización',
@@ -312,47 +311,47 @@ const Page = () => {
 
     const createInvoice = async (data) => {
         try {
-          // Mostrar el diálogo de confirmación
-          const confirmAction = await Swal.fire({
-            title: 'Confirmar creación',
-            text: '¿Está seguro de crear esta cotización?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, crear',
-            cancelButtonText: 'Cancelar',
-          });
-      
-          // Verificar si el usuario confirmó la creación
-          if (confirmAction.isConfirmed) {
-            const response = await invoiceService.createInvoice(data);
-      
-            if (response.ok) {
-              router.push('/invoices');
-              Swal.fire({
-                title: 'Creación de Cotización',
-                text: 'Se creó satisfactoriamente la cotización',
-                icon: 'success',
-                confirmButtonText: 'OK',
-              });
-            } else {
-              Swal.fire({
+            // Mostrar el diálogo de confirmación
+            const confirmAction = await Swal.fire({
+                title: 'Confirmar creación',
+                text: '¿Está seguro de crear esta cotización?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, crear',
+                cancelButtonText: 'Cancelar',
+            });
+
+            // Verificar si el usuario confirmó la creación
+            if (confirmAction.isConfirmed) {
+                const response = await invoiceService.createInvoice(data);
+
+                if (response.status == 200) {
+                    router.push('/invoices');
+                    Swal.fire({
+                        title: 'Creación de Cotización',
+                        text: 'Se creó satisfactoriamente la cotización',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Hubo un error al crear la cotización',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                    });
+                }
+            }
+        } catch (error) {
+            Swal.fire({
                 title: 'Error',
                 text: 'Hubo un error al crear la cotización',
                 icon: 'error',
                 confirmButtonText: 'OK',
-              });
-            }
-          }
-        } catch (error) {
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un error al crear la cotización',
-            icon: 'error',
-            confirmButtonText: 'OK',
-          });
+            });
         }
-      };
-      
+    };
+
     const getTotalWeight = () => {
         let totalWeight = 0;
 
@@ -644,7 +643,7 @@ const Page = () => {
             <Box display={{ xs: 'block', md: 'flex' }}>
 
                 <Box flex={1} marginRight={5} marginLeft={{ md: -20 }}>
-                    <Typography variant="h4" style={{ fontSize:'28px'}}>{!InvoiceId ? "Nueva Cotización" : "Edición " + parsedInvoice?.invoiceCode}</Typography><br />
+                    <Typography variant="h4" style={{ fontSize: '28px' }}>{!InvoiceId ? "Nueva Cotización" : "Edición " + parsedInvoice?.invoiceCode}</Typography><br />
                     <label>Tipo de identificación<font color="red"> *</font></label>
                     <FormControl fullWidth>
                         <Select value={identificationType} onChange={handleIdentificationTypeChange}>

@@ -90,7 +90,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Iniciar sesión | DEMO APP</title>
+        <title>Iniciar sesión</title>
       </Head>
       <Box
         sx={{
