@@ -67,6 +67,7 @@ const Page = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
   const [invoices, setInvoices] = useState([]);
+  const [totalInvoices, setTotalInvoices] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [statusOptions, setstatusOptions] = useState(['En progreso', 'Aprobada', 'Rechazada']);
   const [categoryOptions, setCategoryOptions] = useState([])
@@ -135,11 +136,18 @@ const Page = () => {
 
   const getInvoices = async () => {
     try {
-      const response = await invoiceService.getAllInvoices();
+      var invoicePag = {
+        pageNumber: page,
+        pageSize: rowsPerPage,
+        filterColumn: '',
+        filterValue: ''
+      }
+      const response = await invoiceService.getAllInvoices(invoicePag);
 
       if (response.status == 200) {
         const fetchedData = await response.data;
-        setInvoices(fetchedData);
+        setTotalInvoices(fetchedData.total)
+        setInvoices(fetchedData.invoices);
       }
     } catch (err) {
       console.error('Error fetching data:', err);
@@ -147,7 +155,6 @@ const Page = () => {
   };
 
   useEffect(() => {
-    getInvoices();
     const uniqueCategories = Array.from(new Set(uniconJson.map(item => item.Category)));
     setCategoryOptions(uniqueCategories);
     const districtOpt = fletesJson.map((district) => district.District);
@@ -155,18 +162,23 @@ const Page = () => {
 
   }, []);
 
-
+  
   const handleNewInvoice = () => {
     router.push('/new-invoice')
   }
 
-  const handlePageChange = useCallback((event, value) => {
-    setPage(value);
-  }, []);
+  useEffect(() => {
+    getInvoices();
+  }, [page, rowsPerPage]);
+
+  const handlePageChange = useCallback((event,newPage) => {
+    setPage(newPage);
+  },[setPage]);
 
   const handleRowsPerPageChange = useCallback((event) => {
-    setRowsPerPage(event.target.value);
-  }, []);
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  },[setRowsPerPage,setPage]);
 
 
 
@@ -437,203 +449,103 @@ const Page = () => {
     setIsDialogOpen(false);
   };
 
+  const renderInvoices = (inv)=>{
+   return  inv.map((invoice) => {
+    const adjustedDate = new Date(invoice.createdOn);
 
-  const filteredInvoices = invoices
-    .filter((invoice) => {
-      const codeFilter =
-        filterCode.trim() === '' ||
-        invoice.invoiceCode.toLowerCase().includes(filterCode.toLowerCase());
+    const formattedDate = adjustedDate.toLocaleString('es-PE', {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
 
-      const clientFilter =
-        filterClient.trim() === '' ||
-        invoice.identificationInfo.toLowerCase().includes(filterClient.toLowerCase());
+    return (
+      <TableRow hover key={invoice.id}>
+        <TableCell>{invoice.invoiceCode}</TableCell>
+        <TableCell>{invoice.identificationInfo}</TableCell>
+        <TableCell>{invoice.documentInfo}</TableCell>
+        <TableCell>
+          <SeverityPill color='primary'>
+            {invoice.selectedCategory}
+          </SeverityPill>
+        </TableCell>
+        <TableCell>
+          <SeverityPill color={statusMap[invoice.statusOrder]}>
+            {invoice.statusName}
+          </SeverityPill>
+        </TableCell>
+        <TableCell>{formattedDate}</TableCell>
+        <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
+        <TableCell>{invoice.unitPiece}</TableCell>
+        <TableCell>
+          {formatter.format(invoice.totalInvoice)}
+        </TableCell>
+        <TableCell>
+          <SeverityPill color={statusMap[invoice.deliveryType]}>
+            {invoice.deliveryType}
+          </SeverityPill>
+        </TableCell>
+        <TableCell>{invoice.selectedDistrict}</TableCell>
+        <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
+        <TableCell>{invoice.address}</TableCell>
+        <TableCell>{invoice.employee}</TableCell>
+        <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
+        <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
+        <TableCell>
+          <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
+            <MoreVertIcon />
+          </IconButton>
 
-      const identificationfilter =
-        filterIdentification.trim() === '' ||
-        invoice.documentInfo.toLowerCase().includes(filterIdentification.toLowerCase());
-
-      const categoryFilter =
-        filterCategory === null ||
-        invoice.selectedCategory?.toLowerCase().includes(filterCategory?.toLowerCase());
-
-      const priceFilter =
-        filterPrice.trim() === '' ||
-        (invoice.totalInvoice)
-          .toString()
-          .toLowerCase()
-          .includes(filterPrice.toLowerCase());
-
-      const deliveryFilter =
-        filterDelivery === null ||
-        invoice.deliveryType?.toLowerCase().includes(filterDelivery?.toLowerCase());
-
-      const employeeFilter =
-        filterEmployee.trim() === '' ||
-        invoice.employee.toLowerCase().includes(filterEmployee.toLowerCase());
-
-      const statusFilter =
-        filterStatus === null ||
-        invoice.statusName?.toLowerCase().includes(filterStatus?.toLowerCase());
-
-      const invoiceDate = new Date(invoice.createdOn);
-      // Establecer las horas a medianoche (00:00:00)
-      invoiceDate.setHours(0, 0, 0, 0);
-
-      const selectedDateMidnight = new Date(selectedDate);
-      selectedDateMidnight.setHours(0, 0, 0, 0);
-
-      const filterCantPiecesFilter =
-        filterCantPieces.trim() === '' ||
-        (invoice.totalOfPieces)
-          .toString()
-          .toLowerCase()
-          .includes(filterCantPieces.toLowerCase());
-
-      const unitPieceFilter =
-        filterUnitPiece === null ||
-        invoice.unitPiece?.toLowerCase().includes(filterUnitPiece?.toLowerCase());
-
-      const districtFilter =
-        filterDistrict === null ||
-        invoice.selectedDistrict?.toLowerCase().includes(filterDistrict?.toLowerCase());
-
-      const addressFilter = filterAddress.trim() === '' ||
-        invoice.address.toLowerCase().includes(filterAddress.toLowerCase());
-
-      const referenceFilter = filterReference.trim() === '' ||
-        invoice.reference?.toLowerCase().includes(filterReference.toLowerCase());
-
-      const phonefilter = filterPhone.trim() === '' ||
-        invoice.telephone.toLowerCase().includes(filterPhone.toLowerCase());
-
-      const contactfilter = filterContact.trim() === '' ||
-        invoice.contact.toLowerCase().includes(filterContact.toLowerCase());
-      return (
-        codeFilter &&
-        clientFilter &&
-        identificationfilter &&
-        categoryFilter &&
-        priceFilter &&
-        deliveryFilter &&
-        employeeFilter &&
-        statusFilter &&
-        filterCantPiecesFilter &&
-        unitPieceFilter &&
-        districtFilter &&
-        addressFilter &&
-        phonefilter &&
-        contactfilter &&
-        referenceFilter &&
-        (selectedDate === null || invoiceDate.getTime() === selectedDateMidnight.getTime())
-      );
-
-    })
-    .sort((a, b) => {
-      if (order === 'desc') {
-        return a[orderBy]?.localeCompare(b[orderBy]) || 0;
-      } else {
-        return b[orderBy]?.localeCompare(a[orderBy]) || 0;
-      }
-    })
-    .map((invoice) => {
-
-      const adjustedDate = new Date(invoice.createdOn);
-
-      const formattedDate = adjustedDate.toLocaleString('es-PE', {
-        month: '2-digit',
-        day: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-
-      return (
-        <TableRow hover key={invoice.id}>
-          <TableCell>{invoice.invoiceCode}</TableCell>
-          <TableCell>{invoice.identificationInfo}</TableCell>
-          <TableCell>{invoice.documentInfo}</TableCell>
-          <TableCell>
-            <SeverityPill color='primary'>
-              {invoice.selectedCategory}
-            </SeverityPill>
-          </TableCell>
-          <TableCell>
-            <SeverityPill color={statusMap[invoice.statusOrder]}>
-              {invoice.statusName}
-            </SeverityPill>
-          </TableCell>
-          <TableCell>{formattedDate}</TableCell>
-          <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
-          <TableCell>{invoice.unitPiece}</TableCell>
-          <TableCell>
-            {formatter.format(invoice.totalInvoice)}
-          </TableCell>
-          <TableCell>
-            <SeverityPill color={statusMap[invoice.deliveryType]}>
-              {invoice.deliveryType}
-            </SeverityPill>
-          </TableCell>
-          <TableCell>{invoice.selectedDistrict}</TableCell>
-          <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
-          <TableCell>{invoice.address}</TableCell>
-          <TableCell>{invoice.employee}</TableCell>
-          <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
-          <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
-          <TableCell>
-            <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
-              <MoreVertIcon />
-            </IconButton>
-
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                <div hidden={selectedStatusNumber !== 1}>
-                  <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
-                    <CheckCircle style={{ marginRight: '8px' }} /> Aprobar
-                  </MenuItem>
-                  <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
-                    <Close style={{ marginRight: '8px' }} /> Rechazar
-                  </MenuItem>
-                  <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                    <EditIcon style={{ marginRight: '8px' }} /> Editar
-                  </MenuItem>
-                  <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                    <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
-                  </MenuItem>
-                </div>
-              </div>
-              <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3}>
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+            <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+              <div hidden={selectedStatusNumber !== 1}>
+                <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
+                  <CheckCircle style={{ marginRight: '8px' }} /> Aprobar
+                </MenuItem>
                 <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
                   <Close style={{ marginRight: '8px' }} /> Rechazar
                 </MenuItem>
-              </div>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
+                <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                  <EditIcon style={{ marginRight: '8px' }} /> Editar
+                </MenuItem>
+                <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                  <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
                 </MenuItem>
               </div>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <CommentIcon style={{ marginRight: '8px' }} /> Comentario
-                </MenuItem>
-              </div>
-              <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                <Visibility style={{ marginRight: '8px' }} /> Ver PDF
+            </div>
+            <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3}>
+              <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
+                <Close style={{ marginRight: '8px' }} /> Rechazar
               </MenuItem>
-              <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
+            </div>
+            <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+              <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
               </MenuItem>
+            </div>
+            <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+              <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
+                <CommentIcon style={{ marginRight: '8px' }} /> Comentario
+              </MenuItem>
+            </div>
+            <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
+              <Visibility style={{ marginRight: '8px' }} /> Ver PDF
+            </MenuItem>
+            <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
+              <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
+            </MenuItem>
 
-            </Menu>
+          </Menu>
 
-          </TableCell>
-        </TableRow>
-      );
-    });
+        </TableCell>
+      </TableRow>
+    );
+  });
+  }
 
-  const auxInvoices = useMemo(() => {
-    return applyPagination(filteredInvoices, page, rowsPerPage);
-  }, [filteredInvoices, page, rowsPerPage]);
   return (
     <>
       <Head>
@@ -650,7 +562,7 @@ const Page = () => {
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={4}>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Typography variant="h4">Total de cotizaciones [{filteredInvoices.length}]</Typography>
+                <Typography variant="h4">Total de cotizaciones [{totalInvoices}]</Typography>
               </Stack>
               <Stack direction="row" spacing={1}>
                 <Button
@@ -838,7 +750,7 @@ const Page = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {filteredInvoices.length > 0 ? auxInvoices : ""}
+                      {renderInvoices(invoices)}
                     </TableBody>
 
                   </Table>
@@ -846,7 +758,7 @@ const Page = () => {
               </Scrollbar>
               <TablePagination
                 component="div"
-                count={filteredInvoices.length}
+                count={totalInvoices}
                 onPageChange={handlePageChange}
                 onRowsPerPageChange={handleRowsPerPageChange}
                 page={page}

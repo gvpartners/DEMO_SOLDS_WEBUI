@@ -31,9 +31,9 @@ instance.interceptors.response.use(
       alert("La sesión ha expirado, vuelva a ingresar a la plataforma.");
       window.location.href = '/auth/login';
     }
-    else{
-      window.location.href = '/auth/login';
-    }
+    // else{
+    //   window.location.href = '/auth/login';
+    // }
     
     return Promise.reject(error);
   }

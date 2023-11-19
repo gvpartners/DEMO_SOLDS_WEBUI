@@ -8,8 +8,8 @@ const getSunatValue = (Name, Code) => {
     };
     return axios.post('/api/Invoice/GetSunatValue', data)
 }
-const getAllInvoices = () => {
-    return axios.get('/api/Invoice/GetAllInvoices');
+const getAllInvoices = (invoicePag) => {
+    return axios.post('/api/Invoice/GetAllInvoices', invoicePag);
 }
 
 const getInvoiceById = (id) => {
