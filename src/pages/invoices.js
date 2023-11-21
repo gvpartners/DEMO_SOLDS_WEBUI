@@ -139,9 +139,24 @@ const Page = () => {
       var invoicePag = {
         pageNumber: page,
         pageSize: rowsPerPage,
-        filterColumn: '',
-        filterValue: ''
-      }
+        filters: {
+          invoiceCodeFilter: filterCode,
+          identificationInfoFilter: filterClient,
+          selectedCategoryFilter: filterCategory,
+          identificationTypeFilter:filterIdentification,
+          totalInvoiceFilter: filterPrice,
+          deliveryTypeFilter: filterDelivery,
+          employeeFilter: filterEmployee,
+          statusNameFilter: filterStatus,
+          totalPriceParihuelaFilter: filterCantPieces,
+          unitPieceFilter: filterUnitPiece,
+          selectedDistrictFilter: filterDistrict,
+          addressFilter: filterAddress,
+          referenceFilter: filterReference,
+          telephoneFilter: filterPhone,
+          contactFilter: filterContact,
+        }
+      };
       const response = await invoiceService.getAllInvoices(invoicePag);
 
       if (response.status == 200) {
@@ -162,23 +177,41 @@ const Page = () => {
 
   }, []);
 
-  
+
   const handleNewInvoice = () => {
     router.push('/new-invoice')
   }
 
   useEffect(() => {
     getInvoices();
-  }, [page, rowsPerPage]);
+  }, [
+    page,
+    rowsPerPage,
+    filterCode,
+    filterClient,
+    filterCategory,
+    filterIdentification,
+    filterPrice,
+    filterDelivery,
+    filterEmployee,
+    filterStatus,
+    filterCantPieces,
+    filterUnitPiece,
+    filterDistrict,
+    filterAddress,
+    filterReference,
+    filterPhone,
+    filterContact,
+  ]);
 
-  const handlePageChange = useCallback((event,newPage) => {
+  const handlePageChange = useCallback((event, newPage) => {
     setPage(newPage);
-  },[setPage]);
+  }, [setPage]);
 
   const handleRowsPerPageChange = useCallback((event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-  },[setRowsPerPage,setPage]);
+  }, [setRowsPerPage, setPage]);
 
 
 
@@ -449,101 +482,101 @@ const Page = () => {
     setIsDialogOpen(false);
   };
 
-  const renderInvoices = (inv)=>{
-   return  inv.map((invoice) => {
-    const adjustedDate = new Date(invoice.createdOn);
+  const renderInvoices = (inv) => {
+    return inv.map((invoice) => {
+      const adjustedDate = new Date(invoice.createdOn);
 
-    const formattedDate = adjustedDate.toLocaleString('es-PE', {
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
+      const formattedDate = adjustedDate.toLocaleString('es-PE', {
+        month: '2-digit',
+        day: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
 
-    return (
-      <TableRow hover key={invoice.id}>
-        <TableCell>{invoice.invoiceCode}</TableCell>
-        <TableCell>{invoice.identificationInfo}</TableCell>
-        <TableCell>{invoice.documentInfo}</TableCell>
-        <TableCell>
-          <SeverityPill color='primary'>
-            {invoice.selectedCategory}
-          </SeverityPill>
-        </TableCell>
-        <TableCell>
-          <SeverityPill color={statusMap[invoice.statusOrder]}>
-            {invoice.statusName}
-          </SeverityPill>
-        </TableCell>
-        <TableCell>{formattedDate}</TableCell>
-        <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
-        <TableCell>{invoice.unitPiece}</TableCell>
-        <TableCell>
-          {formatter.format(invoice.totalInvoice)}
-        </TableCell>
-        <TableCell>
-          <SeverityPill color={statusMap[invoice.deliveryType]}>
-            {invoice.deliveryType}
-          </SeverityPill>
-        </TableCell>
-        <TableCell>{invoice.selectedDistrict}</TableCell>
-        <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
-        <TableCell>{invoice.address}</TableCell>
-        <TableCell>{invoice.employee}</TableCell>
-        <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
-        <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
-        <TableCell>
-          <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
-            <MoreVertIcon />
-          </IconButton>
+      return (
+        <TableRow hover key={invoice.id}>
+          <TableCell>{invoice.invoiceCode}</TableCell>
+          <TableCell>{invoice.identificationInfo}</TableCell>
+          <TableCell>{invoice.documentInfo}</TableCell>
+          <TableCell>
+            <SeverityPill color='primary'>
+              {invoice.selectedCategory}
+            </SeverityPill>
+          </TableCell>
+          <TableCell>
+            <SeverityPill color={statusMap[invoice.statusOrder]}>
+              {invoice.statusName}
+            </SeverityPill>
+          </TableCell>
+          <TableCell>{formattedDate}</TableCell>
+          <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
+          <TableCell>{invoice.unitPiece}</TableCell>
+          <TableCell>
+            {formatter.format(invoice.totalInvoice)}
+          </TableCell>
+          <TableCell>
+            <SeverityPill color={statusMap[invoice.deliveryType]}>
+              {invoice.deliveryType}
+            </SeverityPill>
+          </TableCell>
+          <TableCell>{invoice.selectedDistrict}</TableCell>
+          <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.address}</TableCell>
+          <TableCell>{invoice.employee}</TableCell>
+          <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
+          <TableCell>
+            <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
+              <MoreVertIcon />
+            </IconButton>
 
-          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-            <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-              <div hidden={selectedStatusNumber !== 1}>
-                <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
-                  <CheckCircle style={{ marginRight: '8px' }} /> Aprobar
-                </MenuItem>
+            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                <div hidden={selectedStatusNumber !== 1}>
+                  <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
+                    <CheckCircle style={{ marginRight: '8px' }} /> Aprobar
+                  </MenuItem>
+                  <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
+                    <Close style={{ marginRight: '8px' }} /> Rechazar
+                  </MenuItem>
+                  <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <EditIcon style={{ marginRight: '8px' }} /> Editar
+                  </MenuItem>
+                  <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
+                  </MenuItem>
+                </div>
+              </div>
+              <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3}>
                 <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
                   <Close style={{ marginRight: '8px' }} /> Rechazar
                 </MenuItem>
-                <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <EditIcon style={{ marginRight: '8px' }} /> Editar
-                </MenuItem>
-                <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
+              </div>
+              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                  <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
                 </MenuItem>
               </div>
-            </div>
-            <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3}>
-              <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
-                <Close style={{ marginRight: '8px' }} /> Rechazar
+              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
+                  <CommentIcon style={{ marginRight: '8px' }} /> Comentario
+                </MenuItem>
+              </div>
+              <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
+                <Visibility style={{ marginRight: '8px' }} /> Ver PDF
               </MenuItem>
-            </div>
-            <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-              <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
+              <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
+                <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
               </MenuItem>
-            </div>
-            <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-              <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
-                <CommentIcon style={{ marginRight: '8px' }} /> Comentario
-              </MenuItem>
-            </div>
-            <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-              <Visibility style={{ marginRight: '8px' }} /> Ver PDF
-            </MenuItem>
-            <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-              <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
-            </MenuItem>
 
-          </Menu>
+            </Menu>
 
-        </TableCell>
-      </TableRow>
-    );
-  });
+          </TableCell>
+        </TableRow>
+      );
+    });
   }
 
   return (
@@ -597,6 +630,7 @@ const Page = () => {
                           <TextField sx={{ width: '150px' }}
                             label="Código"
                             value={filterCode}
+                            type='number'
                             onChange={(e) => setFilterCode(e.target.value)}
                           />
                         </TableCell>
@@ -770,63 +804,7 @@ const Page = () => {
             <Dialog open={isDialogOpen} onClose={handleDialogClose} fullWidth maxWidth="sm">
               <DialogTitle style={{ textAlign: 'center' }} >Exportar cotizaciones</DialogTitle>
               <DialogContent >
-                <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>
-                  {/* <TextField
-                    label="Categoria"
-                    value={categoryValue}
-                    onChange={(e) => setCategoryValue(e.target.value)}
-                    variant="standard"
-                    fullWidth
-                    style={{ marginBottom: '20px' }}
-                  />
-
-                  <Autocomplete
-                    value={statusNameValue}
-                    options={statusOptions}
-                    onChange={(event, newValue) => {
-                      setStatusNameValue(newValue);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Estado"
-                        variant="standard"
-                        style={{ marginBottom: '20px' }}
-                      />
-                    )}
-                  />
-
-                  <Autocomplete
-                    value={deliveryTypeValue}
-                    options={deliveryOptions}
-                    onChange={(event, newValue) => {
-                      setDeliveryTypeValue(newValue);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Tipo de entrega"
-                        variant="standard"
-                        style={{ marginBottom: '20px' }}
-                      />
-                    )}
-                  />
-                  <TextField
-                    label="Distrito"
-                    value={districtValue}
-                    onChange={(e) => setDistrictValue(e.target.value)}
-                    variant="standard"
-                    fullWidth
-                    style={{ marginBottom: '20px' }}
-                  />
-                  <TextField
-                    label="Ejecutivo"
-                    value={employeeValue}
-                    onChange={(e) => setEmployeeValue(e.target.value)}
-                    variant="standard"
-                    fullWidth
-                    style={{ marginBottom: '20px' }}
-                  /> */}
+                <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>                  
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', marginTop: '30px' }}>
                     <DatePicker
                       label="Fecha de inicio *"
