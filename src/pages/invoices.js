@@ -130,7 +130,8 @@ const Page = () => {
   const [filterReference, setFilterReference] = useState('');
   const [filterPhone, setFilterPhone] = useState('');
   const [filterContact, setFilterContact] = useState('');
-
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -148,13 +149,14 @@ const Page = () => {
           deliveryTypeFilter: filterDelivery,
           employeeFilter: filterEmployee,
           statusNameFilter: filterStatus,
-          totalPriceParihuelaFilter: filterCantPieces,
+          totalOfPieces: filterCantPieces,
           unitPieceFilter: filterUnitPiece,
           selectedDistrictFilter: filterDistrict,
           addressFilter: filterAddress,
           referenceFilter: filterReference,
           telephoneFilter: filterPhone,
           contactFilter: filterContact,
+          invoiceDate: selectedDate
         }
       };
       const response = await invoiceService.getAllInvoices(invoicePag);
@@ -202,6 +204,7 @@ const Page = () => {
     filterReference,
     filterPhone,
     filterContact,
+    selectedDate
   ]);
 
   const handlePageChange = useCallback((event, newPage) => {
@@ -400,8 +403,7 @@ const Page = () => {
     style: 'currency',
     currency: 'PEN'
   });
-  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
+  
 
   const handleIconClick = () => {
     setIsDatePickerOpen(!isDatePickerOpen);
@@ -644,6 +646,7 @@ const Page = () => {
                         <TableCell>
                           <TextField sx={{ width: '120px' }}
                             label="Dni o RUC"
+                            type='number'
                             value={filterIdentification}
                             onChange={(e) => setFilterIdentification(e.target.value)}
                           />
