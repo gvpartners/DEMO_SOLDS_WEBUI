@@ -1,7 +1,7 @@
 import axios from 'src/config/axios';
 
-const getCustomers = () => {
-  return axios.get('/api/Customer/GetAllCustomers');
+const getCustomers = (customerPag) => {
+  return axios.post('/api/Customer/GetAllCustomers', customerPag);
 };
 
 const editCustomer = (selectedCustomer) => {

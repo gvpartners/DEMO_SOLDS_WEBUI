@@ -41,6 +41,7 @@ const Page = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [data, setData] = useState([]);
+  const [total, setTotal] = useState(0);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isNewCustomerModalOpen, setNewCustomerModalOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -54,12 +55,21 @@ const Page = () => {
 
   const getCustomers = async () => {
     try {
-      const response = await customerService.getCustomers();
+      var customerPag = {
+        pageNumber: page,
+        pageSize: rowsPerPage,
+        filters: {
+          customerNameFilter: filterName,
+          identificationInfoFilter: filterIdentificationInfo,
+          identificationTypeFilter: filterIdentificationType
+        }
+      };
+      const response = await customerService.getCustomers(customerPag);
 
       if (response.status === 200) {
         const fetchedData = await response.data;
-        setData(fetchedData);
-
+        setData(fetchedData.customers);
+        setTotal(fetchedData.total);
       }
     } catch (err) {
       console.error('Error fetching data:', err);
@@ -73,9 +83,6 @@ const Page = () => {
 
     return matchesName && matchesIdentificationType && matchesIdentificationInfo;
   });
-  const auxCustomers = useMemo(() => {
-    return applyPagination(filteredCustomers, page, rowsPerPage);
-  }, [data, page, rowsPerPage, filterName, filterIdentificationType, filterIdentificationInfo]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,8 +101,13 @@ const Page = () => {
   };
 
   const handleRowsPerPageChange = (event) => {
-    setRowsPerPage(event.target.value);
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
+
+  useEffect(() => {
+    getCustomers();
+  }, [page, rowsPerPage, filterName, filterIdentificationType, filterIdentificationInfo]);
 
   const handleEdit = (customerId) => {
     const customer = data.find((item) => item.id === customerId);
@@ -271,7 +283,7 @@ const Page = () => {
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
-                <Typography variant="h4">Total de clientes [{filteredCustomers.length}]</Typography>
+                <Typography variant="h4">Total de clientes [{total}]</Typography>
               </Stack>
               <Stack direction="row" spacing={2}>
                 <Button variant="contained" color="primary" onClick={handleOpenNewCustomerModal}
@@ -327,7 +339,7 @@ const Page = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {auxCustomers.map((item) => (
+                    {data.map((item) => (
                       <TableRow key={item.id}>
                         <TableCell>{item.customerName}</TableCell>
                         <TableCell>{item.identificationType}</TableCell>
@@ -360,7 +372,7 @@ const Page = () => {
             )}
             <TablePagination
               component="div"
-              count={filteredCustomers.length}
+              count={total}
               onPageChange={handlePageChange}
               onRowsPerPageChange={handleRowsPerPageChange}
               page={page}
