@@ -26,7 +26,8 @@ import {
     TableHead,
     TableRow,
     TableCell,
-    TableBody
+    TableBody,
+    TablePagination
 } from '@mui/material';
 import Swal from 'sweetalert2';
 import SearchIcon from '@mui/icons-material/Search';
@@ -64,7 +65,48 @@ const Page = () => {
     const { InvoiceId } = router.query;
     const [parsedInvoice, setParsedInvoice] = useState(null);
     const [customers, setCustomers] = useState(null);
+    const [total, setTotal] = useState(0);
 
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [filterName, setFilterName] = useState('');
+    const [filterIdentificationInfo, setFilterIdentificationInfo] = useState('');
+
+    const getCustomers = async () => {
+        try {
+            var customerPag = {
+                pageNumber: page,
+                pageSize: rowsPerPage,
+                filters: {
+                  customerNameFilter: filterName,
+                  identificationInfoFilter: filterIdentificationInfo,
+                  identificationTypeFilter: identificationType
+                }
+              };
+            const response = await customerService.getCustomers(customerPag);
+            if (response.status == 200) {
+                const fetchedData = await response.data;
+                setCustomers(fetchedData.customers);
+                setTotal(fetchedData.total);
+            }
+        } catch (error) {
+            console.error('Error fetching customers:', error);
+        }
+    };
+
+    const handlePageChange = (event, value) => {
+        setPage(value);
+      };
+    
+      const handleRowsPerPageChange = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+      };
+
+      useEffect(() => {
+        getCustomers();
+      }, [page, rowsPerPage, filterName, filterIdentificationInfo]);
+    
     useEffect(() => {
         const fetchData = async () => {
             if (InvoiceId) {
@@ -80,20 +122,7 @@ const Page = () => {
             }
         };
 
-        const customerData = async () => {
-            try {
-                const customersResponse = await customerService.getCustomers();
-                if (customersResponse.status == 200) {
-                    const auxCustomers = await customersResponse.data;
-                    console.log(auxCustomers);
-                    setCustomers(auxCustomers);
-                }
-            } catch (error) {
-                console.error('Error fetching customers:', error);
-            }
-        };
-
-        customerData();
+        getCustomers();
         fetchData();
     }, [InvoiceId]);
 
@@ -618,19 +647,18 @@ const Page = () => {
 
     }
     const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+    useEffect(() => {
+        getCustomers()
+      }, [identificationType]);
+
+
     const handleCloseEditModal = () => {
         setEditModalOpen(false);
     };
 
-    const [filterValueCustomer, setFilterValueCustomer] = useState('');
     const [selectedCustomer, setSelectedCustomer] = useState(null);
 
-    const filteredCustomers = customers
-        ?.filter((customer) =>
-            customer.identificationType === identificationType && (
-                customer.customerName.toLowerCase().includes(filterValueCustomer.toLowerCase()) ||
-                customer.identificationInfo.toLowerCase().includes(filterValueCustomer.toLowerCase()))
-        );
 
     const handleRowClick = (customer) => {
         setIdentificationInfo(customer?.customerName || "");
@@ -1076,26 +1104,33 @@ const Page = () => {
                 )}
                 <Dialog open={isEditModalOpen} onClose={handleCloseEditModal} maxWidth="md" fullWidth>
                     <DialogTitle style={{ textAlign: 'center' }}>
-                        Lista de clientes
+                        Lista de clientes [{total}]
                     </DialogTitle>
                     <DialogContent>
-                        <TextField
-                            label="Filtrar por nombre o número de identificación"
-                            value={filterValueCustomer}
-                            onChange={(e) => setFilterValueCustomer(e.target.value)}
-                            fullWidth
-                            margin="normal"
-                        />
                         <TableContainer component={Paper} style={{ maxHeight: '400px', overflowY: 'auto' }}>
                             <Table>
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Nombre del Cliente</TableCell>
-                                        <TableCell>Número de Identificación</TableCell>
+                                        <TableCell>
+                                            <TextField
+                                            label="Nombre del Cliente"
+                                            sx={{ width: '240px' }}
+                                            value={filterName}
+                                            onChange={(event) => setFilterName(event.target.value)}
+                                            />
+                                        </TableCell>
+                                        <TableCell>
+                                            <TextField
+                                            sx={{ width: '240px' }}
+                                            label="Número de Identificación"
+                                            value={filterIdentificationInfo}
+                                            onChange={(event) => setFilterIdentificationInfo(event.target.value)}
+                                            />
+                                        </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody style={{ cursor: 'pointer' }}>
-                                    {filteredCustomers?.map((customer) => (
+                                    {customers?.map((customer) => (
                                         <TableRow key={customer.id} onClick={() => handleRowClick(customer)}>
                                             <TableCell>{customer.customerName}</TableCell>
                                             <TableCell>{customer.identificationInfo}</TableCell>
@@ -1103,6 +1138,16 @@ const Page = () => {
                                     ))}
                                 </TableBody>
                             </Table>
+                            <TablePagination
+                                component="div"
+                                count={total}
+                                onPageChange={handlePageChange}
+                                onRowsPerPageChange={handleRowsPerPageChange}
+                                page={page}
+                                rowsPerPage={rowsPerPage}
+                                rowsPerPageOptions={[5, 10, 25]}
+                                labelRowsPerPage={"Elementos por página"}
+                                />
                         </TableContainer>
                         <br></br>
                         {selectedCustomer && (
