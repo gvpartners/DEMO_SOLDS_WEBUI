@@ -135,28 +135,40 @@ const Page = () => {
 
   const handleDelete = async (id) => {
     setAnchorEl(null);
-    try {
-      const response = await customerService.removeCustomer(id);
-      if (response.status === 200) {
-        setEditModalOpen(false);
-        Swal.fire({
-          title: 'Eliminación de cliente.',
-          text: 'Se eliminó satisfactoriamente al cliente.',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        }).then(() => {
-          getCustomers();
-        });
-      } else {
-        Swal.fire({
-          title: 'Eliminación de cliente.',
-          text: 'No se pudo eliminar al cliente.',
-          icon: 'warning',
-          confirmButtonText: 'OK',
-        });
+    const confirmResult = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Se eliminará al cliente permanentemente.',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    });
+
+    if (confirmResult.isConfirmed) {
+      setAnchorEl(null);
+      try {
+        const response = await customerService.removeCustomer(id);
+        if (response.status === 200) {
+          setEditModalOpen(false);
+          Swal.fire({
+            title: 'Eliminación de cliente.',
+            text: 'Se eliminó satisfactoriamente al cliente.',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          }).then(() => {
+            getCustomers();
+          });
+        } else {
+          Swal.fire({
+            title: 'Eliminación de cliente.',
+            text: 'No se pudo eliminar al cliente.',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+          });
+        }
+      } catch (error) {
+        console.error('Error deleting customer:', error);
       }
-    } catch (error) {
-      console.error('Error deleting customer:', error);
     }
   };
 
