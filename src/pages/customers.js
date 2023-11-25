@@ -164,7 +164,7 @@ const Page = () => {
     setIsLoading(true);
     try {
       const response = await invoiceService.getSunatValue(selectedCustomer.identificationType.toLowerCase(), selectedCustomer.identificationInfo);
-      if (response.data != "error") {        
+      if (response.data != "error") {
         selectedCustomer.customerName = response.data;
       }
       else {
@@ -299,45 +299,45 @@ const Page = () => {
                 </Button>
               </Stack>
             </Stack>
-            {data.length === 0 ? (
-              <Typography variant="body1">No hay clientes en la aplicación.</Typography>
-            ) : (
-              <Scrollbar>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>
-                        <TextField
-                          label="Cliente"
-                          value={filterName}
-                          onChange={(event) => setFilterName(event.target.value)}
-                          sx={{ width: '240px' }}
-                        />
-                      </TableCell>
-                      <TableCell>
-                        <TextField
-                          label="Tipo de Identificación"
-                          select
-                          value={filterIdentificationType}
-                          onChange={(event) => setFilterIdentificationType(event.target.value)}
-                          sx={{ width: '240px' }}
-                        >
-                          <MenuItem value="">Todos</MenuItem>
-                          <MenuItem value="DNI">DNI</MenuItem>
-                          <MenuItem value="RUC">RUC</MenuItem>
-                        </TextField>
-                      </TableCell>
-                      <TableCell>
-                        <TextField
-                          sx={{ width: '240px' }}
-                          label="Número de Identificación"
-                          value={filterIdentificationInfo}
-                          onChange={(event) => setFilterIdentificationInfo(event.target.value)}
-                        />
-                      </TableCell>
-                      <TableCell>Acciones</TableCell>
-                    </TableRow>
-                  </TableHead>
+            <Scrollbar>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <TextField
+                        label="Cliente"
+                        value={filterName}
+                        onChange={(event) => setFilterName(event.target.value)}
+                        sx={{ width: '240px' }}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <TextField
+                        label="Tipo de Identificación"
+                        select
+                        value={filterIdentificationType}
+                        onChange={(event) => setFilterIdentificationType(event.target.value)}
+                        sx={{ width: '240px' }}
+                      >
+                        <MenuItem value="">Todos</MenuItem>
+                        <MenuItem value="DNI">DNI</MenuItem>
+                        <MenuItem value="RUC">RUC</MenuItem>
+                      </TextField>
+                    </TableCell>
+                    <TableCell>
+                      <TextField
+                        sx={{ width: '240px' }}
+                        label="Número de Identificación"
+                        value={filterIdentificationInfo}
+                        onChange={(event) => setFilterIdentificationInfo(event.target.value)}
+                      />
+                    </TableCell>
+                    <TableCell>Acciones</TableCell>
+                  </TableRow>
+                </TableHead>
+                {data.length === 0 ? (
+                  <Typography ></Typography>
+                ) : (
                   <TableBody>
                     {data.map((item) => (
                       <TableRow key={item.id}>
@@ -367,9 +367,10 @@ const Page = () => {
                       </TableRow>
                     ))}
                   </TableBody>
-                </Table>
-              </Scrollbar>
-            )}
+                )}
+
+              </Table>
+            </Scrollbar>
             <TablePagination
               component="div"
               count={total}
