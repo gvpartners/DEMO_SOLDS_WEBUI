@@ -36,6 +36,7 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import uniconJson from 'src/config/unicon.json';
 import CommentIcon from '@mui/icons-material/Comment';
 import { saveAs } from 'file-saver';
+import userService from 'src/services/userService';
 import {
   Avatar,
   Container,
@@ -74,7 +75,7 @@ const Page = () => {
   const [UMOptions, setUMOptions] = useState(['MT2', 'PZA'])
   const [deliveryOptions, setdeliveryOptions] = useState(['Puesto en planta', 'Puesto en obra']);
   const [districtOptions, setDistrictOptions] = useState([])
-
+  const [employeeOptions, setEmployeeOptions] = useState([])
   // Filters Export
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -144,7 +145,7 @@ const Page = () => {
           invoiceCodeFilter: filterCode,
           identificationInfoFilter: filterClient,
           selectedCategoryFilter: filterCategory,
-          identificationTypeFilter:filterIdentification,
+          identificationTypeFilter: filterIdentification,
           totalInvoiceFilter: filterPrice,
           deliveryTypeFilter: filterDelivery,
           employeeFilter: filterEmployee,
@@ -170,13 +171,32 @@ const Page = () => {
       console.error('Error fetching data:', err);
     }
   };
+  const getUsers = async () => {
+    try {
+      const response = await userService.getUsers();
+
+      if (response.status === 200) {
+        const fetchedData = await response.data;
+
+        // Mapear la lista de objetos a un formato deseado
+        const employeeData = fetchedData.map((user) => ({
+          id: user.id,
+          name: `${user.name} ${user.firstLastName}`
+        }));
+
+        setEmployeeOptions(employeeData);
+      }
+    } catch (err) {
+      console.error('Error fetching data:', err);
+    }
+  };
 
   useEffect(() => {
     const uniqueCategories = Array.from(new Set(uniconJson.map(item => item.Category)));
     setCategoryOptions(uniqueCategories);
     const districtOpt = fletesJson.map((district) => district.District);
     setDistrictOptions(districtOpt);
-
+    getUsers();
   }, []);
 
 
@@ -403,7 +423,7 @@ const Page = () => {
     style: 'currency',
     currency: 'PEN'
   });
-  
+
 
   const handleIconClick = () => {
     setIsDatePickerOpen(!isDatePickerOpen);
@@ -764,10 +784,21 @@ const Page = () => {
                           />
                         </TableCell>
                         <TableCell>
-                          <TextField sx={{ width: '140px' }}
-                            label="Ejecutivo"
-                            value={filterEmployee}
-                            onChange={(e) => setFilterEmployee(e.target.value)}
+                          <Autocomplete
+                            value={employeeOptions.find((option) => option.id === filterEmployee)}
+                            onChange={(event, newValue) => {
+                              setFilterEmployee(newValue ? newValue.id : null);
+                            }}
+                            options={employeeOptions}
+                            getOptionLabel={(option) => option.name || ""}
+                            renderInput={(params) => (
+                              <TextField
+                                sx={{ width: '200px' }}
+                                {...params}
+                                label="Ejecutivo"
+                                variant="standard"
+                              />
+                            )}
                           />
                         </TableCell>
                         <TableCell>
@@ -807,7 +838,7 @@ const Page = () => {
             <Dialog open={isDialogOpen} onClose={handleDialogClose} fullWidth maxWidth="sm">
               <DialogTitle style={{ textAlign: 'center' }} >Exportar cotizaciones</DialogTitle>
               <DialogContent >
-                <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>                  
+                <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', marginTop: '30px' }}>
                     <DatePicker
                       label="Fecha de inicio *"
