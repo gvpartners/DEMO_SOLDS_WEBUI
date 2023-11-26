@@ -216,6 +216,17 @@ const Page = () => {
 
   const handleSave = async () => {
     setAnchorEl(null);
+    if (!selectedCustomer || !selectedCustomer.identificationType || !selectedCustomer.identificationInfo || !selectedCustomer.customerName) {
+      setEditModalOpen(false);
+      Swal.fire({
+        title: 'Campos obligatorios',
+        text: 'Por favor, complete todos los campos obligatorios.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+
     try {
       const response = await customerService.editCustomer(selectedCustomer);
       if (response.status === 200) {
@@ -243,10 +254,25 @@ const Page = () => {
   };
 
   const handleOpenNewCustomerModal = () => {
+    setSelectedCustomer(null);
+    setEditedName('');
+    setAnchorEl(null);
     setNewCustomerModalOpen(true);
   };
 
   const handleSaveNewCustomer = async () => {
+    
+    if (!selectedCustomer || !selectedCustomer.identificationType || !selectedCustomer.identificationInfo || !selectedCustomer.customerName) {
+      setNewCustomerModalOpen(false);
+      Swal.fire({
+        title: 'Campos obligatorios',
+        text: 'Por favor, complete todos los campos obligatorios.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+  
     try {
       const response = await customerService.createCustomer(selectedCustomer);
       if (response.status === 200) {
@@ -273,7 +299,6 @@ const Page = () => {
     }
     getCustomers();
   };
-
   const clearFilters = () => {
     setFilterName('');
     setFilterIdentificationType('');
