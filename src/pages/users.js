@@ -24,6 +24,7 @@ import {
   MenuItem,
   TablePagination,
   Menu,
+  Card,
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditIcon from '@mui/icons-material/Edit';
@@ -123,7 +124,7 @@ const Page = () => {
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
     });
-  
+
     if (confirmDelete.isConfirmed) {
       setAnchorEl(null);
       const response = await userService.removeUser(id);
@@ -147,7 +148,7 @@ const Page = () => {
       }
     }
   };
-  
+
   const handleMenuOpen = (event, customer) => {
     setAnchorEl(event.currentTarget);
     setSelectedCustomer(customer);
@@ -204,55 +205,56 @@ const Page = () => {
             {data.length === 0 ? (
               <Typography variant="body1">No hay usuarios en la aplicación.</Typography>
             ) : (
-              <Scrollbar>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Nombre</TableCell>
-                      <TableCell>Apellido Paterno</TableCell>
-                      <TableCell>Apellido Materno</TableCell>
-                      <TableCell>Email</TableCell>
-                      <TableCell>Prefijo</TableCell>
-                      <TableCell>Teléfono</TableCell>
-                      <TableCell>¿Tiene acceso?</TableCell>
-                      <TableCell>Acciones</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {auxUser.map((item) => (
-                      <TableRow key={item.id}>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.firstLastName}</TableCell>
-                        <TableCell>{item.secondLastName}</TableCell>
-                        <TableCell>{item.email}</TableCell>
-                        <TableCell>{item.prefix}</TableCell>
-                        <TableCell>{item.phone || 'No proporcionado'}</TableCell>
-                        <TableCell>{item.isApproved ? 'Sí' : 'No'}</TableCell>
-                        <TableCell>
-                          <IconButton
-                            aria-label="Acciones"
-                            aria-controls={`actions-menu-${item.id}`}
-                            aria-haspopup="true"
-                            onClick={(event) => handleMenuOpen(event, item)}
-                          >
-                            <MoreVertIcon />
-                          </IconButton>
-                          <Menu
-                            id={`actions-menu-${item.id}`}
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl) && selectedCustomer && selectedCustomer.id === item.id}
-                            onClose={handleMenuClose}
-                          >
-                            <MenuItem style={{ display: 'flex', alignItems: 'center' }} onClick={() => handleEdit(item.id)}><EditIcon style={{ marginRight: '8px' }} /> Editar</MenuItem>
-                            {/* <MenuItem onClick={() => handleDelete(item.id)}> <DeleteIcon /> Eliminar</MenuItem> */}
-                          </Menu>
-                        </TableCell>
+              <Card>
+                <Scrollbar>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Nombre</TableCell>
+                        <TableCell>Apellido Paterno</TableCell>
+                        <TableCell>Apellido Materno</TableCell>
+                        <TableCell>Correo Electrónico</TableCell>
+                        <TableCell>Prefijo</TableCell>
+                        <TableCell>Teléfono</TableCell>
+                        <TableCell>¿Tiene acceso?</TableCell>
+                        <TableCell>Acciones</TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Scrollbar>
+                    </TableHead>
+                    <TableBody>
+                      {auxUser.map((item) => (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.firstLastName}</TableCell>
+                          <TableCell>{item.secondLastName}</TableCell>
+                          <TableCell>{item.email}</TableCell>
+                          <TableCell>{item.prefix}</TableCell>
+                          <TableCell>{item.phone || 'No proporcionado'}</TableCell>
+                          <TableCell>{item.isApproved ? 'Sí' : 'No'}</TableCell>
+                          <TableCell>
+                            <IconButton
+                              aria-label="Acciones"
+                              aria-controls={`actions-menu-${item.id}`}
+                              aria-haspopup="true"
+                              onClick={(event) => handleMenuOpen(event, item)}
+                            >
+                              <MoreVertIcon />
+                            </IconButton>
+                            <Menu
+                              id={`actions-menu-${item.id}`}
+                              anchorEl={anchorEl}
+                              keepMounted
+                              open={Boolean(anchorEl) && selectedCustomer && selectedCustomer.id === item.id}
+                              onClose={handleMenuClose}
+                            >
+                              <MenuItem style={{ display: 'flex', alignItems: 'center' }} onClick={() => handleEdit(item.id)}><EditIcon style={{ marginRight: '8px' }} /> Editar</MenuItem>
+                            </Menu>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </Scrollbar>
+              </Card>
             )}
             <TablePagination
               component="div"
@@ -299,7 +301,7 @@ const Page = () => {
               />
 
               <TextField
-                label="Email"
+                label="Correo Electrónico"
                 value={selectedCustomer.email}
                 onChange={(event) => handleFieldChange('email', event.target.value)}
                 fullWidth

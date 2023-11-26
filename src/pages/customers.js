@@ -29,7 +29,8 @@ import {
   SvgIcon,
   InputAdornment,
   CircularProgress,
-  Grid
+  Grid,
+  Card
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditIcon from '@mui/icons-material/Edit';
@@ -319,78 +320,80 @@ const Page = () => {
                 </Stack>
               </Grid>
             </Grid>
-            <Scrollbar>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>
-                      <TextField
-                        label="Cliente"
-                        value={filterName}
-                        onChange={(event) => setFilterName(event.target.value)}
-                        sx={{ width: '240px' }}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        label="Tipo de Identificación"
-                        select
-                        value={filterIdentificationType}
-                        onChange={(event) => setFilterIdentificationType(event.target.value)}
-                        sx={{ width: '240px' }}
-                      >
-                        <MenuItem value="">Todos</MenuItem>
-                        <MenuItem value="DNI">DNI</MenuItem>
-                        <MenuItem value="RUC">RUC</MenuItem>
-                      </TextField>
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        sx={{ width: '240px' }}
-                        label="Número de Identificación"
-                        value={filterIdentificationInfo}
-                        onChange={(event) => setFilterIdentificationInfo(event.target.value)}
-                      />
-                    </TableCell>
-                    <TableCell>Acciones</TableCell>
-                  </TableRow>
-                </TableHead>
-                {data.length === 0 ? (
-                  <Typography ></Typography>
-                ) : (
-                  <TableBody>
-                    {data.map((item) => (
-                      <TableRow key={item.id}>
-                        <TableCell>{item.customerName}</TableCell>
-                        <TableCell>{item.identificationType}</TableCell>
-                        <TableCell>{item.identificationInfo}</TableCell>
-                        <TableCell>
-                          <IconButton
-                            aria-label="Acciones"
-                            aria-controls={`actions-menu-${item.id}`}
-                            aria-haspopup="true"
-                            onClick={(event) => handleMenuOpen(event, item)}
-                          >
-                            <MoreVertIcon />
-                          </IconButton>
-                          <Menu
-                            id={`actions-menu-${item.id}`}
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl) && selectedCustomer && selectedCustomer.id === item.id}
-                            onClose={handleMenuClose}
-                          >
-                            <MenuItem onClick={() => handleEdit(item.id)}><EditIcon /> Editar</MenuItem>
-                            <MenuItem onClick={() => handleDelete(item.id)}> <DeleteIcon /> Eliminar</MenuItem>
-                          </Menu>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                )}
+            <Card>
+              <Scrollbar>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        <TextField
+                          label="Cliente"
+                          value={filterName}
+                          onChange={(event) => setFilterName(event.target.value)}
+                          sx={{ width: '240px' }}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          label="Tipo de Identificación"
+                          select
+                          value={filterIdentificationType}
+                          onChange={(event) => setFilterIdentificationType(event.target.value)}
+                          sx={{ width: '240px' }}
+                        >
+                          <MenuItem value="">Todos</MenuItem>
+                          <MenuItem value="DNI">DNI</MenuItem>
+                          <MenuItem value="RUC">RUC</MenuItem>
+                        </TextField>
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          sx={{ width: '240px' }}
+                          label="Número de Identificación"
+                          value={filterIdentificationInfo}
+                          onChange={(event) => setFilterIdentificationInfo(event.target.value)}
+                        />
+                      </TableCell>
+                      <TableCell>Acciones</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  {data.length === 0 ? (
+                    <Typography ></Typography>
+                  ) : (
+                    <TableBody>
+                      {data.map((item) => (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.customerName}</TableCell>
+                          <TableCell>{item.identificationType}</TableCell>
+                          <TableCell>{item.identificationInfo}</TableCell>
+                          <TableCell>
+                            <IconButton
+                              aria-label="Acciones"
+                              aria-controls={`actions-menu-${item.id}`}
+                              aria-haspopup="true"
+                              onClick={(event) => handleMenuOpen(event, item)}
+                            >
+                              <MoreVertIcon />
+                            </IconButton>
+                            <Menu
+                              id={`actions-menu-${item.id}`}
+                              anchorEl={anchorEl}
+                              keepMounted
+                              open={Boolean(anchorEl) && selectedCustomer && selectedCustomer.id === item.id}
+                              onClose={handleMenuClose}
+                            >
+                              <MenuItem onClick={() => handleEdit(item.id)}><EditIcon /> Editar</MenuItem>
+                              <MenuItem onClick={() => handleDelete(item.id)}> <DeleteIcon /> Eliminar</MenuItem>
+                            </Menu>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  )}
 
-              </Table>
-            </Scrollbar>
+                </Table>
+              </Scrollbar>
+            </Card>
             <TablePagination
               component="div"
               count={total}

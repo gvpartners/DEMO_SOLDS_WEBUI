@@ -745,7 +745,7 @@ const Page = () => {
                     <br /><br />
                     <FormControl fullWidth>
                         <TextField
-                            label="E-mail"
+                            label="Correo Electrónico"
                             type="email"
                             value={email}
                             onChange={handleEmailChange}

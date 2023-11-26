@@ -201,7 +201,6 @@ const Page = () => {
       if (response.status === 200) {
         const fetchedData = await response.data;
 
-        // Mapear la lista de objetos a un formato deseado
         const employeeData = fetchedData.map((user) => ({
           id: user.id,
           name: `${user.name} ${user.firstLastName}`
@@ -259,16 +258,6 @@ const Page = () => {
     setPage(0);
   }, [setRowsPerPage, setPage]);
 
-
-
-  const handleFilterEmployeeChange = (event) => {
-    setFilterEmployee(event.target.value);
-  };
-
-  const handleFilterCodeChange = (event) => {
-    setFilterCode(event.target.value);
-  };
-
   const handleMenuClick = (event, invoice) => {
     setSelectedInvoice(invoice);
     setSelectedInvoiceId(invoice.id);
@@ -305,10 +294,7 @@ const Page = () => {
     }
   };
   const duplicateInvoice = async () => {
-    // Cierra el menú contextual si está abierto
     setAnchorEl(null);
-
-    // Pregunta al usuario para confirmar la acción
     const confirmAction = await Swal.fire({
       title: 'Confirmar',
       text: '¿Está seguro de duplicar la cotización?',
@@ -318,12 +304,9 @@ const Page = () => {
       cancelButtonText: 'Cancelar',
     });
 
-    // Si el usuario confirma, intenta duplicar la factura utilizando el servicio correspondiente
     if (confirmAction.isConfirmed) {
       try {
         await invoiceService.duplicateInvoice(selectedInvoiceId);
-
-        // Muestra un mensaje de éxito al usuario
         Swal.fire({
           title: 'Cotización duplicada',
           text: 'Se duplicó satisfactoriamente la cotización',
@@ -332,9 +315,7 @@ const Page = () => {
         });
         getInvoices();
       } catch (error) {
-        // Si hay un error al duplicar la factura, muestra un mensaje de error
         console.error('Error al duplicar la cotización:', error);
-
         Swal.fire({
           title: 'Error al duplicar la cotización',
           text: 'No se pudo duplicar la cotización. Por favor, inténtelo de nuevo.',
@@ -356,7 +337,6 @@ const Page = () => {
         cancelButtonText: 'Cancelar',
       });
 
-      // Verificar si el usuario confirmó la acción
       if (confirmAction.isConfirmed) {
         const response = await invoiceService.updateStatus(selectedInvoiceId, orderStatus);
 
@@ -447,11 +427,6 @@ const Page = () => {
     currency: 'PEN'
   });
 
-
-  const handleIconClick = () => {
-    setIsDatePickerOpen(!isDatePickerOpen);
-  };
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setIsDatePickerOpen(false);
@@ -465,7 +440,6 @@ const Page = () => {
     setIsDialogOpenComment(false);
     setAnchorEl(null);
     if (!comment.trim()) {
-      // Mostrar mensaje de advertencia con Swal
       Swal.fire({
         title: 'Advertencia',
         text: 'El comentario no puede estar vacío',
@@ -639,12 +613,12 @@ const Page = () => {
         <Container maxWidth="xl">
           <Stack spacing={3}>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
+              <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
                   <Typography variant="h4">Total de cotizaciones [{totalInvoices}]</Typography>
                 </Stack>
               </Grid>
-              <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
+              <Grid item xs={12} md={6}>
                 <Stack direction="row" spacing={2} justifyContent="flex-end">
                   <Button variant="contained" onClick={clearFilters}>
                     Limpiar Filtros
@@ -835,7 +809,7 @@ const Page = () => {
                         </TableCell>
                         <TableCell>
                           <TextField sx={{ width: '140px' }}
-                            label="Telefono"
+                            label="Teléfono"
                             value={filterPhone}
                             onChange={(e) => setFilterPhone(e.target.value)}
                           />

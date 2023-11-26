@@ -265,7 +265,7 @@ const Page = () => {
                         <Grid item xs={12}>
                           <TextField
                             fullWidth
-                            label="E-mail"
+                            label="Correo Electrónico"
                             type="email"
                             name="email"
                             value={values.email}
