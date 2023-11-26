@@ -38,6 +38,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import { saveAs } from 'file-saver';
 import userService from 'src/services/userService';
 import CloseIcon from '@mui/icons-material/Close';
+import { PacmanLoader } from 'react-spinners';
 import {
   Avatar,
   Container,
@@ -93,6 +94,7 @@ const Page = () => {
   const handleEndDateChange = (date) => {
     setEndDate(date);
   };
+  const [loading, setLoading] = useState(false);
   const [isDialogOpenComment, setIsDialogOpenComment] = useState(false);
   const [comment, setComment] = useState('');
   const getCommentById = async () => {
@@ -365,7 +367,7 @@ const Page = () => {
               confirmButtonText: 'OK',
             });
           }
-          getInvoices();
+          clearFilters();
         }
       }
     } catch (error) {
@@ -402,7 +404,7 @@ const Page = () => {
             icon: 'success',
             confirmButtonText: 'OK',
           });
-          getInvoices();
+          clearFilters();
         } else {
           Swal.fire({
             title: 'Error',
@@ -484,11 +486,12 @@ const Page = () => {
         startDate: startDate,
         endDate: endDate,
       }
+      setLoading(true);
       const response = await invoiceService.generateExcel(dataExport);
       if (!response.ok) {
+        setLoading(false);
         throw new Error(`Error generating Excel: ${response.statusText}`);
       }
-
       const blob = await response.blob();
       const date = new Date().toLocaleString('es-PE', {
         month: '2-digit',
@@ -498,6 +501,7 @@ const Page = () => {
         minute: '2-digit'
       });
       saveAs(blob, 'Reporte de cotizaciones_' + date + '.xlsx');
+      setLoading(false);
     }
     setIsDialogOpen(false);
   };
@@ -569,7 +573,7 @@ const Page = () => {
                   </MenuItem>
                 </div>
               </div>
-              <div hidden={selectedStatusNumber == !2 || selectedUserId !== sessionStorage.getItem('identificator')}>
+              <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3 || selectedUserId !== sessionStorage.getItem('identificator')}>
                 <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
                   <Close style={{ marginRight: '8px' }} /> Rechazar
                 </MenuItem>
@@ -871,6 +875,19 @@ const Page = () => {
                 <Button onClick={exportReport} color="primary">
                   Exportar
                 </Button>
+                {loading && (
+                  <div
+                    style={{
+                      position: 'fixed',
+                      top: '58%',
+                      left: '37%',
+                      transform: 'translate(-50%, -50%)',
+                      zIndex: 9999,
+                    }}
+                  >
+                    <PacmanLoader color={'#ffbe0b'} loading={loading} size={20} />
+                  </div>
+                )}
               </DialogActions>
             </Dialog>
             <Dialog open={isDialogOpenComment} onClose={handleDialogCommentClose} fullWidth maxWidth="sm">
