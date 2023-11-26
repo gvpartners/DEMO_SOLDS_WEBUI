@@ -304,18 +304,18 @@ const Page = () => {
               <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
                 <Stack direction="row" spacing={2} justifyContent="flex-end">
                   <Button
+                    variant="outlined"
+                    onClick={clearFilters}
+                  >
+                    Limpiar Filtros
+                  </Button>
+                  <Button
                     variant="contained"
                     color="primary"
                     onClick={handleOpenNewCustomerModal}
                     startIcon={<SvgIcon fontSize="small"><PlusIcon /></SvgIcon>}
                   >
                     Añadir Nuevo Cliente
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    onClick={clearFilters}
-                  >
-                    Limpiar Filtros
                   </Button>
                 </Stack>
               </Grid>
