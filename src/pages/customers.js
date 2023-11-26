@@ -298,7 +298,7 @@ const Page = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
                 <Stack spacing={1}>
-                  <Typography variant="h4">Total de clientes [{total}]</Typography>
+                  <Typography variant="h4">Total de clientes [{new Intl.NumberFormat('en-US').format(total)}]</Typography>
                 </Stack>
               </Grid>
               <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}

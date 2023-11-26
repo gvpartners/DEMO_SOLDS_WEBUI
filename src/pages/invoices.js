@@ -37,6 +37,7 @@ import uniconJson from 'src/config/unicon.json';
 import CommentIcon from '@mui/icons-material/Comment';
 import { saveAs } from 'file-saver';
 import userService from 'src/services/userService';
+import CloseIcon from '@mui/icons-material/Close';
 import {
   Avatar,
   Container,
@@ -568,7 +569,7 @@ const Page = () => {
                   </MenuItem>
                 </div>
               </div>
-              <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3}>
+              <div hidden={selectedStatusNumber == !2 || selectedUserId !== sessionStorage.getItem('identificator')}>
                 <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
                   <Close style={{ marginRight: '8px' }} /> Rechazar
                 </MenuItem>
@@ -578,7 +579,7 @@ const Page = () => {
                   <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
                 </MenuItem>
               </div>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+              <div>
                 <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
                   <CommentIcon style={{ marginRight: '8px' }} /> Comentario
                 </MenuItem>
@@ -615,7 +616,7 @@ const Page = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <Typography variant="h4">Total de cotizaciones [{totalInvoices}]</Typography>
+                  <Typography variant="h4">Total de cotizaciones [{new Intl.NumberFormat('en-US').format(totalInvoices)}]</Typography>
                 </Stack>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -873,10 +874,22 @@ const Page = () => {
               </DialogActions>
             </Dialog>
             <Dialog open={isDialogOpenComment} onClose={handleDialogCommentClose} fullWidth maxWidth="sm">
-              <DialogTitle style={{ textAlign: 'center' }}>Comentario de la cotización</DialogTitle>
+              <DialogTitle style={{ textAlign: 'center' }}>
+                Comentario de la cotización
+                <IconButton
+                  edge="end"
+                  color="inherit"
+                  onClick={handleDialogCommentClose}
+                  aria-label="close"
+                  style={{ position: 'absolute', right: '18px', top: '8px' }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
               <DialogContent>
                 <div>
                   <TextareaAutosize
+                    disabled={selectedUserId !== sessionStorage.getItem('identificator')}
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     style={{
@@ -889,16 +902,17 @@ const Page = () => {
                   />
                 </div>
               </DialogContent>
-              <DialogActions>
-                <Button onClick={handleDialogCommentClose} color="error">
-                  Cancelar
-                </Button>
-                <Button onClick={saveComment} color="primary">
-                  Guardar
-                </Button>
-              </DialogActions>
+              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                <DialogActions>
+                  <Button onClick={handleDialogCommentClose} color="error">
+                    Cancelar
+                  </Button>
+                  <Button onClick={saveComment} color="primary">
+                    Guardar
+                  </Button>
+                </DialogActions>
+              </div>
             </Dialog>
-
           </Stack>
         </Container>
       </Box>

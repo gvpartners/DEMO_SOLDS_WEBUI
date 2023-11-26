@@ -199,7 +199,7 @@ const Page = () => {
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
-                <Typography variant="h4">Total de usuarios [{data.length}]</Typography>
+                <Typography variant="h4">Total de usuarios [{new Intl.NumberFormat('en-US').format(data.length)}]</Typography>
               </Stack>
             </Stack>
             {data.length === 0 ? (
