@@ -28,7 +28,8 @@ import {
   Menu,
   SvgIcon,
   InputAdornment,
-  CircularProgress
+  CircularProgress,
+  Grid
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditIcon from '@mui/icons-material/Edit';
@@ -293,24 +294,31 @@ const Page = () => {
       >
         <Container maxWidth="xl">
           <Stack spacing={3}>
-            <Stack direction="row" justifyContent="space-between" spacing={4}>
-              <Stack spacing={1}>
-                <Typography variant="h4">Total de clientes [{total}]</Typography>
-              </Stack>
-              <Stack direction="row" spacing={2}>
-                <Button variant="contained" color="primary" onClick={handleOpenNewCustomerModal}
-                  startIcon={
-                    <SvgIcon fontSize="small">
-                      <PlusIcon />
-                    </SvgIcon>
-                  }>
-                  Añadir Nuevo Cliente
-                </Button>
-                <Button variant="outlined" onClick={clearFilters}>
-                  Limpiar Filtros
-                </Button>
-              </Stack>
-            </Stack>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
+                <Stack spacing={1}>
+                  <Typography variant="h4">Total de clientes [{total}]</Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
+                <Stack direction="row" spacing={2} justifyContent="flex-end">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleOpenNewCustomerModal}
+                    startIcon={<SvgIcon fontSize="small"><PlusIcon /></SvgIcon>}
+                  >
+                    Añadir Nuevo Cliente
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    onClick={clearFilters}
+                  >
+                    Limpiar Filtros
+                  </Button>
+                </Stack>
+              </Grid>
+            </Grid>
             <Scrollbar>
               <Table>
                 <TableHead>

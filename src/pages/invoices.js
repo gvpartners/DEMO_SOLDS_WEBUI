@@ -55,6 +55,7 @@ import {
   Hidden,
   InputLabel,
   Select,
+  Grid,
   TextareaAutosize
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
@@ -72,7 +73,7 @@ const Page = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [statusOptions, setstatusOptions] = useState(['En progreso', 'Aprobada', 'Rechazada']);
   const [categoryOptions, setCategoryOptions] = useState([])
-  const [UMOptions, setUMOptions] = useState(['MT2', 'PZA'])
+  const [UMOptions, setUMOptions] = useState(['MT2', 'PZA', 'MLL'])
   const [deliveryOptions, setdeliveryOptions] = useState(['Puesto en planta', 'Puesto en obra']);
   const [districtOptions, setDistrictOptions] = useState([])
   const [employeeOptions, setEmployeeOptions] = useState([])
@@ -122,7 +123,7 @@ const Page = () => {
   const [filterIdentification, setFilterIdentification] = useState('');
   const [filterPrice, setFilterPrice] = useState('');
   const [filterDelivery, setFilterDelivery] = useState('');
-  const [filterEmployee, setFilterEmployee] = useState('');
+  const [filterEmployee, setFilterEmployee] = useState(null);
   const [filterStatus, setFilterStatus] = useState(null);
   const [filterCantPieces, setFilterCantPieces] = useState('');
   const [filterUnitPiece, setFilterUnitPiece] = useState('');
@@ -135,6 +136,7 @@ const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [resetFilter, setResetFilter] = useState(false);
 
   const getInvoices = async () => {
     try {
@@ -170,6 +172,27 @@ const Page = () => {
     } catch (err) {
       console.error('Error fetching data:', err);
     }
+  };
+
+  const clearFilters = () => {
+    setFilterCode('');
+    setFilterClient('');
+    setFilterCategory('');
+    setFilterIdentification('');
+    setFilterPrice('');
+    setFilterDelivery('');
+    setFilterEmployee('');
+    setFilterEmployee(null);
+    setResetFilter((prev) => !prev);
+    setFilterStatus(null);
+    setFilterCantPieces('');
+    setFilterUnitPiece('');
+    setFilterDistrict('');
+    setFilterAddress('');
+    setFilterReference('');
+    setFilterPhone('');
+    setFilterContact('');
+    setSelectedDate(null)
   };
   const getUsers = async () => {
     try {
@@ -615,31 +638,38 @@ const Page = () => {
       >
         <Container maxWidth="xl">
           <Stack spacing={3}>
-            <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={4}>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <Typography variant="h4">Total de cotizaciones [{totalInvoices}]</Typography>
-              </Stack>
-              <Stack direction="row" spacing={1}>
-                <Button
-                  onClick={() => setIsDialogOpen(true)}
-                  startIcon={<SvgIcon fontSize="small"><ArrowDownOnSquareIcon /></SvgIcon>}
-                  variant="contained"
-                >
-                  Exportar
-                </Button>
-                <Button
-                  onClick={handleNewInvoice}
-                  startIcon={
-                    <SvgIcon fontSize="small">
-                      <PlusIcon />
-                    </SvgIcon>
-                  }
-                  variant="contained"
-                >
-                  Añadir nueva cotización
-                </Button>
-              </Stack>
-            </Stack>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
+                <Stack spacing={1}>
+                  <Typography variant="h4">Total de cotizaciones [{totalInvoices}]</Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={12} md={6}> {/* Adjust the size based on your design */}
+                <Stack direction="row" spacing={2} justifyContent="flex-end">
+                  <Button variant="contained" onClick={clearFilters}>
+                    Limpiar Filtros
+                  </Button>
+                  <Button
+                    onClick={() => setIsDialogOpen(true)}
+                    startIcon={<SvgIcon fontSize="small"><ArrowDownOnSquareIcon /></SvgIcon>}
+                    variant="outlined"
+                  >
+                    Exportar
+                  </Button>
+                  <Button
+                    onClick={handleNewInvoice}
+                    startIcon={
+                      <SvgIcon fontSize="small">
+                        <PlusIcon />
+                      </SvgIcon>
+                    }
+                    variant="outlined"
+                  >
+                    Añadir nueva cotización
+                  </Button>
+                </Stack>
+              </Grid>
+            </Grid>
 
             <Card>
               <Scrollbar>
@@ -716,6 +746,7 @@ const Page = () => {
                         <TableCell>
                           <TextField sx={{ width: '150px' }}
                             label="Cantidad"
+                            type='number'
                             value={filterCantPieces}
                             onChange={(e) => setFilterCantPieces(e.target.value)}
                           />
@@ -785,12 +816,13 @@ const Page = () => {
                         </TableCell>
                         <TableCell>
                           <Autocomplete
+                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
                             value={employeeOptions.find((option) => option.id === filterEmployee)}
                             onChange={(event, newValue) => {
                               setFilterEmployee(newValue ? newValue.id : null);
                             }}
                             options={employeeOptions}
-                            getOptionLabel={(option) => option.name || ""}
+                            getOptionLabel={(option) => option.name || ''}
                             renderInput={(params) => (
                               <TextField
                                 sx={{ width: '200px' }}

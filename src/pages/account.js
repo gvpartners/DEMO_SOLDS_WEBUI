@@ -141,15 +141,15 @@ const Page = () => {
 
   return (
     <>
-      <Head>
-        <title>Perfil</title>
+      <Head >
+        <title >Perfil</title>
       </Head>
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="lg">
           <Stack spacing={3}>
-            <Typography variant="h4">Perfil</Typography>
+            <Typography variant="h4" style={{paddingLeft:'10px'}}>Perfil</Typography>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6} lg={4}>
+              <Grid item xs={11} md={6} lg={4}>
                 <Card>
                   <CardContent>
                     <Box
@@ -222,7 +222,7 @@ const Page = () => {
                   </Card>
                 </form>
               </Grid>
-              <Grid item xs={12} md={6} lg={8}>
+              <Grid item xs={11} md={6} lg={8}>
                 <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                   <Card>
                     <div style={{ paddingTop: '20px', paddingLeft: '25px' }}>

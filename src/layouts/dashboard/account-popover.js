@@ -23,6 +23,7 @@ export const AccountPopover = (props) => {
   );
 
   const handleViewProfile = () => {
+    onClose?.();
     router.push('/account')
   }
 
