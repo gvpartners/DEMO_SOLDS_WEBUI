@@ -26,7 +26,7 @@ const App = (props) => {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          Demo App
+          UNICON
         </title>
         <meta
           name="viewport"
