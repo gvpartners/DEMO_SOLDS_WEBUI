@@ -261,7 +261,7 @@ const Page = () => {
   };
 
   const handleSaveNewCustomer = async () => {
-    
+
     if (!selectedCustomer || !selectedCustomer.identificationType || !selectedCustomer.identificationInfo || !selectedCustomer.customerName) {
       setNewCustomerModalOpen(false);
       Swal.fire({
@@ -272,7 +272,7 @@ const Page = () => {
       });
       return;
     }
-  
+
     try {
       const response = await customerService.createCustomer(selectedCustomer);
       if (response.status === 200) {
@@ -418,17 +418,17 @@ const Page = () => {
 
                 </Table>
               </Scrollbar>
+              <TablePagination
+                component="div"
+                count={total}
+                onPageChange={handlePageChange}
+                onRowsPerPageChange={handleRowsPerPageChange}
+                page={page}
+                rowsPerPage={rowsPerPage}
+                rowsPerPageOptions={[5, 10, 25]}
+                labelRowsPerPage={"Elementos por página"}
+              />
             </Card>
-            <TablePagination
-              component="div"
-              count={total}
-              onPageChange={handlePageChange}
-              onRowsPerPageChange={handleRowsPerPageChange}
-              page={page}
-              rowsPerPage={rowsPerPage}
-              rowsPerPageOptions={[5, 10, 25]}
-              labelRowsPerPage={"Elementos por página"}
-            />
           </Stack>
         </Container>
       </Box>

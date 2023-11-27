@@ -83,7 +83,7 @@ export const OverviewTraffic = (props) => {
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Porcentaje de unidades vendidas" />
+      <CardHeader title="% PRODUCTOS VENDIDOS" />
       <CardContent>
         <Chart
           height={300}
