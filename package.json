@@ -7,11 +7,11 @@
   "private": false,
   "scripts": {
     "dev": "next",
-    "build": "next build",
     "start": "next start",
     "export": "next export",
     "lint": "next lint",
-    "lint-fix": "next lint --fix"
+    "lint-fix": "next lint --fix",
+    "build": "next build --no-lint"
   },
   "dependencies": {
     "@emotion/cache": "11.10.5",
