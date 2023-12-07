@@ -114,7 +114,7 @@ export const OverviewTraffic = (props) => {
                 
                 <Typography
                   sx={{ my: 1 }}
-                  variant="h6"
+                  variant="h7"
                 >
                   {label}
                 </Typography>

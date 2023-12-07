@@ -47,7 +47,7 @@ const Page = () => {
         <Container maxWidth="xl">
           {/* Add loading and error handling here */}
           {loading ? (
-            <p>Loading...</p>
+            <p>Cargando...</p>
           ) : error ? (
             <p>Error: {error}</p>
           ) : (
@@ -99,7 +99,7 @@ const Page = () => {
                 <OverviewTraffic
                   chartSeries={data.percentageProducts}
                   colors={['#bee9e8', '#62b6cb', '#1b4965', '#cae9ff', '#5fa8d3']}
-                  labels={['Bloques', 'Adoking', 'Grass Michi', 'Enchape', 'Aisladores']}
+                  labels={['Bloques', 'Adoking', 'Grass M.', 'Enchape', 'Aisladores']}
                   sx={{ height: '100%' }}
                 />
               </Grid>
