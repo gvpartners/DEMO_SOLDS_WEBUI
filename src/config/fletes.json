@@ -1,9 +1,39 @@
 [
     {
+        "District": "ANCON",
+        "09_TN": 850,
+        "20_TN": 1150,
+        "32_TN": 1630
+    },
+    {
+        "District": "ARICA",
+        "09_TN": 800,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
+        "District": "ASIA",
+        "09_TN": 1375,
+        "20_TN": 1700,
+        "32_TN": 2105
+    },
+    {
         "District": "ATE",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
+    },
+    {
+        "District": "AYACUCHO",
+        "09_TN": 6625,
+        "20_TN": 6950,
+        "32_TN": 7355
+    },
+    {
+        "District": "BARRANCA",
+        "09_TN": 2375,
+        "20_TN": 2700,
+        "32_TN": 3105
     },
     {
         "District": "BARRANCO",
@@ -12,10 +42,46 @@
         "32_TN": 1330
     },
     {
+        "District": "BELLAVISTA",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
+    },
+    {
         "District": "BREÑA",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
+    },
+    {
+        "District": "CALANGO",
+        "09_TN": 1600,
+        "20_TN": 1800,
+        "32_TN": 2000
+    },
+    {
+        "District": "CALLAO",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
+    },
+    {
+        "District": "CAÑETE",
+        "09_TN": 1750,
+        "20_TN": 2075,
+        "32_TN": 2480
+    },
+    {
+        "District": "CARABAYLLO",
+        "09_TN": 750,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
+        "District": "CASMA",
+        "09_TN": 5125,
+        "20_TN": 5450,
+        "32_TN": 5830
     },
     {
         "District": "CERCADO DE LIMA",
@@ -24,28 +90,112 @@
         "32_TN": 1330
     },
     {
+        "District": "CERRO DE PASCO",
+        "09_TN": 4450,
+        "20_TN": 4775,
+        "32_TN": 5180
+    },
+    {
+        "District": "CHACLACALLO",
+        "09_TN": 800,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
+        "District": "CHANCAY",
+        "09_TN": 1600,
+        "20_TN": 1800,
+        "32_TN": 1980
+    },
+    {
+        "District": "CHILCA",
+        "09_TN": 1050,
+        "20_TN": 1400,
+        "32_TN": 1880
+    },
+    {
+        "District": "CHINCHA",
+        "09_TN": 2375,
+        "20_TN": 2700,
+        "32_TN": 3030
+    },
+    {
         "District": "CHORRILLOS",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
     },
     {
-        "District": "COMAS",
-        "09_TN": 700,
-        "20_TN": 950,
-        "32_TN": 1430
+        "District": "CHOSICA",
+        "09_TN": 800,
+        "20_TN": 1050,
+        "32_TN": 1480
     },
     {
-        "District": "EL AGUSTINO",
+        "District": "CIENEGUILLA",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
+    },
+    {
+        "District": "COMAS",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
     },
     {
+        "District": "EL AUGUSTINO",
+        "09_TN": 700,
+        "20_TN": 950,
+        "32_TN": 1330
+    },
+    {
+        "District": "EL SILENCIO",
+        "09_TN": 800,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
         "District": "HUACHIPA",
         "09_TN": 700,
         "20_TN": 950,
-        "32_TN": 1500
+        "32_TN": 1330
+    },
+    {
+        "District": "HUACHO",
+        "09_TN": 1750,
+        "20_TN": 2100,
+        "32_TN": 2480
+    },
+    {
+        "District": "HUANCAVELICA",
+        "09_TN": 5000,
+        "20_TN": 5325,
+        "32_TN": 5730
+    },
+    {
+        "District": "HUANCAYO, JAUJA, CONCEPCION",
+        "09_TN": 3375,
+        "20_TN": 3850,
+        "32_TN": 4330
+    },
+    {
+        "District": "HUANUCO",
+        "09_TN": 6250,
+        "20_TN": 6575,
+        "32_TN": 6980
+    },
+    {
+        "District": "HUARAL ",
+        "09_TN": 1600,
+        "20_TN": 1950,
+        "32_TN": 2080
+    },
+    {
+        "District": "ICA",
+        "09_TN": 3250,
+        "20_TN": 3600,
+        "32_TN": 3980
     },
     {
         "District": "INDEPENDENCIA",
@@ -66,6 +216,18 @@
         "32_TN": 1330
     },
     {
+        "District": "LA PERLA",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
+    },
+    {
+        "District": "LA PUNTA",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
+    },
+    {
         "District": "LA VICTORIA",
         "09_TN": 700,
         "20_TN": 950,
@@ -84,10 +246,22 @@
         "32_TN": 1330
     },
     {
-        "District": "LURIGANCHO (AV.CAJAMARQUILLA)",
+        "District": "LURIGANCHO",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
+    },
+    {
+        "District": "LURIGANCHO CHOSICA",
+        "09_TN": 750,
+        "20_TN": 1000,
+        "32_TN": 1480
+    },
+    {
+        "District": "LURIN",
+        "09_TN": 750,
+        "20_TN": 1050,
+        "32_TN": 1480
     },
     {
         "District": "MAGDALENA DEL MAR",
@@ -96,10 +270,70 @@
         "32_TN": 1330
     },
     {
+        "District": "MALA",
+        "09_TN": 1250,
+        "20_TN": 1575,
+        "32_TN": 1980
+    },
+    {
+        "District": "MARCONA",
+        "09_TN": 5625,
+        "20_TN": 5950,
+        "32_TN": 6355
+    },
+    {
         "District": "MIRAFLORES",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
+    },
+    {
+        "District": "NAZCA",
+        "09_TN": 5000,
+        "20_TN": 5325,
+        "32_TN": 5730
+    },
+    {
+        "District": "ÑAÑA",
+        "09_TN": 750,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
+        "District": "OROYA",
+        "09_TN": 2250,
+        "20_TN": 2575,
+        "32_TN": 2980
+    },
+    {
+        "District": "PACHACAMAC",
+        "09_TN": 750,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
+        "District": "PARACAS",
+        "09_TN": 2750,
+        "20_TN": 3150,
+        "32_TN": 3530
+    },
+    {
+        "District": "PARAMONGA",
+        "09_TN": 2500,
+        "20_TN": 2800,
+        "32_TN": 3230
+    },
+    {
+        "District": "PISCO",
+        "09_TN": 2625,
+        "20_TN": 3000,
+        "32_TN": 3430
+    },
+    {
+        "District": "PUCUSANA",
+        "09_TN": 1000,
+        "20_TN": 1100,
+        "32_TN": 1530
     },
     {
         "District": "PUEBLO LIBRE",
@@ -108,10 +342,40 @@
         "32_TN": 1330
     },
     {
+        "District": "PUENTE PIEDRA",
+        "09_TN": 750,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
+        "District": "PUNTA HERMOSA",
+        "09_TN": 850,
+        "20_TN": 1100,
+        "32_TN": 1530
+    },
+    {
+        "District": "PUNTA NEGRA",
+        "09_TN": 850,
+        "20_TN": 1100,
+        "32_TN": 1530
+    },
+    {
+        "District": "RICARDO PALMA",
+        "09_TN": 800,
+        "20_TN": 1050,
+        "32_TN": 1480
+    },
+    {
         "District": "RIMAC",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
+    },
+    {
+        "District": "SAN BARTOLO",
+        "09_TN": 900,
+        "20_TN": 1100,
+        "32_TN": 1530
     },
     {
         "District": "SAN BORJA",
@@ -152,7 +416,7 @@
     {
         "District": "SAN MIGUEL",
         "09_TN": 700,
-        "20_TN": 900,
+        "20_TN": 950,
         "32_TN": 1330
     },
     {
@@ -162,16 +426,52 @@
         "32_TN": 1330
     },
     {
+        "District": "SANTA MARIA",
+        "09_TN": 900,
+        "20_TN": 1100,
+        "32_TN": 1530
+    },
+    {
+        "District": "SANTA ROSA (ANCON)",
+        "09_TN": 850,
+        "20_TN": 1150,
+        "32_TN": 1630
+    },
+    {
+        "District": "SANTA ROSA (CALLAO)",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
+    },
+    {
         "District": "SANTIAGO DE SURCO",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
     },
     {
+        "District": "SARAPANPA",
+        "09_TN": 1500,
+        "20_TN": 1825,
+        "32_TN": 2230
+    },
+    {
         "District": "SURQUILLO",
         "09_TN": 700,
         "20_TN": 950,
         "32_TN": 1330
+    },
+    {
+        "District": "TINGO MARIA",
+        "09_TN": 7875,
+        "20_TN": 8200,
+        "32_TN": 8605
+    },
+    {
+        "District": "VENTANILLA",
+        "09_TN": 800,
+        "20_TN": 1100,
+        "32_TN": 1480
     },
     {
         "District": "VILLA EL SALVADOR",
@@ -186,279 +486,9 @@
         "32_TN": 1330
     },
     {
-        "District": "CARABAYLLO",
-        "09_TN": 750,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "LURIGANCHO (CHOSICA)",
-        "09_TN": 750,
-        "20_TN": 1000,
-        "32_TN": 1480
-    },
-    {
-        "District": "LURIN",
-        "09_TN": 750,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "ÑAÑA",
-        "09_TN": 750,
-        "20_TN": 1000,
-        "32_TN": 1480
-    },
-    {
-        "District": "PACHACAMAC",
-        "09_TN": 800,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "PUENTE PIEDRA",
-        "09_TN": 750,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "ARICA",
-        "09_TN": 800,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "BELLAVISTA",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "CALLAO",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "CHACLACAYO",
-        "09_TN": 800,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "CHOSICA",
-        "09_TN": 800,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "CIENEGUILLA",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "LA PERLA",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "LA PUNTA",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "SANTA ROSA (CALLAO)",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "VENTANILLA",
-        "09_TN": 800,
-        "20_TN": 1100,
-        "32_TN": 1480
-    },
-    {
-        "District": "EL SILENCIO",
-        "09_TN": 800,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "RICARDO PALMA",
-        "09_TN": 800,
-        "20_TN": 1050,
-        "32_TN": 1480
-    },
-    {
-        "District": "ANCON",
-        "09_TN": 850,
-        "20_TN": 1150,
-        "32_TN": 1630
-    },
-    {
-        "District": "PUNTA HERMOSA",
-        "09_TN": 850,
-        "20_TN": 1100,
-        "32_TN": 1530
-    },
-    {
-        "District": "PUNTA NEGRA",
-        "09_TN": 850,
-        "20_TN": 1100,
-        "32_TN": 1530
-    },
-    {
-        "District": "SANTA ROSA(ANCON)",
-        "09_TN": 850,
-        "20_TN": 1150,
-        "32_TN": 1630
-    },
-    {
-        "District": "PUCUSANA",
-        "09_TN": 1000,
-        "20_TN": 1100,
-        "32_TN": 1530
-    },
-    {
-        "District": "SAN BARTOLO",
-        "09_TN": 900,
-        "20_TN": 1100,
-        "32_TN": 1530
-    },
-    {
-        "District": "SANTA MARIA",
-        "09_TN": 900,
-        "20_TN": 1100,
-        "32_TN": 1530
-    },
-    {
         "District": "SAN ANTONIO",
-        "09_TN": 1250,
-        "20_TN": 1450,
-        "32_TN": 2000
-    },
-    {
-        "District": "CALANGO",
-        "09_TN": 1600,
-        "20_TN": 1800,
-        "32_TN": 0
-    },
-    {
-        "District": "CHILCA",
-        "09_TN": 1050,
-        "20_TN": 1450,
-        "32_TN": 2000
-    },
-    {
-        "District": "MALA",
         "09_TN": 1250,
         "20_TN": 1575,
         "32_TN": 2000
-    },
-    {
-        "District": "ASIA",
-        "09_TN": 1375,
-        "20_TN": 1700,
-        "32_TN": 2105
-    },
-    {
-        "District": "CHANCAY",
-        "09_TN": 1600,
-        "20_TN": 1800,
-        "32_TN": 2000
-    },
-    {
-        "District": "SARAPAMPA",
-        "09_TN": 1500,
-        "20_TN": 1825,
-        "32_TN": 2230
-    },
-    {
-        "District": "HUARAL ",
-        "09_TN": 1600,
-        "20_TN": 1950,
-        "32_TN": 2080
-    },
-    {
-        "District": "CAÑETE, IMPERIAL",
-        "09_TN": 1750,
-        "20_TN": 2200,
-        "32_TN": 2500
-    },
-    {
-        "District": "HUACHO",
-        "09_TN": 1750,
-        "20_TN": 2100,
-        "32_TN": 2480
-    },
-    {
-        "District": "SAYAN",
-        "09_TN": 1200,
-        "20_TN": 1800,
-        "32_TN": 2000
-    },
-    {
-        "District": "BARRANCA",
-        "09_TN": 2375,
-        "20_TN": 2700,
-        "32_TN": 3105
-    },
-    {
-        "District": "CHINCHA",
-        "09_TN": 2375,
-        "20_TN": 2700,
-        "32_TN": 3030
-    },
-    {
-        "District": "PARAMONGA",
-        "09_TN": 2500,
-        "20_TN": 2800,
-        "32_TN": 3230
-    },
-    {
-        "District": "PISCO",
-        "09_TN": 2625,
-        "20_TN": 3150,
-        "32_TN": 3530
-    },
-    {
-        "District": "PARACAS",
-        "09_TN": 2750,
-        "20_TN": 3150,
-        "32_TN": 3530
-    },
-    {
-        "District": "ICA",
-        "09_TN": 3250,
-        "20_TN": 3600,
-        "32_TN": 4000
-    },
-    {
-        "District": "CHIMBOTE",
-        "09_TN": 0,
-        "20_TN": 4700,
-        "32_TN": 5350
-    },
-    {
-        "District": "NAZCA",
-        "09_TN": 5000,
-        "20_TN": 5325,
-        "32_TN": 5730
-    },
-    {
-        "District": "CASMA",
-        "09_TN": 5125,
-        "20_TN": 4900,
-        "32_TN": 5400
-    },
-    {
-        "District": "MARCONA",
-        "09_TN": 5625,
-        "20_TN": 5950,
-        "32_TN": 6400
     }
 ]
