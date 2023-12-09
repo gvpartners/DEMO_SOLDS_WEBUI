@@ -11,7 +11,6 @@ import {
   Stack,
   SvgIcon,
   Typography,
-  useMediaQuery
 } from '@mui/material';
 import { Logo } from 'src/components/logo';
 import { Scrollbar } from 'src/components/scrollbar';
@@ -21,28 +20,27 @@ import { SideNavItem } from './side-nav-item';
 export const SideNav = (props) => {
   const { open, onClose } = props;
   const pathname = usePathname();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   const content = (
     <Scrollbar
       sx={{
         height: '100%',
         '& .simplebar-content': {
-          height: '100%'
+          height: '100%',
         },
         '& .simplebar-scrollbar:before': {
-          background: 'neutral.400'
-        }
+          background: 'neutral.400',
+        },
       }}
     >
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%'
+          height: '100%',
         }}
       >
-        <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' ,marginBottom:'15px'}}>
+        <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}>
           <Box
             component={NextLink}
             href="/"
@@ -50,12 +48,12 @@ export const SideNav = (props) => {
               display: 'inline-flex',
               height: 30,
               width: 30,
-              marginRight: 6.5
+              marginRight: 6.5,
             }}
           >
             <img src="/assets/avatars/unicon_tras.png" style={{ width: 'auto', height: '40px' }} />
           </Box>
-          <Typography variant="h4" style={{ color: '#FFF',marginTop:'10px' }}>
+          <Typography variant="h4" style={{ color: '#FFF', marginTop: '10px' }}>
             UNICON
           </Typography>
         </Box>
@@ -65,7 +63,7 @@ export const SideNav = (props) => {
           sx={{
             flexGrow: 1,
             px: 2,
-            py: 3
+            py: 3,
           }}
         >
           <Stack
@@ -74,11 +72,11 @@ export const SideNav = (props) => {
             sx={{
               listStyle: 'none',
               p: 0,
-              m: 0
+              m: 0,
             }}
           >
             {items.map((item) => {
-              const active = item.path ? (pathname === item.path) : false;
+              const active = item.path ? pathname === item.path : false;
 
               return (
                 <SideNavItem
@@ -94,51 +92,36 @@ export const SideNav = (props) => {
             })}
           </Stack>
         </Box>
-
       </Box>
+
     </Scrollbar>
   );
 
-  if (lgUp) {
+  if (open) {
     return (
       <Drawer
         anchor="left"
-        open
+        open={open}
+        onClose={onClose}
         PaperProps={{
           sx: {
             backgroundColor: 'neutral.800',
             color: 'common.white',
-            width: 280
-          }
+            width: 280,
+          },
         }}
-        variant="permanent"
+        sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+        variant="temporary"
       >
         {content}
       </Drawer>
     );
   }
 
-  return (
-    <Drawer
-      anchor="left"
-      onClose={onClose}
-      open={open}
-      PaperProps={{
-        sx: {
-          backgroundColor: 'neutral.800',
-          color: 'common.white',
-          width: 280
-        }
-      }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
-      variant="temporary"
-    >
-      {content}
-    </Drawer>
-  );
+  return null;
 };
 
 SideNav.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

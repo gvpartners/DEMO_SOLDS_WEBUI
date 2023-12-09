@@ -6,26 +6,22 @@ import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import { useRouter } from 'next/router';
 import {
   Avatar,
-  Badge,
   Box,
   IconButton,
   Stack,
   SvgIcon,
   Tooltip,
-  useMediaQuery
 } from '@mui/material';
-import { alpha } from '@mui/material/styles';
 import { usePopover } from 'src/hooks/use-popover';
 import { AccountPopover } from './account-popover';
 
-const SIDE_NAV_WIDTH = 280;
+const SIDE_NAV_WIDTH = 50;
 const TOP_NAV_HEIGHT = 64;
 
 export const TopNav = (props) => {
-  const { onNavOpen } = props;
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   const accountPopover = usePopover();
   const router = useRouter();
+
   return (
     <>
       <Box
@@ -35,13 +31,13 @@ export const TopNav = (props) => {
           backgroundColor: 'rgba(0, 0, 0, 0)',
           position: 'sticky',
           left: {
-            lg: `${SIDE_NAV_WIDTH}px`
+            lg: `${SIDE_NAV_WIDTH}px`,
           },
           top: 0,
           width: {
-            lg: `calc(100% - ${SIDE_NAV_WIDTH}px)`
+            lg: `calc(100% - ${SIDE_NAV_WIDTH}px)`,
           },
-          zIndex: (theme) => theme.zIndex.appBar
+          zIndex: (theme) => theme.zIndex.appBar,
         }}
       >
         <Stack
@@ -51,7 +47,7 @@ export const TopNav = (props) => {
           spacing={2}
           sx={{
             minHeight: TOP_NAV_HEIGHT,
-            px: 2
+            px: 2,
           }}
         >
           <Stack
@@ -59,13 +55,11 @@ export const TopNav = (props) => {
             direction="row"
             spacing={2}
           >
-            {!lgUp && (
-              <IconButton onClick={onNavOpen}>
-                <SvgIcon fontSize="small">
-                  <Bars3Icon />
-                </SvgIcon>
-              </IconButton>
-            )}
+            <IconButton onClick={props.onNavOpen}>
+              <SvgIcon fontSize="small">
+                <Bars3Icon />
+              </SvgIcon>
+            </IconButton>
           </Stack>
           <Stack
             alignItems="center"
@@ -73,7 +67,7 @@ export const TopNav = (props) => {
             spacing={2}
           >
             <Tooltip title="Usuarios">
-              <IconButton onClick={() => router.push('/users')}> 
+              <IconButton onClick={() => router.push('/users')}>
                 <SvgIcon fontSize="small">
                   <UsersIcon />
                 </SvgIcon>
@@ -86,7 +80,7 @@ export const TopNav = (props) => {
                 cursor: 'pointer',
                 height: 40,
                 width: 40,
-                backgroundColor:'black'
+                backgroundColor: 'black',
               }}
               src="/assets/avatars/unicon.png"
             />
@@ -103,5 +97,5 @@ export const TopNav = (props) => {
 };
 
 TopNav.propTypes = {
-  onNavOpen: PropTypes.func
+  onNavOpen: PropTypes.func,
 };
