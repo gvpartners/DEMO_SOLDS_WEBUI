@@ -207,7 +207,9 @@ const Page = () => {
 
         const employeeData = fetchedData.map((user) => ({
           id: user.id,
-          name: `${user.name} ${user.firstLastName}`
+          name: `${user.name} ${user.firstLastName}`,
+          email: user.email,
+          phone: user.phone
         }));
 
         setEmployeeOptions(employeeData);
@@ -262,11 +264,21 @@ const Page = () => {
     setPage(0);
   }, [setRowsPerPage, setPage]);
 
+  const [employeePhone, setEmployeePhone] = useState('')
+
   const handleMenuClick = (event, invoice) => {
     setSelectedInvoice(invoice);
     setSelectedInvoiceId(invoice.id);
     setSelectedStatusNumber(invoice.statusOrder);
     setSelectedUserId(invoice.userId);
+    const matchingEmployee = employeeOptions?.find(x => x.email === invoice.createdBy);
+    if (matchingEmployee && matchingEmployee.phone) {
+      setEmployeePhone(matchingEmployee.phone);
+      setSelectedInvoice(prevInvoice => ({
+        ...prevInvoice,
+        employeePhone: matchingEmployee.phone,
+      }));
+    }
     setAnchorEl(event.currentTarget);
   };
 

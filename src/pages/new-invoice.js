@@ -78,11 +78,11 @@ const Page = () => {
                 pageNumber: page,
                 pageSize: rowsPerPage,
                 filters: {
-                  customerNameFilter: filterName,
-                  identificationInfoFilter: filterIdentificationInfo,
-                  identificationTypeFilter: identificationType
+                    customerNameFilter: filterName,
+                    identificationInfoFilter: filterIdentificationInfo,
+                    identificationTypeFilter: identificationType
                 }
-              };
+            };
             const response = await customerService.getCustomers(customerPag);
             if (response.status == 200) {
                 const fetchedData = await response.data;
@@ -96,17 +96,17 @@ const Page = () => {
 
     const handlePageChange = (event, value) => {
         setPage(value);
-      };
-    
-      const handleRowsPerPageChange = (event) => {
+    };
+
+    const handleRowsPerPageChange = (event) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         getCustomers();
-      }, [page, rowsPerPage, filterName, filterIdentificationInfo]);
-    
+    }, [page, rowsPerPage, filterName, filterIdentificationInfo]);
+
     useEffect(() => {
         const fetchData = async () => {
             if (InvoiceId) {
@@ -432,10 +432,10 @@ const Page = () => {
         for (let i = 0; i < selectedMeasures.length; i++) {
             const measureInfo = uniconJson.find(item => item.Description === selectedMeasures[i]);
             let pu2 = 0;
-            if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí" ) {
+            if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí") {
                 pu2 = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
             }
-            else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí" ) {
+            else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí") {
                 pu2 = measureInfo.Price + parseFloat(prorrateoFlete())
             }
             else {
@@ -481,10 +481,10 @@ const Page = () => {
         const productsData = selectedMeasures.map((measure, index) => {
             const measureInfo = uniconJson.find(item => item.Description === measure);
             let pu = 0;
-            if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded === "Sí" ) {
+            if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded === "Sí") {
                 pu = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
             }
-            else if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded !== "Sí" ) {
+            else if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded !== "Sí") {
                 pu = measureInfo.Price + parseFloat(prorrateoFlete())
             }
             else {
@@ -539,7 +539,7 @@ const Page = () => {
             truck20TN,
             truck32TN,
             isParihuelaNeeded,
-            cantParihuela: deliveryType === "PUESTO EN OBRA" ? cantParihuela : 0,
+            cantParihuela: cantParihuela || 0,
             costParihuela: deliveryType === "PUESTO EN OBRA" ? costParihuela : 0,
             address,
             reference,
@@ -650,7 +650,7 @@ const Page = () => {
 
     useEffect(() => {
         getCustomers()
-      }, [identificationType]);
+    }, [identificationType]);
 
 
     const handleCloseEditModal = () => {
@@ -1020,10 +1020,10 @@ const Page = () => {
                                 {selectedMeasures.map((measure, index) => {
                                     const measureInfo = uniconJson.find(item => item.Description === measure);
                                     let pu = 0;
-                                    if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí" ) {
+                                    if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí") {
                                         pu = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
                                     }
-                                    else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí" ) {
+                                    else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí") {
                                         pu = measureInfo.Price + parseFloat(prorrateoFlete())
                                     }
                                     else {
@@ -1111,18 +1111,18 @@ const Page = () => {
                                     <TableRow>
                                         <TableCell>
                                             <TextField
-                                            label="Nombre del Cliente"
-                                            sx={{ width: '240px' }}
-                                            value={filterName}
-                                            onChange={(event) => setFilterName(event.target.value)}
+                                                label="Nombre del Cliente"
+                                                sx={{ width: '240px' }}
+                                                value={filterName}
+                                                onChange={(event) => setFilterName(event.target.value)}
                                             />
                                         </TableCell>
                                         <TableCell>
                                             <TextField
-                                            sx={{ width: '240px' }}
-                                            label="Número de Identificación"
-                                            value={filterIdentificationInfo}
-                                            onChange={(event) => setFilterIdentificationInfo(event.target.value)}
+                                                sx={{ width: '240px' }}
+                                                label="Número de Identificación"
+                                                value={filterIdentificationInfo}
+                                                onChange={(event) => setFilterIdentificationInfo(event.target.value)}
                                             />
                                         </TableCell>
                                     </TableRow>
@@ -1145,7 +1145,7 @@ const Page = () => {
                                 rowsPerPage={rowsPerPage}
                                 rowsPerPageOptions={[5, 10, 25]}
                                 labelRowsPerPage={"Elementos por página"}
-                                />
+                            />
                         </TableContainer>
                         <br></br>
                         {selectedCustomer && (
