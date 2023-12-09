@@ -7,7 +7,12 @@ const generatePDF = (invoice) => {
     // Obtener la fecha de creación de la factura ajustada según la zona horaria
     const adjustedDate = new Date(invoice.createdOn);
 
-    // Formatear la fecha de creación en el formato deseado
+    // Función para capitalizar la primera letra de una cadena
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Formatear la fecha actual
     const formattedDate = adjustedDate.toLocaleDateString("es-PE", {
         weekday: 'long',
         day: 'numeric',
@@ -27,11 +32,15 @@ const generatePDF = (invoice) => {
         year: 'numeric'
     });
 
+    // Capitalizar la primera letra de cada cadena
+    const formattedDateCapitalized = capitalizeFirstLetter(formattedDate);
+    const validUntilFormattedCapitalized = capitalizeFirstLetter(validUntilFormatted);
+
     const colorInvoice = [241, 206, 0];
-    const textColorInvoice = [1, 53, 103]
+    const textColorInvoice = [1, 53, 103];
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
-    const title = `COTIZACIÓN ${invoice.selectedCategory} UNICON / ${invoice.invoiceCode}`;
+    const title = `COTIZACIÓN BLOQUES UNICON / ${invoice.invoiceCode}`;
     const titleWidth = doc.getStringUnitWidth(title) * doc.internal.getFontSize() / doc.internal.scaleFactor;
     const titleX = (pageWidth - titleWidth) / 2;
     doc.setTextColor(1, 53, 103);
@@ -49,7 +58,7 @@ const generatePDF = (invoice) => {
 
     // Calcular la posición inicial y el ancho de la tabla 1
     const table1X = logoX + 45;
-    // Calcular la posición inicial y el ancho de la tabla 1
+    const table2Y = 15; // Move the declaration here to fix the undefined error
 
     // Contenido de la tabla 1 (1 columna, 5 filas)
     const tableData1 = [
@@ -69,36 +78,85 @@ const generatePDF = (invoice) => {
         margin: { left: table1X },
         tableWidth: 'auto',
         showHeader: 'never',
-        styles: { fontStyle: 'bold', textColor: textColorInvoice }
+        styles: {
+            fontStyle: 'bold',
+            textColor: textColorInvoice,
+            cellPadding: 0.5, // Ajusta este valor para reducir el espacio entre las filas
+        },
     });
-
-    const tableHeader0 = [
-        { content: 'INFORMACIÓN GENERAL', styles: { fillColor: colorInvoice, fontSize: 12 } },
+    const tablaDate = [
+        [{ content: 'Fecha de elaboración:', styles: { fillColor: colorInvoice } }, `${formattedDateCapitalized}`],
+        [{ content: 'Válido hasta:', styles: { fillColor: colorInvoice } }, `${validUntilFormattedCapitalized}`]
+    ]
+    doc.autoTable({
+        startY: doc.autoTable.previous.finalY,
+        body: tablaDate,
+        theme: 'grid',
+        tableLineWidth: 0,
+        margin: { left: table1X },
+        tableWidth: 'auto',
+        showHeader: 'never',
+        tableLineColor: [0, 0, 0], // Bordes negros
+        tableLineWidth: 0.2, // Grosor de los bordes
+        styles: {
+            fontStyle: 'bold',
+            textColor: textColorInvoice,
+            cellPadding: 0.5,
+        },
+    });
+    // Encabezados de la tabla 2
+    const tableHeader11 = [
+        { content: 'CLIENTE', styles: { fillColor: colorInvoice, fontSize: 10 } },
         { content: '', styles: { fillColor: colorInvoice } }
     ];
-    const tableData0 = [
-        [`Categoria:`, invoice.selectedCategory],
-        [`Fecha de elaboración:`, formattedDate],
-        [`Válido hasta:`, validUntilFormatted],
-        [`Elaborado por:`, invoice.employee],
-        ['Cargo:', 'Ejecutivo de ventas']
+    const tableData11 = [
+        [`Nombre:`, invoice.identificationInfo],
+        [`Dirección:`, 'NO PROPORCIONADO'],
+        [`${invoice.identificationType}:`, invoice.documentInfo],
+        [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
+        [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
     ];
 
     // Configurar la tabla 2
     doc.autoTable({
-        startY: table1X,
-        head: [tableHeader0],
-        body: tableData0,
+        startY: table2Y + 45,
+        head: [tableHeader11],
+        body: tableData11,
         theme: 'grid',
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         styles: {
-            textColor: textColorInvoice
+            textColor: textColorInvoice,
+            cellPadding: 1,
         }
     });
-    // Contenido de la tabla 1 (1 columna, 5 filas)
+
+    const tableHeader12 = [
+        { content: 'MODALIDAD DE DESPACHO', styles: { fillColor: colorInvoice, fontSize: 10 } },
+        { content: '', styles: { fillColor: colorInvoice } }
+    ];
+    const tableData12 = [
+        [`Tipo de entrega:`, invoice.deliveryType],
+        [`Distrito:`, invoice.selectedDistrict],
+        [`Dirección:`, invoice.address],
+        [`Referencia:`, invoice.reference || "NO PROPORCIONADO"]
+    ];
+
+    // Configurar la tabla 2
+    doc.autoTable({
+        startY: table2Y + 85,
+        head: [tableHeader12],
+        body: tableData12,
+        theme: 'grid',
+        tableLineColor: [0, 0, 0], // Bordes negros
+        tableLineWidth: 0.2, // Grosor de los bordes
+        styles: {
+            textColor: textColorInvoice,
+            cellPadding: 1,
+        }
+    });
     const details = [
-        [`DETALLE`]
+        [`En atención a su requerimiento, tengo el agrado de enviarle la siguiente propuesta:`]
     ];
 
     doc.autoTable({
@@ -107,19 +165,16 @@ const generatePDF = (invoice) => {
         theme: 'plain',
         tableLineColor: [255, 255, 255],
         tableWidth: 'auto',
-        theme: 'grid',
-        tableLineColor: [0, 0, 0], // Bordes negros
-        tableLineWidth: 0.2, // Grosor de los bordes
-        styles: { fontStyle: 'bold', fontSize: 12, textColor: textColorInvoice, fillColor: colorInvoice }
+        tableLineWidth: 0, // Grosor de los bordes
+        styles: { fontStyle: 'bold', fontSize: 10, textColor: textColorInvoice,cellPadding: 0.5, }
     });
-    // Contenido de la tabla 2
     const tableData2 = [];
     const tableHeader = [
         { content: 'Producto', styles: { fillColor: colorInvoice, fontSize: 11 } },
         { content: 'U.M.', styles: { fillColor: colorInvoice, fontSize: 11 } },
         { content: 'Cantidad', styles: { fillColor: colorInvoice, fontSize: 11 } },
-        { content: 'Precio unitario (P.U)', styles: { fillColor: colorInvoice, fontSize: 11 } },
-        { content: 'Precio total (S/.)', styles: { fillColor: colorInvoice, fontSize: 11 } }
+        { content: 'Precio Und.', styles: { fillColor: colorInvoice, fontSize: 11 } },
+        { content: 'Totales', styles: { fillColor: colorInvoice, fontSize: 11 } }
     ];
     const formatter = new Intl.NumberFormat('es-PE', {
         style: 'currency',
@@ -134,7 +189,6 @@ const generatePDF = (invoice) => {
             new Intl.NumberFormat('en-US').format(product.quantity),
             `S/ ${product.priceUnit.toFixed(2)}`,
             `${formatter.format(product.totalPrice)}`
-
         ]);
     }
 
@@ -150,7 +204,8 @@ const generatePDF = (invoice) => {
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         styles: {
-            textColor: textColorInvoice
+            textColor: textColorInvoice,
+            cellPadding: 1,
         }
     });
 
@@ -172,8 +227,6 @@ const generatePDF = (invoice) => {
         [{ content: 'Número de Parihuelas:', styles: { fillColor: colorInvoice } }, `${invoice.cantParihuela}`],
     ];
 
-
-
     doc.autoTable({
         startY: infoY,
         body: tableData20,
@@ -181,15 +234,14 @@ const generatePDF = (invoice) => {
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         margin: { right: 130 },
-
-        styles: { fontStyle: 'bold', textColor: textColorInvoice }
+        styles: { fontStyle: 'bold', textColor: textColorInvoice,cellPadding: 1}
     });
+
     const tableData21 = [
         [{ content: 'Subtotal:', styles: { fillColor: colorInvoice } }, `${formatter.format(invoice.subtotal.toFixed(2))}`],
         [{ content: 'IGV (18%):', styles: { fillColor: colorInvoice } }, `${formatter.format((invoice.subtotal * (18 / 100)).toFixed(2))}`],
         [{ content: 'Total:', styles: { fillColor: colorInvoice } }, `${formatter.format(invoice.totalInvoice.toFixed(2))}`]
     ];
-
 
     doc.autoTable({
         startY: infoY,
@@ -198,60 +250,11 @@ const generatePDF = (invoice) => {
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         margin: { left: 130 },
-        styles: { fontStyle: 'bold', textColor: textColorInvoice }
+        styles: { fontStyle: 'bold', textColor: textColorInvoice,cellPadding: 1}
     });
-    doc.addPage();
+
     // Ajuste de posición para la tabla 2
-    const table2Y = 15;
-
-    // Encabezados de la tabla 2
-    const tableHeader11 = [
-        { content: 'CLIENTE', styles: { fillColor: colorInvoice, fontSize: 12 } },
-        { content: '', styles: { fillColor: colorInvoice } }
-    ];
-    const tableData11 = [
-        [`Nombre:`, invoice.identificationInfo],
-        [`${invoice.identificationType}:`, invoice.documentInfo],
-        [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
-        [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
-    ];
-
-    // Configurar la tabla 2
-    doc.autoTable({
-        startY: table2Y,
-        head: [tableHeader11],
-        body: tableData11,
-        theme: 'grid',
-        tableLineColor: [0, 0, 0], // Bordes negros
-        tableLineWidth: 0.2, // Grosor de los bordes
-        styles: {
-            textColor: textColorInvoice
-        }
-    });
-
-    const tableHeader12 = [
-        { content: 'MODALIDAD DE DESPACHO', styles: { fillColor: colorInvoice, fontSize: 12 } },
-        { content: '', styles: { fillColor: colorInvoice } }
-    ];
-    const tableData12 = [
-        [`Tipo de entrega:`, invoice.deliveryType],
-        [`Distrito:`, invoice.selectedDistrict],
-        [`Referencia:`, invoice.reference || "NO PROPORCIONADO"],
-        [`Dirección:`, invoice.address]
-    ];
-
-    // Configurar la tabla 2
-    doc.autoTable({
-        startY: table2Y + 45,
-        head: [tableHeader12],
-        body: tableData12,
-        theme: 'grid',
-        tableLineColor: [0, 0, 0], // Bordes negros
-        tableLineWidth: 0.2, // Grosor de los bordes
-        styles: {
-            textColor: textColorInvoice
-        }
-    });
+    doc.addPage();
 
     const tableInfo = [
         ["Cta cte nuevos soles BCP 193 - 0099308 - 0 -09"],
@@ -280,9 +283,8 @@ const generatePDF = (invoice) => {
         ["• No se deja parihuelas en obra - no se presta parihuelas"]
     ];
 
-
     doc.autoTable({
-        startY: table2Y + 90,
+        startY: table2Y,
         body: tableInfo,
         theme: 'plain',
         tableLineColor: [255, 255, 255],
@@ -294,6 +296,7 @@ const generatePDF = (invoice) => {
 
     return doc;
 };
+
 
 const PDFPreview = (invoice) => {
     const doc = generatePDF(invoice);

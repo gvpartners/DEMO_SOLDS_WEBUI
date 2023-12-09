@@ -195,7 +195,8 @@ const Page = () => {
     setFilterReference('');
     setFilterPhone('');
     setFilterContact('');
-    setSelectedDate(null)
+    setSelectedDate(null);
+    getInvoices();
   };
   const getUsers = async () => {
     try {

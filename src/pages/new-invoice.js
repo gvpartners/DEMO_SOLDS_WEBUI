@@ -1010,9 +1010,7 @@ const Page = () => {
                             <thead>
                                 <tr>
                                     <th style={thTdStyle}>Producto</th>
-                                    <th style={thTdStyle}>
-                                        Cantidad <font color="red">*</font>
-                                    </th>
+                                    <th style={thTdStyle}>Cantidad</th>
                                     <th style={thTdStyle}>Precio Unitario</th>
                                     <th style={thTdStyle}>Total</th>
                                     <th style={thTdStyle}>Acción</th>
