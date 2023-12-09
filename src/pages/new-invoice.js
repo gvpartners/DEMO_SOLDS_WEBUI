@@ -432,10 +432,10 @@ const Page = () => {
         for (let i = 0; i < selectedMeasures.length; i++) {
             const measureInfo = uniconJson.find(item => item.Description === selectedMeasures[i]);
             let pu2 = 0;
-            if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí" && getPiecesTotal() > 1000) {
+            if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí" ) {
                 pu2 = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
             }
-            else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí" && getPiecesTotal() > 1000) {
+            else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí" ) {
                 pu2 = measureInfo.Price + parseFloat(prorrateoFlete())
             }
             else {
@@ -481,10 +481,10 @@ const Page = () => {
         const productsData = selectedMeasures.map((measure, index) => {
             const measureInfo = uniconJson.find(item => item.Description === measure);
             let pu = 0;
-            if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded === "Sí" && getPiecesTotal() > 1000) {
+            if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded === "Sí" ) {
                 pu = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
             }
-            else if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded !== "Sí" && getPiecesTotal() > 1000) {
+            else if (deliveryType === "PUESTO EN OBRA" && isParihuelaNeeded !== "Sí" ) {
                 pu = measureInfo.Price + parseFloat(prorrateoFlete())
             }
             else {
@@ -621,7 +621,7 @@ const Page = () => {
     }
     const prorrateoFlete = () => {
         let aux = 0;
-        aux = (getFleteCost() * 0.82) / getPiecesTotal();
+        aux = (getFleteCost() / 1.18) / getPiecesTotal();
         return aux.toFixed(2);
     }
     const resetPuestoEnObra = () => {
@@ -1022,10 +1022,10 @@ const Page = () => {
                                 {selectedMeasures.map((measure, index) => {
                                     const measureInfo = uniconJson.find(item => item.Description === measure);
                                     let pu = 0;
-                                    if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí" && getPiecesTotal() > 1000) {
+                                    if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí" ) {
                                         pu = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
                                     }
-                                    else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí" && getPiecesTotal() > 1000) {
+                                    else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí" ) {
                                         pu = measureInfo.Price + parseFloat(prorrateoFlete())
                                     }
                                     else {
