@@ -670,7 +670,7 @@ const Page = () => {
         <Container>
             <Box display={{ xs: 'block', md: 'flex' }}>
 
-                <Box flex={1} marginRight={5} marginLeft={{ md: -20 }}>
+                <Box flex={1} marginRight={5} marginLeft={{ md: -10 }}>
                     <Typography variant="h4" style={{ fontSize: '28px' }}>{!InvoiceId ? "Nueva Cotización" : "Edición " + parsedInvoice?.invoiceCode}</Typography><br />
                     <label>Tipo de identificación<font color="red"> *</font></label>
                     <FormControl fullWidth>
@@ -1001,7 +1001,7 @@ const Page = () => {
 
                 )}
                 {selectedMeasures.length > 0 && (
-                    <Box flex={1.4} marginRight={-20} marginTop={{ xs: 1.8, md: 0 }}>
+                    <Box flex={1.4} marginRight={-10} marginTop={{ xs: 1.8, md: 0 }}>
                         <Typography variant="h6" >
                             Bloques seleccionados
                         </Typography>
@@ -1161,12 +1161,6 @@ const Page = () => {
                 </Dialog>
 
 
-            </Box>
-
-            <Box style={{ float: 'right', marginTop: 2, paddingRight: 60 }}>
-                <Box style={{ float: 'right', marginTop: 2, paddingRight: 16 }}>
-
-                </Box>
             </Box>
         </Container>
 
