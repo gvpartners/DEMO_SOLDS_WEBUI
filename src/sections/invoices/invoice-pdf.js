@@ -292,6 +292,30 @@ const generatePDF = (invoice) => {
         styles: { fontStyle: 'bold', textColor: textColorInvoice }
     });
 
+    const tableSignature = [
+        [invoice.employee?.toUpperCase()],
+        ["Ejecutivo de ventas UN Bloques"],
+        [invoice.employeePhone],
+        [invoice.createdBy],
+    ]
+
+    doc.autoTable({
+        startY: doc.autoTable.previous.finalY + 10,
+        body: tableSignature,
+        theme: 'plain',
+        tableLineColor: [255, 255, 255],
+        tableLineWidth: 0,
+        margin: { left: 15 },
+        tableWidth: 'auto',
+        showHeader: 'never',
+        styles: {
+            fontStyle: 'bold',
+            textColor: textColorInvoice,
+            cellPadding: 0.5,
+            fontSize:12
+        },
+    });
+
     return doc;
 };
 
