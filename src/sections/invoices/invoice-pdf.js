@@ -164,7 +164,7 @@ const generatePDF = (invoice) => {
         tableLineColor: [255, 255, 255],
         tableWidth: 'auto',
         tableLineWidth: 0, // Grosor de los bordes
-        styles: { fontStyle: 'bold', fontSize: 10, textColor: textColorInvoice,cellPadding: 0.5, }
+        styles: { fontStyle: 'bold', fontSize: 10, textColor: textColorInvoice, cellPadding: 0.5, }
     });
     const tableData2 = [];
     const tableHeader = [
@@ -232,7 +232,7 @@ const generatePDF = (invoice) => {
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         margin: { right: 130 },
-        styles: { fontStyle: 'bold', textColor: textColorInvoice,cellPadding: 1}
+        styles: { fontStyle: 'bold', textColor: textColorInvoice, cellPadding: 1 }
     });
 
     const tableData21 = [
@@ -248,49 +248,388 @@ const generatePDF = (invoice) => {
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         margin: { left: 130 },
-        styles: { fontStyle: 'bold', textColor: textColorInvoice,cellPadding: 1}
+        styles: { fontStyle: 'bold', textColor: textColorInvoice, cellPadding: 1 }
     });
 
     // Ajuste de posición para la tabla 2
     doc.addPage();
+    if (invoice.deliveryType != "PUESTO EN PLANTA") {
+        const tablePuestoEnObra = [
+            { content: 'CONDICIONES GENERALES DE VENTA ', styles: { fillColor: colorInvoice, fontSize: 12 } },
+            { content: '', styles: { fillColor: colorInvoice } }
+        ];
 
-    const tableInfo = [
-        ["Cta cte nuevos soles BCP 193 - 0099308 - 0 -09"],
-        ["Condiciones generales de venta"],
-        ["Condiciones de entrega"],
-        ["• Todos los pedidos se entregan a 72 horas de haber abonado"],
-        ["• Puesto en obra: considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura"],
-        ["• Puesto en obra: incluye servicio de descarga a pie de camión"],
-        ["• Puesto en obra: el cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra"],
-        ["• Puesto en obra: si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete"],
-        ["• Si tiene cambio de metrado, solicitar nueva cotización, ya que los precios varían según cantidad y flete a utilizar"],
-        ["• Es importante cumplir los horarios dados, ya que si el camión tiene multas municipales, lo asumirá el cliente"],
-        ["Condiciones de pago"],
-        ["• Pago al contado: se realizará el pago en nuestra cuenta recaudadora (Scotiabank, BCP, Continental, Interbank)"],
-        ["• Pago al contado: una vez emitida la factura o boleta se activará la deuda en el sistema del banco recaudador"],
-        ["• Pago al contado: indicar que se desea pagar a la recaudación de UNICON y el código que le solicitarán en ventanilla del banco es su N° de RUC o DNI"],
-        ["• Pago al contado: una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho"],
-        ["• Pago al crédito: si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON"],
-        ["• Pago al crédito: tendrá las mismas condiciones que tiene para la compra de concreto premezclado."],
-        ["Otras condiciones"],
-        ["• Pedido especial a producir y entrega en 30 a 45 días según OC enviada"],
-        ["• No se aceptan cambios ni devoluciones"],
-        ["• Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible - activa"],
-        ["• Cotización considera entrega en camión de 20 TN (verificar accesos para el tipo de unidad)"],
-        ["• Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado"],
-        ["• No se deja parihuelas en obra - no se presta parihuelas"]
-    ];
+        doc.autoTable({
+            startY: 10,
+            head: [tablePuestoEnObra],
+            theme: 'grid',
+            tableLineColor: [0, 0, 0], // Bordes negros
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+        const tablePuestoEnObra2 = [
+            { content: 'CONDICIONES DE ENTREGA ', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
 
-    doc.autoTable({
-        startY: table2Y,
-        body: tableInfo,
-        theme: 'plain',
-        tableLineColor: [255, 255, 255],
-        tableLineWidth: 0,
-        tableWidth: 'auto',
-        showHeader: 'never',
-        styles: { fontStyle: 'bold', textColor: textColorInvoice }
-    });
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnObra2],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+
+        const tableInfo = [
+            ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
+            ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
+            ["3. Puesto en obra: Incluye servicio de descarga a pie de camión."],
+            ["4. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
+            ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, (Se cargará un falso flete)."],
+            ["6. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
+            ["7. No se aceptan cambios ni devoluciones."],
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+
+
+        /////////////////
+        const tablePuestoEnObra3 = [
+            { content: 'CONDICIONES DE PAGO', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnObra3],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+        const tableInfo2 = [
+            ["1. Pago al contado: Se realizará el pago en nuestra cuenta recaudadora (Scotiabank, BCP, Continental, Interbank)."],
+            ["2. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
+            ["3. Pago por internet:"],
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo2,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        //////////
+        const tableInfo6 = [
+            ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
+            ["• Bancos: BCP, Interbank, BBVA, Scotiabank: Mencionar que pagará a la cuenta recaudadora de Unicon."],
+            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"],
+            ["• Cta BBVA 0011-0686-01-00012619 (Unión de Concreteras S.A)"],
+            ["• Cta Interbank 200 3000 3047 76 (Unión de Concreteras S.A)"],
+            ["• Cta Scotiabank 000 329 7977 (Unión de Concreteras S.A)"],
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo6,
+            theme: 'plain',
+            margin: { left: 20 },
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        ///////////////
+        const tableInfo7 = [
+            ["4. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
+            ["5. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
+            ["6. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo7,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        /////////////////////
+        const tablePuestoEnObra4 = [
+            { content: 'OTRAS CONDICIONES', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnObra4],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+        const tableInfo3 = [
+            ["1. Si tiene cambio de metrados, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
+            ["2. Los pedidos especiales se deben producir y se entregan de 30 a 45 días según OC enviada."],
+            ["3. Cotización considera entrega en camión de ….. (verificar accesos para el tipo de unidad)."],
+            ["4. Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado."],
+            ["5. No se deja parihuelas en obra - No se presta parihuelas."]
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo3,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        /////////////////////
+        const tablePuestoEnObra5 = [
+            { content: 'CONDICIONES ESPECIALES DE DESCARGA', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnObra5],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+        const tableInfo4 = [
+            ["1. Descarga mecánica: Si el cliente desea usar sus equipos mecánicos para la descarga (grúas, montacargas, otros), se deberá comunicar con el Ejecutivo de Ventas antes de iniciar las entregas para coordinar la entrega de parihuelas."],
+            ["2. Descarga mecánica: El cliente puede entregar un lote de parihuelas en nuestra planta ubicada en Jr. Plácido Jiménez # 790, Cercado de Lima. Nosotros nos ocupamos de acondicionar los productos."],
+            ["3. Descarga mecánica: El cliente puede tener un lote de parihuelas en obra y nosotros nos encargamos de hacer la descarga sobre las parihuelas."],
+            [""],
+            ["En espera de sus gratas noticias, lo saludamos."],
+            ["Cordialmente."],
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo4,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+    }
+    else {
+        const tablePuestoEnPlanta = [
+            { content: 'CONDICIONES GENERALES DE VENTA ', styles: { fillColor: colorInvoice, fontSize: 12 } },
+            { content: '', styles: { fillColor: colorInvoice } }
+        ];
+
+        doc.autoTable({
+            startY: 10,
+            head: [tablePuestoEnPlanta],
+            theme: 'grid',
+            tableLineColor: [0, 0, 0], // Bordes negros
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+        const tablePuestoEnPlanta2 = [
+            { content: 'CONDICIONES DE ENTREGA ', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnPlanta2],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+
+        const tableInfo = [
+            ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
+            ["2. Recojo en planta: Horario de atención de lunes a viernes de 8:00 AM a 5:00 PM, sábado hasta medio día."],
+            ["3. Recojo en planta: Horario de refrigerio de lunes a viernes de 12:00 PM a 1:00 PM"],
+            ["4. Recojo en planta: Chofer y Estibadores, deberán de contar con: seguro SCTR, EPPs básicos, y DNI"],
+            ["5. Recojo en planta: El Cliente deberá de contar con Guía de Remisión de Cliente y Transportista."],
+            ["6. NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES"],
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+
+
+        /////////////////
+        const tablePuestoEnPlanta3 = [
+            { content: 'CONDICIONES DE PAGO', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnPlanta3],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+        const tableInfo2 = [
+            ["1. Pago al contado: Se realizará el pago en nuestra cuenta recaudadora (Scotiabank, BCP, Continental, Interbank)."],
+            ["2. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
+            ["3. Pago por internet:"],
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo2,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        //////////
+        const tableInfo6 = [
+            ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
+            ["• Bancos: BCP, Interbank, BBVA, Scotiabank: Mencionar que pagará a la cuenta recaudadora de Unicon."],
+            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"],
+            ["• Cta BBVA 0011-0686-01-00012619 (Unión de Concreteras S.A)"],
+            ["• Cta Interbank 200 3000 3047 76 (Unión de Concreteras S.A)"],
+            ["• Cta Scotiabank 000 329 7977 (Unión de Concreteras S.A)"],
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo6,
+            theme: 'plain',
+            margin: { left: 20 },
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        ///////////////
+        const tableInfo7 = [
+            ["4. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
+            ["5. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
+            ["6. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+        ];
+
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfo7,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+        /////////////////////
+        const tablePuestoEnPlanta4 = [
+            { content: 'OTRAS CONDICIONES', styles: { fillColor: [255, 255, 255], fontSize: 11 } },
+            { content: '', styles: { fillColor: [255, 255, 255] } }
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY + 3,
+            head: [tablePuestoEnPlanta4],
+            theme: 'grid',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0.2, // Grosor de los bordes
+            styles: {
+                textColor: textColorInvoice,
+                cellPadding: 1,
+            }
+        });
+
+        const tableInfoOtrasCondiciones = [
+            ["1. Los pedidos especiales se deben producir y se entregan de 30 a 45 días según OC enviada."],
+            ["2. Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado"],
+            ["3. No se deja parihuelas en obra - No se presta parihuelas."],
+            [""],
+            ["En espera de sus gratas noticias, lo saludamos."],
+            ["Cordialmente."],
+        ];
+
+        doc.autoTable({
+            startY: doc.autoTable.previous.finalY,
+            body: tableInfoOtrasCondiciones,
+            theme: 'plain',
+            tableLineColor: [255, 255, 255],
+            tableLineWidth: 0,
+            tableWidth: 'auto',
+            showHeader: 'never',
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        });
+
+    }
 
     const tableSignature = [
         [invoice.employee?.toUpperCase()],
@@ -300,7 +639,7 @@ const generatePDF = (invoice) => {
     ]
 
     doc.autoTable({
-        startY: doc.autoTable.previous.finalY + 10,
+        startY: doc.autoTable.previous.finalY + 5,
         body: tableSignature,
         theme: 'plain',
         tableLineColor: [255, 255, 255],
@@ -310,9 +649,9 @@ const generatePDF = (invoice) => {
         showHeader: 'never',
         styles: {
             fontStyle: 'bold',
-            textColor: textColorInvoice,
+            textColor: [0, 0, 0],
             cellPadding: 0.5,
-            fontSize:12
+            fontSize: 11
         },
     });
 
