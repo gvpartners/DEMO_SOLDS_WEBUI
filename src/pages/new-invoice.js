@@ -142,6 +142,7 @@ const Page = () => {
     const [identificationInfo, setIdentificationInfo] = useState('');
     const [documentInfo, setDocumentInfo] = useState('');
     const [telephone, setTelephone] = useState('');
+    const [percentageOfDiscount, setPercentageOfDiscount] = useState('0');
     const [email, setEmail] = useState('');
     const [contact, setContact] = useState('');
     const [address, setAddress] = useState('');
@@ -152,6 +153,7 @@ const Page = () => {
     const [measuresOptions, setMeasuresOptions] = useState([]);
     const [deliveryType, setDeliveryType] = useState('');
     const [isParihuelaNeeded, setIsParihuelaNeeded] = useState('');
+    const [discountApplies, setDiscountApplies] = useState('No');
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [measureQuantities, setMeasureQuantities] = useState(Array(selectedMeasures.length).fill(1));
     const [truck9TN, setTruck9TN] = useState(0);
@@ -175,7 +177,9 @@ const Page = () => {
     const handleTelephoneChange = (event) => {
         setTelephone(event.target.value);
     };
-
+    const handlePercentageOfDiscountChange = (event) => {
+        setPercentageOfDiscount(event.target.value);
+    };
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
     };
@@ -215,6 +219,12 @@ const Page = () => {
     };
     const handleParihuelaChange = (event) => {
         setIsParihuelaNeeded(event.target.value);
+    };
+    const handleDiscountChange = (event) => {
+        if (event.target.value == 'No') {
+            setPercentageOfDiscount(0);
+        }
+        setDiscountApplies(event.target.value);
     };
 
     const isSaveDisabled = () => {
@@ -441,7 +451,7 @@ const Page = () => {
             else {
                 pu2 = measureInfo.Price
             }
-            const price = measureInfo ? pu2 : 0;
+            const price = measureInfo ? (pu2*((100-percentageOfDiscount)/100)) : 0;
             subtotal += measureQuantities[i] * price;
         }
         return subtotal;
@@ -490,7 +500,7 @@ const Page = () => {
             else {
                 pu = measureInfo.Price
             }
-            const priceUnit = measureInfo ? pu : 0;
+            const priceUnit = measureInfo ? (pu*((100-percentageOfDiscount)/100)) : 0;
             const totalPrice = measureQuantities[index] * priceUnit;
 
             return {
@@ -554,7 +564,9 @@ const Page = () => {
             igvRate: getIGV(getSubtotal()) || 0,
             totalInvoice: getTotal(getSubtotal(), getIGV(getSubtotal())) || 0,
             createdBy: sessionStorage.getItem('userEmail'),
-            userId: sessionStorage.getItem('identificator')
+            userId: sessionStorage.getItem('identificator'),
+            discountApplies,
+            percentageOfDiscount
         };
 
         if (action === "update") {
@@ -590,6 +602,8 @@ const Page = () => {
         setAddress(viewData.address);
         setReference(viewData.reference);
         setContact(viewData.contact);
+        setDiscountApplies(viewData.discountApplies);
+        setPercentageOfDiscount(viewData.percentageOfDiscount);
         setIsAutopopulated(true);
 
 
@@ -671,7 +685,7 @@ const Page = () => {
             <Box display={{ xs: 'block', md: 'flex' }}>
 
                 <Box flex={1} marginRight={5} marginLeft={{ md: -10 }}>
-                    <Typography variant="h4" style={{ fontSize: '28px' }}>{!InvoiceId ? "Nueva Cotización" : "Edición " + parsedInvoice?.invoiceCode}</Typography><br />
+                    <Typography variant="h4" style={{ fontSize: '28px' }}>{!InvoiceId ? "Nueva Cotización" : parsedInvoice?.invoiceCode}</Typography><br />
                     <label>Tipo de identificación<font color="red"> *</font></label>
                     <FormControl fullWidth>
                         <Select value={identificationType} onChange={handleIdentificationTypeChange}>
@@ -796,7 +810,7 @@ const Page = () => {
                         </FormControl>
                     )}
 
-                    {selectedCategory && selectedMeasures && (
+                    {selectedCategory && selectedMeasures && deliveryType === '' && (
                         <FormControl fullWidth>
                             <br></br>
                             <label>
@@ -815,7 +829,7 @@ const Page = () => {
                 </Box>
                 {selectedMeasures && deliveryType !== '' && (
                     <Box flex={0.6} marginRight={5} marginTop={{ xs: 1.8, md: 0 }}>
-                        {/* <FormControl fullWidth>
+                        <FormControl fullWidth>
                             <label>
                                 Tipo de entrega
                                 <font color="red"> *</font>
@@ -825,7 +839,7 @@ const Page = () => {
                                 <MenuItem value="PUESTO EN OBRA">PUESTO EN OBRA</MenuItem>
                             </Select>
                         </FormControl>
-                        <br></br><br></br> */}
+                        <br></br><br></br>
                         {deliveryType === "PUESTO EN PLANTA" && (
                             <FormControl fullWidth>
                                 <label>
@@ -1029,7 +1043,7 @@ const Page = () => {
                                     else {
                                         pu = measureInfo.Price
                                     }
-                                    const precioUnitario = measureInfo ? (pu) : 0;
+                                    const precioUnitario = measureInfo ? (pu*((100-percentageOfDiscount)/100)) : 0;
                                     const total = measureQuantities[index] * precioUnitario;
 
                                     return (
@@ -1080,6 +1094,31 @@ const Page = () => {
                             </Typography>
                         )}<br />
                         <br />
+                        <FormControl fullWidth>
+                            <label>
+                                ¿Aplica Descuento?
+                            </label>
+                            <Select value={discountApplies} onChange={handleDiscountChange}>
+                                <MenuItem value="Sí">Sí</MenuItem>
+                                <MenuItem value="No">No</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <br></br><br></br>
+                        {discountApplies == "Sí" && (
+                            <FormControl fullWidth>
+                                <TextField
+                                    label="Porcentaje de descuento (%)"
+                                    type="number"
+                                    value={percentageOfDiscount > 99 ? '0' : percentageOfDiscount}
+                                    onChange={handlePercentageOfDiscountChange}
+                                    fullWidth
+                                    inputProps={{
+                                        max: 99,
+                                        min: 0,
+                                    }}
+                                />
+                            </FormControl>
+                        )}
                         <Box style={{ float: 'right', marginTop: 80 }}>
                             <Button variant="outlined" color="primary" style={{ marginRight: 8 }} onClick={() => { router.push('/invoices') }}>
                                 Cerrar
