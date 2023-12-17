@@ -83,7 +83,7 @@ export const OverviewTraffic = (props) => {
 
   return (
     <Card sx={sx}>
-      <CardHeader title="% PRODUCTOS VENDIDOS" />
+      <CardHeader title="PRODUCTOS VENDIDOS DEL MES" />
       <CardContent>
         <Stack
           alignItems="flex-end"
