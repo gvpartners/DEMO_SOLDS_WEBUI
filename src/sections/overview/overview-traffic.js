@@ -85,48 +85,53 @@ export const OverviewTraffic = (props) => {
     <Card sx={sx}>
       <CardHeader title="% PRODUCTOS VENDIDOS" />
       <CardContent>
-        <Chart
-          height={300}
-          options={chartOptions}
-          series={chartSeries}
-          type="donut"
-          width="100%"
-        />
         <Stack
-          alignItems="center"
-          direction="row"
-          justifyContent="center"
-          spacing={2}
-          sx={{ mt: 2 }}
+          alignItems="flex-end"
+          justifyContent="flex-start"
+          sx={{ position: 'relative' }}
         >
-          {chartSeries.map((item, index) => {
-            const label = labels[index];
-
-            return (
-              <Box
+          <Stack
+            direction="column"
+            alignItems="flex-end"
+            style={{marginTop:'-15px'}}
+            sx={{ position: 'absolute', top: 0, right: 0 }}
+          >
+            {labels.map((label, index) => (
+              <Stack
                 key={label}
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center'
-                }}
+                direction="row"
+                alignItems="center"
+                sx={{ mb: 0.5 }}
               >
-                
-                <Typography
-                  sx={{ my: 1 }}
-                  variant="h7"
-                >
-                  {label}
+                <Box
+                  sx={{
+                    width: '10px',
+                    height: '10px',
+                    backgroundColor: colors[index],
+                    borderRadius: '50%',
+                    marginRight: '5px'
+                  }}
+                />
+                <Typography sx={{ fontSize: 12 }}>
+                  {label}: {chartSeries[index]}%
                 </Typography>
-                <Typography
-                  color="text.secondary"
-                  variant="subtitle2"
-                >
-                  {item}%
-                </Typography>
-              </Box>
-            );
-          })}
+              </Stack>
+            ))}
+          </Stack>
+          <Stack
+            alignItems="center"
+            justifyContent="center"
+            spacing={2}
+            sx={{ marginTop: '100px', marginRight: '100px' }}
+          >
+            <Chart
+              height={300}
+              options={chartOptions}
+              series={chartSeries}
+              type="donut"
+              width="100%"
+            />
+          </Stack>
         </Stack>
       </CardContent>
     </Card>

@@ -98,8 +98,8 @@ const Page = () => {
               <Grid xs={12} md={6} lg={4}>
                 <OverviewTraffic
                   chartSeries={data.percentageProducts}
-                  colors={['#bee9e8', '#62b6cb', '#1b4965', '#cae9ff', '#5fa8d3']}
-                  labels={['Bloques', 'Adoking', 'Grass M.', 'Enchape', 'Aisladores']}
+                  colors={['#bee9e8', '#62b6cb', '#1b4965', '#cae9ff', '#5fa8d3','#ccd5ae','#e9edc9']}
+                  labels={['BLOQUES', 'ADOQUINES', 'BLOCKGRASS', 'ENCHAPE', 'AISLADOR','KINGCONCRETO','TOPE AISLADOR']}
                   sx={{ height: '100%' }}
                 />
               </Grid>
