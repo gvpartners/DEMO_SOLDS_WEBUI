@@ -864,7 +864,7 @@ const Page = () => {
                         )}
                         {deliveryType === "PUESTO EN OBRA" && (
                             <Box >
-                                <label>Dirección</label>
+                                <label>Dirección<font color="red"> *</font></label>
                                 <FormControl fullWidth>
                                     <TextField
                                         multiline
