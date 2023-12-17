@@ -93,7 +93,7 @@ const Page = () => {
             console.error('Error fetching customers:', error);
         }
     };
-
+    
     const handlePageChange = (event, value) => {
         setPage(value);
     };
@@ -160,7 +160,7 @@ const Page = () => {
     const [truck9TN, setTruck9TN] = useState(0);
     const [truck20TN, setTruck20TN] = useState(0);
     const [truck32TN, setTruck32TN] = useState(0);
-
+    const [isCustomerInDataBase, setIsCustomerInDataBase] = useState(false);
     const handleIdentificationTypeChange = (event) => {
         setIdentificationType(event.target.value);
         setIdentificationInfo('');
@@ -171,8 +171,30 @@ const Page = () => {
         setIdentificationInfo(event.target.value);
     };
 
+    const getIsCustomerInDb = async (customerNumber) =>{
+        try {
+            
+            const response = await customerService.getIsCustomerInDb(customerNumber);
+            if (response.status == 200) {
+                const fetchedData = await response.data;
+                setIsCustomerInDataBase(fetchedData);
+            }
+            else{
+                setIsCustomerInDataBase(false);
+            }
+        } catch (error) {
+            console.error('Error fetching customers:', error);
+        }
+    }
+
     const handleDocumentInfoChange = (event) => {
         setDocumentInfo(event.target.value);
+        if(event.target.value.length > 7){
+            getIsCustomerInDb(event.target.value);            
+        }
+        else{
+            setIsCustomerInDataBase(false);
+        }
     };
 
     const handleTelephoneChange = (event) => {
@@ -741,7 +763,7 @@ const Page = () => {
                                 endAdornment: (
                                     <InputAdornment position="end" >
                                         <IconButton edge="start" onClick={() => { setEditModalOpen(true) }} disabled={!identificationType}>
-                                            <Visibility />
+                                            <Visibility style={{ color: isCustomerInDataBase ? 'green' : '' }}/>
                                         </IconButton>
                                         <IconButton edge="end" onClick={getSunatValue} disabled={!identificationType}>
                                             {isLoading ? (

@@ -17,13 +17,17 @@ const getCustomerById = (id) => {
 };
 
 const createCustomer = (selectedCustomer) => {
-    return axios.post(`/api/Customer/CreateCustomer`,selectedCustomer);
-  };
+  return axios.post(`/api/Customer/CreateCustomer`, selectedCustomer);
+};
 
+const getIsCustomerInDb = (customerNumber) => {
+  return axios.get(`/api/Customer/GetIsCustomerInDb/${customerNumber}`);
+}
 export default {
   getCustomers,
   editCustomer,
   removeCustomer,
   getCustomerById,
-  createCustomer
+  createCustomer,
+  getIsCustomerInDb
 };

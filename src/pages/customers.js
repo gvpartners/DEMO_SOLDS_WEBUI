@@ -352,14 +352,6 @@ const Page = () => {
                     <TableRow>
                       <TableCell>
                         <TextField
-                          label="Cliente"
-                          value={filterName}
-                          onChange={(event) => setFilterName(event.target.value)}
-                          sx={{ width: '240px' }}
-                        />
-                      </TableCell>
-                      <TableCell>
-                        <TextField
                           label="Tipo de Identificación"
                           select
                           value={filterIdentificationType}
@@ -379,7 +371,16 @@ const Page = () => {
                           onChange={(event) => setFilterIdentificationInfo(event.target.value)}
                         />
                       </TableCell>
-                      <TableCell>Acciones</TableCell>
+                      <TableCell>
+                        <TextField
+                          label="Cliente"
+                          value={filterName}
+                          onChange={(event) => setFilterName(event.target.value)}
+                          sx={{ width: '240px' }}
+                        />
+                      </TableCell>
+                      <TableCell sx={{ width: '240px' }} style={{ fontSize: '14px' }}>Dirección</TableCell>
+                      <TableCell style={{ fontSize: '14px' }}>Acciones</TableCell>
                     </TableRow>
                   </TableHead>
                   {data.length === 0 ? (
@@ -388,9 +389,10 @@ const Page = () => {
                     <TableBody>
                       {data.map((item) => (
                         <TableRow key={item.id}>
-                          <TableCell>{item.customerName}</TableCell>
                           <TableCell>{item.identificationType}</TableCell>
                           <TableCell>{item.identificationInfo}</TableCell>
+                          <TableCell>{item.customerName}</TableCell>
+                          <TableCell>{item.customerAddress}</TableCell>
                           <TableCell>
                             <IconButton
                               aria-label="Acciones"
@@ -440,6 +442,7 @@ const Page = () => {
         <DialogContent>
           <TextField
             label="Tipo de Identificación"
+            required
             select
             fullWidth
             value={selectedCustomer ? selectedCustomer.identificationType : ''}
@@ -452,6 +455,7 @@ const Page = () => {
           <TextField
             disabled={!selectedCustomer?.identificationType}
             label="Número de Identificación"
+            required
             value={selectedCustomer ? selectedCustomer.identificationInfo : ''}
             type="number"
             onChange={(event) => handleFieldChange('identificationInfo', event.target.value)}
@@ -473,8 +477,17 @@ const Page = () => {
           />
           <TextField
             label="Nombre del Cliente"
+            required
             value={selectedCustomer ? selectedCustomer.customerName : editedName}
             onChange={(event) => handleFieldChange('customerName', event.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            multiline
+            label="Dirección"
+            value={selectedCustomer ? selectedCustomer.customerAddress : ''}
+            onChange={(event) => handleFieldChange('customerAddress', event.target.value)}
             fullWidth
             margin="normal"
           />

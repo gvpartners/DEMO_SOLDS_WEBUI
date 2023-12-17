@@ -32,15 +32,6 @@ export const items = [
     )
   },
   {
-    title: 'Usuarios',
-    path: '/users',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UsersIcon />
-      </SvgIcon>
-    )
-  },
-  {
     title: 'Clientes',
     path: '/customers',
     icon: (
@@ -49,6 +40,15 @@ export const items = [
       </SvgIcon>
     )
   },
+  {
+    title: 'Usuarios',
+    path: '/users',
+    icon: (
+      <SvgIcon fontSize="small">
+        <UsersIcon />
+      </SvgIcon>
+    )
+  }  
   // {
   //   title: 'Configuración',
   //   path: '/settings',
