@@ -152,7 +152,8 @@ const Page = () => {
     const [selectedMeasures, setSelectedMeasures] = useState([]);
     const [measuresOptions, setMeasuresOptions] = useState([]);
     const [deliveryType, setDeliveryType] = useState('');
-    const [isParihuelaNeeded, setIsParihuelaNeeded] = useState('');
+    const [isParihuelaNeeded, setIsParihuelaNeeded] = useState('No');
+    const [isOtherDistrict, setIsOtherDistrict] = useState('No');
     const [discountApplies, setDiscountApplies] = useState('No');
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [measureQuantities, setMeasureQuantities] = useState(Array(selectedMeasures.length).fill(1));
@@ -220,6 +221,19 @@ const Page = () => {
     const handleParihuelaChange = (event) => {
         setIsParihuelaNeeded(event.target.value);
     };
+    const handleOtherDistrictChange = (event) => {
+        setIsOtherDistrict(event.target.value);
+        if (event.target.value == "No") {
+            setManualtotalPriceFlete(0);
+            setSelectedDistrict('');
+        }
+        else{
+            setSelectedDistrict('');
+            setTruck9TN(0);
+            setTruck20TN(0);
+            setTruck32TN(0);
+        }
+    };
     const handleDiscountChange = (event) => {
         if (event.target.value == 'No') {
             setPercentageOfDiscount(0);
@@ -269,6 +283,12 @@ const Page = () => {
 
     const handleDistrictChange = (event) => {
         setSelectedDistrict(event.target.value);
+        if (event.target.value == '' || event.target.value == null) {
+            setIsOtherDistrict("No")
+            setTruck9TN(0);
+            setTruck20TN(0);
+            setTruck32TN(0);
+        }
     };
 
     const handleQuantityChange = (event, index) => {
@@ -425,6 +445,9 @@ const Page = () => {
                 totalCost += (truck9TN * district["09_TN"]) + (truck20TN * district["20_TN"]) + (truck32TN * district["32_TN"]);
             }
         }
+        if (isOtherDistrict != "No" && manualTotalPriceFlete > 0) {
+            totalCost = manualTotalPriceFlete;
+        }
 
         return totalCost;
     };
@@ -451,7 +474,7 @@ const Page = () => {
             else {
                 pu2 = measureInfo.Price
             }
-            const price = measureInfo ? (pu2*((100-percentageOfDiscount)/100)) : 0;
+            const price = measureInfo ? (pu2 * ((100 - percentageOfDiscount) / 100)) : 0;
             subtotal += measureQuantities[i] * price;
         }
         return subtotal;
@@ -500,7 +523,7 @@ const Page = () => {
             else {
                 pu = measureInfo.Price
             }
-            const priceUnit = measureInfo ? (pu*((100-percentageOfDiscount)/100)) : 0;
+            const priceUnit = measureInfo ? (pu * ((100 - percentageOfDiscount) / 100)) : 0;
             const totalPrice = measureQuantities[index] * priceUnit;
 
             return {
@@ -544,7 +567,7 @@ const Page = () => {
             selectedMeasures,
             measureQuantities,
             deliveryType,
-            selectedDistrict,
+            selectedDistrict: selectedDistrict.toUpperCase(),
             truck9TN,
             truck20TN,
             truck32TN,
@@ -566,7 +589,9 @@ const Page = () => {
             createdBy: sessionStorage.getItem('userEmail'),
             userId: sessionStorage.getItem('identificator'),
             discountApplies,
-            percentageOfDiscount
+            percentageOfDiscount,
+            isOtherDistrict,
+            manualTotalPriceFlete
         };
 
         if (action === "update") {
@@ -604,6 +629,8 @@ const Page = () => {
         setContact(viewData.contact);
         setDiscountApplies(viewData.discountApplies);
         setPercentageOfDiscount(viewData.percentageOfDiscount);
+        setIsOtherDistrict(viewData.isOtherDistrict);
+        setManualtotalPriceFlete(viewData.manualTotalPriceFlete);
         setIsAutopopulated(true);
 
 
@@ -615,9 +642,13 @@ const Page = () => {
     const handlecostParihuelaChange = (event) => {
         setCostParihuela(event.target.value);
     };
+    const handleManualtotalPriceFleteChange = (event) => {
+        setManualtotalPriceFlete(event.target.value);
+    };
     const [isAutopopulated, setIsAutopopulated] = useState(false);
     const [cantParihuela, setCantParihuela] = useState(0);
     const [costParihuela, setCostParihuela] = useState(20);
+    const [manualTotalPriceFlete, setManualtotalPriceFlete] = useState(0);
 
     useEffect(() => {
         if (!isAutopopulated) {
@@ -636,7 +667,7 @@ const Page = () => {
     const prorrateoFlete = () => {
         let aux = 0;
         aux = (getFleteCost() / 1.18) / getPiecesTotal();
-        if(selectedCategory == "BLOQUES" && aux < 0.4){
+        if (selectedCategory == "BLOQUES" && aux < 0.4) {
             aux = 0.4;
         }
         return aux.toFixed(2);
@@ -903,12 +934,20 @@ const Page = () => {
                                 {deliveryType === "PUESTO EN OBRA" && selectedDistrict && (
                                     <table style={tableStyle}>
                                         <thead>
-                                            <tr>
-                                                <th style={thTdStyle}>Camion</th>
-                                                <th style={thTdStyle}>N° de carros</th>
-                                                <th style={thTdStyle}>Cantidad</th>
-                                                <th style={thTdStyle}>Costo</th>
-                                            </tr>
+                                            {fletesJson.map((district) => {
+                                                if (district.District === selectedDistrict) {
+                                                    return (
+                                                        <tr>
+                                                            <th style={thTdStyle}>Camion</th>
+                                                            <th style={thTdStyle}>N° de carros</th>
+                                                            <th style={thTdStyle}>Cantidad</th>
+                                                            <th style={thTdStyle}>Costo</th>
+                                                        </tr>
+                                                    );
+                                                }
+                                                return null;
+                                            })}
+
                                         </thead>
                                         <tbody>
                                             {fletesJson.map((district) => {
@@ -962,6 +1001,48 @@ const Page = () => {
                                                 }
                                                 return null;
                                             })}
+                                        </tbody>
+                                    </table>
+                                )}
+                                <FormControl fullWidth>
+                                    <label>
+                                        ¿Otro Distrito?<font color="red"> *</font>
+                                    </label>
+                                    <Select value={isOtherDistrict} onChange={handleOtherDistrictChange}>
+                                        <MenuItem value="Sí">Sí</MenuItem>
+                                        <MenuItem value="No">No</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <br></br><br></br>
+                                {isOtherDistrict == "Sí" && (
+                                    <table style={tableStyle}>
+                                        <thead>
+                                            <tr>
+                                                <th style={thTdStyle}>Distrito</th>
+                                                <th style={thTdStyle}>Precio flete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style={hoverStyle}>
+                                                <td style={thTdStyle}>
+                                                    <TextField
+                                                        error={selectedDistrict === null || selectedDistrict === ''}
+                                                        value={selectedDistrict}
+                                                        onChange={handleDistrictChange}
+                                                        fullWidth
+                                                    />
+                                                </td>
+                                                <td style={thTdStyle}>
+                                                    <TextField
+                                                        error={manualTotalPriceFlete === null || manualTotalPriceFlete === '' || manualTotalPriceFlete < 0}
+                                                        label="S/."
+                                                        type='number'
+                                                        value={manualTotalPriceFlete}
+                                                        onChange={handleManualtotalPriceFleteChange}
+                                                        fullWidth
+                                                    />
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 )}
@@ -1046,7 +1127,7 @@ const Page = () => {
                                     else {
                                         pu = measureInfo.Price
                                     }
-                                    const precioUnitario = measureInfo ? (pu*((100-percentageOfDiscount)/100)) : 0;
+                                    const precioUnitario = measureInfo ? (pu * ((100 - percentageOfDiscount) / 100)) : 0;
                                     const total = measureQuantities[index] * precioUnitario;
 
                                     return (
