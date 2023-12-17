@@ -636,6 +636,9 @@ const Page = () => {
     const prorrateoFlete = () => {
         let aux = 0;
         aux = (getFleteCost() / 1.18) / getPiecesTotal();
+        if(selectedCategory == "BLOQUES" && aux < 0.4){
+            aux = 0.4;
+        }
         return aux.toFixed(2);
     }
     const resetPuestoEnObra = () => {
