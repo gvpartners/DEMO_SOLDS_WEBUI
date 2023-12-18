@@ -109,7 +109,7 @@ const generatePDF = (invoice) => {
     ];
     const tableData11 = [
         [`Nombre:`, invoice.identificationInfo],
-        [`Dirección:`, 'NO PROPORCIONADO'],
+        [`Dirección:`, invoice.customerAddress || 'NO PROPORCIONADO'],
         [`${invoice.identificationType}:`, invoice.documentInfo],
         [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
         [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
@@ -142,7 +142,7 @@ const generatePDF = (invoice) => {
 
     // Configurar la tabla 2
     doc.autoTable({
-        startY: table2Y + 85,
+        startY: doc.autoTable.previous.finalY + 5,
         head: [tableHeader12],
         body: tableData12,
         theme: 'grid',
@@ -630,6 +630,8 @@ const generatePDF = (invoice) => {
         });
 
     }
+
+
 
     const tableSignature = [
         [invoice.employee?.toUpperCase()],

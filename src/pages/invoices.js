@@ -61,6 +61,7 @@ import {
   TextareaAutosize
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
+import customerService from 'src/services/customerService';
 
 const Page = () => {
   const [orderBy, setOrderBy] = useState('createdOn');
@@ -264,23 +265,53 @@ const Page = () => {
     setPage(0);
   }, [setRowsPerPage, setPage]);
 
-  const [employeePhone, setEmployeePhone] = useState('')
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [employeePhone, setEmployeePhone] = useState('');
+
+  const getCustomerAddress = async (documentInfo) => {
+    try {
+      const response = await customerService.getCustomerAddress(documentInfo);
+
+      if (response.status === 200) {
+        const fetchedData = response.data;
+        setCustomerAddress(fetchedData);
+      }
+    } catch (err) {
+      console.error('Error fetching data:', err);
+    }
+  };
 
   const handleMenuClick = (event, invoice) => {
     setSelectedInvoice(invoice);
     setSelectedInvoiceId(invoice.id);
     setSelectedStatusNumber(invoice.statusOrder);
     setSelectedUserId(invoice.userId);
-    const matchingEmployee = employeeOptions?.find(x => x.email === invoice.createdBy);
+
+    getCustomerAddress(invoice.documentInfo);
+
+    setAnchorEl(event.currentTarget);
+  };
+
+  useEffect(() => {
+    // This code will run when customerAddress is updated
+    setSelectedInvoice(prevInvoice => ({
+      ...prevInvoice,
+      customerAddress: customerAddress
+    }));
+  }, [customerAddress]);
+
+  useEffect(() => {
+    const matchingEmployee = employeeOptions?.find(x => x.email === selectedInvoice.createdBy);
+
     if (matchingEmployee && matchingEmployee.phone) {
       setEmployeePhone(matchingEmployee.phone);
       setSelectedInvoice(prevInvoice => ({
         ...prevInvoice,
-        employeePhone: matchingEmployee.phone,
+        employeePhone: matchingEmployee.phone
       }));
     }
-    setAnchorEl(event.currentTarget);
-  };
+  }, [selectedInvoice?.createdBy]);
+
 
   const handleMenuClose = () => {
     setAnchorEl(null);
