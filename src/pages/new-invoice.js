@@ -701,21 +701,15 @@ const Page = () => {
             setTruck9TN(0);
             setTruck20TN(0);
             setTruck32TN(0);
-            setIsParihuelaNeeded('');
-            setCantParihuela(0);
+            // setIsParihuelaNeeded('');
+            // setCantParihuela(0);
         }
     }
     const [selectedOption, setSelectedOption] = useState('');
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
-    const handleAutocompleteCustomer = (value) => {
-        console.log(value);
-
-        setIdentificationInfo(value?.value?.customerName || "");
-        setDocumentInfo(value?.value?.identificationInfo || "");
-
-    }
+    
     const [isEditModalOpen, setEditModalOpen] = useState(false);
 
     useEffect(() => {

@@ -32,6 +32,15 @@ const generatePDF = (invoice) => {
         year: 'numeric'
     });
 
+    //Elegir el mayor carro
+    var truck;
+    if (invoice.truck9TN > invoice.truck20TN && invoice.truck9TN > invoice.truck32TN) {
+        truck = '9 TN';
+    } else if (invoice.truck20TN > invoice.truck9TN && invoice.truck20TN > invoice.truck32TN) {
+        truck = "20 TN";
+    } else {
+        truck = '32 TN';
+    }
     // Capitalizar la primera letra de cada cadena
     const formattedDateCapitalized = capitalizeFirstLetter(formattedDate);
     const validUntilFormattedCapitalized = capitalizeFirstLetter(validUntilFormatted);
@@ -77,7 +86,7 @@ const generatePDF = (invoice) => {
         tableLineWidth: 0,
         margin: { left: table1X },
         tableWidth: 'auto',
-        showHeader: 'never',
+        showHead: 'never',
         styles: {
             fontStyle: 'bold',
             textColor: textColorInvoice,
@@ -95,7 +104,7 @@ const generatePDF = (invoice) => {
         tableLineWidth: 0,
         margin: { left: table1X },
         tableWidth: 'auto',
-        showHeader: 'never',
+        showHead: 'never',
         tableLineColor: [0, 0, 0], // Bordes negros
         tableLineWidth: 0.2, // Grosor de los bordes
         styles: {
@@ -111,7 +120,7 @@ const generatePDF = (invoice) => {
     ];
     const tableData11 = [
         [`Nombre:`, invoice.identificationInfo],
-        [`Dirección:`, invoice.customerAddress || 'NO PROPORCIONADO'],
+        [`Dirección:`, invoice.customerAddress?.toUpperCase() || 'NO PROPORCIONADO'],
         [`${invoice.identificationType}:`, invoice.documentInfo],
         [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
         [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
@@ -128,7 +137,10 @@ const generatePDF = (invoice) => {
         styles: {
             textColor: textColorInvoice,
             cellPadding: 1,
-        }
+        },
+        columnStyles: {
+            0: { cellWidth: 40 }, // Establecer el ancho de la primera columna a 30px
+        },
     });
 
     const tableHeader12 = [
@@ -138,7 +150,7 @@ const generatePDF = (invoice) => {
     const tableData12 = [
         [`Tipo de entrega:`, invoice.deliveryType],
         [`Distrito:`, invoice.selectedDistrict],
-        [`Dirección:`, invoice.address],
+        [`Dirección:`, invoice.address?.toUpperCase()],
         [`Referencia:`, invoice.reference || "NO PROPORCIONADO"]
     ];
 
@@ -153,7 +165,10 @@ const generatePDF = (invoice) => {
         styles: {
             textColor: textColorInvoice,
             cellPadding: 1,
-        }
+        },
+        columnStyles: {
+            0: { cellWidth: 50 }, // Establecer el ancho de la primera columna a 30px
+        },
     });
     const details = [
         [`En atención a su requerimiento, tengo el agrado de enviarle la siguiente propuesta:`]
@@ -161,6 +176,7 @@ const generatePDF = (invoice) => {
 
     doc.autoTable({
         startY: logoY + doc.autoTable.previous.finalY - 20,
+        head: [],
         body: details,
         theme: 'plain',
         tableLineColor: [255, 255, 255],
@@ -307,7 +323,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
 
@@ -344,7 +360,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         //////////
@@ -366,7 +382,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         ///////////////
@@ -384,7 +400,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         /////////////////////
@@ -408,11 +424,10 @@ const generatePDF = (invoice) => {
         const tableInfo3 = [
             ["1. Si tiene cambio de metrados, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
             ["2. Los pedidos especiales se deben producir y se entregan de 30 a 45 días según OC enviada."],
-            ["3. Cotización considera entrega en camión de ….. (verificar accesos para el tipo de unidad)."],
+            [`3. Cotización considera entrega en camión de ${truck} (verificar accesos para el tipo de unidad).`],
             ["4. Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado."],
             ["5. No se deja parihuelas en obra - No se presta parihuelas."]
         ];
-
 
         doc.autoTable({
             startY: doc.autoTable.previous.finalY,
@@ -421,7 +436,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         /////////////////////
@@ -458,7 +473,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
     }
@@ -513,7 +528,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
 
@@ -550,7 +565,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         //////////
@@ -572,7 +587,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         ///////////////
@@ -590,7 +605,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         /////////////////////
@@ -627,7 +642,7 @@ const generatePDF = (invoice) => {
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
             tableWidth: 'auto',
-            showHeader: 'never',
+            showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
 
@@ -650,7 +665,7 @@ const generatePDF = (invoice) => {
         tableLineWidth: 0,
         margin: { left: 15 },
         tableWidth: 'auto',
-        showHeader: 'never',
+        showHead: 'never',
         styles: {
             fontStyle: 'bold',
             textColor: [0, 0, 0],
