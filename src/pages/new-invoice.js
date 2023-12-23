@@ -1248,6 +1248,14 @@ const Page = () => {
                             <Table>
                                 <TableHead>
                                     <TableRow>
+                                    <TableCell>
+                                            <TextField
+                                                sx={{ width: '240px' }}
+                                                label="Número de Identificación"
+                                                value={filterIdentificationInfo}
+                                                onChange={(event) => setFilterIdentificationInfo(event.target.value)}
+                                            />
+                                        </TableCell>
                                         <TableCell>
                                             <TextField
                                                 label="Nombre del Cliente"
@@ -1256,21 +1264,13 @@ const Page = () => {
                                                 onChange={(event) => setFilterName(event.target.value)}
                                             />
                                         </TableCell>
-                                        <TableCell>
-                                            <TextField
-                                                sx={{ width: '240px' }}
-                                                label="Número de Identificación"
-                                                value={filterIdentificationInfo}
-                                                onChange={(event) => setFilterIdentificationInfo(event.target.value)}
-                                            />
-                                        </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody style={{ cursor: 'pointer' }}>
                                     {customers?.map((customer) => (
                                         <TableRow key={customer.id} onClick={() => handleRowClick(customer)}>
-                                            <TableCell>{customer.customerName}</TableCell>
                                             <TableCell>{customer.identificationInfo}</TableCell>
+                                            <TableCell>{customer.customerName}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
