@@ -74,7 +74,7 @@ const Page = () => {
   const [invoices, setInvoices] = useState([]);
   const [totalInvoices, setTotalInvoices] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [statusOptions, setstatusOptions] = useState(['En progreso', 'Aprobada', 'Rechazada']);
+  const [statusOptions, setstatusOptions] = useState(['En progreso', 'Cerrada', 'Rechazada']);
   const [categoryOptions, setCategoryOptions] = useState([])
   const [UMOptions, setUMOptions] = useState(['MT2', 'PZA', 'MLL'])
   const [deliveryOptions, setdeliveryOptions] = useState(['Puesto en planta', 'Puesto en obra']);
@@ -391,8 +391,8 @@ const Page = () => {
           setAnchorEl(null);
           if (orderStatus === 2) {
             Swal.fire({
-              title: 'Cotización aprobada',
-              text: 'Se aprobó satisfactoriamente la cotización',
+              title: 'Cotización cerrada',
+              text: 'Se cerró satisfactoriamente la cotización',
               icon: 'success',
               confirmButtonText: 'OK',
             });
