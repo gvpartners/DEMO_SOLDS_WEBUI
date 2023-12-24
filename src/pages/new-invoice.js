@@ -265,7 +265,7 @@ const Page = () => {
 
     const isSaveDisabled = () => {
         const validateLengthQuantities = selectedMeasures.length === measureQuantities.length;
-        const isQuantityValid = measureQuantities.every(quantity => quantity > 0);
+        const isQuantityValid = measureQuantities.every(quantity => quantity >= 0);
 
         const isPuestoEnObra =
             deliveryType === "PUESTO EN OBRA" &&
@@ -1151,7 +1151,7 @@ const Page = () => {
                                             <td style={thTdStyle}>{measure}</td>
                                             <td style={thTdStyle}>
                                                 <TextField
-                                                    error={measureQuantities[index] === null || measureQuantities[index] === '' || isNaN(measureQuantities[index]) || measureQuantities[index] <= 0}
+                                                    error={measureQuantities[index] === null || measureQuantities[index] === '' || isNaN(measureQuantities[index]) || measureQuantities[index] < 0}
                                                     type="number"
                                                     fullWidth
                                                     value={measureQuantities[index]}
