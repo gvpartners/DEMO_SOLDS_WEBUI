@@ -93,7 +93,7 @@ const Page = () => {
             console.error('Error fetching customers:', error);
         }
     };
-    
+
     const handlePageChange = (event, value) => {
         setPage(value);
     };
@@ -171,15 +171,15 @@ const Page = () => {
         setIdentificationInfo(event.target.value);
     };
 
-    const getIsCustomerInDb = async (customerNumber) =>{
+    const getIsCustomerInDb = async (customerNumber) => {
         try {
-            
+
             const response = await customerService.getIsCustomerInDb(customerNumber);
             if (response.status == 200) {
                 const fetchedData = await response.data;
                 setIsCustomerInDataBase(fetchedData);
             }
-            else{
+            else {
                 setIsCustomerInDataBase(false);
             }
         } catch (error) {
@@ -189,10 +189,10 @@ const Page = () => {
 
     const handleDocumentInfoChange = (event) => {
         setDocumentInfo(event.target.value);
-        if(event.target.value.length > 7){
-            getIsCustomerInDb(event.target.value);            
+        if (event.target.value.length > 7) {
+            getIsCustomerInDb(event.target.value);
         }
-        else{
+        else {
             setIsCustomerInDataBase(false);
         }
     };
@@ -249,7 +249,7 @@ const Page = () => {
             setManualtotalPriceFlete(0);
             setSelectedDistrict('');
         }
-        else{
+        else {
             setSelectedDistrict('');
             setTruck9TN(0);
             setTruck20TN(0);
@@ -688,12 +688,23 @@ const Page = () => {
     }
     const prorrateoFlete = () => {
         let aux = 0;
-        aux = (getFleteCost() / 1.18) / getPiecesTotal();
-        if (selectedCategory == "BLOQUES" && aux < 0.4) {
+
+        // Obtener el valor del flete y el total de piezas
+        const fleteCost = getFleteCost();
+        const piecesTotal = getPiecesTotal();
+
+        // Verificar si el denominador es diferente de cero antes de realizar la división
+        if (piecesTotal !== 0) {
+            aux = (fleteCost / 1.18) / piecesTotal;
+        }
+
+        // Verificar la categoría y el límite inferior
+        if (selectedCategory === "BLOQUES" && aux < 0.4 && piecesTotal > 0) {
             aux = 0.4;
         }
+
         return aux.toFixed(2);
-    }
+    };
     const resetPuestoEnObra = () => {
         if (deliveryType === "PUESTO EN PLANTA") {
             setAddress('');
@@ -709,7 +720,7 @@ const Page = () => {
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
-    
+
     const [isEditModalOpen, setEditModalOpen] = useState(false);
 
     useEffect(() => {
@@ -757,7 +768,7 @@ const Page = () => {
                                 endAdornment: (
                                     <InputAdornment position="end" >
                                         <IconButton edge="start" onClick={() => { setEditModalOpen(true) }} disabled={!identificationType}>
-                                            <Visibility style={{ color: isCustomerInDataBase ? 'green' : '' }}/>
+                                            <Visibility style={{ color: isCustomerInDataBase ? 'green' : '' }} />
                                         </IconButton>
                                         <IconButton edge="end" onClick={getSunatValue} disabled={!identificationType}>
                                             {isLoading ? (
@@ -1248,7 +1259,7 @@ const Page = () => {
                             <Table>
                                 <TableHead>
                                     <TableRow>
-                                    <TableCell>
+                                        <TableCell>
                                             <TextField
                                                 sx={{ width: '240px' }}
                                                 label="Número de Identificación"
