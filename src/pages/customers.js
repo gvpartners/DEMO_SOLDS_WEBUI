@@ -437,7 +437,7 @@ const Page = () => {
 
       <Dialog open={isEditModalOpen || isNewCustomerModalOpen} onClose={handleCloseEditModal} maxWidth="sm" fullWidth>
         <DialogTitle style={{ textAlign: 'center' }}>
-          {isEditModalOpen ? 'Editar Cliente' : 'Añadir Nuevo Cliente'}
+          {isEditModalOpen ? 'Editar Cliente' : 'Nuevo Cliente'}
         </DialogTitle>
         <DialogContent>
           <TextField
