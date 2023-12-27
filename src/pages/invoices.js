@@ -604,7 +604,7 @@ const Page = () => {
               <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
                 <div hidden={selectedStatusNumber !== 1}>
                   <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
-                    <CheckCircle style={{ marginRight: '8px' }} /> Aprobar
+                    <CheckCircle style={{ marginRight: '8px' }} /> Cerrar
                   </MenuItem>
                   <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
                     <Close style={{ marginRight: '8px' }} /> Rechazar
