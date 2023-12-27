@@ -688,7 +688,7 @@ const Page = () => {
                     }
                     variant="outlined"
                   >
-                    Añadir nueva cotización
+                    Nueva cotización
                   </Button>
                 </Stack>
               </Grid>
