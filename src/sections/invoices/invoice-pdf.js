@@ -365,10 +365,7 @@ const generatePDF = (invoice) => {
         const tableInfo6 = [
             ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
             ["• Bancos: BCP, Interbank, BBVA, Scotiabank: Mencionar que pagará a la cuenta recaudadora de Unicon."],
-            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"],
-            ["• Cta BBVA 0011-0686-01-00012619 (Unión de Concreteras S.A)"],
-            ["• Cta Interbank 200 3000 3047 76 (Unión de Concreteras S.A)"],
-            ["• Cta Scotiabank 000 329 7977 (Unión de Concreteras S.A)"],
+            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
         ];
 
 
@@ -570,10 +567,7 @@ const generatePDF = (invoice) => {
         const tableInfo6 = [
             ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
             ["• Bancos: BCP, Interbank, BBVA, Scotiabank: Mencionar que pagará a la cuenta recaudadora de Unicon."],
-            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"],
-            ["• Cta BBVA 0011-0686-01-00012619 (Unión de Concreteras S.A)"],
-            ["• Cta Interbank 200 3000 3047 76 (Unión de Concreteras S.A)"],
-            ["• Cta Scotiabank 000 329 7977 (Unión de Concreteras S.A)"],
+            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
         ];
 
 
