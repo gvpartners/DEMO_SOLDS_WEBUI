@@ -280,15 +280,24 @@ const Page = () => {
       console.error('Error fetching data:', err);
     }
   };
-
+  const getEmployeePhone = (invoice)=>{
+    const matchingEmployee = employeeOptions?.find(x => x.email === invoice.createdBy);
+    
+    if (matchingEmployee && matchingEmployee.phone) {
+      setEmployeePhone(matchingEmployee.phone);
+      setSelectedInvoice(prevInvoice => ({
+        ...prevInvoice,
+        employeePhone: matchingEmployee.phone
+      }));
+    }
+  }
   const handleMenuClick = (event, invoice) => {
     setSelectedInvoice(invoice);
     setSelectedInvoiceId(invoice.id);
     setSelectedStatusNumber(invoice.statusOrder);
     setSelectedUserId(invoice.userId);
-
     getCustomerAddress(invoice.documentInfo);
-
+    getEmployeePhone(invoice);
     setAnchorEl(event.currentTarget);
   };
 
@@ -300,17 +309,7 @@ const Page = () => {
     }));
   }, [customerAddress]);
 
-  useEffect(() => {
-    const matchingEmployee = employeeOptions?.find(x => x.email === selectedInvoice.createdBy);
-
-    if (matchingEmployee && matchingEmployee.phone) {
-      setEmployeePhone(matchingEmployee.phone);
-      setSelectedInvoice(prevInvoice => ({
-        ...prevInvoice,
-        employeePhone: matchingEmployee.phone
-      }));
-    }
-  }, [selectedInvoice?.createdBy]);
+  
 
 
   const handleMenuClose = () => {
