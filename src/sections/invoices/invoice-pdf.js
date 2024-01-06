@@ -345,9 +345,8 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfo2 = [
-            ["1. Pago al contado: Se realizará el pago en nuestra cuenta recaudadora (Scotiabank, BCP, Continental, Interbank)."],
-            ["2. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
-            ["3. Pago por internet:"],
+            ["1. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
+            ["2. Pago por internet:"],
         ];
 
 
@@ -364,7 +363,6 @@ const generatePDF = (invoice) => {
         //////////
         const tableInfo6 = [
             ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
-            ["• Bancos: BCP, Interbank, BBVA, Scotiabank: Mencionar que pagará a la cuenta recaudadora de Unicon."],
             ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
         ];
 
@@ -382,9 +380,9 @@ const generatePDF = (invoice) => {
         });
         ///////////////
         const tableInfo7 = [
-            ["4. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
-            ["5. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
-            ["6. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["3. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
+            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
+            ["5. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
@@ -547,9 +545,8 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfo2 = [
-            ["1. Pago al contado: Se realizará el pago en nuestra cuenta recaudadora (Scotiabank, BCP, Continental, Interbank)."],
-            ["2. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
-            ["3. Pago por internet:"],
+            ["1. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
+            ["2. Pago por internet:"],
         ];
 
 
@@ -566,7 +563,6 @@ const generatePDF = (invoice) => {
         //////////
         const tableInfo6 = [
             ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
-            ["• Bancos: BCP, Interbank, BBVA, Scotiabank: Mencionar que pagará a la cuenta recaudadora de Unicon."],
             ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
         ];
 
@@ -584,9 +580,9 @@ const generatePDF = (invoice) => {
         });
         ///////////////
         const tableInfo7 = [
-            ["4. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
-            ["5. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
-            ["6. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["3. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
+            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
+            ["5. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
