@@ -488,15 +488,15 @@ const Page = () => {
             const measureInfo = uniconJson.find(item => item.Description === selectedMeasures[i]);
             let pu2 = 0;
             if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded == "Sí") {
-                pu2 = measureInfo.Price + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
+                pu2 = (measureInfo.Price * ((100 - percentageOfDiscount) / 100)) + parseFloat(prorrateoParihuela()) + parseFloat(prorrateoFlete())
             }
             else if (deliveryType == "PUESTO EN OBRA" && isParihuelaNeeded != "Sí") {
-                pu2 = measureInfo.Price + parseFloat(prorrateoFlete())
+                pu2 = (measureInfo.Price * ((100 - percentageOfDiscount) / 100)) + parseFloat(prorrateoFlete())
             }
             else {
-                pu2 = measureInfo.Price
+                pu2 = (measureInfo.Price * ((100 - percentageOfDiscount) / 100))
             }
-            const price = measureInfo ? (pu2 * ((100 - percentageOfDiscount) / 100)) : 0;
+            const price = measureInfo ? (pu2) : 0;
             subtotal += measureQuantities[i] * price;
         }
         return subtotal;
