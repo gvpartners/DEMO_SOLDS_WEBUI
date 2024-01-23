@@ -119,9 +119,9 @@ const generatePDF = (invoice) => {
         { content: '', styles: { fillColor: colorInvoice } }
     ];
     const tableData11 = [
-        [`Nombre:`, invoice.identificationInfo],
+        [`Nombre:`, invoice.identificationInfo || 'NO PROPORCIONADO'],
         [`Dirección:`, invoice.customerAddress?.toUpperCase() || 'NO PROPORCIONADO'],
-        [`${invoice.identificationType}:`, invoice.documentInfo],
+        [`${invoice.identificationType || 'RUC'}:`, invoice.documentInfo || 'NO PROPORCIONADO'],
         [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
         [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
     ];

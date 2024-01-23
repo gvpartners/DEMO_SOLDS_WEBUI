@@ -280,9 +280,9 @@ const Page = () => {
       console.error('Error fetching data:', err);
     }
   };
-  const getEmployeePhone = (invoice)=>{
+  const getEmployeePhone = (invoice) => {
     const matchingEmployee = employeeOptions?.find(x => x.email === invoice.createdBy);
-    
+
     if (matchingEmployee && matchingEmployee.phone) {
       setEmployeePhone(matchingEmployee.phone);
       setSelectedInvoice(prevInvoice => ({
@@ -309,7 +309,7 @@ const Page = () => {
     }));
   }, [customerAddress]);
 
-  
+
 
 
   const handleMenuClose = () => {
@@ -565,8 +565,8 @@ const Page = () => {
       return (
         <TableRow hover key={invoice.id}>
           <TableCell>{invoice.invoiceCode}</TableCell>
-          <TableCell>{invoice.identificationInfo}</TableCell>
-          <TableCell>{invoice.documentInfo}</TableCell>
+          <TableCell>{invoice.identificationInfo || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
           <TableCell>
             <SeverityPill color='primary'>
               {invoice.selectedCategory}

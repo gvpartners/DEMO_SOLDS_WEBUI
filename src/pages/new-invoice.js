@@ -281,9 +281,9 @@ const Page = () => {
             );
 
         return (
-            !identificationType ||
-            !documentInfo ||
-            !identificationInfo ||
+            // !identificationType ||
+            // !documentInfo ||
+            // !identificationInfo ||
             !selectedCategory ||
             selectedMeasures.length === 0 ||
             !address ||
@@ -747,7 +747,7 @@ const Page = () => {
 
                 <Box flex={1} marginRight={5} marginLeft={{ md: -10 }}>
                     <Typography variant="h4" style={{ fontSize: '28px' }}>{!InvoiceId ? "Nueva Cotización" : parsedInvoice?.invoiceCode}</Typography><br />
-                    <label>Tipo de identificación<font color="red"> *</font></label>
+                    <label>Tipo de identificación</label>
                     <FormControl fullWidth>
                         <Select value={identificationType} onChange={handleIdentificationTypeChange}>
                             <MenuItem value="DNI">DNI</MenuItem>
@@ -758,7 +758,7 @@ const Page = () => {
 
                     <FormControl fullWidth>
                         <TextField
-                            label={identificationType === 'DNI' ? <span>DNI <font color="red">*</font></span> : <span>RUC <font color="red">*</font></span>}
+                            label={identificationType === 'DNI' ? <span>DNI </span> : <span>RUC </span>}
                             value={documentInfo}
                             onChange={handleDocumentInfoChange}
                             type='number'
@@ -788,7 +788,7 @@ const Page = () => {
 
                     <FormControl fullWidth>
                         <TextField
-                            label={identificationType === 'DNI' ? <span>Nombre completo <font color="red">*</font></span> : <span>Razón social <font color="red">*</font></span>}
+                            label={identificationType === 'DNI' ? <span>Nombre completo </span> : <span>Razón social </span>}
                             value={identificationInfo}
                             onChange={handleIdentificationInfoChange}
                             fullWidth
