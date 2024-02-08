@@ -1182,7 +1182,7 @@ const Page = () => {
                             </tbody>
                         </table>
                         {selectedMeasures.length > 0 && (
-                            <Typography variant="h6" style={{ float: 'left' }}>
+                            <Typography variant="h7" style={{ float: 'left' }}>
                                 CANT. PARIHUELA: {cantParihuela||0}
                             </Typography>
                         )}

@@ -304,17 +304,18 @@ const generatePDF = (invoice) => {
                 cellPadding: 1,
             }
         });
-
+        let thirdPoint = invoice.isParihuelaNeeded == "No" ? "3. Puesto en obra: Incluye servicio de descarga a pie de camión." : "3. Puesto en obra: Incluye parihuelas dejadas en obra, el cliente las descargará con grúa o montacarga.";
 
         const tableInfo = [
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
             ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
-            ["3. Puesto en obra: Incluye servicio de descarga a pie de camión."],
+            [thirdPoint],
             ["4. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
             ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, (Se cargará un falso flete)."],
             ["6. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
-            ["7. No se aceptan cambios ni devoluciones."],
+            ["7. NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES."],
         ];
+
 
         doc.autoTable({
             startY: doc.autoTable.previous.finalY,
@@ -417,16 +418,21 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfo3 = [
-            ["1. Si tiene cambio de metrados, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
-            ["2. Los pedidos especiales se deben producir y se entregan de 30 a 45 días según OC enviada."],
+            ["1. Si tiene cambio de metrados - cantidades, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
+            ["2. Los PEDIDOS ESPECIALES se deben producir y se entregan de 30 a 45 días según OC enviada."],
             [`3. Cotización considera entrega en camión de ${truck} (verificar accesos para el tipo de unidad).`],
             ["4. Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado."],
-            ["5. No se deja parihuelas en obra - No se presta parihuelas."]
+            ["5. No se deja ni se presta parihuelas en obra."]
+        ];
+        const tableInfo3Aux = [
+            ["1. Si tiene cambio de metrados - cantidades, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
+            ["2. Los PEDIDOS ESPECIALES se deben producir y se entregan de 30 a 45 días según OC enviada."],
+            [`3. Cotización considera entrega en camión de ${truck} (verificar accesos para el tipo de unidad).`],
         ];
 
         doc.autoTable({
             startY: doc.autoTable.previous.finalY,
-            body: tableInfo3,
+            body: invoice.isParihuelaNeeded == "No" ? tableInfo3 : tableInfo3Aux,
             theme: 'plain',
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
@@ -460,10 +466,15 @@ const generatePDF = (invoice) => {
             ["En espera de sus gratas noticias, lo saludamos."],
             ["Cordialmente."],
         ];
-
+        const tableInfo4Aux = [
+            ["1. Descarga mecánica: Si el cliente desea usar sus equipos mecánicos para la descarga (grúas, montacargas, otros), se deberá comunicar con el Ejecutivo de Ventas antes de iniciar las entregas para coordinar la entrega de parihuelas."],
+            [""],
+            ["En espera de sus gratas noticias, lo saludamos."],
+            ["Cordialmente."],
+        ];
         doc.autoTable({
             startY: doc.autoTable.previous.finalY,
-            body: tableInfo4,
+            body: invoice.isParihuelaNeeded == "No" ? tableInfo4 : tableInfo4Aux,
             theme: 'plain',
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
@@ -511,7 +522,7 @@ const generatePDF = (invoice) => {
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
             ["2. Recojo en planta: Horario de atención de lunes a viernes de 8:00 AM a 5:00 PM, sábado hasta medio día."],
             ["3. Recojo en planta: Horario de refrigerio de lunes a viernes de 12:00 PM a 1:00 PM"],
-            ["4. Recojo en planta: Chofer y Estibadores, deberán de contar con: seguro SCTR, EPPs básicos, y DNI"],
+            ["4. Recojo en planta: Chofer y estibadores deberán de contar con seguro SCTR, EPPS y DNI."],
             ["5. Recojo en planta: El Cliente deberá de contar con Guía de Remisión de Cliente y Transportista."],
             ["6. NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES"],
         ];
@@ -617,9 +628,9 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfoOtrasCondiciones = [
-            ["1. Los pedidos especiales se deben producir y se entregan de 30 a 45 días según OC enviada."],
-            ["2. Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado"],
-            ["3. No se deja parihuelas en obra - No se presta parihuelas."],
+            ["1. Los PEDIDOS ESPECIALES se deben producir y se entrega de 30 a 45 días según OC enviada."],
+            ["2. No se entrega productos en parihuelas, deben contar con estibadores para su carguío a granel."],
+            ["3. No se presta parihuelas."],
             [""],
             ["En espera de sus gratas noticias, lo saludamos."],
             ["Cordialmente."],
