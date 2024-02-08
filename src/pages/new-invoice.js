@@ -1182,10 +1182,16 @@ const Page = () => {
                             </tbody>
                         </table>
                         {selectedMeasures.length > 0 && (
+                            <Typography variant="h6" style={{ float: 'left' }}>
+                                CANT. PARIHUELA: {cantParihuela||0}
+                            </Typography>
+                        )}
+                        {selectedMeasures.length > 0 && (
                             <Typography variant="h6" style={{ float: 'right' }}>
                                 PESO TOTAL: {getTotalWeight() > 1000 ? `${(getTotalWeight() / 1000).toFixed(2)} TN` : `${getTotalWeight().toFixed(2)} KG`}
                             </Typography>
                         )}<br />
+
 
                         {selectedMeasures.length > 0 && (
                             <Typography variant="h6" style={{ float: 'right' }}>
