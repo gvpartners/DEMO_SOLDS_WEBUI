@@ -302,7 +302,7 @@ const generatePDF = (invoice) => {
                 cellPadding: 1,
             }
         });
-        let thirdPoint = invoice.isParihuelaNeeded == "No" ? "3. Puesto en obra: Incluye servicio de descarga a pie de camión." : "3. Puesto en obra: Incluye parihuelas dejadas en obra, el cliente las descargará con grúa o montacarga.";
+        let thirdPoint = invoice.isParihuelaNeeded == "No" ? "3. Puesto en obra: Incluye servicio de descarga a pie de camión." : "3. Puesto en obra: Incluye costo de parihuelas dejado en obra, el cliente lo descargara con grúa ó montacarga.";
 
         const tableInfo = [
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
