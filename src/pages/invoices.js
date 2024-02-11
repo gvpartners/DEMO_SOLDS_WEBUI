@@ -566,13 +566,13 @@ const Page = () => {
         <TableRow hover key={invoice.id}>
           <TableCell>{invoice.invoiceCode}</TableCell>
           <TableCell>{invoice.identificationInfo || "No proporcionado"}</TableCell>
-          <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
+          <TableCell>{invoice.selectedDistrict}</TableCell>
           <TableCell>
             <SeverityPill color='primary'>
               {invoice.selectedCategory}
             </SeverityPill>
           </TableCell>
-          <TableCell>{invoice.selectedDistrict}</TableCell>
+          <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
           <TableCell>{formattedDate}</TableCell>
           <TableCell>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -719,29 +719,7 @@ const Page = () => {
                             onChange={(e) => setFilterClient(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '140px' }}
-                            label="Dni o RUC"
-                            type='number'
-                            value={filterIdentification}
-                            onChange={(e) => setFilterIdentification(e.target.value)}
-                          />
-                        </TableCell>
                         
-                        <TableCell >
-                          <Autocomplete
-                            value={filterCategory}
-                            onChange={(event, newValue) => setFilterCategory(newValue)}
-                            options={categoryOptions}
-                            renderInput={(params) => (
-                              <TextField sx={{ width: '160px' }}
-                                {...params}
-                                label="Categoria"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
                         <TableCell >
                           <Autocomplete
                             value={filterDistrict}
@@ -756,6 +734,29 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
+                        <TableCell >
+                          <Autocomplete
+                            value={filterCategory}
+                            onChange={(event, newValue) => setFilterCategory(newValue)}
+                            options={categoryOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '160px' }}
+                                {...params}
+                                label="Categoria"
+                                variant="standard"
+                              />
+                            )}
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <TextField sx={{ width: '140px' }}
+                            label="Dni o RUC"
+                            type='number'
+                            value={filterIdentification}
+                            onChange={(e) => setFilterIdentification(e.target.value)}
+                          />
+                        </TableCell>
+                        
                         <TableCell>
                           <div style={{ display: 'flex', alignItems: 'center', width: '170px' }}>
                             <span >Fecha de cotización</span>
