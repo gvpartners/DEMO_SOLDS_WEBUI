@@ -1075,7 +1075,7 @@ const Page = () => {
                                 )}
                                 <FormControl fullWidth>
                                     <label>
-                                        ¿Requiere Parihuela?<font color="red"> *</font>
+                                        ¿Requiere Parihuelas?<font color="red"> *</font>
                                     </label>
                                     <Select value={isParihuelaNeeded} onChange={handleParihuelaChange}>
                                         <MenuItem value="Sí">Sí</MenuItem>
@@ -1087,7 +1087,7 @@ const Page = () => {
                                     <table style={tableStyle}>
                                         <thead>
                                             <tr>
-                                                <th style={thTdStyle}>Cant. Parihuela</th>
+                                                <th style={thTdStyle}>Cant. Parihuelas</th>
                                                 <th style={thTdStyle}>Precio</th>
                                             </tr>
                                         </thead>
@@ -1183,7 +1183,7 @@ const Page = () => {
                         </table>
                         {selectedMeasures.length > 0 && (
                             <Typography variant="h7" style={{ float: 'left' }}>
-                                CANT. PARIHUELA: {cantParihuela||0}
+                                CANT. PARIHUELAS: {cantParihuela||0}
                             </Typography>
                         )}
                         {selectedMeasures.length > 0 && (

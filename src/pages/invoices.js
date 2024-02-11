@@ -572,17 +572,67 @@ const Page = () => {
               {invoice.selectedCategory}
             </SeverityPill>
           </TableCell>
-          <TableCell>
-            <SeverityPill color={statusMap[invoice.statusOrder]}>
-              {invoice.statusName}
-            </SeverityPill>
-          </TableCell>
           <TableCell>{formattedDate}</TableCell>
-          <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
-          <TableCell>{invoice.unitPiece}</TableCell>
           <TableCell>
             {formatter.format(invoice.totalInvoice)}
           </TableCell>
+          <TableCell>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <SeverityPill color={statusMap[invoice.statusOrder]}>
+                  {invoice.statusName}
+                </SeverityPill>
+              </div>
+              <div>
+                <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
+                  <MoreVertIcon />
+                </IconButton>
+
+                <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                  <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                    <div hidden={selectedStatusNumber !== 1}>
+                      <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
+                        <CheckCircle style={{ marginRight: '8px' }} /> Cerrar
+                      </MenuItem>
+                      <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
+                        <Close style={{ marginRight: '8px' }} /> Rechazar
+                      </MenuItem>
+                      <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                        <EditIcon style={{ marginRight: '8px' }} /> Editar
+                      </MenuItem>
+                      <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                        <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
+                      </MenuItem>
+                    </div>
+                  </div>
+                  <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3 || selectedUserId !== sessionStorage.getItem('identificator')}>
+                    <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
+                      <Close style={{ marginRight: '8px' }} /> Rechazar
+                    </MenuItem>
+                  </div>
+                  <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                    <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                      <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
+                    </MenuItem>
+                  </div>
+                  <div>
+                    <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
+                      <CommentIcon style={{ marginRight: '8px' }} /> Comentario
+                    </MenuItem>
+                  </div>
+                  <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <Visibility style={{ marginRight: '8px' }} /> Ver PDF
+                  </MenuItem>
+                  <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
+                  </MenuItem>
+                </Menu>
+              </div>
+            </div>
+          </TableCell>
+          
+          <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
+          <TableCell>{invoice.unitPiece}</TableCell>
           <TableCell>
             <SeverityPill color={statusMap[invoice.deliveryType]}>
               {invoice.deliveryType}
@@ -594,53 +644,6 @@ const Page = () => {
           <TableCell>{invoice.employee}</TableCell>
           <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
           <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
-          <TableCell>
-            <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
-              <MoreVertIcon />
-            </IconButton>
-
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                <div hidden={selectedStatusNumber !== 1}>
-                  <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
-                    <CheckCircle style={{ marginRight: '8px' }} /> Cerrar
-                  </MenuItem>
-                  <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
-                    <Close style={{ marginRight: '8px' }} /> Rechazar
-                  </MenuItem>
-                  <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                    <EditIcon style={{ marginRight: '8px' }} /> Editar
-                  </MenuItem>
-                  <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                    <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
-                  </MenuItem>
-                </div>
-              </div>
-              <div hidden={selectedStatusNumber === 1 || selectedStatusNumber === 3 || selectedUserId !== sessionStorage.getItem('identificator')}>
-                <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
-                  <Close style={{ marginRight: '8px' }} /> Rechazar
-                </MenuItem>
-              </div>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
-                </MenuItem>
-              </div>
-              <div>
-                <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
-                  <CommentIcon style={{ marginRight: '8px' }} /> Comentario
-                </MenuItem>
-              </div>
-              <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                <Visibility style={{ marginRight: '8px' }} /> Ver PDF
-              </MenuItem>
-              <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
-              </MenuItem>
-
-            </Menu>
-
-          </TableCell>
         </TableRow>
       );
     });
@@ -709,7 +712,7 @@ const Page = () => {
                           />
                         </TableCell>
                         <TableCell>
-                          <TextField sx={{ width: '200px' }}
+                          <TextField sx={{ width: '240px' }}
                             label="Cliente"
                             value={filterClient}
                             onChange={(e) => setFilterClient(e.target.value)}
@@ -737,20 +740,6 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell >
-                          <Autocomplete
-                            value={filterStatus}
-                            onChange={(event, newValue) => setFilterStatus(newValue)}
-                            options={statusOptions}
-                            renderInput={(params) => (
-                              <TextField sx={{ width: '150px' }}
-                                {...params}
-                                label="Estado"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
                         <TableCell>
                           <div style={{ display: 'flex', alignItems: 'center', width: '170px' }}>
                             <span >Fecha de cotización</span>
@@ -765,6 +754,27 @@ const Page = () => {
                             />
                           </LocalizationProvider>
                         </TableCell>
+                        <TableCell>
+                          <TextField sx={{ width: '150px' }}
+                            label="Precio total"
+                            value={filterPrice}
+                            onChange={(e) => setFilterPrice(e.target.value)}
+                          />
+                        </TableCell>
+                        <TableCell >
+                          <Autocomplete
+                            value={filterStatus}
+                            onChange={(event, newValue) => setFilterStatus(newValue)}
+                            options={statusOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '150px' }}
+                                {...params}
+                                label="Estado"
+                                variant="standard"
+                              />
+                            )}
+                          />
+                        </TableCell>                        
                         <TableCell>
                           <TextField sx={{ width: '150px' }}
                             label="Cantidad"
@@ -785,13 +795,6 @@ const Page = () => {
                                 variant="standard"
                               />
                             )}
-                          />
-                        </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '150px' }}
-                            label="Precio total"
-                            value={filterPrice}
-                            onChange={(e) => setFilterPrice(e.target.value)}
                           />
                         </TableCell>
                         <TableCell >
@@ -868,7 +871,7 @@ const Page = () => {
                             onChange={(e) => setFilterContact(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell sx={{ width: '140px' }} style={{ fontSize: '14px', color: 'grey' }}> Acciones</TableCell>
+                        {/* <TableCell sx={{ width: '140px' }} style={{ fontSize: '14px', color: 'grey' }}> Acciones</TableCell> */}
                       </TableRow>
                     </TableHead>
                     <TableBody>
