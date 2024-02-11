@@ -1728,7 +1728,7 @@
     "UnitForPari": 15.6
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNAT",
     "Description": "ENCHAPE TEXT 3X10X20 NATURAL",
     "Unit": "MT2",
@@ -1737,7 +1737,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTROJ",
     "Description": "ENCHAPE TEXT 3X10X20 ROJO",
     "Unit": "MT2",
@@ -1746,7 +1746,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTAMA",
     "Description": "ENCHAPE TEXT 3X10X20 AMARILLO",
     "Unit": "MT2",
@@ -1755,7 +1755,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNEG",
     "Description": "ENCHAPE TEXT 3X10X20 NEGRO",
     "Unit": "MT2",
@@ -1764,7 +1764,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNAJ",
     "Description": "ENCHAPE TEXT 3X10X20 NARANJA",
     "Unit": "MT2",
@@ -1773,7 +1773,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNATHS ",
     "Description": "ENCHAPE TEXT 3X10X20 NATURAL HS",
     "Unit": "MT2",
@@ -1782,7 +1782,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTROJHS",
     "Description": "ENCHAPE TEXT 3X10X20 ROJO HS",
     "Unit": "MT2",
@@ -1791,7 +1791,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTAMAHS",
     "Description": "ENCHAPE TEXT 3X10X20 AMARILLO HS",
     "Unit": "MT2",
@@ -1800,7 +1800,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNEGHS",
     "Description": "ENCHAPE TEXT 3X10X20 NEGRO HS",
     "Unit": "MT2",
@@ -1809,7 +1809,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNAJHS",
     "Description": "ENCHAPE TEXT 3X10X20 NARANJA HS",
     "Unit": "MT2",
@@ -1818,7 +1818,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNATV",
     "Description": "ENCHAPE TEXT 3X10X20 NATURAL T-V",
     "Unit": "MT2",
@@ -1827,7 +1827,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTROJV",
     "Description": "ENCHAPE TEXT 3X10X20 ROJO T-V",
     "Unit": "MT2",
@@ -1836,7 +1836,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTAMAV",
     "Description": "ENCHAPE TEXT 3X10X20 AMARILLO T-V",
     "Unit": "MT2",
@@ -1845,7 +1845,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNEGV",
     "Description": "ENCHAPE TEXT 3X10X20 NEGRO T-V",
     "Unit": "MT2",
@@ -1854,7 +1854,7 @@
     "UnitForPari": 36
   },
   {
-    "Category": "ENCHAPE",
+    "Category": "ENCHAPES",
     "Code": "ENCH3TEXTNAJV",
     "Description": "ENCHAPE TEXT 3X10X20 NARANJA T-V",
     "Unit": "MT2",
@@ -2187,7 +2187,7 @@
     "UnitForPari": 15.6
   },
   {
-    "Category": "KINGKONCRETO",
+    "Category": "LADRILLOS",
     "Code": "KK25%NAT",
     "Description": "KING KONCRETO25% 13X9X22 NATURAL",
     "Unit": "MLL",
@@ -2196,7 +2196,7 @@
     "UnitForPari": 0.5
   },
   {
-    "Category": "KINGKONCRETO",
+    "Category": "LADRILLOS",
     "Code": "KK25%NATV",
     "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO T-V",
     "Unit": "MLL",
@@ -2205,7 +2205,7 @@
     "UnitForPari": 0.5
   },
   {
-    "Category": "KINGKONCRETO",
+    "Category": "LADRILLOS",
     "Code": "KK25%NATHS",
     "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO HS",
     "Unit": "MLL",
@@ -2214,16 +2214,16 @@
     "UnitForPari": 0.5
   },
   {
-    "Category": "BLOCKGRASS",
+    "Category": "BK-GRASS",
     "Code": "BKGRASS-#",
-    "Description": "KING BLOCK GRASS TIPO MICHI ",
+    "Description": "KING BLOCK GRASS TIPO MICHI",
     "Unit": "MT2",
     "Price": 27.8,
     "Weight": 123.2,
     "UnitForPari": 14.625
   },
   {
-    "Category": "BLOCKGRASS",
+    "Category": "BK-GRASS",
     "Code": "BKGRASS-#-HS",
     "Description": "KING BLOCK GRASS TIPO MICHI HS",
     "Unit": "MT2",
@@ -2232,7 +2232,7 @@
     "UnitForPari": 14.625
   },
   {
-    "Category": "BLOCKGRASS",
+    "Category": "BK-GRASS",
     "Code": "BKGRASS-# V",
     "Description": "KING BLOCK GRASS TIPO MICHI T-V",
     "Unit": "MT2",
@@ -2241,7 +2241,7 @@
     "UnitForPari": 14.625
   },
   {
-    "Category": "BLOCKGRASS",
+    "Category": "BK-GRASS",
     "Code": "BKGRASS-8",
     "Description": "KING BLOCK GRASS TIPO 8 ",
     "Unit": "MT2",
@@ -2250,7 +2250,7 @@
     "UnitForPari": 17.727272727272727
   },
   {
-    "Category": "AISLADOR",
+    "Category": "AISLADORES",
     "Code": "AISL8MM",
     "Description": "AISLADOR DE VARILLA 8 mm ",
     "Unit": "PZA",
@@ -2259,7 +2259,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "AISLADOR",
+    "Category": "AISLADORES",
     "Code": "AISL10MM",
     "Description": "AISLADOR DE VARILLA 3\/8\" (10mm)",
     "Unit": "PZA",
@@ -2268,7 +2268,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "AISLADOR",
+    "Category": "AISLADORES",
     "Code": "AISL13MM",
     "Description": "AISLADOR DE VARILLA  1\/2\" (13mm)",
     "Unit": "PZA",
@@ -2277,7 +2277,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "AISLADOR",
+    "Category": "AISLADORES",
     "Code": "AISL16MM",
     "Description": "AISLADOR DE VARILLA  5\/8\" (16mm)",
     "Unit": "PZA",
@@ -2286,7 +2286,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "AISLADOR",
+    "Category": "AISLADORES",
     "Code": "AISL19MM",
     "Description": "AISLADOR DE VARILLA  3\/4\" (16mm)",
     "Unit": "PZA",
@@ -2295,7 +2295,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP10-8MM",
     "Description": "TOPE DE 10 PARA 8MM",
     "Unit": "PZA",
@@ -2304,7 +2304,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP10-10MM",
     "Description": "TOPE DE 10 PARA 3\/8",
     "Unit": "PZA",
@@ -2313,7 +2313,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP10-13MM",
     "Description": "TOPE DE 10 PARA 1\/2",
     "Unit": "PZA",
@@ -2322,7 +2322,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP10-16MM",
     "Description": "TOPE DE 10 PARA 5\/8",
     "Unit": "PZA",
@@ -2331,7 +2331,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP20-8MM",
     "Description": "TOPE DE 20 PARA 8MM",
     "Unit": "PZA",
@@ -2340,7 +2340,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP20-10MM",
     "Description": "TOPE DE 20 PARA 3\/8",
     "Unit": "PZA",
@@ -2349,7 +2349,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP20-13MM",
     "Description": "TOPE DE 20 PARA 1\/2",
     "Unit": "PZA",
@@ -2358,7 +2358,7 @@
     "UnitForPari": 100
   },
   {
-    "Category": "TOPE AISLADOR",
+    "Category": "AISLADORES",
     "Code": "TOP20-16MM",
     "Description": "TOPE DE 20 PARA 5\/8",
     "Unit": "PZA",

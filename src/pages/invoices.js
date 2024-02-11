@@ -567,7 +567,11 @@ const Page = () => {
           <TableCell>{invoice.invoiceCode}</TableCell>
           <TableCell>{invoice.identificationInfo || "No proporcionado"}</TableCell>
           <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
-          <TableCell>{invoice.employee}</TableCell>
+          <TableCell>
+            <SeverityPill color='primary'>
+              {invoice.selectedCategory}
+            </SeverityPill>
+          </TableCell>
           <TableCell>{invoice.selectedDistrict}</TableCell>
           <TableCell>{formattedDate}</TableCell>
           <TableCell>
@@ -629,14 +633,11 @@ const Page = () => {
           </TableCell>
           <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
           <TableCell>{invoice.unitPiece}</TableCell>
+          
+          <TableCell>{invoice.employee}</TableCell>
           <TableCell>
             <SeverityPill color={statusMap[invoice.deliveryType]}>
               {invoice.deliveryType}
-            </SeverityPill>
-          </TableCell>
-          <TableCell>
-            <SeverityPill color='primary'>
-              {invoice.selectedCategory}
             </SeverityPill>
           </TableCell>
           <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
@@ -726,20 +727,16 @@ const Page = () => {
                             onChange={(e) => setFilterIdentification(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
+                        
+                        <TableCell >
                           <Autocomplete
-                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
-                            value={employeeOptions.find((option) => option.id === filterEmployee)}
-                            onChange={(event, newValue) => {
-                              setFilterEmployee(newValue ? newValue.id : null);
-                            }}
-                            options={employeeOptions}
-                            getOptionLabel={(option) => option.name || ''}
+                            value={filterCategory}
+                            onChange={(event, newValue) => setFilterCategory(newValue)}
+                            options={categoryOptions}
                             renderInput={(params) => (
-                              <TextField
-                                sx={{ width: '180px' }}
+                              <TextField sx={{ width: '160px' }}
                                 {...params}
-                                label="Ejecutivo"
+                                label="Categoria"
                                 variant="standard"
                               />
                             )}
@@ -818,6 +815,25 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
+                        <TableCell>
+                          <Autocomplete
+                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
+                            value={employeeOptions.find((option) => option.id === filterEmployee)}
+                            onChange={(event, newValue) => {
+                              setFilterEmployee(newValue ? newValue.id : null);
+                            }}
+                            options={employeeOptions}
+                            getOptionLabel={(option) => option.name || ''}
+                            renderInput={(params) => (
+                              <TextField
+                                sx={{ width: '180px' }}
+                                {...params}
+                                label="Ejecutivo"
+                                variant="standard"
+                              />
+                            )}
+                          />
+                        </TableCell>
                         <TableCell >
                           <Autocomplete
                             value={filterDelivery}
@@ -832,20 +848,7 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell >
-                          <Autocomplete
-                            value={filterCategory}
-                            onChange={(event, newValue) => setFilterCategory(newValue)}
-                            options={categoryOptions}
-                            renderInput={(params) => (
-                              <TextField sx={{ width: '180px' }}
-                                {...params}
-                                label="Categoria"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
+                        
                         <TableCell>
                           <TextField sx={{ width: '240px' }}
                             label="Referencia"

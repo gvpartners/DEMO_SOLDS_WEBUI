@@ -56,7 +56,7 @@ export const TopNav = (props) => {
             spacing={2}
           >
             <IconButton onClick={props.onNavOpen}>
-              <SvgIcon fontSize="small">
+              <SvgIcon fontSize="large">
                 <Bars3Icon />
               </SvgIcon>
             </IconButton>
