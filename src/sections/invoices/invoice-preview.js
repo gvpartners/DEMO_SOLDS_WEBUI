@@ -304,14 +304,14 @@ const generatePDF = (invoice) => {
                 cellPadding: 1,
             }
         });
-        let thirdPoint = invoice.isParihuelaNeeded == "No" ? "3. Puesto en obra: Incluye servicio de descarga a pie de camión." : "3. Puesto en obra: Incluye costo de parihuelas dejado en obra, el cliente lo descargara con grúa ó montacarga.";
+        let thirdPoint = invoice.isParihuelaNeeded == "No" ? "3. Puesto en obra: Incluye el servicio de descarga MANUAL con estibadores a pie de camión." : "3. Puesto en Obra: El cliente es responsable de la descarga con sus equipos mecánicos (Grúas o Montacargas).";
 
         const tableInfo = [
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
             ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
             [thirdPoint],
             ["4. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
-            ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, (Se cargará un falso flete)."],
+            ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete."],
             ["6. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
             ["7. NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES."],
         ];
@@ -384,8 +384,7 @@ const generatePDF = (invoice) => {
         ///////////////
         const tableInfo7 = [
             ["3. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
-            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
-            ["5. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
@@ -594,8 +593,7 @@ const generatePDF = (invoice) => {
         ///////////////
         const tableInfo7 = [
             ["3. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
-            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON."],
-            ["5. Pago al crédito: Tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
