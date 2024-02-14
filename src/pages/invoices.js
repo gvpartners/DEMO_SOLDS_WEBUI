@@ -572,7 +572,6 @@ const Page = () => {
               {invoice.selectedCategory}
             </SeverityPill>
           </TableCell>
-          <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
           <TableCell>{formattedDate}</TableCell>
           <TableCell>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -633,18 +632,19 @@ const Page = () => {
           </TableCell>
           <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
           <TableCell>{invoice.unitPiece}</TableCell>
-          
-          <TableCell>{invoice.employee}</TableCell>
+
           <TableCell>
             <SeverityPill color={statusMap[invoice.deliveryType]}>
               {invoice.deliveryType}
             </SeverityPill>
           </TableCell>
-          <TableCell>{invoice.reference || "No proporcionado"}</TableCell>
+          {/* <TableCell>{invoice.reference || "No proporcionado"}</TableCell> */}
           <TableCell>{invoice.address}</TableCell>
-
-          <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.employee}</TableCell>
           <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
+          <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
+
         </TableRow>
       );
     });
@@ -719,7 +719,7 @@ const Page = () => {
                             onChange={(e) => setFilterClient(e.target.value)}
                           />
                         </TableCell>
-                        
+
                         <TableCell >
                           <Autocomplete
                             value={filterDistrict}
@@ -748,15 +748,8 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '140px' }}
-                            label="Dni o RUC"
-                            type='number'
-                            value={filterIdentification}
-                            onChange={(e) => setFilterIdentification(e.target.value)}
-                          />
-                        </TableCell>
-                        
+
+
                         <TableCell>
                           <div style={{ display: 'flex', alignItems: 'center', width: '170px' }}>
                             <span >Fecha de cotización</span>
@@ -816,6 +809,36 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
+
+                        <TableCell >
+                          <Autocomplete
+                            value={filterDelivery}
+                            onChange={(event, newValue) => setFilterDelivery(newValue)}
+                            options={deliveryOptions}
+                            renderInput={(params) => (
+                              <TextField sx={{ width: '200px' }}
+                                {...params}
+                                label="Entrega"
+                                variant="standard"
+                              />
+                            )}
+                          />
+                        </TableCell>
+
+                        {/* <TableCell>
+                          <TextField sx={{ width: '240px' }}
+                            label="Referencia"
+                            value={filterReference}
+                            onChange={(e) => setFilterReference(e.target.value)}
+                          />
+                        </TableCell> */}
+                        <TableCell>
+                          <TextField sx={{ width: '240px' }}
+                            label="Dirección"
+                            value={filterAddress}
+                            onChange={(e) => setFilterAddress(e.target.value)}
+                          />
+                        </TableCell>
                         <TableCell>
                           <Autocomplete
                             key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
@@ -835,48 +858,27 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell >
-                          <Autocomplete
-                            value={filterDelivery}
-                            onChange={(event, newValue) => setFilterDelivery(newValue)}
-                            options={deliveryOptions}
-                            renderInput={(params) => (
-                              <TextField sx={{ width: '200px' }}
-                                {...params}
-                                label="Entrega"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
-                        
                         <TableCell>
-                          <TextField sx={{ width: '240px' }}
-                            label="Referencia"
-                            value={filterReference}
-                            onChange={(e) => setFilterReference(e.target.value)}
+                          <TextField sx={{ width: '140px' }}
+                            label="Contacto"
+                            value={filterContact}
+                            onChange={(e) => setFilterContact(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '240px' }}
-                            label="Dirección"
-                            value={filterAddress}
-                            onChange={(e) => setFilterAddress(e.target.value)}
-                          />
-                        </TableCell>
-
-
                         <TableCell>
                           <TextField sx={{ width: '140px' }}
                             label="Teléfono"
                             value={filterPhone}
                             onChange={(e) => setFilterPhone(e.target.value)}
                           />
-                        </TableCell><TableCell>
+                        </TableCell>
+                        
+                        <TableCell>
                           <TextField sx={{ width: '140px' }}
-                            label="Contacto"
-                            value={filterContact}
-                            onChange={(e) => setFilterContact(e.target.value)}
+                            label="Dni o RUC"
+                            type='number'
+                            value={filterIdentification}
+                            onChange={(e) => setFilterIdentification(e.target.value)}
                           />
                         </TableCell>
                         {/* <TableCell sx={{ width: '140px' }} style={{ fontSize: '14px', color: 'grey' }}> Acciones</TableCell> */}
