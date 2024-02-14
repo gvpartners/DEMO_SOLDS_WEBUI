@@ -302,22 +302,30 @@ const generatePDF = (invoice) => {
                 cellPadding: 1,
             }
         });
-        let thirdPoint = invoice.isParihuelaNeeded == "No" ? "3. Puesto en obra: Incluye el servicio de descarga MANUAL con estibadores a pie de camión." : "3. Puesto en Obra: El cliente es responsable de la descarga con sus equipos mecánicos (Grúas o Montacargas).";
-
+        
         const tableInfo = [
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
             ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
-            [thirdPoint],
+            ["3. Puesto en obra: Incluye el servicio de descarga MANUAL con estibadores a pie de camión."],
             ["4. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
             ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete."],
             ["6. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
-            ["7. NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES."],
+            ["7. NO se aceptan cambios ni devoluciones "],
         ];
-
+        const tableInfoAux = [
+            ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
+            ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
+            ["3. Puesto en Obra: Cotización incluye costo de productos entregados sobre parihuelas."],
+            ["4. Puesto en Obra: El cliente es responsable de la descarga con sus equipos mecánicos (Grúas o Montacargas)."],
+            ["5. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
+            ["6. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete."],
+            ["7. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
+            ["8. NO se aceptan cambios ni devoluciones."],
+        ];
 
         doc.autoTable({
             startY: doc.autoTable.previous.finalY,
-            body: tableInfo,
+            body: invoice.isParihuelaNeeded == "No" ? tableInfo : tableInfoAux,
             theme: 'plain',
             tableLineColor: [255, 255, 255],
             tableLineWidth: 0,
@@ -346,8 +354,10 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfo2 = [
-            ["1. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
-            ["2. Pago por internet:"],
+            ["1. Pago al Contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
+            ["2. Pago al contado: Se realizará el pago en nuestra Cuenta Recaudadora (SCOTIABANK, BCP, CONTINENTAL, INTERBANK)."],
+            ["3. Pago al Contado: Para pagos presenciales dirigirse al Banco seleccionado e Indicar que desea pagar a la Cta. recaudadora de UNICON, el código será su # RUC o DNI"],
+            ["4. Pago al Contado: Para pagos a través del APP de su Banco, buscar: Pago por Servicios/UNICON/su # RUC/Seleccionar el documento de venta por pagar/Pagar/Enviar la constancia del pago."]
         ];
 
 
@@ -362,27 +372,27 @@ const generatePDF = (invoice) => {
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
         //////////
-        const tableInfo6 = [
-            ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
-            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
-        ];
+        // const tableInfo6 = [
+        //     ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
+        //     ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
+        // ];
 
 
-        doc.autoTable({
-            startY: doc.autoTable.previous.finalY,
-            body: tableInfo6,
-            theme: 'plain',
-            margin: { left: 20 },
-            tableLineColor: [255, 255, 255],
-            tableLineWidth: 0,
-            tableWidth: 'auto',
-            showHead: 'never',
-            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
-        });
+        // doc.autoTable({
+        //     startY: doc.autoTable.previous.finalY,
+        //     body: tableInfo6,
+        //     theme: 'plain',
+        //     margin: { left: 20 },
+        //     tableLineColor: [255, 255, 255],
+        //     tableLineWidth: 0,
+        //     tableWidth: 'auto',
+        //     showHead: 'never',
+        //     styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        // });
         ///////////////
         const tableInfo7 = [
-            ["3. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
-            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["5. Pago al Contado: Cta Cte BCP 193-0099308-0-09 (Unión de Concreteras S.A)"],
+            ["6. Pago al Crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
@@ -415,15 +425,15 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfo3 = [
-            ["1. Si tiene cambio de metrados - cantidades, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
-            ["2. Los PEDIDOS ESPECIALES se deben producir y se entregan de 30 a 45 días según OC enviada."],
+            ["1. Cambios de Condiciones: Cualquier cambio de cantidades, medidas o colores invalida la presente cotización y se deberá solicitar una nueva, tomando en cuenta las nuevas condiciones."],
+            ["2. Pedidos Especiales: Estos pedidos ingresan a programa de producción y se entregan entre 30 - 40 días de confirmada la compra."],
             [`3. Cotización considera entrega en camión de ${truck} (verificar accesos para el tipo de unidad).`],
             ["4. Devolución de parihuelas: el material de embalaje (parihuelas) no se encuentra incluido en el precio cotizado."],
-            ["5. No se deja ni se presta parihuelas en obra."]
+            ["5. No se dejan ni se prestan parihuelas en obra."]
         ];
         const tableInfo3Aux = [
-            ["1. Si tiene cambio de metrados - cantidades, solicitar nueva cotización ya que los precios varían según cantidad de productos y fletes a utilizar."],
-            ["2. Los PEDIDOS ESPECIALES se deben producir y se entregan de 30 a 45 días según OC enviada."],
+            ["1. Cambios de Condiciones: Cualquier cambio de cantidades, medidas o colores invalida la presente cotización y se deberá solicitar una nueva, tomando en cuenta las nuevas condiciones."],
+            ["2. Pedidos Especiales: Estos pedidos ingresan a programa de producción y se entregan entre 30 - 40 días de confirmada la compra."],
             [`3. Cotización considera entrega en camión de ${truck} (verificar accesos para el tipo de unidad).`],
         ];
 
@@ -555,8 +565,10 @@ const generatePDF = (invoice) => {
         });
 
         const tableInfo2 = [
-            ["1. Pago al contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
-            ["2. Pago por internet:"],
+            ["1. Pago al Contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
+            ["2. Pago al contado: Se realizará el pago en nuestra Cuenta Recaudadora (SCOTIABANK, BCP, CONTINENTAL, INTERBANK)."],
+            ["3. Pago al Contado: Para pagos presenciales dirigirse al Banco seleccionado e Indicar que desea pagar a la Cta. recaudadora de UNICON, el código será su # RUC o DNI"],
+            ["4. Pago al Contado: Para pagos a través del APP de su Banco, buscar: Pago por Servicios/UNICON/su # RUC/Seleccionar el documento de venta por pagar/Pagar/Enviar la constancia del pago."]
         ];
 
 
@@ -570,28 +582,28 @@ const generatePDF = (invoice) => {
             showHead: 'never',
             styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
         });
-        //////////
-        const tableInfo6 = [
-            ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
-            ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
-        ];
+        // //////////
+        // const tableInfo6 = [
+        //     ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
+        //     ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
+        // ];
 
 
-        doc.autoTable({
-            startY: doc.autoTable.previous.finalY,
-            body: tableInfo6,
-            theme: 'plain',
-            margin: { left: 20 },
-            tableLineColor: [255, 255, 255],
-            tableLineWidth: 0,
-            tableWidth: 'auto',
-            showHead: 'never',
-            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
-        });
+        // doc.autoTable({
+        //     startY: doc.autoTable.previous.finalY,
+        //     body: tableInfo6,
+        //     theme: 'plain',
+        //     margin: { left: 20 },
+        //     tableLineColor: [255, 255, 255],
+        //     tableLineWidth: 0,
+        //     tableWidth: 'auto',
+        //     showHead: 'never',
+        //     styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+        // });
         ///////////////
         const tableInfo7 = [
-            ["3. Pago al contado: Una vez realizado el pago, por favor enviar la confirmación vía email para liberar el pedido y programar el despacho."],
-            ["4. Pago al crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["5. Pago al Contado: Cta Cte BCP 193-0099308-0-09 (Unión de Concreteras S.A)"],
+            ["6. Pago al Crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
@@ -671,6 +683,7 @@ const generatePDF = (invoice) => {
 
     return doc;
 };
+
 
 const handleDownloadPDFInvoice = (invoice) => {
     const doc = generatePDF(invoice);
