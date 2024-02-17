@@ -557,9 +557,9 @@ const Page = () => {
         month: '2-digit',
         day: '2-digit',
         year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
+        // hour: '2-digit',
+        // minute: '2-digit',
+        // second: '2-digit'
       });
 
       return (
@@ -627,9 +627,7 @@ const Page = () => {
               </div>
             </div>
           </TableCell>
-          <TableCell>
-            {formatter.format(invoice.totalInvoice)}
-          </TableCell>
+          
           <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
           <TableCell>{invoice.unitPiece}</TableCell>
 
@@ -638,12 +636,15 @@ const Page = () => {
               {invoice.deliveryType}
             </SeverityPill>
           </TableCell>
+          <TableCell>
+            {formatter.format(invoice.totalInvoice)}
+          </TableCell>
           {/* <TableCell>{invoice.reference || "No proporcionado"}</TableCell> */}
           <TableCell>{invoice.address}</TableCell>
-          <TableCell>{invoice.employee}</TableCell>
           <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
           <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
           <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
+          <TableCell>{invoice.employee}</TableCell>
 
         </TableRow>
       );
@@ -705,7 +706,7 @@ const Page = () => {
                     <TableHead>
                       <TableRow>
                         <TableCell>
-                          <TextField sx={{ width: '150px' }}
+                          <TextField sx={{ width: '150px'}}
                             label="Código"
                             value={filterCode}
                             type='number'
@@ -751,7 +752,7 @@ const Page = () => {
 
 
                         <TableCell>
-                          <div style={{ display: 'flex', alignItems: 'center', width: '170px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', width: '150px' }}>
                             <span >Fecha de cotización</span>
 
                           </div><br />
@@ -779,14 +780,7 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '150px' }}
-                            type='number'
-                            label="Precio total"
-                            value={filterPrice}
-                            onChange={(e) => setFilterPrice(e.target.value)}
-                          />
-                        </TableCell>
+                        
                         <TableCell>
                           <TextField sx={{ width: '150px' }}
                             label="Cantidad"
@@ -824,7 +818,14 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-
+                        <TableCell>
+                          <TextField sx={{ width: '150px' }}
+                            type='number'
+                            label="Precio total"
+                            value={filterPrice}
+                            onChange={(e) => setFilterPrice(e.target.value)}
+                          />
+                        </TableCell>
                         {/* <TableCell>
                           <TextField sx={{ width: '240px' }}
                             label="Referencia"
@@ -839,25 +840,7 @@ const Page = () => {
                             onChange={(e) => setFilterAddress(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <Autocomplete
-                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
-                            value={employeeOptions.find((option) => option.id === filterEmployee)}
-                            onChange={(event, newValue) => {
-                              setFilterEmployee(newValue ? newValue.id : null);
-                            }}
-                            options={employeeOptions}
-                            getOptionLabel={(option) => option.name || ''}
-                            renderInput={(params) => (
-                              <TextField
-                                sx={{ width: '180px' }}
-                                {...params}
-                                label="Ejecutivo"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
+                        
                         <TableCell>
                           <TextField sx={{ width: '140px' }}
                             label="Contacto"
@@ -879,6 +862,25 @@ const Page = () => {
                             type='number'
                             value={filterIdentification}
                             onChange={(e) => setFilterIdentification(e.target.value)}
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <Autocomplete
+                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
+                            value={employeeOptions.find((option) => option.id === filterEmployee)}
+                            onChange={(event, newValue) => {
+                              setFilterEmployee(newValue ? newValue.id : null);
+                            }}
+                            options={employeeOptions}
+                            getOptionLabel={(option) => option.name || ''}
+                            renderInput={(params) => (
+                              <TextField
+                                sx={{ width: '180px' }}
+                                {...params}
+                                label="Ejecutivo"
+                                variant="standard"
+                              />
+                            )}
                           />
                         </TableCell>
                         {/* <TableCell sx={{ width: '140px' }} style={{ fontSize: '14px', color: 'grey' }}> Acciones</TableCell> */}
