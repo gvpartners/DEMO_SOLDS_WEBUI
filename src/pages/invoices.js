@@ -627,7 +627,7 @@ const Page = () => {
               </div>
             </div>
           </TableCell>
-          
+
           <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
           <TableCell>{invoice.unitPiece}</TableCell>
 
@@ -706,7 +706,7 @@ const Page = () => {
                     <TableHead>
                       <TableRow>
                         <TableCell>
-                          <TextField sx={{ width: '150px'}}
+                          <TextField sx={{ width: '160px', marginRight: '-30px' }}
                             label="Código"
                             value={filterCode}
                             type='number'
@@ -714,7 +714,7 @@ const Page = () => {
                           />
                         </TableCell>
                         <TableCell>
-                          <TextField sx={{ width: '225px' }}
+                          <TextField sx={{ width: '225px', marginRight: '-20px' }}
                             label="Cliente"
                             value={filterClient}
                             onChange={(e) => setFilterClient(e.target.value)}
@@ -727,7 +727,7 @@ const Page = () => {
                             onChange={(event, newValue) => setFilterDistrict(newValue)}
                             options={districtOptions}
                             renderInput={(params) => (
-                              <TextField sx={{ width: '160px' }}
+                              <TextField sx={{ width: '160px', marginRight: '-10px' }}
                                 {...params}
                                 label="Distrito"
                                 variant="standard"
@@ -741,7 +741,7 @@ const Page = () => {
                             onChange={(event, newValue) => setFilterCategory(newValue)}
                             options={categoryOptions}
                             renderInput={(params) => (
-                              <TextField sx={{ width: '160px' }}
+                              <TextField sx={{ width: '130px', marginRight: '-10px' }}
                                 {...params}
                                 label="Categoria"
                                 variant="standard"
@@ -752,7 +752,7 @@ const Page = () => {
 
 
                         <TableCell>
-                          <div style={{ display: 'flex', alignItems: 'center', width: '150px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', width: '150px', marginRight: '-20px' }}>
                             <span >Fecha de cotización</span>
 
                           </div><br />
@@ -772,7 +772,7 @@ const Page = () => {
                             onChange={(event, newValue) => setFilterStatus(newValue)}
                             options={statusOptions}
                             renderInput={(params) => (
-                              <TextField sx={{ width: '150px' }}
+                              <TextField sx={{ width: '150px', marginRight: '-25px' }}
                                 {...params}
                                 label="Estado"
                                 variant="standard"
@@ -780,9 +780,9 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        
+
                         <TableCell>
-                          <TextField sx={{ width: '150px' }}
+                          <TextField sx={{ width: '130px', marginRight: '-20px' }}
                             label="Cantidad"
                             type='number'
                             value={filterCantPieces}
@@ -795,7 +795,7 @@ const Page = () => {
                             onChange={(event, newValue) => setFilterUnitPiece(newValue)}
                             options={UMOptions}
                             renderInput={(params) => (
-                              <TextField sx={{ width: '120px' }}
+                              <TextField sx={{ width: '120px', marginRight: '-20px' }}
                                 {...params}
                                 label="U.M"
                                 variant="standard"
@@ -810,7 +810,7 @@ const Page = () => {
                             onChange={(event, newValue) => setFilterDelivery(newValue)}
                             options={deliveryOptions}
                             renderInput={(params) => (
-                              <TextField sx={{ width: '200px' }}
+                              <TextField sx={{ width: '200px', marginRight: '-20px' }}
                                 {...params}
                                 label="Entrega"
                                 variant="standard"
@@ -819,7 +819,7 @@ const Page = () => {
                           />
                         </TableCell>
                         <TableCell>
-                          <TextField sx={{ width: '150px' }}
+                          <TextField sx={{ width: '150px', marginRight: '-30px' }}
                             type='number'
                             label="Precio total"
                             value={filterPrice}
@@ -834,30 +834,30 @@ const Page = () => {
                           />
                         </TableCell> */}
                         <TableCell>
-                          <TextField sx={{ width: '240px' }}
+                          <TextField sx={{ width: '240px', marginRight: '-30px' }}
                             label="Dirección"
                             value={filterAddress}
                             onChange={(e) => setFilterAddress(e.target.value)}
                           />
                         </TableCell>
-                        
+
                         <TableCell>
-                          <TextField sx={{ width: '140px' }}
+                          <TextField sx={{ width: '140px', marginRight: '-30px' }}
                             label="Contacto"
                             value={filterContact}
                             onChange={(e) => setFilterContact(e.target.value)}
                           />
                         </TableCell>
                         <TableCell>
-                          <TextField sx={{ width: '140px' }}
+                          <TextField sx={{ width: '140px', marginRight: '-30px' }}
                             label="Teléfono"
                             value={filterPhone}
                             onChange={(e) => setFilterPhone(e.target.value)}
                           />
                         </TableCell>
-                        
+
                         <TableCell>
-                          <TextField sx={{ width: '140px' }}
+                          <TextField sx={{ width: '140px', marginRight: '-30px' }}
                             label="Dni o RUC"
                             type='number'
                             value={filterIdentification}
