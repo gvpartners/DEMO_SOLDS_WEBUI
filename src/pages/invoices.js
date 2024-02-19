@@ -858,7 +858,7 @@ const Page = () => {
 
                         <TableCell>
                           <TextField sx={{ width: '140px', marginRight: '-30px' }}
-                            label="Dni o RUC"
+                            label="DNI/RUC"
                             type='number'
                             value={filterIdentification}
                             onChange={(e) => setFilterIdentification(e.target.value)}
