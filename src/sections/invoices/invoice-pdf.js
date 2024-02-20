@@ -269,7 +269,7 @@ const generatePDF = (invoice) => {
 
     // Ajuste de posición para la tabla 2
     doc.addPage();
-    if (invoice.deliveryType != "PUESTO EN PLANTA") {
+    if (invoice.deliveryType != "ENTREGADO EN PLANTA") {
         const tablePuestoEnObra = [
             { content: 'CONDICIONES GENERALES DE VENTA ', styles: { fillColor: colorInvoice, fontSize: 12 } },
             { content: '', styles: { fillColor: colorInvoice } }

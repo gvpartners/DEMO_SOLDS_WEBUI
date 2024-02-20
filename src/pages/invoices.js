@@ -77,7 +77,7 @@ const Page = () => {
   const [statusOptions, setstatusOptions] = useState(['En progreso', 'Cerrada', 'Rechazada']);
   const [categoryOptions, setCategoryOptions] = useState([])
   const [UMOptions, setUMOptions] = useState(['MT2', 'PZA', 'MLL'])
-  const [deliveryOptions, setdeliveryOptions] = useState(['Puesto en planta', 'Puesto en obra']);
+  const [deliveryOptions, setdeliveryOptions] = useState(['Entregado en planta', 'Puesto en obra']);
   const [districtOptions, setDistrictOptions] = useState([])
   const [employeeOptions, setEmployeeOptions] = useState([])
   // Filters Export
@@ -331,7 +331,7 @@ const Page = () => {
     1: 'warning',
     2: 'success',
     3: 'error',
-    "PUESTO EN PLANTA": 'primary',
+    "ENTREGADO EN PLANTA": 'primary',
     "PUESTO EN OBRA": 'info'
   };
   const editInvoice = () => {

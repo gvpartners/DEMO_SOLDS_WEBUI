@@ -706,7 +706,7 @@ const Page = () => {
         return aux.toFixed(2);
     };
     const resetPuestoEnObra = () => {
-        if (deliveryType === "PUESTO EN PLANTA") {
+        if (deliveryType === "ENTREGADO EN PLANTA") {
             setAddress('');
             setSelectedDistrict('');
             setTruck9TN(0);
@@ -879,7 +879,7 @@ const Page = () => {
                                 <font color="red"> *</font>
                             </label>
                             <Select value={deliveryType} onChange={handleDeliveryTypeChange}>
-                                <MenuItem value="PUESTO EN PLANTA">PUESTO EN PLANTA</MenuItem>
+                                <MenuItem value="ENTREGADO EN PLANTA">ENTREGADO EN PLANTA</MenuItem>
                                 <MenuItem value="PUESTO EN OBRA">PUESTO EN OBRA</MenuItem>
                             </Select>
                         </FormControl>
@@ -896,12 +896,12 @@ const Page = () => {
                                 <font color="red"> *</font>
                             </label>
                             <Select value={deliveryType} onChange={handleDeliveryTypeChange}>
-                                <MenuItem value="PUESTO EN PLANTA">PUESTO EN PLANTA</MenuItem>
+                                <MenuItem value="ENTREGADO EN PLANTA">ENTREGADO EN PLANTA</MenuItem>
                                 <MenuItem value="PUESTO EN OBRA">PUESTO EN OBRA</MenuItem>
                             </Select>
                         </FormControl>
                         <br></br><br></br>
-                        {deliveryType === "PUESTO EN PLANTA" && (
+                        {deliveryType === "ENTREGADO EN PLANTA" && (
                             <FormControl fullWidth>
                                 <label>
                                     Dirección
