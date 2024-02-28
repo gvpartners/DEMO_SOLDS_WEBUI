@@ -684,15 +684,14 @@ const Page = () => {
     const prorrateoParihuela = () => {
         let cont = 0;
         cont = updateTotalParihuela() / getPiecesTotal();
-        return cont.toFixed(2);
+        let redondeado = Math.round(cont * 100) / 100; // Redondea a 2 decimales
+        return redondeado.toFixed(2);
     }
     const prorrateoFlete = () => {
         let aux = 0;
-
         // Obtener el valor del flete y el total de piezas
         const fleteCost = getFleteCost();
         const piecesTotal = getPiecesTotal();
-
         // Verificar si el denominador es diferente de cero antes de realizar la división
         if (piecesTotal !== 0) {
             aux = (fleteCost / 1.18) / piecesTotal;
@@ -702,8 +701,9 @@ const Page = () => {
         if (selectedCategory === "BLOQUES" && aux < 0.4 && piecesTotal > 0) {
             aux = 0.4;
         }
-
-        return aux.toFixed(2);
+        
+        let redondeado = Math.round(aux * 100) / 100;
+        return redondeado.toFixed(2);
     };
     const resetPuestoEnObra = () => {
         if (deliveryType === "ENTREGADO EN PLANTA") {
@@ -1183,7 +1183,7 @@ const Page = () => {
                         </table>
                         {selectedMeasures.length > 0 && (
                             <Typography variant="h7" style={{ float: 'left' }}>
-                                CANT. PARIHUELAS: {cantParihuela||0}
+                                CANT. PARIHUELAS: {cantParihuela || 0}
                             </Typography>
                         )}
                         {selectedMeasures.length > 0 && (
