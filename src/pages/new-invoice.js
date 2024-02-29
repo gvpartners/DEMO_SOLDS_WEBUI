@@ -561,19 +561,19 @@ const Page = () => {
             .map(district => ({
                 Truck: '9 TN',
                 CountTruck: (getTotalWeight() / 9000).toFixed(3),
-                TructQuantity: truck9TN,
+                TruckQuantity: truck9TN,
                 TruckPrice: district['09_TN'],
             }))
             .concat({
                 Truck: '20 TN',
                 CountTruck: (getTotalWeight() / 20000).toFixed(3),
-                TructQuantity: truck20TN,
+                TruckQuantity: truck20TN,
                 TruckPrice: fletesJson[0]['20_TN'],
             })
             .concat({
                 Truck: '32 TN',
                 CountTruck: (getTotalWeight() / 32000).toFixed(3),
-                TructQuantity: truck32TN,
+                TruckQuantity: truck32TN,
                 TruckPrice: fletesJson[0]['32_TN'],
             });
 
