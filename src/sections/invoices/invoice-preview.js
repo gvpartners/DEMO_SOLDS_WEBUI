@@ -304,7 +304,7 @@ const generatePDF = (invoice) => {
                 cellPadding: 1,
             }
         });
-        
+
         const tableInfo = [
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
             ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
@@ -489,7 +489,7 @@ const generatePDF = (invoice) => {
             tableLineWidth: 0,
             tableWidth: 'auto',
             showHead: 'never',
-            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 1 }
+            styles: { fontStyle: 'bold', textColor: [0, 0, 0], cellPadding: 0.6 }
         });
     }
     else {
@@ -667,19 +667,19 @@ const generatePDF = (invoice) => {
     ]
 
     doc.autoTable({
-        startY: doc.autoTable.previous.finalY + 5,
+        startY: doc.autoTable.previous.finalY + 2,
         body: tableSignature,
         theme: 'plain',
         tableLineColor: [255, 255, 255],
         tableLineWidth: 0,
-        margin: { left: 15 },
+        margin: { left: 14 },
         tableWidth: 'auto',
         showHead: 'never',
         styles: {
             fontStyle: 'bold',
             textColor: [0, 0, 0],
             cellPadding: 0.5,
-            fontSize: 11
+            fontSize: 10
         },
     });
 
