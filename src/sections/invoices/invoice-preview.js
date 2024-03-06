@@ -122,7 +122,7 @@ const generatePDF = (invoice) => {
         [`Nombre:`, invoice.identificationInfo || 'NO PROPORCIONADO'],
         [`Dirección:`, invoice.customerAddress?.toUpperCase() || 'NO PROPORCIONADO'],
         [`${invoice.identificationType || 'RUC'}:`, invoice.documentInfo || 'NO PROPORCIONADO'],
-        [`Correo electrónico:`, invoice.email || 'NO PROPORCIONADO'],
+        [`Contacto:`, invoice.contact || 'NO PROPORCIONADO'],
         [`Teléfono:`, invoice.telephone || 'NO PROPORCIONADO'],
     ];
 
