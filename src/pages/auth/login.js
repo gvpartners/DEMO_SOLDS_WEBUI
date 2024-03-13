@@ -91,7 +91,7 @@ const Page = () => {
     <>
       <Head>
         <title>Iniciar sesión</title>
-        <link rel="icon" href="/assets/avatars/unicon.png" />
+        <link rel="icon" href="/assets/avatars/unicon.png" /> 
       </Head>
       <Box
         sx={{
