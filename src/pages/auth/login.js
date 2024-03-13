@@ -34,8 +34,8 @@ const Page = () => {
   useEffect(() => {
     sessionStorage.setItem('authToken', '');
     sessionStorage.setItem('authenticated', false);
-    sessionStorage.setItem('userEmail','');
-    sessionStorage.setItem('user','')
+    sessionStorage.setItem('userEmail', '');
+    sessionStorage.setItem('user', '')
   }, []);
 
   const formik = useFormik({
