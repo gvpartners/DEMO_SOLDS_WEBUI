@@ -17,7 +17,7 @@ const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   useNProgress();
-  
+
   const getLayout = Component.getLayout ?? ((page) => page);
 
   const theme = createTheme();
@@ -28,6 +28,8 @@ const App = (props) => {
         <title>
           UNICON
         </title>
+        <link rel="icon" href="/assets/avatars/unicon.png" />
+
         <meta
           name="viewport"
           content="initial-scale=1, width=device-width"
