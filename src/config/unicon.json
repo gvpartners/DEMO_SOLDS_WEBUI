@@ -2175,6 +2175,60 @@
     "UnitForPari": 15.6
   },
   {
+    "Category": "ADOQUINES",
+    "Code": "ADO4RECGRIS",
+    "Description": "ADOKING  RECTANGULAR 4X10X20 GRIS",
+    "Unit": "MT2",
+    "Price": 31.7,
+    "Weight": 90,
+    "UnitForPari": 24
+  },
+  {
+    "Category": "ADOQUINES",
+    "Code": "ADO4RECANAR",
+    "Description": "ADOKING RECTANGULAR 4X10X20 ANARANJADO",
+    "Unit": "MT2",
+    "Price": 31.6,
+    "Weight": 90,
+    "UnitForPari": 24
+  },
+  {
+    "Category": "ADOQUINES",
+    "Code": "ADO6RECGRIS",
+    "Description": "ADOKING RECTANGULAR  6X10X20 GRIS",
+    "Unit": "MT2",
+    "Price": 39,
+    "Weight": 135,
+    "UnitForPari": 18
+  },
+  {
+    "Category": "ADOQUINES",
+    "Code": "ADO6RECANAR",
+    "Description": "ADOKING RECTANGULAR 6X10X20 ANARANJADO",
+    "Unit": "MT2",
+    "Price": 38.8,
+    "Weight": 135,
+    "UnitForPari": 18
+  },
+  {
+    "Category": "ADOQUINES",
+    "Code": "ADO8RECGRIS",
+    "Description": "ADOKING RECTANGULAR 8X10X20 GRIS",
+    "Unit": "MT2",
+    "Price": 45.1,
+    "Weight": 180,
+    "UnitForPari": 15.6
+  },
+  {
+    "Category": "ADOQUINES",
+    "Code": "ADO8RECANAR",
+    "Description": "ADOKING RECTANGULAR 8X10X20 ANARANJADO",
+    "Unit": "MT2",
+    "Price": 44.9,
+    "Weight": 180,
+    "UnitForPari": 15.6
+  },
+  {
     "Category": "LADRILLOS",
     "Code": "KK25%NAT",
     "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO I",
