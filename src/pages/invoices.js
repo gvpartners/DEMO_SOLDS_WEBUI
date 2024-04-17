@@ -607,7 +607,7 @@ const Page = () => {
                       <Close style={{ marginRight: '8px' }} /> Rechazar
                     </MenuItem>
                   </div>
-                  <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
+                  <div>
                     <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
                       <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
                     </MenuItem>
