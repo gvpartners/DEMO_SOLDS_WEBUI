@@ -271,9 +271,10 @@ const Page = () => {
             deliveryType === "PUESTO EN OBRA" &&
             (!selectedDistrict ||
                 !isParihuelaNeeded ||
-                (truck9TN === null || truck9TN === '' || truck9TN < 0) ||
-                (truck20TN === null || truck20TN === '' || truck20TN < 0) ||
-                (truck32TN === null || truck32TN === '' || truck32TN < 0) ||
+                (truck9TN === null || truck9TN === '') ||
+                (truck20TN === null || truck20TN === '') ||
+                (truck32TN === null || truck32TN === '') ||
+                (truck9TN <= 0 && truck20TN <= 0 && truck32TN <= 0) ||
                 (isParihuelaNeeded !== "No" &&
                     (cantParihuela === null || cantParihuela === '' || cantParihuela < 0) ||
                     (costParihuela === null || costParihuela === '' || costParihuela < 0)
@@ -701,7 +702,7 @@ const Page = () => {
         if (selectedCategory === "BLOQUES" && aux < 0.4 && piecesTotal > 0) {
             aux = 0.4;
         }
-        
+
         let redondeado = Math.round(aux * 100) / 100;
         return redondeado.toFixed(2);
     };
@@ -986,7 +987,7 @@ const Page = () => {
                                                                 <td style={thTdStyle}>{(getTotalWeight() / 9000).toFixed(3)} </td>
                                                                 <td style={thTdStyle}>
                                                                     <TextField
-                                                                        error={truck9TN === null || truck9TN === '' || truck9TN < 0}
+                                                                        error={truck9TN === null || truck9TN === '' || (truck9TN <= 0 && truck20TN <= 0 && truck32TN <= 0)}
                                                                         type="number"
                                                                         fullWidth
                                                                         value={truck9TN}
@@ -1000,7 +1001,7 @@ const Page = () => {
                                                                 <td style={thTdStyle}>{(getTotalWeight() / 20000).toFixed(3)} </td>
                                                                 <td style={thTdStyle}>
                                                                     <TextField
-                                                                        error={truck20TN === null || truck20TN === '' || truck20TN < 0}
+                                                                        error={truck20TN === null || truck20TN === '' || (truck9TN <= 0  && truck20TN <= 0 && truck32TN <= 0)}
                                                                         type="number"
                                                                         fullWidth
                                                                         value={truck20TN}
@@ -1014,7 +1015,7 @@ const Page = () => {
                                                                 <td style={thTdStyle}>{(getTotalWeight() / 32000).toFixed(3)}</td>
                                                                 <td style={thTdStyle}>
                                                                     <TextField
-                                                                        error={truck32TN === null || truck32TN === '' || truck32TN < 0}
+                                                                        error={truck32TN === null || truck32TN === '' || (truck9TN <= 0  && truck20TN <= 0 && truck32TN <= 0)}
                                                                         type="number"
                                                                         fullWidth
                                                                         value={truck32TN}
