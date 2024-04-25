@@ -274,7 +274,10 @@ const Page = () => {
                 (truck9TN === null || truck9TN === '') ||
                 (truck20TN === null || truck20TN === '') ||
                 (truck32TN === null || truck32TN === '') ||
-                (truck9TN <= 0 && truck20TN <= 0 && truck32TN <= 0) ||
+                (truck9TN <= 0 && truck20TN <= 0 && truck32TN <= 0 && isOtherDistrict === "No") ||
+                (isOtherDistrict !== "No" &&
+                    (manualTotalPriceFlete === null || manualTotalPriceFlete === '' || manualTotalPriceFlete <= 0)
+                ) ||
                 (isParihuelaNeeded !== "No" &&
                     (cantParihuela === null || cantParihuela === '' || cantParihuela < 0) ||
                     (costParihuela === null || costParihuela === '' || costParihuela < 0)
@@ -1001,7 +1004,7 @@ const Page = () => {
                                                                 <td style={thTdStyle}>{(getTotalWeight() / 20000).toFixed(3)} </td>
                                                                 <td style={thTdStyle}>
                                                                     <TextField
-                                                                        error={truck20TN === null || truck20TN === '' || (truck9TN <= 0  && truck20TN <= 0 && truck32TN <= 0)}
+                                                                        error={truck20TN === null || truck20TN === '' || (truck9TN <= 0 && truck20TN <= 0 && truck32TN <= 0)}
                                                                         type="number"
                                                                         fullWidth
                                                                         value={truck20TN}
@@ -1015,7 +1018,7 @@ const Page = () => {
                                                                 <td style={thTdStyle}>{(getTotalWeight() / 32000).toFixed(3)}</td>
                                                                 <td style={thTdStyle}>
                                                                     <TextField
-                                                                        error={truck32TN === null || truck32TN === '' || (truck9TN <= 0  && truck20TN <= 0 && truck32TN <= 0)}
+                                                                        error={truck32TN === null || truck32TN === '' || (truck9TN <= 0 && truck20TN <= 0 && truck32TN <= 0)}
                                                                         type="number"
                                                                         fullWidth
                                                                         value={truck32TN}
@@ -1062,7 +1065,7 @@ const Page = () => {
                                                 </td>
                                                 <td style={thTdStyle}>
                                                     <TextField
-                                                        error={manualTotalPriceFlete === null || manualTotalPriceFlete === '' || manualTotalPriceFlete < 0}
+                                                        error={manualTotalPriceFlete === null || manualTotalPriceFlete === '' || manualTotalPriceFlete <= 0}
                                                         label="S/."
                                                         type='number'
                                                         value={manualTotalPriceFlete}

@@ -91,8 +91,9 @@ const Page = () => {
     <>
       <Head>
         <title>Iniciar sesión</title>
-        <link rel="icon" href="/assets/avatars/unicon.png" /> 
+        <link rel="icon" href="/assets/avatars/unicon.png" lazy />
       </Head>
+
       <Box
         sx={{
           backgroundColor: 'background.paper',
