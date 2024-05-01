@@ -339,7 +339,7 @@ const Page = () => {
       router.push(`/new-invoice?InvoiceId=${selectedInvoiceId}`);
     }
   };
-  const duplicateInvoice = async () => {
+  const duplicateInvoice = async (userId) => {
     setAnchorEl(null);
     const confirmAction = await Swal.fire({
       title: 'Confirmar',
@@ -352,7 +352,7 @@ const Page = () => {
 
     if (confirmAction.isConfirmed) {
       try {
-        await invoiceService.duplicateInvoice(selectedInvoiceId);
+        await invoiceService.duplicateInvoice(selectedInvoiceId, userId);
         Swal.fire({
           title: 'Cotización duplicada',
           text: 'Se duplicó satisfactoriamente la cotización',
@@ -608,7 +608,7 @@ const Page = () => {
                     </MenuItem>
                   </div>
                   <div>
-                    <MenuItem onClick={() => duplicateInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <MenuItem onClick={() => duplicateInvoice(sessionStorage.getItem('identificator'))} style={{ display: 'flex', alignItems: 'center' }}>
                       <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
                     </MenuItem>
                   </div>

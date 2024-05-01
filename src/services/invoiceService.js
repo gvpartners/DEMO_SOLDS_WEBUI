@@ -48,8 +48,8 @@ const generateExcel = async (data) => {
         console.error('Error generating Excel:', error);
     }
 }
-const duplicateInvoice = (id) => {
-    return axios.post(`/api/Invoice/DuplicateInvoice/${id}`);
+const duplicateInvoice = (id,userId) => {
+    return axios.post(`/api/Invoice/DuplicateInvoice/${id}/${userId}`);
 }
 const summaryInfo = () => {
     return axios.get('/api/Invoice/SummaryInfo');
