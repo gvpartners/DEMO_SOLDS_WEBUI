@@ -472,7 +472,7 @@ const Page = () => {
             }
         }
         if (isOtherDistrict != "No" && manualTotalPriceFlete > 0) {
-            totalCost = manualTotalPriceFlete;
+            totalCost = parseFloat(manualTotalPriceFlete);
         }
 
         return totalCost;
@@ -549,7 +549,8 @@ const Page = () => {
             else {
                 pu = measureInfo.Price
             }
-            const priceUnit = measureInfo ? (pu * ((100 - percentageOfDiscount) / 100)) : 0;
+            const execed = pu - measureInfo.Price
+            const priceUnit = measureInfo ? (measureInfo.Price * ((100 - percentageOfDiscount) / 100)) + execed : 0;
             const totalPrice = measureQuantities[index] * priceUnit;
 
             return {
@@ -1158,7 +1159,8 @@ const Page = () => {
                                     else {
                                         pu = measureInfo.Price
                                     }
-                                    const precioUnitario = measureInfo ? (pu * ((100 - percentageOfDiscount) / 100)) : 0;
+                                    const execed = pu - measureInfo.Price
+                                    const precioUnitario = measureInfo ? (measureInfo.Price * ((100 - percentageOfDiscount) / 100)) + execed : 0;
                                     const total = measureQuantities[index] * precioUnitario;
 
                                     return (
