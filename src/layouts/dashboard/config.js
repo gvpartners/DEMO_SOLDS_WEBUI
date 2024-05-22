@@ -6,7 +6,7 @@ import UserIcon from '@heroicons/react/24/solid/UserIcon';
 import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
@@ -28,6 +28,15 @@ export const items = [
     icon: (
       <SvgIcon fontSize="small">
         <AssignmentIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Pedidos (BETA)',
+    path: '/tracker',
+    icon: (
+      <SvgIcon fontSize="small">
+        <AssignmentTurnedInIcon />
       </SvgIcon>
     )
   },

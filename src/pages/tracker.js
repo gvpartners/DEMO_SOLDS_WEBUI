@@ -5,7 +5,7 @@ import PlusIcon from '@mui/icons-material/Add';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { applyPagination } from 'src/utils/apply-pagination';
 import { useRouter } from 'next/router';
-import invoiceService from 'src/services/invoiceService';
+import trackService from 'src/services/trackService';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import IconButton from '@mui/material/IconButton';
@@ -17,8 +17,6 @@ import GetAppIcon from '@mui/icons-material/GetApp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircle from '@mui/icons-material/CheckCircle';
 import Close from '@mui/icons-material/Close';
-import handleDownloadPDFInvoice from 'src/sections/invoices/invoice-pdf';
-import PDFPreview from 'src/sections/invoices/invoice-preview';
 import Swal from 'sweetalert2';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -67,14 +65,14 @@ const Page = () => {
   const [orderBy, setOrderBy] = useState('createdOn');
   const [order, setOrder] = useState('asc');
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedInvoiceId, setSelectedInvoiceId] = useState(null);
+  const [selectedTrackId, setSelectedTrackId] = useState(null);
   const [selectedStatusNumber, setSelectedStatusNumber] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const [selectedInvoice, setSelectedInvoice] = useState(null);
-  const [invoices, setInvoices] = useState([]);
-  const [totalInvoices, setTotalInvoices] = useState(0);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+  const [tracks, setTracks] = useState([]);
+  const [totalTracks, setTotalTracks] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [statusOptions, setstatusOptions] = useState(['En progreso', 'Cerrada', 'Rechazada']);
+  const [statusOptions, setstatusOptions] = useState(['En progreso', 'Atendido', 'Rechazada']);
   const [categoryOptions, setCategoryOptions] = useState([])
   const [UMOptions, setUMOptions] = useState(['MT2', 'PZA', 'MLL'])
   const [deliveryOptions, setdeliveryOptions] = useState(['Entregado en planta', 'Puesto en obra']);
@@ -83,11 +81,6 @@ const Page = () => {
   // Filters Export
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [categoryValue, setCategoryValue] = useState("");
-  const [statusNameValue, setStatusNameValue] = useState("");
-  const [deliveryTypeValue, setDeliveryTypeValue] = useState("");
-  const [districtValue, setDistrictValue] = useState("");
-  const [employeeValue, setEmployeeValue] = useState("");
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -101,7 +94,7 @@ const Page = () => {
   const getCommentById = async () => {
     setComment('');
     try {
-      const response = await invoiceService.getCommentById(selectedInvoiceId);
+      const response = await trackService.getCommentById(selectedTrackId);
       if (response.status == 200) {
         setComment(response.data);
       }
@@ -138,40 +131,41 @@ const Page = () => {
   const [filterContact, setFilterContact] = useState('');
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDeliveryDate, setSelectedDeliveryDate] = useState(null);
+  const [selectedOrderDate, setSelectedOrderDate] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [resetFilter, setResetFilter] = useState(false);
 
-  const getInvoices = async () => {
+  const getTracks = async () => {
     try {
-      var invoicePag = {
+      var trackPag = {
         pageNumber: page,
         pageSize: rowsPerPage,
         filters: {
-          invoiceCodeFilter: filterCode,
+          trackCodeFilter: filterCode,
           identificationInfoFilter: filterClient,
           selectedCategoryFilter: filterCategory,
           identificationTypeFilter: filterIdentification,
-          totalInvoiceFilter: filterPrice,
           deliveryTypeFilter: filterDelivery,
           employeeFilter: filterEmployee,
           statusNameFilter: filterStatus,
           totalOfPieces: filterCantPieces,
           unitPieceFilter: filterUnitPiece,
-          selectedDistrictFilter: filterDistrict,
-          addressFilter: filterAddress,
-          referenceFilter: filterReference,
           telephoneFilter: filterPhone,
           contactFilter: filterContact,
-          invoiceDate: selectedDate
+          trackDate: selectedDate,
+          orderDate: selectedOrderDate,
+          deliveryDate: selectedDeliveryDate,
+
         }
       };
-      const response = await invoiceService.getAllInvoices(invoicePag);
+      const response = await trackService.getAllTracks(trackPag);
 
       if (response.status == 200) {
         const fetchedData = await response.data;
-        setTotalInvoices(fetchedData.total)
-        setInvoices(fetchedData.invoices);
+        setTotalTracks(fetchedData.total)
+        setTracks(fetchedData.tracks);
       }
     } catch (err) {
       console.error('Error fetching data:', err);
@@ -197,7 +191,9 @@ const Page = () => {
     setFilterPhone('');
     setFilterContact('');
     setSelectedDate(null);
-    getInvoices();
+    setSelectedDeliveryDate(null);
+    setSelectedOrderDate(null);
+    getTracks();
   };
   const getUsers = async () => {
     try {
@@ -229,12 +225,12 @@ const Page = () => {
   }, []);
 
 
-  const handleNewInvoice = () => {
-    router.push('/new-invoice')
+  const handleNewTrack = () => {
+    router.push('/new-tracker')
   }
 
   useEffect(() => {
-    getInvoices();
+    getTracks();
   }, [
     page,
     rowsPerPage,
@@ -253,7 +249,9 @@ const Page = () => {
     filterReference,
     filterPhone,
     filterContact,
-    selectedDate
+    selectedDate,
+    selectedOrderDate,
+    selectedDeliveryDate
   ]);
 
   const handlePageChange = useCallback((event, newPage) => {
@@ -280,31 +278,31 @@ const Page = () => {
       console.error('Error fetching data:', err);
     }
   };
-  const getEmployeePhone = (invoice) => {
-    const matchingEmployee = employeeOptions?.find(x => x.email === invoice.createdBy);
+  const getEmployeePhone = (track) => {
+    const matchingEmployee = employeeOptions?.find(x => x.email === track.createdBy);
 
     if (matchingEmployee && matchingEmployee.phone) {
       setEmployeePhone(matchingEmployee.phone);
-      setSelectedInvoice(prevInvoice => ({
-        ...prevInvoice,
+      setSelectedTrack(prevTrack => ({
+        ...prevTrack,
         employeePhone: matchingEmployee.phone
       }));
     }
   }
-  const handleMenuClick = (event, invoice) => {
-    setSelectedInvoice(invoice);
-    setSelectedInvoiceId(invoice.id);
-    setSelectedStatusNumber(invoice.statusOrder);
-    setSelectedUserId(invoice.userId);
-    getCustomerAddress(invoice.documentInfo);
-    getEmployeePhone(invoice);
+  const handleMenuClick = (event, track) => {
+    setSelectedTrack(track);
+    setSelectedTrackId(track.id);
+    setSelectedStatusNumber(track.statusOrder);
+    setSelectedUserId(track.userId);
+    getCustomerAddress(track.documentInfo);
+    getEmployeePhone(track);
     setAnchorEl(event.currentTarget);
   };
 
   useEffect(() => {
     // This code will run when customerAddress is updated
-    setSelectedInvoice(prevInvoice => ({
-      ...prevInvoice,
+    setSelectedTrack(prevTrack => ({
+      ...prevTrack,
       customerAddress: customerAddress
     }));
   }, [customerAddress]);
@@ -317,13 +315,13 @@ const Page = () => {
   };
 
   const handleDownloadPDF = () => {
-    if (selectedInvoice) {
-      handleDownloadPDFInvoice(selectedInvoice);
+    if (selectedTrack) {
+      handleDownloadPDFTrack(selectedTrack);
     }
   };
   const handlePreviewPDF = () => {
-    if (selectedInvoice) {
-      PDFPreview(selectedInvoice);
+    if (selectedTrack) {
+      PDFPreview(selectedTrack);
     }
   };
 
@@ -334,16 +332,16 @@ const Page = () => {
     "ENTREGADO EN PLANTA": 'primary',
     "PUESTO EN OBRA": 'info'
   };
-  const editInvoice = () => {
-    if (selectedInvoiceId) {
-      router.push(`/new-invoice?InvoiceId=${selectedInvoiceId}`);
+  const editTrack = () => {
+    if (selectedTrackId) {
+      router.push(`/new-tracker?TrackId=${selectedTrackId}`);
     }
   };
-  const duplicateInvoice = async (userId) => {
+  const duplicateTrack = async (userId) => {
     setAnchorEl(null);
     const confirmAction = await Swal.fire({
       title: 'Confirmar',
-      text: '¿Está seguro de duplicar la cotización?',
+      text: '¿Está seguro de duplicar el pedido?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Sí, duplicar',
@@ -352,19 +350,19 @@ const Page = () => {
 
     if (confirmAction.isConfirmed) {
       try {
-        await invoiceService.duplicateInvoice(selectedInvoiceId, userId);
+        await trackService.duplicateTrack(selectedTrackId, userId);
         Swal.fire({
-          title: 'Cotización duplicada',
-          text: 'Se duplicó satisfactoriamente la cotización',
+          title: 'Pedido duplicado',
+          text: 'Se duplicó satisfactoriamente el pedido',
           icon: 'success',
           confirmButtonText: 'OK',
         });
-        getInvoices();
+        getTracks();
       } catch (error) {
-        console.error('Error al duplicar la cotización:', error);
+        console.error('Error al duplicar el pedido:', error);
         Swal.fire({
-          title: 'Error al duplicar la cotización',
-          text: 'No se pudo duplicar la cotización. Por favor, inténtelo de nuevo.',
+          title: 'Error al duplicar el pedido',
+          text: 'No se pudo duplicar el pedido. Por favor, inténtelo de nuevo.',
           icon: 'error',
           confirmButtonText: 'OK',
         });
@@ -384,28 +382,28 @@ const Page = () => {
       });
 
       if (confirmAction.isConfirmed) {
-        const response = await invoiceService.updateStatus(selectedInvoiceId, orderStatus);
+        const response = await trackService.updateStatus(selectedTrackId, orderStatus);
 
         if (response.status == 200) {
           setAnchorEl(null);
           if (orderStatus === 2) {
             Swal.fire({
-              title: 'Cotización cerrada',
-              text: 'Se cerró satisfactoriamente la cotización',
+              title: 'Pedido atendido',
+              text: 'Se atendió satisfactoriamente el pedido',
               icon: 'success',
               confirmButtonText: 'OK',
             });
           } else if (orderStatus === 3) {
             Swal.fire({
-              title: 'Cotización rechazada',
-              text: 'Se rechazó satisfactoriamente la cotización',
+              title: 'Pedido rechazado',
+              text: 'Se rechazó satisfactoriamente el pedido',
               icon: 'success',
               confirmButtonText: 'OK',
             });
           } else {
             Swal.fire({
               title: 'Error',
-              text: error.message || 'Hubo un error al actualizar el estado de la cotización',
+              text: error.message || 'Hubo un error al actualizar el estado de el pedido',
               icon: 'error',
               confirmButtonText: 'OK',
             });
@@ -416,7 +414,7 @@ const Page = () => {
     } catch (error) {
       Swal.fire({
         title: 'Error',
-        text: error.message || 'Hubo un error al actualizar el estado de la cotización',
+        text: error.message || 'Hubo un error al actualizar el estado de el pedido',
         icon: 'error',
         confirmButtonText: 'OK',
       });
@@ -424,12 +422,12 @@ const Page = () => {
   };
 
 
-  const removeInvoice = async () => {
+  const removeTrack = async () => {
     try {
       setAnchorEl(null);
       const confirmAction = await Swal.fire({
         title: 'Confirmar eliminación',
-        text: '¿Está seguro de eliminar esta cotización?',
+        text: '¿Está seguro de eliminar este pedido?',
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'Sí, eliminar',
@@ -437,13 +435,13 @@ const Page = () => {
       });
 
       if (confirmAction.isConfirmed) {
-        const response = await invoiceService.removeInvoice(selectedInvoiceId);
+        const response = await trackService.removeTrack(selectedTrackId);
 
         if (response.status == 200) {
           setAnchorEl(null);
           Swal.fire({
-            title: 'Eliminación de Cotización',
-            text: 'Se eliminó satisfactoriamente la cotización',
+            title: 'Eliminación de Pedido',
+            text: 'Se eliminó satisfactoriamente el pedido',
             icon: 'success',
             confirmButtonText: 'OK',
           });
@@ -451,7 +449,7 @@ const Page = () => {
         } else {
           Swal.fire({
             title: 'Error',
-            text: error.message || 'Hubo un error al eliminar la cotización',
+            text: error.message || 'Hubo un error al eliminar el pedido',
             icon: 'error',
             confirmButtonText: 'OK',
           });
@@ -460,7 +458,7 @@ const Page = () => {
     } catch (error) {
       Swal.fire({
         title: 'Error',
-        text: error.message || 'Hubo un error al eliminar la cotización',
+        text: error.message || 'Hubo un error al eliminar el pedido',
         icon: 'error',
         confirmButtonText: 'OK',
       });
@@ -475,6 +473,15 @@ const Page = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    setIsDatePickerOpen(false);
+  };
+  const handleDeliveryDateChange = (date) => {
+    setSelectedDeliveryDate(date);
+    setIsDatePickerOpen(false);
+  };
+
+  const handleOrderDateChange = (date) => {
+    setSelectedOrderDate(date);
     setIsDatePickerOpen(false);
   };
   const handleDialogClose = () => {
@@ -495,7 +502,7 @@ const Page = () => {
       return;
     }
 
-    const response = await invoiceService.updateCommentbyId(selectedInvoiceId, comment);
+    const response = await trackService.updateCommentbyId(selectedTrackId, comment);
     if (response.status == 200) {
       setIsDialogOpenComment(false);
       setAnchorEl(null);
@@ -530,7 +537,7 @@ const Page = () => {
         endDate: endDate,
       }
       setLoading(true);
-      const response = await invoiceService.generateExcel(dataExport);
+      const response = await trackService.generateExcel(dataExport);
       if (!response.ok) {
         setLoading(false);
         throw new Error(`Error generating Excel: ${response.statusText}`);
@@ -543,45 +550,54 @@ const Page = () => {
         hour: '2-digit',
         minute: '2-digit'
       });
-      saveAs(blob, 'Reporte de cotizaciones_' + date + '.xlsx');
+      saveAs(blob, 'Reporte de pedidos' + date + '.xlsx');
       setLoading(false);
     }
     setIsDialogOpen(false);
   };
 
-  const renderInvoices = (inv) => {
-    return inv.map((invoice) => {
-      const adjustedDate = new Date(invoice.createdOn);
+  const renderTracks = (inv) => {
+    return inv.map((track) => {
+      const adjustedDate = new Date(track.createdOn);
+      const adjustedDeliveryDate = new Date(track.deliveryDate);
+      const adjustedOrderDate = new Date(track.orderDate);
 
       const formattedDate = adjustedDate.toLocaleString('es-PE', {
         month: '2-digit',
         day: '2-digit',
-        year: 'numeric',
-        // hour: '2-digit',
-        // minute: '2-digit',
-        // second: '2-digit'
+        year: 'numeric'
       });
-
+      const formattedDeliveryDate = adjustedDeliveryDate.toLocaleString('es-PE', {
+        month: '2-digit',
+        day: '2-digit',
+        year: 'numeric'
+      });
+      const formattedOrderDate = adjustedOrderDate.toLocaleString('es-PE', {
+        month: '2-digit',
+        day: '2-digit',
+        year: 'numeric'
+      });
       return (
-        <TableRow hover key={invoice.id}>
-          <TableCell>{invoice.invoiceCode}</TableCell>
-          <TableCell>{invoice.identificationInfo || "No proporcionado"}</TableCell>
-          <TableCell>{invoice.selectedDistrict}</TableCell>
+        <TableRow hover key={track.id}>
+          <TableCell>{track.trackCode}</TableCell>
+          <TableCell>{track.identificationInfo || "No proporcionado"}</TableCell>
           <TableCell>
             <SeverityPill color='primary'>
-              {invoice.selectedCategory}
+              {track.selectedCategory}
             </SeverityPill>
           </TableCell>
           <TableCell>{formattedDate}</TableCell>
+          {/* <TableCell>{formattedOrderDate}</TableCell> */}
+          <TableCell>{formattedDeliveryDate}</TableCell>
           <TableCell>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <SeverityPill color={statusMap[invoice.statusOrder]}>
-                  {invoice.statusName}
+                <SeverityPill color={statusMap[track.statusOrder]}>
+                  {track.statusName}
                 </SeverityPill>
               </div>
               <div>
-                <IconButton onClick={(event) => handleMenuClick(event, invoice)}>
+                <IconButton onClick={(event) => handleMenuClick(event, track)}>
                   <MoreVertIcon />
                 </IconButton>
 
@@ -589,15 +605,15 @@ const Page = () => {
                   <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
                     <div hidden={selectedStatusNumber !== 1}>
                       <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
-                        <CheckCircle style={{ marginRight: '8px' }} /> Cerrar
+                        <CheckCircle style={{ marginRight: '8px' }} /> Atendido
                       </MenuItem>
                       <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
                         <Close style={{ marginRight: '8px' }} /> Rechazar
                       </MenuItem>
-                      <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                      <MenuItem onClick={() => editTrack()} style={{ display: 'flex', alignItems: 'center' }}>
                         <EditIcon style={{ marginRight: '8px' }} /> Editar
                       </MenuItem>
-                      <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                      <MenuItem onClick={() => removeTrack()} style={{ display: 'flex', alignItems: 'center' }}>
                         <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
                       </MenuItem>
                     </div>
@@ -608,7 +624,7 @@ const Page = () => {
                     </MenuItem>
                   </div>
                   <div>
-                    <MenuItem onClick={() => duplicateInvoice(sessionStorage.getItem('identificator'))} style={{ display: 'flex', alignItems: 'center' }}>
+                    <MenuItem onClick={() => duplicateTrack(sessionStorage.getItem('identificator'))} style={{ display: 'flex', alignItems: 'center' }}>
                       <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
                     </MenuItem>
                   </div>
@@ -617,34 +633,23 @@ const Page = () => {
                       <CommentIcon style={{ marginRight: '8px' }} /> Comentario
                     </MenuItem>
                   </div>
-                  <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                    <Visibility style={{ marginRight: '8px' }} /> Ver PDF
-                  </MenuItem>
-                  <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                    <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
-                  </MenuItem>
                 </Menu>
               </div>
             </div>
           </TableCell>
 
-          <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
-          <TableCell>{invoice.unitPiece}</TableCell>
+          <TableCell>{new Intl.NumberFormat('en-US').format(track.totalOfPieces)}</TableCell>
+          <TableCell>{track.unitPiece}</TableCell>
 
           <TableCell>
-            <SeverityPill color={statusMap[invoice.deliveryType]}>
-              {invoice.deliveryType}
+            <SeverityPill color={statusMap[track.deliveryType]}>
+              {track.deliveryType}
             </SeverityPill>
           </TableCell>
-          <TableCell>
-            {formatter.format(invoice.totalInvoice)}
-          </TableCell>
-          {/* <TableCell>{invoice.reference || "No proporcionado"}</TableCell> */}
-          <TableCell>{invoice.address}</TableCell>
-          <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
-          <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
-          <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
-          <TableCell>{invoice.employee}</TableCell>
+          <TableCell>{track.contact || "No proporcionado"}</TableCell>
+          <TableCell>{track.telephone || "No proporcionado"}</TableCell>
+          <TableCell>{track.documentInfo || "XXXXXXXXXX"}</TableCell>
+          <TableCell>{track.employee}</TableCell>
 
         </TableRow>
       );
@@ -654,7 +659,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Cotizaciones</title>
+        <title>Pedidos</title>
       </Head>
       <Box
         component="main"
@@ -668,7 +673,7 @@ const Page = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <Typography variant="h4">Total de cotizaciones [{new Intl.NumberFormat('en-US').format(totalInvoices)}]</Typography>
+                  <Typography variant="h4">Total de pedidos [{new Intl.NumberFormat('en-US').format(totalTracks)}]</Typography>
                 </Stack>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -684,7 +689,7 @@ const Page = () => {
                     Exportar
                   </Button>
                   <Button
-                    onClick={handleNewInvoice}
+                    onClick={handleNewTrack}
                     startIcon={
                       <SvgIcon fontSize="small">
                         <PlusIcon />
@@ -692,7 +697,7 @@ const Page = () => {
                     }
                     variant="outlined"
                   >
-                    Nueva cotización
+                    Nuevo pedido
                   </Button>
                 </Stack>
               </Grid>
@@ -721,20 +726,7 @@ const Page = () => {
                           />
                         </TableCell>
 
-                        <TableCell >
-                          <Autocomplete
-                            value={filterDistrict}
-                            onChange={(event, newValue) => setFilterDistrict(newValue)}
-                            options={districtOptions}
-                            renderInput={(params) => (
-                              <TextField sx={{ width: '160px', marginRight: '-10px' }}
-                                {...params}
-                                label="Distrito"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
+                        
                         <TableCell >
                           <Autocomplete
                             value={filterCategory}
@@ -753,7 +745,7 @@ const Page = () => {
 
                         <TableCell>
                           <div style={{ display: 'flex', alignItems: 'center', width: '150px', marginRight: '-20px' }}>
-                            <span >Fecha de cotización</span>
+                            <span >Fecha de creación</span>
 
                           </div><br />
                           <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>
@@ -765,7 +757,21 @@ const Page = () => {
                             />
                           </LocalizationProvider>
                         </TableCell>
+                        
+                        <TableCell>
+                          <div style={{ display: 'flex', alignItems: 'center', width: '150px', marginRight: '-20px' }}>
+                            <span >Fecha de entrega</span>
 
+                          </div><br />
+                          <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                              value={selectedDeliveryDate}
+                              onChange={handleDeliveryDateChange}
+                              inputFormat="dd/MM/yyyy"
+                              renderInput={(params) => <TextField {...params} variant="standard" helperText="" />}
+                            />
+                          </LocalizationProvider>
+                        </TableCell>
                         <TableCell >
                           <Autocomplete
                             value={filterStatus}
@@ -818,29 +824,7 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '150px', marginRight: '-30px' }}
-                            type='number'
-                            label="Precio total"
-                            value={filterPrice}
-                            onChange={(e) => setFilterPrice(e.target.value)}
-                          />
-                        </TableCell>
-                        {/* <TableCell>
-                          <TextField sx={{ width: '240px' }}
-                            label="Referencia"
-                            value={filterReference}
-                            onChange={(e) => setFilterReference(e.target.value)}
-                          />
-                        </TableCell> */}
-                        <TableCell>
-                          <TextField sx={{ width: '240px', marginRight: '-30px' }}
-                            label="Dirección"
-                            value={filterAddress}
-                            onChange={(e) => setFilterAddress(e.target.value)}
-                          />
-                        </TableCell>
-
+                       
                         <TableCell>
                           <TextField sx={{ width: '140px', marginRight: '-30px' }}
                             label="Contacto"
@@ -857,7 +841,7 @@ const Page = () => {
                         </TableCell>
 
                         <TableCell>
-                          <TextField sx={{ width: '140px', marginRight: '-20px' }}
+                          <TextField sx={{ width: '140px', marginRight: '-10px' }}
                             label="DNI/RUC"
                             type='number'
                             value={filterIdentification}
@@ -887,7 +871,7 @@ const Page = () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {renderInvoices(invoices)}
+                      {renderTracks(tracks)}
                     </TableBody>
 
                   </Table>
@@ -895,7 +879,7 @@ const Page = () => {
               </Scrollbar>
               <TablePagination
                 component="div"
-                count={totalInvoices}
+                count={totalTracks}
                 onPageChange={handlePageChange}
                 onRowsPerPageChange={handleRowsPerPageChange}
                 page={page}
@@ -905,7 +889,7 @@ const Page = () => {
               />
             </Card>
             <Dialog open={isDialogOpen} onClose={handleDialogClose} fullWidth maxWidth="sm">
-              <DialogTitle style={{ textAlign: 'center' }} >Exportar cotizaciones</DialogTitle>
+              <DialogTitle style={{ textAlign: 'center' }} >Exportar Pedidos</DialogTitle>
               <DialogContent >
                 <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', marginTop: '30px' }}>
@@ -950,7 +934,7 @@ const Page = () => {
             </Dialog>
             <Dialog open={isDialogOpenComment} onClose={handleDialogCommentClose} fullWidth maxWidth="sm">
               <DialogTitle style={{ textAlign: 'center' }}>
-                Comentario de la cotización
+                Comentario de el pedido
                 <IconButton
                   edge="end"
                   color="inherit"
