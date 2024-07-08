@@ -674,7 +674,7 @@ const Page = () => {
     };
     const [isAutopopulated, setIsAutopopulated] = useState(false);
     const [cantParihuela, setCantParihuela] = useState(0);
-    const [costParihuela, setCostParihuela] = useState(20);
+    const [costParihuela, setCostParihuela] = useState(25);
     const [manualTotalPriceFlete, setManualtotalPriceFlete] = useState(0);
 
     useEffect(() => {
