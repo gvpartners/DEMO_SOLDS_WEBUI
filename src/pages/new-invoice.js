@@ -501,7 +501,7 @@ const Page = () => {
                 pu2 = (measureInfo.Price * ((100 - percentageOfDiscount) / 100))
             }
             const price = measureInfo ? (pu2) : 0;
-            subtotal += measureQuantities[i] * price;
+            subtotal += measureQuantities[i] * price.toFixed(2);
         }
         return subtotal;
     };
@@ -551,7 +551,7 @@ const Page = () => {
             }
             const execed = pu - measureInfo.Price
             const priceUnit = measureInfo ? (measureInfo.Price * ((100 - percentageOfDiscount) / 100)) + execed : 0;
-            const totalPrice = measureQuantities[index] * priceUnit;
+            const totalPrice = measureQuantities[index] * priceUnit.toFixed(2);
 
             return {
                 Product: measure,
@@ -1161,7 +1161,7 @@ const Page = () => {
                                     }
                                     const execed = pu - measureInfo.Price
                                     const precioUnitario = measureInfo ? (measureInfo.Price * ((100 - percentageOfDiscount) / 100)) + execed : 0;
-                                    const total = measureQuantities[index] * precioUnitario;
+                                    const total = measureQuantities[index] * precioUnitario.toFixed(2);
 
                                     return (
                                         <tr key={index} style={hoverStyle}>
