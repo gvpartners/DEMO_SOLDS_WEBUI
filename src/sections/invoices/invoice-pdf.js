@@ -308,9 +308,9 @@ const generatePDF = (invoice) => {
             ["2. Puesto en obra: Considera entrega en obra, hasta donde pueda ingresar la unidad de forma segura."],
             ["3. Puesto en obra: Incluye el servicio de descarga MANUAL con estibadores a pie de camión."],
             ["4. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
-            ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete."],
+            ["5. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete, según el tipo de camión (Tn) y distrito."],
             ["6. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
-            ["7. NO se aceptan cambios ni devoluciones "],
+            ["7. NO se aceptan cambios ni devoluciones. Por restricciones de horarios, por multas municipales sobre el transporte, por tiempo de espera en obra (horas), lo asumirá cliente."],
         ];
         const tableInfoAux = [
             ["1. Los pedidos se entregarán con 72 horas de anticipación, a partir de la confirmación de pago, o línea de crédito disponible y activa."],
@@ -318,9 +318,9 @@ const generatePDF = (invoice) => {
             ["3. Puesto en Obra: Cotización incluye costo de productos entregados sobre parihuelas."],
             ["4. Puesto en Obra: El cliente es responsable de la descarga con sus equipos mecánicos (Grúas o Montacargas)."],
             ["5. Puesto en obra: El cliente deberá advertir sobre problemas de acceso, restricciones de tamaño y horarios en obra."],
-            ["6. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete."],
+            ["6. Puesto en obra: Si el camión es devuelto a planta sin haber descargado, por los motivos antes señalados, se cargará un falso flete, según el tipo de camión (Tn) y distrito."],
             ["7. Puesto en obra: Es importante cumplir los horarios programados. Por restricciones de horarios en distritos, si hubiera multas municipales sobre el transporte, lo asumirá el cliente."],
-            ["8. NO se aceptan cambios ni devoluciones."],
+            ["8. NO se aceptan cambios ni devoluciones. Por restricciones de horarios, por multas municipales sobre el transporte, por tiempo de espera en obra (horas), lo asumirá cliente."],
         ];
 
         doc.autoTable({
