@@ -676,7 +676,7 @@ const generatePDF = (invoice) => {
         styles: {
             fontStyle: 'bold',
             textColor: [0, 0, 0],
-            cellPadding: 0.25,
+            cellPadding: 0,
             fontSize: 10
         },
     });
