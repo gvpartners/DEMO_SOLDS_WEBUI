@@ -233,6 +233,7 @@ const Page = () => {
     };
 
     const handleMeasuresChange = (event) => {
+        setIsAutopopulated(false);
         setSelectedMeasures(event.target.value);
     };
 
@@ -305,6 +306,7 @@ const Page = () => {
         updatedQuantities.splice(index, 1);
         setSelectedMeasures(updatedMeasures);
         setMeasureQuantities(updatedQuantities);
+        setIsAutopopulated(false);
     };
 
     const handleDistrictChange = (event) => {
@@ -515,14 +517,17 @@ const Page = () => {
         return subtotal + igv;
     };
     const handleTruck9TNChange = (event) => {
+        setIsAutopopulated(false);
         setTruck9TN(event.target.value);
     };
 
     const handleTruck20TNChange = (event) => {
+        setIsAutopopulated(false);
         setTruck20TN(event.target.value);
     };
 
     const handleTruck32TNChange = (event) => {
+        setIsAutopopulated(false);
         setTruck32TN(event.target.value);
     };
 
@@ -674,11 +679,13 @@ const Page = () => {
     };
     const [isAutopopulated, setIsAutopopulated] = useState(false);
     const [cantParihuela, setCantParihuela] = useState(0);
+    const [auxCantParihuela, setAuxCantParihuela] = useState(0);
     const [costParihuela, setCostParihuela] = useState(25);
     const [manualTotalPriceFlete, setManualtotalPriceFlete] = useState(0);
 
     useEffect(() => {
-        if (!isAutopopulated) {
+        setAuxCantParihuela(parseInt(getCantParihuela()));
+        if (!isAutopopulated || auxCantParihuela === cantParihuela) {
             setCantParihuela(parseInt(getCantParihuela()));
         }
     }, [isAutopopulated, selectedMeasures, measureQuantities]);
