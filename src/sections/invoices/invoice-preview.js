@@ -5,6 +5,7 @@ import { fontSize } from '@mui/system';
 
 const generatePDF = (invoice) => {
     // Obtener la fecha de creación de la factura ajustada según la zona horaria
+    console.log(invoice);
     const adjustedDate = new Date(invoice.createdOn);
 
     // Función para capitalizar la primera letra de una cadena
