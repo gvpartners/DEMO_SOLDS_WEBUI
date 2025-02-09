@@ -1,2411 +1,1520 @@
 [
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09ENTLISO",
-    "Description": "BLOCK ENTERO LISO 9X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 1.62,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09MEDLISO",
-    "Description": "BLOCK MEDIO LISO 9X19X19 NATURAL",
-    "Unit": "PZA",
-    "Price": 1.11,
-    "Weight": 6,
-    "UnitForPari": 360
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09VIGLISO",
-    "Description": "BLOCK VIGA LISO 9X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 1.62,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12ENTLISO",
-    "Description": "BLOCK ENTERO LISO 12X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 1.74,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12MEDLISO",
-    "Description": "BLOCK MEDIO LISO 12X19X19 NATURAL",
-    "Unit": "PZA",
-    "Price": 1.12,
-    "Weight": 7,
-    "UnitForPari": 300
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12VIGLISO",
-    "Description": "BLOCK VIGA LISO 12X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 1.74,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTLISO",
-    "Description": "BLOCK ENTERO LISO 15X19X39 NATURAL ",
-    "Unit": "PZA",
-    "Price": 2,
-    "Weight": 12.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDLISO",
-    "Description": "BLOCK MEDIO LISO 15X19X19 NATURAL ",
-    "Unit": "PZA",
-    "Price": 1.31,
-    "Weight": 7.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGLISO",
-    "Description": "BLOCK VIGA LISO 15X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 2,
-    "Weight": 12.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ESQLISO",
-    "Description": "BLOCK ESQUINERO LISO 15X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 2.38,
-    "Weight": 17,
-    "UnitForPari": 105
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTLISO",
-    "Description": "BLOCK ENTERO LISO 20X19X39 NATURAL ",
-    "Unit": "PZA",
-    "Price": 2.38,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDLISO",
-    "Description": "BLOCK MEDIO LISO 20X19X19 NATURAL ",
-    "Unit": "PZA",
-    "Price": 1.44,
-    "Weight": 9,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGLISO",
-    "Description": "BLOCK VIGA LISO 20X19X39 NATURAL  ",
-    "Unit": "PZA",
-    "Price": 2.38,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTTEXT",
-    "Description": "BLOCK ENTERO TEXT 15X19X39 NATURAL ",
-    "Unit": "PZA",
-    "Price": 3.02,
-    "Weight": 13.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDTEXT",
-    "Description": "BLOCK MEDIO TEXT 15X19X19 NATURAL ",
-    "Unit": "PZA",
-    "Price": 2.29,
-    "Weight": 10.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGTEXT",
-    "Description": "BLOCK VIGA TEXT 15X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 3.02,
-    "Weight": 13.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTTEXT",
-    "Description": "BLOCK ENTERO TEXT 20X19X39  NATURAL ",
-    "Unit": "PZA",
-    "Price": 3.21,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDTEXT",
-    "Description": "BLOCK MEDIO TEXT 20X19X19  NATURAL  ",
-    "Unit": "PZA",
-    "Price": 2.38,
-    "Weight": 11,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGTEXT",
-    "Description": "BLOCK VIGA TEXT 20X19X39 NATURAL",
-    "Unit": "PZA",
-    "Price": 3.21,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTTEXTC",
-    "Description": "BLOCK ENTERO TEXT 15X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 5.22,
-    "Weight": 13.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDTEXTC",
-    "Description": "BLOCK MEDIO TEXT 15X19X19 COLOR",
-    "Unit": "PZA",
-    "Price": 3.9,
-    "Weight": 10.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGTEXTC",
-    "Description": "BLOCK VIGA TEXT 15X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 5.22,
-    "Weight": 13.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTTEXTC",
-    "Description": "BLOCK ENTERO TEXT 20X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 5.33,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDTEXTC",
-    "Description": "BLOCK MEDIO TEXT 20X19X19  COLOR",
-    "Unit": "PZA",
-    "Price": 4.22,
-    "Weight": 11,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGTEXTC",
-    "Description": "BLOCK VIGA TEXT 20X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 5.33,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09ENTLISOC",
-    "Description": "BLOCK ENTERO LISO 9X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 2.53,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09MEDLISOC",
-    "Description": "BLOCK MEDIO LISO 9X19X19 COLOR",
-    "Unit": "PZA",
-    "Price": 1.92,
-    "Weight": 6,
-    "UnitForPari": 360
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09VIGLISOC",
-    "Description": "BLOCK VIGA LISO 9X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 2.53,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12ENTLISOC",
-    "Description": "BLOCK ENTERO LISO 12X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 2.69,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12MEDLISOC",
-    "Description": "BLOCK MEDIO LISO 12X19X19 COLOR",
-    "Unit": "PZA",
-    "Price": 2,
-    "Weight": 7,
-    "UnitForPari": 300
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12VIGLISOC",
-    "Description": "BLOCK VIGA LISO 12X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 2.69,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTLISOC",
-    "Description": "BLOCK ENTERO LISO 15X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 3.14,
-    "Weight": 12.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDLISOC",
-    "Description": "BLOCK MEDIO LISO 15X19X19 COLOR",
-    "Unit": "PZA",
-    "Price": 2.34,
-    "Weight": 7.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGLISOC",
-    "Description": "BLOCK VIGA LISO 15X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 3.14,
-    "Weight": 12.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ESQLISOC",
-    "Description": "BLOCK ESQUINERO LISO 15X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 3.49,
-    "Weight": 17,
-    "UnitForPari": 105
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTLISOC",
-    "Description": "BLOCK ENTERO LISO 20X19X39 COLOR",
-    "Unit": "PZA",
-    "Price": 3.49,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDLISOC",
-    "Description": "BLOCK MEDIO LISO 20X19X19 COLOR",
-    "Unit": "PZA",
-    "Price": 2.4,
-    "Weight": 9,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGLISOC",
-    "Description": "BLOCK VIGA LISO 20X19X39 COLOR  ",
-    "Unit": "PZA",
-    "Price": 3.49,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09ENTLISOHS",
-    "Description": "BLOCK ENTERO LISO 9X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.23,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09MEDLISOHS",
-    "Description": "BLOCK MEDIO LISO 9X19X19 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 1.74,
-    "Weight": 6,
-    "UnitForPari": 360
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09VIGLISOHS",
-    "Description": "BLOCK VIGA LISO 9X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.23,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12ENTLISOHS",
-    "Description": "BLOCK ENTERO LISO 12X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.35,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12MEDLISOHS",
-    "Description": "BLOCK MEDIO LISO 12X19X19 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 1.75,
-    "Weight": 7,
-    "UnitForPari": 300
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12VIGLISOHS",
-    "Description": "BLOCK VIGA LISO 12X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.35,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTLISOHS",
-    "Description": "BLOCK ENTERO LISO 15X19X39 NATURAL HS ",
-    "Unit": "PZA",
-    "Price": 2.61,
-    "Weight": 12.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDLISOHS",
-    "Description": "BLOCK MEDIO LISO 15X19X19 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 1.93,
-    "Weight": 7.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGLISOHS",
-    "Description": "BLOCK VIGA LISO 15X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.61,
-    "Weight": 12.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ESQLISOHS",
-    "Description": "BLOCK ESQUINERO LISO 15X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.98,
-    "Weight": 17,
-    "UnitForPari": 105
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTLISOHS",
-    "Description": "BLOCK ENTERO LISO 20X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.98,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDLISOHS",
-    "Description": "BLOCK MEDIO LISO 20X19X19 NATURAL  HS",
-    "Unit": "PZA",
-    "Price": 2.06,
-    "Weight": 9,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGLISOHS",
-    "Description": "BLOCK VIGA LISO 20X19X39 NATURAL  HS",
-    "Unit": "PZA",
-    "Price": 2.98,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTTEXTHS",
-    "Description": "BLOCK ENTERO TEXT 15X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 3.68,
-    "Weight": 13.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDTEXTHS",
-    "Description": "BLOCK MEDIO TEXT 15X19X19 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 2.95,
-    "Weight": 10.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGTEXTHS",
-    "Description": "BLOCK VIGA TEXT 15X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 3.68,
-    "Weight": 13.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTTEXTHS",
-    "Description": "BLOCK ENTERO TEXT 20X19X39  NATURAL HS",
-    "Unit": "PZA",
-    "Price": 3.88,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDTEXTHS",
-    "Description": "BLOCK MEDIO TEXT 20X19X19  NATURAL  HS",
-    "Unit": "PZA",
-    "Price": 3.05,
-    "Weight": 11,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGTEXTHS",
-    "Description": "BLOCK VIGA TEXT 20X19X39 NATURAL HS",
-    "Unit": "PZA",
-    "Price": 3.88,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTTEXTCHS",
-    "Description": "BLOCK ENTERO TEXT 15X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 5.88,
-    "Weight": 13.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDTEXTCHS",
-    "Description": "BLOCK MEDIO TEXT 15X19X19 COLOR HS",
-    "Unit": "PZA",
-    "Price": 4.56,
-    "Weight": 10.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGTEXTCHS",
-    "Description": "BLOCK VIGA TEXT 15X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 5.88,
-    "Weight": 13.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTTEXTCHS",
-    "Description": "BLOCK ENTERO TEXT 20X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 5.99,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDTEXTCHS",
-    "Description": "BLOCK MEDIO TEXT 20X19X19  COLOR HS",
-    "Unit": "PZA",
-    "Price": 4.88,
-    "Weight": 11,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGTEXTCHS",
-    "Description": "BLOCK VIGA TEXT 20X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 5.99,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09ENTLISOCHS",
-    "Description": "BLOCK ENTERO LISO 9X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.2,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09MEDLISOCHS",
-    "Description": "BLOCK MEDIO LISO 9X19X19 COLOR HS",
-    "Unit": "PZA",
-    "Price": 2.58,
-    "Weight": 6,
-    "UnitForPari": 360
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09VIGLISOCHS",
-    "Description": "BLOCK VIGA LISO 9X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.2,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12ENTLISOCHS",
-    "Description": "BLOCK ENTERO LISO 12X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.35,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12MEDLISOCHS",
-    "Description": "BLOCK MEDIO LISO 12X19X19 COLOR HS",
-    "Unit": "PZA",
-    "Price": 2.66,
-    "Weight": 7,
-    "UnitForPari": 300
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12VIGLISOCHS",
-    "Description": "BLOCK VIGA LISO 12X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.35,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTLISOCHS",
-    "Description": "BLOCK ENTERO LISO 15X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.8,
-    "Weight": 12.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDLISOCHS",
-    "Description": "BLOCK MEDIO LISO 15X19X19 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3,
-    "Weight": 7.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGLISOCHS",
-    "Description": "BLOCK VIGA LISO 15X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.8,
-    "Weight": 12.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ESQLISOCHS",
-    "Description": "BLOCK ESQUINERO LISO 15X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 4.15,
-    "Weight": 17,
-    "UnitForPari": 105
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTLISOCHS",
-    "Description": "BLOCK ENTERO LISO 20X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 4.15,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDLISOCHS",
-    "Description": "BLOCK MEDIO LISO 20X19X19 COLOR HS",
-    "Unit": "PZA",
-    "Price": 3.06,
-    "Weight": 9,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGLISOCHS",
-    "Description": "BLOCK VIGA LISO 20X19X39 COLOR HS",
-    "Unit": "PZA",
-    "Price": 4.15,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09ENTLISOV",
-    "Description": "BLOCK ENTERO LISO 9X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.67,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09MEDLISOV",
-    "Description": "BLOCK MEDIO LISO 9X19X19 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.18,
-    "Weight": 6,
-    "UnitForPari": 360
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09VIGLISOV",
-    "Description": "BLOCK VIGA LISO 9X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.67,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12ENTLISOV",
-    "Description": "BLOCK ENTERO LISO 12X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.79,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12MEDLISOV",
-    "Description": "BLOCK MEDIO LISO 12X19X19 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.19,
-    "Weight": 7,
-    "UnitForPari": 300
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12VIGLISOV",
-    "Description": "BLOCK VIGA LISO 12X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.79,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTLISOV",
-    "Description": "BLOCK ENTERO LISO 15X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.05,
-    "Weight": 12.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDLISOV",
-    "Description": "BLOCK MEDIO LISO 15X19X19 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.38,
-    "Weight": 7.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGLISOV",
-    "Description": "BLOCK VIGA LISO 15X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.05,
-    "Weight": 12.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ESQLISOV",
-    "Description": "BLOCK ESQUINERO LISO 15X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.42,
-    "Weight": 17,
-    "UnitForPari": 105
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTLISOV",
-    "Description": "BLOCK ENTERO LISO 20X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.42,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDLISOV",
-    "Description": "BLOCK MEDIO LISO 20X19X19 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 2.5,
-    "Weight": 9,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGLISOV",
-    "Description": "BLOCK VIGA LISO 20X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.42,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTTEXTV",
-    "Description": "BLOCK ENTERO TEXT 15X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 4.12,
-    "Weight": 13.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDTEXTV",
-    "Description": "BLOCK MEDIO TEXT 15X19X19 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.39,
-    "Weight": 10.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGTEXTV",
-    "Description": "BLOCK VIGA TEXT 15X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 4.12,
-    "Weight": 13.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTTEXTV",
-    "Description": "BLOCK ENTERO TEXT 20X19X39  NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 4.32,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDTEXTV",
-    "Description": "BLOCK MEDIO TEXT 20X19X19  NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 3.49,
-    "Weight": 11,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGTEXTV",
-    "Description": "BLOCK VIGA TEXT 20X19X39 NATURAL T-V",
-    "Unit": "PZA",
-    "Price": 4.32,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTTEXTCV",
-    "Description": "BLOCK ENTERO TEXT 15X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 6.32,
-    "Weight": 13.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDTEXTCV",
-    "Description": "BLOCK MEDIO TEXT 15X19X19 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 5,
-    "Weight": 10.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGTEXTCV",
-    "Description": "BLOCK VIGA TEXT 15X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 6.32,
-    "Weight": 13.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTTEXTCV",
-    "Description": "BLOCK ENTERO TEXT 20X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 6.43,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDTEXTCV",
-    "Description": "BLOCK MEDIO TEXT 20X19X19  COLOR T-V",
-    "Unit": "PZA",
-    "Price": 5.32,
-    "Weight": 11,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGTEXTCV",
-    "Description": "BLOCK VIGA TEXT 20X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 6.43,
-    "Weight": 17.2,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09ENTLISOCV",
-    "Description": "BLOCK ENTERO LISO 9X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.64,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09MEDLISOCV",
-    "Description": "BLOCK MEDIO LISO 9X19X19 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.02,
-    "Weight": 6,
-    "UnitForPari": 360
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK09VIGLISOCV",
-    "Description": "BLOCK VIGA LISO 9X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.64,
-    "Weight": 10.6,
-    "UnitForPari": 192
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12ENTLISOCV",
-    "Description": "BLOCK ENTERO LISO 12X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.79,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12MEDLISOCV",
-    "Description": "BLOCK MEDIO LISO 12X19X19 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.1,
-    "Weight": 7,
-    "UnitForPari": 300
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK12VIGLISOCV",
-    "Description": "BLOCK VIGA LISO 12X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.79,
-    "Weight": 11.7,
-    "UnitForPari": 156
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ENTLISOCV",
-    "Description": "BLOCK ENTERO LISO 15X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 4.24,
-    "Weight": 12.5,
-    "UnitForPari": 110
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14MEDLISOCV",
-    "Description": "BLOCK MEDIO LISO 15X19X19 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.44,
-    "Weight": 7.5,
-    "UnitForPari": 240
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14VIGLISOCV",
-    "Description": "BLOCK VIGA LISO 15X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 4.24,
-    "Weight": 12.5,
-    "UnitForPari": 114
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK14ESQLISOCV",
-    "Description": "BLOCK ESQUINERO LISO 15X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 4.6,
-    "Weight": 17,
-    "UnitForPari": 105
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19ENTLISOCV",
-    "Description": "BLOCK ENTERO LISO 20X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 4.6,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19MEDLISOCV",
-    "Description": "BLOCK MEDIO LISO 20X19X19 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 3.5,
-    "Weight": 9,
-    "UnitForPari": 180
-  },
-  {
-    "Category": "BLOQUES",
-    "Code": "BK19VIGLISOCV",
-    "Description": "BLOCK VIGA LISO 20X19X39 COLOR T-V",
-    "Unit": "PZA",
-    "Price": 4.6,
-    "Weight": 16.5,
-    "UnitForPari": 90
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECNAT",
-    "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Price": 26.7,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECROJ",
-    "Description": "ADOKING RECTANGULAR 4X10X20 ROJO   ",
-    "Unit": "MT2",
-    "Price": 31.6,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECAMA",
-    "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 29.2,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECNEG",
-    "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 31.7,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECNAT",
-    "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Price": 31.1,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECROJ",
-    "Description": "ADOKING RECTANGULAR 6X10X20 ROJO  ",
-    "Unit": "MT2",
-    "Price": 38.8,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECAMA",
-    "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO ",
-    "Unit": "MT2",
-    "Price": 35.5,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECNEG",
-    "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 39,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNAT",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Price": 35.8,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECROJ",
-    "Description": "ADOKING RECTANGULAR 8X10X20 ROJO  ",
-    "Unit": "MT2",
-    "Price": 44.9,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECAMA",
-    "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 41.9,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNEG",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 45.1,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECNATHS",
-    "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 27.1,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECROJHS",
-    "Description": "ADOKING RECTANGULAR 4X10X20 ROJO HS  ",
-    "Unit": "MT2",
-    "Price": 31.8,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECAMAHS",
-    "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 29.5,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECNEGHS",
-    "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 31.9,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECNATHS",
-    "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 32.4,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECROJHS",
-    "Description": "ADOKING RECTANGULAR 6X10X20 ROJO HS",
-    "Unit": "MT2",
-    "Price": 39.9,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECAMAHS",
-    "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 36.7,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECNEGHS",
-    "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 40.2,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNATHS",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 38.2,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECROJHS",
-    "Description": "ADOKING RECTANGULAR 8X10X20 ROJO HS  ",
-    "Unit": "MT2",
-    "Price": 47,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECAMAHS",
-    "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 43.9,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNEGHS",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 47.2,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECNATV",
-    "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 28.2,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECROJV",
-    "Description": "ADOKING RECTANGULAR 4X10X20 ROJO T-V",
-    "Unit": "MT2",
-    "Price": 32.9,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECAMAV",
-    "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 30.6,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECNEGV",
-    "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 33,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECNATV",
-    "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL T-V ",
-    "Unit": "MT2",
-    "Price": 34.6,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECROJV",
-    "Description": "ADOKING RECTANGULAR 6X10X20 ROJO T-V",
-    "Unit": "MT2",
-    "Price": 42.2,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECAMAV",
-    "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 38.9,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECNEGV",
-    "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 42.4,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNATV",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 40.4,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECROJV",
-    "Description": "ADOKING RECTANGULAR 8X10X20 ROJO  T-V",
-    "Unit": "MT2",
-    "Price": 49.2,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECAMAV",
-    "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 46.1,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNEGV",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 49.4,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO10RECNAT",
-    "Description": "ADOKING RECTANGULAR 10X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Price": 45.05,
-    "Weight": 225,
-    "UnitForPari": 12.96
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO10RECNAT",
-    "Description": "ADOKING RECTANGULAR 10X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 53.9,
-    "Weight": 225,
-    "UnitForPari": 12.96
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNAT50MPA",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL 50 MPA",
-    "Unit": "MT2",
-    "Price": 47.4,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECNAT50MPAV",
-    "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL 50 MPA T-V",
-    "Unit": "MT2",
-    "Price": 56.9,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNAT50MPA",
-    "Description": "ADOKING LONDRES 8X10X20 NATURAL  50 MPA",
-    "Unit": "MT2",
-    "Price": 49.05,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNATV50MPAV",
-    "Description": "ADOKING LONDRES 8X10X20 NATURAL  50 MPA T-V",
-    "Unit": "MT2",
-    "Price": 58.4,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONNAT",
-    "Description": "ADOKING LONDRES 4X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Price": 26.7,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONROJ",
-    "Description": "ADOKING LONDRES 4X10X20 ROJO   ",
-    "Unit": "MT2",
-    "Price": 31.6,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONAMA",
-    "Description": "ADOKING LONDRES 4X10X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 29.2,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONNEG",
-    "Description": "ADOKING LONDRES 4X10X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 31.7,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONNAT",
-    "Description": "ADOKING LONDRES 6X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Price": 31.1,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONROJ",
-    "Description": "ADOKING LONDRES 6X10X20 ROJO  ",
-    "Unit": "MT2",
-    "Price": 38.8,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONAMA",
-    "Description": "ADOKING LONDRES 6X10X20 AMARILLO ",
-    "Unit": "MT2",
-    "Price": 35.5,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONNEG",
-    "Description": "ADOKING LONDRES  6X10X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 39,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNAT",
-    "Description": "ADOKING LONDRES 8X10X20 NATURAL ",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONROJ",
-    "Description": "ADOKING LONDRES 8X10X20 ROJO  ",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONAMA",
-    "Description": "ADOKING LONDRES 8X10X20 AMARILLO",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNEG",
-    "Description": "ADOKING LONDRES 8X10X20 NEGRO",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONNATHS",
-    "Description": "ADOKING LONDRES 4X10X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 27.1,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONROJHS",
-    "Description": "ADOKING LONDRES 4X10X20 ROJO HS ",
-    "Unit": "MT2",
-    "Price": 31.8,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONAMAHS",
-    "Description": "ADOKING LONDRES 4X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 29.5,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONNEGHS",
-    "Description": "ADOKING LONDRES 4X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 31.9,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONNATHS",
-    "Description": "ADOKING LONDRES 6X10X20 NATURAL HS ",
-    "Unit": "MT2",
-    "Price": 32.4,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONROJHS",
-    "Description": "ADOKING LONDRES 6X10X20 ROJO  HS",
-    "Unit": "MT2",
-    "Price": 39.9,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONAMAHS",
-    "Description": "ADOKING LONDRES 6X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 36.7,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONNEGHS",
-    "Description": "ADOKING LONDRES  6X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 40.2,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNATHS",
-    "Description": "ADOKING LONDRES 8X10X20 NATURAL HS",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONROJHS",
-    "Description": "ADOKING LONDRES 8X10X20 ROJO HS  ",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONAMAHS",
-    "Description": "ADOKING LONDRES 8X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNEGHS",
-    "Description": "ADOKING LONDRES 8X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONNATV",
-    "Description": "ADOKING LONDRES 4X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 28.2,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONROJV",
-    "Description": "ADOKING LONDRES 4X10X20 ROJO T-V ",
-    "Unit": "MT2",
-    "Price": 32.9,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONAMAV",
-    "Description": "ADOKING LONDRES 4X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 30.6,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4LONNEGV",
-    "Description": "ADOKING LONDRES 4X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 33,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONNATV",
-    "Description": "ADOKING LONDRES 6X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 34.6,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONROJV",
-    "Description": "ADOKING LONDRES 6X10X20 ROJO T-V",
-    "Unit": "MT2",
-    "Price": 42.2,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONAMAV",
-    "Description": "ADOKING LONDRES 6X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 38.9,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6LONNEGV",
-    "Description": "ADOKING LONDRES  6X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 42.4,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNATV",
-    "Description": "ADOKING LONDRES 8X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONROJV",
-    "Description": "ADOKING LONDRES 8X10X20 ROJO T-V",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONAMAV",
-    "Description": "ADOKING LONDRES 8X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8LONNEGV",
-    "Description": "ADOKING LONDRES 8X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNAT",
-    "Description": "ENCHAPE TEXT 3X10X20 NATURAL",
-    "Unit": "MT2",
-    "Price": 35.8,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTROJ",
-    "Description": "ENCHAPE TEXT 3X10X20 ROJO",
-    "Unit": "MT2",
-    "Price": 44.9,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTAMA",
-    "Description": "ENCHAPE TEXT 3X10X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 41.9,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNEG",
-    "Description": "ENCHAPE TEXT 3X10X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 45.1,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNAJ",
-    "Description": "ENCHAPE TEXT 3X10X20 NARANJA",
-    "Unit": "MT2",
-    "Price": 45.1,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNATHS ",
-    "Description": "ENCHAPE TEXT 3X10X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 38.2,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTROJHS",
-    "Description": "ENCHAPE TEXT 3X10X20 ROJO HS",
-    "Unit": "MT2",
-    "Price": 47,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTAMAHS",
-    "Description": "ENCHAPE TEXT 3X10X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 43.9,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNEGHS",
-    "Description": "ENCHAPE TEXT 3X10X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 47.2,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNAJHS",
-    "Description": "ENCHAPE TEXT 3X10X20 NARANJA HS",
-    "Unit": "MT2",
-    "Price": 47.2,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNATV",
-    "Description": "ENCHAPE TEXT 3X10X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 40.4,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTROJV",
-    "Description": "ENCHAPE TEXT 3X10X20 ROJO T-V",
-    "Unit": "MT2",
-    "Price": 49.2,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTAMAV",
-    "Description": "ENCHAPE TEXT 3X10X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 46.1,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNEGV",
-    "Description": "ENCHAPE TEXT 3X10X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 49.4,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ENCHAPES",
-    "Code": "ENCH3TEXTNAJV",
-    "Description": "ENCHAPE TEXT 3X10X20 NARANJA T-V",
-    "Unit": "MT2",
-    "Price": 49.4,
-    "Weight": 68,
-    "UnitForPari": 36
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUANAT",
-    "Description": "ADOKING CUADRADO  4X20X20 NATURAL",
-    "Unit": "MT2",
-    "Price": 29.4,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUAROJ",
-    "Description": "ADOKING CUADRADO 4X20X20  ROJO",
-    "Unit": "MT2",
-    "Price": 33.5,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUAAMA",
-    "Description": "ADOKING CUADRADO 4X20X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 32.45,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUANEG",
-    "Description": "ADOKING CUADRADO 4X20X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 34.02,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUANAT",
-    "Description": "ADOKING CUADRADO 6X20X20 NATURAL",
-    "Unit": "MT2",
-    "Price": 36.36,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUAROJ",
-    "Description": "ADOKING CUADRADO 6X20X20 ROJO",
-    "Unit": "MT2",
-    "Price": 40.22,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUAAMA",
-    "Description": "ADOKING CUADRADO 6X20X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 37.49,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUANEG",
-    "Description": "ADOKING CUADRADO 6X20X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 40.95,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUANAT",
-    "Description": "ADOKING CUADRADO 8X20X20 NATURAL",
-    "Unit": "MT2",
-    "Price": 39.480000000000004,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUAROJ",
-    "Description": "ADOKING CUADRADO 8X20X20 ROJO",
-    "Unit": "MT2",
-    "Price": 48.83,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUAAMA",
-    "Description": "ADOKING CUADRADO 8X20X20 AMARILLO",
-    "Unit": "MT2",
-    "Price": 42.32,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUANEG",
-    "Description": "ADOKING CUADRADO 8X20X20 NEGRO",
-    "Unit": "MT2",
-    "Price": 49.14,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUANATHS",
-    "Description": "ADOKING CUADRADO  4X20X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 30.56,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUAROJHS",
-    "Description": "ADOKING CUADRADO 4X20X20  ROJO HS",
-    "Unit": "MT2",
-    "Price": 34.55,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUAAMAHS",
-    "Description": "ADOKING CUADRADO 4X20X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 33.6,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUANEGHS",
-    "Description": "ADOKING CUADRADO 4X20X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 35.07,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUANATHS",
-    "Description": "ADOKING CUADRADO 6X20X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 37.17,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUAROJHS",
-    "Description": "ADOKING CUADRADO 6X20X20 ROJO HS",
-    "Unit": "MT2",
-    "Price": 42.42,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUAAMAHS",
-    "Description": "ADOKING CUADRADO 6X20X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 39.8,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUANEGHS",
-    "Description": "ADOKING CUADRADO 6X20X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 43.16,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUANATHS",
-    "Description": "ADOKING CUADRADO 8X20X20 NATURAL HS",
-    "Unit": "MT2",
-    "Price": 42.84,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUAROJHS",
-    "Description": "ADOKING CUADRADO 8X20X20 ROJO HS",
-    "Unit": "MT2",
-    "Price": 52.080000000000005,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUAAMAHS",
-    "Description": "ADOKING CUADRADO 8X20X20 AMARILLO HS",
-    "Unit": "MT2",
-    "Price": 44.52,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUANEGHS",
-    "Description": "ADOKING CUADRADO 8X20X20 NEGRO HS",
-    "Unit": "MT2",
-    "Price": 52.4,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUANATV",
-    "Description": "ADOKING CUADRADO  4X20X20 NATURALT-V",
-    "Unit": "MT2",
-    "Price": 31.82,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUAROJV",
-    "Description": "ADOKING CUADRADO 4X20X20  ROJO T-V",
-    "Unit": "MT2",
-    "Price": 36.12,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUAAMAV",
-    "Description": "ADOKING CUADRADO 4X20X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 35.07,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4CUANEGV",
-    "Description": "ADOKING CUADRADO 4X20X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 36.330000000000005,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUANATV",
-    "Description": "ADOKING CUADRADO 6X20X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 39.38,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUAROJV",
-    "Description": "ADOKING CUADRADO 6X20X20 ROJO T-V",
-    "Unit": "MT2",
-    "Price": 44.63,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUAAMAV",
-    "Description": "ADOKING CUADRADO 6X20X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 41.9,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6CUANEGV",
-    "Description": "ADOKING CUADRADO 6X20X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 45.36000000000001,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUANATV",
-    "Description": "ADOKING CUADRADO 8X20X20 NATURAL T-V",
-    "Unit": "MT2",
-    "Price": 45.05,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUAROJV",
-    "Description": "ADOKING CUADRADO 8X20X20 ROJO T-V",
-    "Unit": "MT2",
-    "Price": 54.29,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUAAMAV",
-    "Description": "ADOKING CUADRADO 8X20X20 AMARILLO T-V",
-    "Unit": "MT2",
-    "Price": 47.78,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8CUANEGV",
-    "Description": "ADOKING CUADRADO 8X20X20 NEGRO T-V",
-    "Unit": "MT2",
-    "Price": 54.6,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECGRIS",
-    "Description": "ADOKING  RECTANGULAR 4X10X20 GRIS",
-    "Unit": "MT2",
-    "Price": 31.7,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO4RECANAR",
-    "Description": "ADOKING RECTANGULAR 4X10X20 ANARANJADO",
-    "Unit": "MT2",
-    "Price": 31.6,
-    "Weight": 90,
-    "UnitForPari": 24
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECGRIS",
-    "Description": "ADOKING RECTANGULAR  6X10X20 GRIS",
-    "Unit": "MT2",
-    "Price": 39,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO6RECANAR",
-    "Description": "ADOKING RECTANGULAR 6X10X20 ANARANJADO",
-    "Unit": "MT2",
-    "Price": 38.8,
-    "Weight": 135,
-    "UnitForPari": 18
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECGRIS",
-    "Description": "ADOKING RECTANGULAR 8X10X20 GRIS",
-    "Unit": "MT2",
-    "Price": 45.1,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "ADOQUINES",
-    "Code": "ADO8RECANAR",
-    "Description": "ADOKING RECTANGULAR 8X10X20 ANARANJADO",
-    "Unit": "MT2",
-    "Price": 44.9,
-    "Weight": 180,
-    "UnitForPari": 15.6
-  },
-  {
-    "Category": "LADRILLOS",
-    "Code": "KK25%NAT",
-    "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO I",
-    "Unit": "MLL",
-    "Price": 576.27,
-    "Weight": 4500,
-    "UnitForPari": 0.5
-  },
-  {
-    "Category": "LADRILLOS",
-    "Code": "KK25%NATV",
-    "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO T-V",
-    "Unit": "MLL",
-    "Price": 711.86,
-    "Weight": 4500,
-    "UnitForPari": 0.5
-  },
-  {
-    "Category": "LADRILLOS",
-    "Code": "KK25%NATHS",
-    "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO HS",
-    "Unit": "MLL",
-    "Price": 635.59,
-    "Weight": 4500,
-    "UnitForPari": 0.5
-  },
-  {
-    "Category": "BK-GRASS",
-    "Code": "BKGRASS-#",
-    "Description": "KING BLOCK GRASS TIPO MICHI ",
-    "Unit": "MT2",
-    "Price": 28,
-    "Weight": 123.2,
-    "UnitForPari": 14.625
-  },
-  {
-    "Category": "BK-GRASS",
-    "Code": "BKGRASS-#-HS",
-    "Description": "KING BLOCK GRASS TIPO MICHI HS",
-    "Unit": "MT2",
-    "Price": 29.7,
-    "Weight": 123.2,
-    "UnitForPari": 14.625
-  },
-  {
-    "Category": "BK-GRASS",
-    "Code": "BKGRASS-# V",
-    "Description": "KING BLOCK GRASS TIPO MICHI T-V",
-    "Unit": "MT2",
-    "Price": 31.4,
-    "Weight": 123.2,
-    "UnitForPari": 14.625
-  },
-  {
-    "Category": "BK-GRASS",
-    "Code": "BKGRASS-8",
-    "Description": "KING BLOCK GRASS TIPO 8 ",
-    "Unit": "MT2",
-    "Price": 28,
-    "Weight": 132,
-    "UnitForPari": 17.727272727272727
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "AISL8MM",
-    "Description": "AISLADOR DE VARILLA 8 mm ",
-    "Unit": "PZA",
-    "Price": 1.12,
-    "Weight": 0.05,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "AISL10MM",
-    "Description": "AISLADOR DE VARILLA 3\/8\" (10mm)",
-    "Unit": "PZA",
-    "Price": 1.12,
-    "Weight": 0.06,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "AISL13MM",
-    "Description": "AISLADOR DE VARILLA  1\/2\" (13mm)",
-    "Unit": "PZA",
-    "Price": 1.12,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "AISL16MM",
-    "Description": "AISLADOR DE VARILLA  5\/8\" (16mm)",
-    "Unit": "PZA",
-    "Price": 1.26,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "AISL19MM",
-    "Description": "AISLADOR DE VARILLA  3\/4\" (16mm)",
-    "Unit": "PZA",
-    "Price": 1.8,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP10-8MM",
-    "Description": "TOPE DE 10 PARA 8MM",
-    "Unit": "PZA",
-    "Price": 1.03,
-    "Weight": 0.05,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP10-10MM",
-    "Description": "TOPE DE 10 PARA 3\/8",
-    "Unit": "PZA",
-    "Price": 1.11,
-    "Weight": 0.06,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP10-13MM",
-    "Description": "TOPE DE 10 PARA 1\/2",
-    "Unit": "PZA",
-    "Price": 1.43,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP10-16MM",
-    "Description": "TOPE DE 10 PARA 5\/8",
-    "Unit": "PZA",
-    "Price": 2.05,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP20-8MM",
-    "Description": "TOPE DE 20 PARA 8MM",
-    "Unit": "PZA",
-    "Price": 2.05,
-    "Weight": 0.05,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP20-10MM",
-    "Description": "TOPE DE 20 PARA 3\/8",
-    "Unit": "PZA",
-    "Price": 2.21,
-    "Weight": 0.06,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP20-13MM",
-    "Description": "TOPE DE 20 PARA 1\/2",
-    "Unit": "PZA",
-    "Price": 2.84,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  },
-  {
-    "Category": "AISLADORES",
-    "Code": "TOP20-16MM",
-    "Description": "TOPE DE 20 PARA 5\/8",
-    "Unit": "PZA",
-    "Price": 4.1,
-    "Weight": 0.07,
-    "UnitForPari": 100
-  }
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNAT",
+        "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 28.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECROJ",
+        "Description": "ADOKING RECTANGULAR 4X10X20 ROJO   ",
+        "Unit": "MT2",
+        "Price": 33.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECAMA",
+        "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 30.7,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNEG",
+        "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 33.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNAT",
+        "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 32.7,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECROJ",
+        "Description": "ADOKING RECTANGULAR 6X10X20 ROJO  ",
+        "Unit": "MT2",
+        "Price": 40.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECAMA",
+        "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO ",
+        "Unit": "MT2",
+        "Price": 37.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNEG",
+        "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 41,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNAT",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 37.6,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECROJ",
+        "Description": "ADOKING RECTANGULAR 8X10X20 ROJO  ",
+        "Unit": "MT2",
+        "Price": 47.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECAMA",
+        "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 44,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNEG",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 47.4,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNATHS",
+        "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 28.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECROJHS",
+        "Description": "ADOKING RECTANGULAR 4X10X20 ROJO HS  ",
+        "Unit": "MT2",
+        "Price": 34,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECAMAHS",
+        "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 31.5,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNEGHS",
+        "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNATHS",
+        "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECROJHS",
+        "Description": "ADOKING RECTANGULAR 6X10X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 42,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECAMAHS",
+        "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 38.6,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNEGHS",
+        "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 42.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNATHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 40.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECROJHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 ROJO HS  ",
+        "Unit": "MT2",
+        "Price": 49.4,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECAMAHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 46.1,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNEGHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 49.6,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONNAT",
+        "Description": "ADOKING LONDRES 4X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 28.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONROJ",
+        "Description": "ADOKING LONDRES 4X10X20 ROJO   ",
+        "Unit": "MT2",
+        "Price": 33.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONAMA",
+        "Description": "ADOKING LONDRES 4X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 30.7,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONNEG",
+        "Description": "ADOKING LONDRES 4X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 33.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONNAT",
+        "Description": "ADOKING LONDRES 6X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 32.7,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONROJ",
+        "Description": "ADOKING LONDRES 6X10X20 ROJO  ",
+        "Unit": "MT2",
+        "Price": 40.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONAMA",
+        "Description": "ADOKING LONDRES 6X10X20 AMARILLO ",
+        "Unit": "MT2",
+        "Price": 37.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONNEG",
+        "Description": "ADOKING LONDRES  6X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 41,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONNATHS",
+        "Description": "ADOKING LONDRES 4X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 28.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONROJHS",
+        "Description": "ADOKING LONDRES 4X10X20 ROJO HS ",
+        "Unit": "MT2",
+        "Price": 34,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONAMAHS",
+        "Description": "ADOKING LONDRES 4X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 31.5,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONNEGHS",
+        "Description": "ADOKING LONDRES 4X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONNATHS",
+        "Description": "ADOKING LONDRES 6X10X20 NATURAL HS ",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONROJHS",
+        "Description": "ADOKING LONDRES 6X10X20 ROJO  HS",
+        "Unit": "MT2",
+        "Price": 42,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONAMAHS",
+        "Description": "ADOKING LONDRES 6X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 38.6,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONNEGHS",
+        "Description": "ADOKING LONDRES  6X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 42.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANAT",
+        "Description": "ADOKING CUADRADO  4X20X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 30.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAROJ",
+        "Description": "ADOKING CUADRADO 4X20X20  ROJO",
+        "Unit": "MT2",
+        "Price": 35.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAAMA",
+        "Description": "ADOKING CUADRADO 4X20X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANEG",
+        "Description": "ADOKING CUADRADO 4X20X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 35.8,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANAT",
+        "Description": "ADOKING CUADRADO 6X20X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 38.2,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAROJ",
+        "Description": "ADOKING CUADRADO 6X20X20 ROJO",
+        "Unit": "MT2",
+        "Price": 42.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAAMA",
+        "Description": "ADOKING CUADRADO 6X20X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 39.4,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANEG",
+        "Description": "ADOKING CUADRADO 6X20X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 43,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANAT",
+        "Description": "ADOKING CUADRADO 8X20X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 41.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAROJ",
+        "Description": "ADOKING CUADRADO 8X20X20 ROJO",
+        "Unit": "MT2",
+        "Price": 51.3,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAAMA",
+        "Description": "ADOKING CUADRADO 8X20X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 44.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANEG",
+        "Description": "ADOKING CUADRADO 8X20X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 51.6,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANATHS",
+        "Description": "ADOKING CUADRADO  4X20X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 32.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAROJHS",
+        "Description": "ADOKING CUADRADO 4X20X20  ROJO HS",
+        "Unit": "MT2",
+        "Price": 36.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAAMAHS",
+        "Description": "ADOKING CUADRADO 4X20X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 35.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANEGHS",
+        "Description": "ADOKING CUADRADO 4X20X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 36.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANATHS",
+        "Description": "ADOKING CUADRADO 6X20X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 40.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAROJHS",
+        "Description": "ADOKING CUADRADO 6X20X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 44.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAAMAHS",
+        "Description": "ADOKING CUADRADO 6X20X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 42,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANEGHS",
+        "Description": "ADOKING CUADRADO 6X20X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 45.7,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANATHS",
+        "Description": "ADOKING CUADRADO 8X20X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 44.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAROJHS",
+        "Description": "ADOKING CUADRADO 8X20X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 54.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAAMAHS",
+        "Description": "ADOKING CUADRADO 8X20X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 47.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANEGHS",
+        "Description": "ADOKING CUADRADO 8X20X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 54,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECGRIS",
+        "Description": "ADOKING  RECTANGULAR 4X10X20 GRIS",
+        "Unit": "MT2",
+        "Price": 33.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECANAR",
+        "Description": "ADOKING RECTANGULAR 4X10X20 ANARANJADO",
+        "Unit": "MT2",
+        "Price": 33.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECGRIS",
+        "Description": "ADOKING RECTANGULAR  6X10X20 GRIS",
+        "Unit": "MT2",
+        "Price": 41,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECANAR",
+        "Description": "ADOKING RECTANGULAR 6X10X20 ANARANJADO",
+        "Unit": "MT2",
+        "Price": 40.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECGRIS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 GRIS",
+        "Unit": "MT2",
+        "Price": 47.4,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECANAR",
+        "Description": "ADOKING RECTANGULAR 8X10X20 ANARANJADO",
+        "Unit": "MT2",
+        "Price": 47.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO10RECNAT",
+        "Description": "ADOKING RECTANGULAR 10X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Weight": 225,
+        "UnitForPari": 12.96
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNAT50MPA",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL 50 MPA",
+        "Unit": "MT2",
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8LONNAT50MPA",
+        "Description": "ADOKING LONDRES 8X10X20 NATURAL  50 MPA",
+        "Unit": "MT2",
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL8MM",
+        "Description": "AISLADOR DE VARILLA 8 mm ",
+        "Unit": "PZA",
+        "Price": 1.15,
+        "Weight": 0.05,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL10MM",
+        "Description": "AISLADOR DE VARILLA 3\/8\" (10mm)",
+        "Unit": "PZA",
+        "Price": 1.15,
+        "Weight": 0.06,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL13MM",
+        "Description": "AISLADOR DE VARILLA  1\/2\" (13mm)",
+        "Unit": "PZA",
+        "Price": 1.15,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL16MM",
+        "Description": "AISLADOR DE VARILLA  5\/8\" (16mm)",
+        "Unit": "PZA",
+        "Price": 1.29,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL19MM",
+        "Description": "AISLADOR DE VARILLA  3\/4\" (16mm)",
+        "Unit": "PZA",
+        "Price": 1.85,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP10-8MM",
+        "Description": "TOPE DE 10 PARA 8MM",
+        "Unit": "PZA",
+        "Price": 1.06,
+        "Weight": 0.05,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP10-10MM",
+        "Description": "TOPE DE 10 PARA 3\/8",
+        "Unit": "PZA",
+        "Price": 1.14,
+        "Weight": 0.06,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP10-13MM",
+        "Description": "TOPE DE 10 PARA 1\/2",
+        "Unit": "PZA",
+        "Price": 1.47,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP10-16MM",
+        "Description": "TOPE DE 10 PARA 5\/8",
+        "Unit": "PZA",
+        "Price": 2.11,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP20-8MM",
+        "Description": "TOPE DE 20 PARA 8MM",
+        "Unit": "PZA",
+        "Price": 2.11,
+        "Weight": 0.05,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP20-10MM",
+        "Description": "TOPE DE 20 PARA 3\/8",
+        "Unit": "PZA",
+        "Price": 2.27,
+        "Weight": 0.06,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP20-13MM",
+        "Description": "TOPE DE 20 PARA 1\/2",
+        "Unit": "PZA",
+        "Price": 2.92,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "TOP20-16MM",
+        "Description": "TOPE DE 20 PARA 5\/8",
+        "Unit": "PZA",
+        "Price": 4.22,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "BK-GRASS",
+        "Code": "BKGRASS-#",
+        "Description": "KING BLOCK GRASS TIPO MICHI ",
+        "Unit": "MT2",
+        "Price": 28.98,
+        "Weight": 123.2,
+        "UnitForPari": 14.625
+    },
+    {
+        "Category": "BK-GRASS",
+        "Code": "BKGRASS-#-HS",
+        "Description": "KING BLOCK GRASS TIPO MICHI HS",
+        "Unit": "MT2",
+        "Price": 30.68,
+        "Weight": 123.2,
+        "UnitForPari": 14.625
+    },
+    {
+        "Category": "BK-GRASS",
+        "Code": "BKGRASS-8",
+        "Description": "KING BLOCK GRASS TIPO 8 ",
+        "Unit": "MT2",
+        "Price": 28.98,
+        "Weight": 132,
+        "UnitForPari": 17.7272727272727
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09ENTLISO",
+        "Description": "BLOCK ENTERO LISO 9X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.65,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09MEDLISO",
+        "Description": "BLOCK MEDIO LISO 9X19X19 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.13,
+        "Weight": 6,
+        "UnitForPari": 360
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09VIGLISO",
+        "Description": "BLOCK VIGA LISO 9X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.65,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12ENTLISO",
+        "Description": "BLOCK ENTERO LISO 12X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.77,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12MEDLISO",
+        "Description": "BLOCK MEDIO LISO 12X19X19 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.14,
+        "Weight": 7,
+        "UnitForPari": 300
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12VIGLISO",
+        "Description": "BLOCK VIGA LISO 12X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.77,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTLISO",
+        "Description": "BLOCK ENTERO LISO 15X19X39 NATURAL ",
+        "Unit": "PZA",
+        "Price": 2.06,
+        "Weight": 12.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDLISO",
+        "Description": "BLOCK MEDIO LISO 15X19X19 NATURAL ",
+        "Unit": "PZA",
+        "Price": 1.35,
+        "Weight": 7.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14VIGLISO",
+        "Description": "BLOCK VIGA LISO 15X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 2.06,
+        "Weight": 12.5,
+        "UnitForPari": 114
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ESQLISO",
+        "Description": "BLOCK ESQUINERO LISO 15X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 2.45,
+        "Weight": 17,
+        "UnitForPari": 105
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTLISO",
+        "Description": "BLOCK ENTERO LISO 20X19X39 NATURAL ",
+        "Unit": "PZA",
+        "Price": 2.48,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDLISO",
+        "Description": "BLOCK MEDIO LISO 20X19X19 NATURAL ",
+        "Unit": "PZA",
+        "Price": 1.5,
+        "Weight": 9,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19VIGLISO",
+        "Description": "BLOCK VIGA LISO 20X19X39 NATURAL  ",
+        "Unit": "PZA",
+        "Price": 2.48,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTTEXT",
+        "Description": "BLOCK ENTERO TEXT 15X19X39 NATURAL ",
+        "Unit": "PZA",
+        "Price": 3.23,
+        "Weight": 13.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDTEXT",
+        "Description": "BLOCK MEDIO TEXT 15X19X19 NATURAL ",
+        "Unit": "PZA",
+        "Price": 2.45,
+        "Weight": 10.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTTEXT",
+        "Description": "BLOCK ENTERO TEXT 20X19X39  NATURAL ",
+        "Unit": "PZA",
+        "Price": 3.44,
+        "Weight": 17.2,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDTEXT",
+        "Description": "BLOCK MEDIO TEXT 20X19X19  NATURAL  ",
+        "Unit": "PZA",
+        "Price": 2.55,
+        "Weight": 11,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTTEXTC",
+        "Description": "BLOCK ENTERO TEXT 15X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 5.59,
+        "Weight": 13.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDTEXTC",
+        "Description": "BLOCK MEDIO TEXT 15X19X19 COLOR",
+        "Unit": "PZA",
+        "Price": 4.17,
+        "Weight": 10.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTTEXTC",
+        "Description": "BLOCK ENTERO TEXT 20X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 5.7,
+        "Weight": 17.2,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDTEXTC",
+        "Description": "BLOCK MEDIO TEXT 20X19X19  COLOR",
+        "Unit": "PZA",
+        "Price": 4.51,
+        "Weight": 11,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09ENTLISOC",
+        "Description": "BLOCK ENTERO LISO 9X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 2.71,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09MEDLISOC",
+        "Description": "BLOCK MEDIO LISO 9X19X19 COLOR",
+        "Unit": "PZA",
+        "Price": 2.05,
+        "Weight": 6,
+        "UnitForPari": 360
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09VIGLISOC",
+        "Description": "BLOCK VIGA LISO 9X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 2.71,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12ENTLISOC",
+        "Description": "BLOCK ENTERO LISO 12X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 2.88,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12MEDLISOC",
+        "Description": "BLOCK MEDIO LISO 12X19X19 COLOR",
+        "Unit": "PZA",
+        "Price": 2.14,
+        "Weight": 7,
+        "UnitForPari": 300
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12VIGLISOC",
+        "Description": "BLOCK VIGA LISO 12X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 2.88,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTLISOC",
+        "Description": "BLOCK ENTERO LISO 15X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 3.36,
+        "Weight": 12.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDLISOC",
+        "Description": "BLOCK MEDIO LISO 15X19X19 COLOR",
+        "Unit": "PZA",
+        "Price": 2.5,
+        "Weight": 7.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14VIGLISOC",
+        "Description": "BLOCK VIGA LISO 15X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 3.36,
+        "Weight": 12.5,
+        "UnitForPari": 114
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ESQLISOC",
+        "Description": "BLOCK ESQUINERO LISO 15X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 3.74,
+        "Weight": 17,
+        "UnitForPari": 105
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTLISOC",
+        "Description": "BLOCK ENTERO LISO 20X19X39 COLOR",
+        "Unit": "PZA",
+        "Price": 3.74,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDLISOC",
+        "Description": "BLOCK MEDIO LISO 20X19X19 COLOR",
+        "Unit": "PZA",
+        "Price": 2.57,
+        "Weight": 9,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19VIGLISOC",
+        "Description": "BLOCK VIGA LISO 20X19X39 COLOR  ",
+        "Unit": "PZA",
+        "Price": 3.74,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09ENTLISOHS",
+        "Description": "BLOCK ENTERO LISO 9X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 2.34,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09MEDLISOHS",
+        "Description": "BLOCK MEDIO LISO 9X19X19 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 1.83,
+        "Weight": 6,
+        "UnitForPari": 360
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09VIGLISOHS",
+        "Description": "BLOCK VIGA LISO 9X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 2.34,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12ENTLISOHS",
+        "Description": "BLOCK ENTERO LISO 12X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 2.46,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12MEDLISOHS",
+        "Description": "BLOCK MEDIO LISO 12X19X19 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 1.84,
+        "Weight": 7,
+        "UnitForPari": 300
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12VIGLISOHS",
+        "Description": "BLOCK VIGA LISO 12X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 2.46,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTLISOHS",
+        "Description": "BLOCK ENTERO LISO 15X19X39 NATURAL HS ",
+        "Unit": "PZA",
+        "Price": 2.74,
+        "Weight": 12.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDLISOHS",
+        "Description": "BLOCK MEDIO LISO 15X19X19 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 2.03,
+        "Weight": 7.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14VIGLISOHS",
+        "Description": "BLOCK VIGA LISO 15X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 2.74,
+        "Weight": 12.5,
+        "UnitForPari": 114
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ESQLISOHS",
+        "Description": "BLOCK ESQUINERO LISO 15X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 3.13,
+        "Weight": 17,
+        "UnitForPari": 105
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTLISOHS",
+        "Description": "BLOCK ENTERO LISO 20X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 3.13,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDLISOHS",
+        "Description": "BLOCK MEDIO LISO 20X19X19 NATURAL  HS",
+        "Unit": "PZA",
+        "Price": 2.17,
+        "Weight": 9,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19VIGLISOHS",
+        "Description": "BLOCK VIGA LISO 20X19X39 NATURAL  HS",
+        "Unit": "PZA",
+        "Price": 3.13,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTTEXTHS",
+        "Description": "BLOCK ENTERO TEXT 15X19X39 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 3.93,
+        "Weight": 13.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDTEXTHS",
+        "Description": "BLOCK MEDIO TEXT 15X19X19 NATURAL HS",
+        "Unit": "PZA",
+        "Price": 3.16,
+        "Weight": 10.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTTEXTHS",
+        "Description": "BLOCK ENTERO TEXT 20X19X39  NATURAL HS",
+        "Unit": "PZA",
+        "Price": 4.15,
+        "Weight": 17.2,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDTEXTHS",
+        "Description": "BLOCK MEDIO TEXT 20X19X19  NATURAL  HS",
+        "Unit": "PZA",
+        "Price": 3.26,
+        "Weight": 11,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTTEXTCHS",
+        "Description": "BLOCK ENTERO TEXT 15X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 6.3,
+        "Weight": 13.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDTEXTCHS",
+        "Description": "BLOCK MEDIO TEXT 15X19X19 COLOR HS",
+        "Unit": "PZA",
+        "Price": 4.88,
+        "Weight": 10.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTTEXTCHS",
+        "Description": "BLOCK ENTERO TEXT 20X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 6.41,
+        "Weight": 17.2,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDTEXTCHS",
+        "Description": "BLOCK MEDIO TEXT 20X19X19  COLOR HS",
+        "Unit": "PZA",
+        "Price": 5.22,
+        "Weight": 11,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09ENTLISOCHS",
+        "Description": "BLOCK ENTERO LISO 9X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 3.31,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09MEDLISOCHS",
+        "Description": "BLOCK MEDIO LISO 9X19X19 COLOR HS",
+        "Unit": "PZA",
+        "Price": 2.67,
+        "Weight": 6,
+        "UnitForPari": 360
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09VIGLISOCHS",
+        "Description": "BLOCK VIGA LISO 9X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 3.31,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12ENTLISOCHS",
+        "Description": "BLOCK ENTERO LISO 12X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 3.46,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12MEDLISOCHS",
+        "Description": "BLOCK MEDIO LISO 12X19X19 COLOR HS",
+        "Unit": "PZA",
+        "Price": 2.75,
+        "Weight": 7,
+        "UnitForPari": 300
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12VIGLISOCHS",
+        "Description": "BLOCK VIGA LISO 12X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 3.46,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTLISOCHS",
+        "Description": "BLOCK ENTERO LISO 15X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 4.07,
+        "Weight": 12.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDLISOCHS",
+        "Description": "BLOCK MEDIO LISO 15X19X19 COLOR HS",
+        "Unit": "PZA",
+        "Price": 3.21,
+        "Weight": 7.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14VIGLISOCHS",
+        "Description": "BLOCK VIGA LISO 15X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 4.07,
+        "Weight": 12.5,
+        "UnitForPari": 114
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ESQLISOCHS",
+        "Description": "BLOCK ESQUINERO LISO 15X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 4.45,
+        "Weight": 17,
+        "UnitForPari": 105
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTLISOCHS",
+        "Description": "BLOCK ENTERO LISO 20X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 4.45,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDLISOCHS",
+        "Description": "BLOCK MEDIO LISO 20X19X19 COLOR HS",
+        "Unit": "PZA",
+        "Price": 3.28,
+        "Weight": 9,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19VIGLISOCHS",
+        "Description": "BLOCK VIGA LISO 20X19X39 COLOR HS",
+        "Unit": "PZA",
+        "Price": 4.45,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTNAT",
+        "Description": "ENCHAPE TEXT 3X10X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 37.6,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTROJ",
+        "Description": "ENCHAPE TEXT 3X10X20 ROJO",
+        "Unit": "MT2",
+        "Price": 47.2,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTAMA",
+        "Description": "ENCHAPE TEXT 3X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 44,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTNEG",
+        "Description": "ENCHAPE TEXT 3X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 47.4,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTNAJ",
+        "Description": "ENCHAPE TEXT 3X10X20 NARANJA",
+        "Unit": "MT2",
+        "Price": 47.4,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTNATHS ",
+        "Description": "ENCHAPE TEXT 3X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 40.2,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTROJHS",
+        "Description": "ENCHAPE TEXT 3X10X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 49.4,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTAMAHS",
+        "Description": "ENCHAPE TEXT 3X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 46.1,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTNEGHS",
+        "Description": "ENCHAPE TEXT 3X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 49.6,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "ENCHAPES",
+        "Code": "ENCH3TEXTNAJHS",
+        "Description": "ENCHAPE TEXT 3X10X20 NARANJA HS",
+        "Unit": "MT2",
+        "Price": 49.6,
+        "Weight": 68,
+        "UnitForPari": 36
+    },
+    {
+        "Category": "LADRILLOS",
+        "Code": "KK25%NAT",
+        "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO I",
+        "Unit": "MLL",
+        "Price": 618.64,
+        "Weight": 4500,
+        "UnitForPari": 0.5
+    },
+    {
+        "Category": "LADRILLOS",
+        "Code": "KK25%NATHS",
+        "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO HS",
+        "Unit": "MLL",
+        "Price": 661.02,
+        "Weight": 4500,
+        "UnitForPari": 0.5
+    }
 ]
