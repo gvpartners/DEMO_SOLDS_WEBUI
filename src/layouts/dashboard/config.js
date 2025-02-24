@@ -8,6 +8,7 @@ import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
+import CloudUpload from '@mui/icons-material/CloudUpload';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import { SvgIcon } from '@mui/material';
@@ -32,11 +33,20 @@ export const items = [
     )
   },
   {
-    title: 'Pedidos (BETA)',
-    path: '/tracker',
+    title: 'Solicitudes de clientes',
+    path: '/requests',
     icon: (
       <SvgIcon fontSize="small">
-        <AssignmentTurnedInIcon />
+        <CloudUpload />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Visitas técnicas',
+    path:'/visits',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ContentPasteOffIcon />
       </SvgIcon>
     )
   },
@@ -57,14 +67,5 @@ export const items = [
         <UsersIcon />
       </SvgIcon>
     )
-  }  
-  // {
-  //   title: 'Configuración',
-  //   path: '/settings',
-  //   icon: (
-  //     <SvgIcon fontSize="small">
-  //       <CogIcon />
-  //     </SvgIcon>
-  //   )
-  // }
+  }
 ];

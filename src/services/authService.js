@@ -41,6 +41,45 @@ const registerUser = async (formattedValues) => {
         console.log(err);
     }
 }
+const createRequest = async (formData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/Auth/CreateRequest`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Error en la solicitud: ${response.status}`);
+        }
 
+        return await response.json();
+    } catch (err) {
+        console.error('Error al crear la solicitud:', err);
+        throw err;
+    }
+};
+const createVisit = async (formData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/Auth/CreateVisit`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Error en la solicitud: ${response.status}`);
+        }
 
-export default { loginUser, registerUser };
+        return await response.json();
+    } catch (err) {
+        console.error('Error al crear la solicitud:', err);
+        throw err;
+    }
+};
+
+export default { loginUser, registerUser, createRequest, createVisit };

@@ -3,41 +3,30 @@ import { useCallback, useMemo, useState } from 'react';
 import Head from 'next/head';
 import PlusIcon from '@mui/icons-material/Add';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { applyPagination } from 'src/utils/apply-pagination';
 import { useRouter } from 'next/router';
-import invoiceService from 'src/services/invoiceService';
+import requestService from 'src/services/requestService';
 import TextField from '@mui/material/TextField';
-import Visibility from '@mui/icons-material/Visibility';
 import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CheckCircle from '@mui/icons-material/CheckCircle';
-import Close from '@mui/icons-material/Close';
-import handleDownloadPDFInvoice from 'src/sections/invoices/invoice-pdf';
-import PDFPreview from 'src/sections/invoices/invoice-preview';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Swal from 'sweetalert2';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import DateRangeIcon from '@mui/icons-material/DateRange';
 import { SeverityPill } from 'src/components/severity-pill';
 import { es } from 'date-fns/locale'
 import Autocomplete from '@mui/material/Autocomplete';
-import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
 import fletesJson from 'src/config/fletes.json';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
 import uniconJson from 'src/config/unicon.json';
-import CommentIcon from '@mui/icons-material/Comment';
 import { saveAs } from 'file-saver';
 import userService from 'src/services/userService';
-import CloseIcon from '@mui/icons-material/Close';
 import { PacmanLoader } from 'react-spinners';
 import {
   Avatar,
@@ -101,7 +90,7 @@ const Page = () => {
   const getCommentById = async () => {
     setComment('');
     try {
-      const response = await invoiceService.getCommentById(selectedInvoiceId);
+      const response = await requestService.getCommentById(selectedInvoiceId);
       if (response.status == 200) {
         setComment(response.data);
       }
@@ -119,8 +108,8 @@ const Page = () => {
     setAnchorEl(null);
     setIsDialogOpenComment(false);
   };
-  const router = useRouter();
 
+  const router = useRouter();
   const [filterCode, setFilterCode] = useState('');
   const [filterClient, setFilterClient] = useState('');
   const [filterCategory, setFilterCategory] = useState('');
@@ -154,7 +143,7 @@ const Page = () => {
           identificationTypeFilter: filterIdentification,
           totalInvoiceFilter: filterPrice,
           deliveryTypeFilter: filterDelivery,
-          employeeFilter: filterEmployee,
+          employeeFilter: userId || filterEmployee,
           statusNameFilter: filterStatus,
           totalOfPieces: filterCantPieces,
           unitPieceFilter: filterUnitPiece,
@@ -166,7 +155,7 @@ const Page = () => {
           invoiceDate: selectedDate
         }
       };
-      const response = await invoiceService.getAllInvoices(invoicePag);
+      const response = await requestService.getAllRequests(invoicePag);
 
       if (response.status == 200) {
         const fetchedData = await response.data;
@@ -199,6 +188,49 @@ const Page = () => {
     setSelectedDate(null);
     getInvoices();
   };
+  const removeInvoice = async () => {
+      try {
+        setAnchorEl(null);
+        const confirmAction = await Swal.fire({
+          title: 'Confirmar eliminación',
+          text: '¿Está seguro de eliminar esta cotización?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar',
+        });
+  
+        if (confirmAction.isConfirmed) {
+          const response = await requestService.removeInvoice(selectedInvoiceId);
+  
+          if (response.status == 200) {
+            setAnchorEl(null);
+            Swal.fire({
+              title: 'Eliminación de Cotización',
+              text: 'Se eliminó satisfactoriamente la cotización',
+              icon: 'success',
+              confirmButtonText: 'OK',
+            });
+            clearFilters();
+          } else {
+            Swal.fire({
+              title: 'Error',
+              text: error.message || 'Hubo un error al eliminar la cotización',
+              icon: 'error',
+              confirmButtonText: 'OK',
+            });
+          }
+        }
+      } catch (error) {
+        Swal.fire({
+          title: 'Error',
+          text: error.message || 'Hubo un error al eliminar la cotización',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
+    };
+  
   const getUsers = async () => {
     try {
       const response = await userService.getUsers();
@@ -228,11 +260,6 @@ const Page = () => {
     getUsers();
   }, []);
 
-
-  const handleNewInvoice = () => {
-    router.push('/new-invoice')
-  }
-
   useEffect(() => {
     getInvoices();
   }, [
@@ -253,7 +280,7 @@ const Page = () => {
     filterReference,
     filterPhone,
     filterContact,
-    selectedDate
+    selectedDate,
   ]);
 
   const handlePageChange = useCallback((event, newPage) => {
@@ -303,6 +330,7 @@ const Page = () => {
 
   useEffect(() => {
     // This code will run when customerAddress is updated
+
     setSelectedInvoice(prevInvoice => ({
       ...prevInvoice,
       customerAddress: customerAddress
@@ -316,16 +344,6 @@ const Page = () => {
     setAnchorEl(null);
   };
 
-  const handleDownloadPDF = () => {
-    if (selectedInvoice) {
-      handleDownloadPDFInvoice(selectedInvoice);
-    }
-  };
-  const handlePreviewPDF = () => {
-    if (selectedInvoice) {
-      PDFPreview(selectedInvoice);
-    }
-  };
 
   const statusMap = {
     1: 'warning',
@@ -339,134 +357,6 @@ const Page = () => {
       router.push(`/new-invoice?InvoiceId=${selectedInvoiceId}`);
     }
   };
-  const duplicateInvoice = async (userId) => {
-    setAnchorEl(null);
-    const confirmAction = await Swal.fire({
-      title: 'Confirmar',
-      text: '¿Está seguro de duplicar la cotización?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, duplicar',
-      cancelButtonText: 'Cancelar',
-    });
-
-    if (confirmAction.isConfirmed) {
-      try {
-        await invoiceService.duplicateInvoice(selectedInvoiceId, userId);
-        Swal.fire({
-          title: 'Cotización duplicada',
-          text: 'Se duplicó satisfactoriamente la cotización',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
-        getInvoices();
-      } catch (error) {
-        console.error('Error al duplicar la cotización:', error);
-        Swal.fire({
-          title: 'Error al duplicar la cotización',
-          text: 'No se pudo duplicar la cotización. Por favor, inténtelo de nuevo.',
-          icon: 'error',
-          confirmButtonText: 'OK',
-        });
-      }
-    }
-  };
-  const updateStatus = async (orderStatus) => {
-    try {
-      setAnchorEl(null);
-      const confirmAction = await Swal.fire({
-        title: 'Confirmar acción',
-        text: '¿Está seguro de realizar esta acción?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, realizar',
-        cancelButtonText: 'Cancelar',
-      });
-
-      if (confirmAction.isConfirmed) {
-        const response = await invoiceService.updateStatus(selectedInvoiceId, orderStatus);
-
-        if (response.status == 200) {
-          setAnchorEl(null);
-          if (orderStatus === 2) {
-            Swal.fire({
-              title: 'Cotización cerrada',
-              text: 'Se cerró satisfactoriamente la cotización',
-              icon: 'success',
-              confirmButtonText: 'OK',
-            });
-          } else if (orderStatus === 3) {
-            Swal.fire({
-              title: 'Cotización rechazada',
-              text: 'Se rechazó satisfactoriamente la cotización',
-              icon: 'success',
-              confirmButtonText: 'OK',
-            });
-          } else {
-            Swal.fire({
-              title: 'Error',
-              text: error.message || 'Hubo un error al actualizar el estado de la cotización',
-              icon: 'error',
-              confirmButtonText: 'OK',
-            });
-          }
-          clearFilters();
-        }
-      }
-    } catch (error) {
-      Swal.fire({
-        title: 'Error',
-        text: error.message || 'Hubo un error al actualizar el estado de la cotización',
-        icon: 'error',
-        confirmButtonText: 'OK',
-      });
-    }
-  };
-
-
-  const removeInvoice = async () => {
-    try {
-      setAnchorEl(null);
-      const confirmAction = await Swal.fire({
-        title: 'Confirmar eliminación',
-        text: '¿Está seguro de eliminar esta cotización?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar',
-      });
-
-      if (confirmAction.isConfirmed) {
-        const response = await invoiceService.removeInvoice(selectedInvoiceId);
-
-        if (response.status == 200) {
-          setAnchorEl(null);
-          Swal.fire({
-            title: 'Eliminación de Cotización',
-            text: 'Se eliminó satisfactoriamente la cotización',
-            icon: 'success',
-            confirmButtonText: 'OK',
-          });
-          clearFilters();
-        } else {
-          Swal.fire({
-            title: 'Error',
-            text: error.message || 'Hubo un error al eliminar la cotización',
-            icon: 'error',
-            confirmButtonText: 'OK',
-          });
-        }
-      }
-    } catch (error) {
-      Swal.fire({
-        title: 'Error',
-        text: error.message || 'Hubo un error al eliminar la cotización',
-        icon: 'error',
-        confirmButtonText: 'OK',
-      });
-    }
-  };
-
 
   const formatter = new Intl.NumberFormat('es-PE', {
     style: 'currency',
@@ -495,7 +385,7 @@ const Page = () => {
       return;
     }
 
-    const response = await invoiceService.updateCommentbyId(selectedInvoiceId, comment);
+    const response = await requestService.updateCommentbyId(selectedInvoiceId, comment);
     if (response.status == 200) {
       setIsDialogOpenComment(false);
       setAnchorEl(null);
@@ -507,6 +397,28 @@ const Page = () => {
       });
       setComment('');
     }
+  };
+  // Estado para el link de solicitud
+  const userId = sessionStorage.getItem('identificator');
+  const [requestLink, setRequestLink] = useState(`https://unicon-bloques-app.vercel.app/auth/new-request?userId=${userId}`);
+  const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+    setCopied(false);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(`Estimado cliente, le comparto el siguiente link para que realice su solicitud:
+
+${requestLink}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
   const exportReport = async () => {
     if (!startDate || !endDate || endDate < startDate) {
@@ -530,7 +442,7 @@ const Page = () => {
         endDate: endDate,
       }
       setLoading(true);
-      const response = await invoiceService.generateExcel(dataExport);
+      const response = await requestService.generateExcel(dataExport);
       if (!response.ok) {
         setLoading(false);
         throw new Error(`Error generating Excel: ${response.statusText}`);
@@ -586,72 +498,34 @@ const Page = () => {
                 </IconButton>
 
                 <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                  <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                    <div hidden={selectedStatusNumber !== 0} >
-                      <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                        <EditIcon style={{ marginRight: '8px' }} /> Editar
-                      </MenuItem>
-                    </div>
-                    <div hidden={selectedStatusNumber !== 1}>
-                      <MenuItem style={{ marginRight: '8px', color: 'green' }} onClick={() => updateStatus(2)}>
-                        <CheckCircle style={{ marginRight: '8px' }} /> Cerrar
-                      </MenuItem>
-                      <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
-                        <Close style={{ marginRight: '8px' }} /> Rechazar
-                      </MenuItem>
-                      <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                        <EditIcon style={{ marginRight: '8px' }} /> Editar
-                      </MenuItem>
-                      <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
-                        <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
-                      </MenuItem>
-                    </div>
-                  </div>
-                  <div hidden={selectedStatusNumber === 0 || selectedStatusNumber === 1 || selectedStatusNumber === 3 || selectedUserId !== sessionStorage.getItem('identificator')}>
-                    <MenuItem style={{ marginRight: '8px', color: 'red' }} onClick={() => updateStatus(3)}>
-                      <Close style={{ marginRight: '8px' }} /> Rechazar
-                    </MenuItem>
-                  </div>
-                  <div hidden={selectedStatusNumber === 0} >
-                    <div>
-                      <MenuItem onClick={() => duplicateInvoice(sessionStorage.getItem('identificator'))} style={{ display: 'flex', alignItems: 'center' }}>
-                        <FileCopyIcon style={{ marginRight: '8px' }} /> Duplicar
-                      </MenuItem>
-                    </div>
-                    <div>
-                      <MenuItem onClick={() => getCommentById()} style={{ display: 'flex', alignItems: 'center' }}>
-                        <CommentIcon style={{ marginRight: '8px' }} /> Comentario
-                      </MenuItem>
-                    </div>
-                    <MenuItem onClick={() => handlePreviewPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                      <Visibility style={{ marginRight: '8px' }} /> Ver PDF
-                    </MenuItem>
-                    <MenuItem onClick={() => handleDownloadPDF()} style={{ display: 'flex', alignItems: 'center' }}>
-                      <GetAppIcon style={{ marginRight: '8px' }} /> Descargar PDF
-                    </MenuItem>
-                  </div>
+                  <MenuItem onClick={() => editInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <EditIcon style={{ marginRight: '8px' }} /> Editar
+                  </MenuItem>
+                  <MenuItem onClick={() => removeInvoice()} style={{ display: 'flex', alignItems: 'center' }}>
+                    <DeleteIcon style={{ marginRight: '8px' }} /> Eliminar
+                  </MenuItem>
+
                 </Menu>
               </div>
             </div>
           </TableCell>
 
-          <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
-          <TableCell>{invoice.unitPiece}</TableCell>
-
+          {/* <TableCell>{new Intl.NumberFormat('en-US').format(invoice.totalOfPieces)}</TableCell>
+          <TableCell>{invoice.unitPiece}</TableCell> */}
+          <TableCell>{invoice.employee}</TableCell>
           <TableCell>
             <SeverityPill color={statusMap[invoice.deliveryType]}>
               {invoice.deliveryType}
             </SeverityPill>
           </TableCell>
-          <TableCell>
+          {/* <TableCell>
             {formatter.format(invoice.totalInvoice)}
-          </TableCell>
+          </TableCell> */}
           {/* <TableCell>{invoice.reference || "No proporcionado"}</TableCell> */}
           <TableCell>{invoice.address}</TableCell>
           <TableCell>{invoice.contact || "No proporcionado"}</TableCell>
           <TableCell>{invoice.telephone || "No proporcionado"}</TableCell>
           <TableCell>{invoice.documentInfo || "XXXXXXXXXX"}</TableCell>
-          <TableCell>{invoice.employee}</TableCell>
 
         </TableRow>
       );
@@ -661,7 +535,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Cotizaciones</title>
+        <title>Solictudes</title>
       </Head>
       <Box
         component="main"
@@ -675,7 +549,7 @@ const Page = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <Typography variant="h4">Total de cotizaciones [{new Intl.NumberFormat('en-US').format(totalInvoices)}]</Typography>
+                  <Typography variant="h4">Total de solicitudes [{new Intl.NumberFormat('en-US').format(totalInvoices)}]</Typography>
                 </Stack>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -684,14 +558,7 @@ const Page = () => {
                     Limpiar Filtros
                   </Button>
                   <Button
-                    onClick={() => setIsDialogOpen(true)}
-                    startIcon={<SvgIcon fontSize="small"><ArrowDownOnSquareIcon /></SvgIcon>}
-                    variant="outlined"
-                  >
-                    Exportar
-                  </Button>
-                  <Button
-                    onClick={handleNewInvoice}
+                    onClick={handleOpenDialog}
                     startIcon={
                       <SvgIcon fontSize="small">
                         <PlusIcon />
@@ -699,7 +566,7 @@ const Page = () => {
                     }
                     variant="outlined"
                   >
-                    Nueva cotización
+                    Link de solicitud
                   </Button>
                 </Stack>
               </Grid>
@@ -760,7 +627,7 @@ const Page = () => {
 
                         <TableCell>
                           <div style={{ display: 'flex', alignItems: 'center', width: '150px', marginRight: '-20px' }}>
-                            <span >Fecha de cotización</span>
+                            <span >Fecha de solicitud</span>
 
                           </div><br />
                           <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDateFns}>
@@ -787,30 +654,25 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-
                         <TableCell>
-                          <TextField sx={{ width: '130px', marginRight: '-20px' }}
-                            label="Cantidad"
-                            type='number'
-                            value={filterCantPieces}
-                            onChange={(e) => setFilterCantPieces(e.target.value)}
-                          />
-                        </TableCell>
-                        <TableCell >
                           <Autocomplete
-                            value={filterUnitPiece}
-                            onChange={(event, newValue) => setFilterUnitPiece(newValue)}
-                            options={UMOptions}
+                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
+                            value={employeeOptions.find((option) => option.id === filterEmployee)}
+                            onChange={(event, newValue) => {
+                              setFilterEmployee(newValue ? newValue.id : null);
+                            }}
+                            options={employeeOptions}
+                            getOptionLabel={(option) => option.name || ''}
                             renderInput={(params) => (
-                              <TextField sx={{ width: '120px', marginRight: '-20px' }}
+                              <TextField
+                                sx={{ width: '180px' }}
                                 {...params}
-                                label="U.M"
+                                label="Ejecutivo"
                                 variant="standard"
                               />
                             )}
                           />
                         </TableCell>
-
                         <TableCell >
                           <Autocomplete
                             value={filterDelivery}
@@ -825,21 +687,6 @@ const Page = () => {
                             )}
                           />
                         </TableCell>
-                        <TableCell>
-                          <TextField sx={{ width: '150px', marginRight: '-30px' }}
-                            type='number'
-                            label="Precio total"
-                            value={filterPrice}
-                            onChange={(e) => setFilterPrice(e.target.value)}
-                          />
-                        </TableCell>
-                        {/* <TableCell>
-                          <TextField sx={{ width: '240px' }}
-                            label="Referencia"
-                            value={filterReference}
-                            onChange={(e) => setFilterReference(e.target.value)}
-                          />
-                        </TableCell> */}
                         <TableCell>
                           <TextField sx={{ width: '240px', marginRight: '-30px' }}
                             label="Dirección"
@@ -871,25 +718,7 @@ const Page = () => {
                             onChange={(e) => setFilterIdentification(e.target.value)}
                           />
                         </TableCell>
-                        <TableCell>
-                          <Autocomplete
-                            key={resetFilter} // This will force the Autocomplete to re-render when resetFilter changes
-                            value={employeeOptions.find((option) => option.id === filterEmployee)}
-                            onChange={(event, newValue) => {
-                              setFilterEmployee(newValue ? newValue.id : null);
-                            }}
-                            options={employeeOptions}
-                            getOptionLabel={(option) => option.name || ''}
-                            renderInput={(params) => (
-                              <TextField
-                                sx={{ width: '180px' }}
-                                {...params}
-                                label="Ejecutivo"
-                                variant="standard"
-                              />
-                            )}
-                          />
-                        </TableCell>
+
                         {/* <TableCell sx={{ width: '140px' }} style={{ fontSize: '14px', color: 'grey' }}> Acciones</TableCell> */}
                       </TableRow>
                     </TableHead>
@@ -955,45 +784,18 @@ const Page = () => {
                 )}
               </DialogActions>
             </Dialog>
-            <Dialog open={isDialogOpenComment} onClose={handleDialogCommentClose} fullWidth maxWidth="sm">
-              <DialogTitle style={{ textAlign: 'center' }}>
-                Comentario de la cotización
-                <IconButton
-                  edge="end"
-                  color="inherit"
-                  onClick={handleDialogCommentClose}
-                  aria-label="close"
-                  style={{ position: 'absolute', right: '18px', top: '8px' }}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </DialogTitle>
+            <Dialog open={open} onClose={handleCloseDialog} fullWidth maxWidth="sm">
+              <DialogTitle style={{ textAlign: 'center' }}>Link de solicitud</DialogTitle>
               <DialogContent>
-                <div>
-                  <TextareaAutosize
-                    disabled={selectedUserId !== sessionStorage.getItem('identificator')}
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    style={{
-                      width: '100%',
-                      height: '300px',
-                      padding: '10px',
-                      fontSize: '16px',
-                      fontFamily: 'sans-serif',
-                    }}
-                  />
-                </div>
+                <p>Estimado cliente, le comparto el siguiente link para que realice su solicitud:</p>
+                <TextField fullWidth variant="outlined" value={requestLink} InputProps={{ readOnly: true }} />
               </DialogContent>
-              <div hidden={selectedUserId !== sessionStorage.getItem('identificator')}>
-                <DialogActions>
-                  <Button onClick={handleDialogCommentClose} color="error">
-                    Cancelar
-                  </Button>
-                  <Button onClick={saveComment} color="primary">
-                    Guardar
-                  </Button>
-                </DialogActions>
-              </div>
+              <DialogActions>
+                <Button onClick={handleCopy} startIcon={<ContentCopyIcon />} color={copied ? 'success' : 'primary'}>
+                  {copied ? 'Copiado' : 'Copiar'}
+                </Button>
+                <Button onClick={handleCloseDialog} color="error">Cerrar</Button>
+              </DialogActions>
             </Dialog>
           </Stack>
         </Container>
