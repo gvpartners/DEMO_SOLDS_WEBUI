@@ -5,7 +5,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Swal from 'sweetalert2';
 import invoiceService from 'src/services/invoiceService';
-import uniconJson from 'src/config/unicon.json';
+import uniconJson from 'src/config/unicon_clients.json';
 import fletesJson from 'src/config/fletes.json';
 import authService from 'src/services/authService';
 

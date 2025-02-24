@@ -1,0 +1,686 @@
+[
+    {
+        "Category": "BLOQUES",
+        "Code": "BK09ENTLISO",
+        "Description": "BLOCK ENTERO LISO 9X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.65,
+        "Weight": 10.6,
+        "UnitForPari": 192
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK12ENTLISO",
+        "Description": "BLOCK ENTERO LISO 12X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 1.77,
+        "Weight": 11.7,
+        "UnitForPari": 156
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTLISO",
+        "Description": "BLOCK ENTERO LISO 15X19X39 NATURAL ",
+        "Unit": "PZA",
+        "Price": 2.06,
+        "Weight": 12.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ESQLISO",
+        "Description": "BLOCK ESQUINERO LISO 15X19X39 NATURAL",
+        "Unit": "PZA",
+        "Price": 2.45,
+        "Weight": 17,
+        "UnitForPari": 105
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTLISO",
+        "Description": "BLOCK ENTERO LISO 20X19X39 NATURAL ",
+        "Unit": "PZA",
+        "Price": 2.48,
+        "Weight": 16.5,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14ENTTEXT",
+        "Description": "BLOCK ENTERO TEXT 15X19X39 NATURAL ",
+        "Unit": "PZA",
+        "Price": 3.23,
+        "Weight": 13.5,
+        "UnitForPari": 110
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK14MEDTEXT",
+        "Description": "BLOCK MEDIO TEXT 15X19X19 NATURAL ",
+        "Unit": "PZA",
+        "Price": 2.45,
+        "Weight": 10.5,
+        "UnitForPari": 240
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19ENTTEXT",
+        "Description": "BLOCK ENTERO TEXT 20X19X39  NATURAL ",
+        "Unit": "PZA",
+        "Price": 3.44,
+        "Weight": 17.2,
+        "UnitForPari": 90
+    },
+    {
+        "Category": "BLOQUES",
+        "Code": "BK19MEDTEXT",
+        "Description": "BLOCK MEDIO TEXT 20X19X19  NATURAL  ",
+        "Unit": "PZA",
+        "Price": 2.55,
+        "Weight": 11,
+        "UnitForPari": 180
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNAT",
+        "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 28.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECROJ",
+        "Description": "ADOKING RECTANGULAR 4X10X20 ROJO   ",
+        "Unit": "MT2",
+        "Price": 33.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECAMA",
+        "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 30.7,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNEG",
+        "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 33.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNAT",
+        "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 32.7,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECROJ",
+        "Description": "ADOKING RECTANGULAR 6X10X20 ROJO  ",
+        "Unit": "MT2",
+        "Price": 40.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECAMA",
+        "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO ",
+        "Unit": "MT2",
+        "Price": 37.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNEG",
+        "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 41,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNAT",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 37.6,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECROJ",
+        "Description": "ADOKING RECTANGULAR 8X10X20 ROJO  ",
+        "Unit": "MT2",
+        "Price": 47.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECAMA",
+        "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 44,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNEG",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 47.4,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNATHS",
+        "Description": "ADOKING RECTANGULAR 4X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 28.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECROJHS",
+        "Description": "ADOKING RECTANGULAR 4X10X20 ROJO HS  ",
+        "Unit": "MT2",
+        "Price": 34,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECAMAHS",
+        "Description": "ADOKING RECTANGULAR 4X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 31.5,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4RECNEGHS",
+        "Description": "ADOKING  RECTANGULAR 4X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNATHS",
+        "Description": "ADOKING  RECTANGULAR 6X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECROJHS",
+        "Description": "ADOKING RECTANGULAR 6X10X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 42,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECAMAHS",
+        "Description": "ADOKING RECTANGULAR 6X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 38.6,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6RECNEGHS",
+        "Description": "ADOKING RECTANGULAR  6X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 42.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNATHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 40.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECROJHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 ROJO HS  ",
+        "Unit": "MT2",
+        "Price": 49.4,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECAMAHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 46.1,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8RECNEGHS",
+        "Description": "ADOKING RECTANGULAR 8X10X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 49.6,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO10RECNAT",
+        "Description": "ADOKING RECTANGULAR 10X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 47.75,
+        "Weight": 225,
+        "UnitForPari": 12.96
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO10RECNATHS",
+        "Description": "ADOKING RECTANGULAR 10X10X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 56,
+        "Weight": 225,
+        "UnitForPari": 12.96
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONNAT",
+        "Description": "ADOKING LONDRES 4X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 28.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONROJ",
+        "Description": "ADOKING LONDRES 4X10X20 ROJO   ",
+        "Unit": "MT2",
+        "Price": 33.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONAMA",
+        "Description": "ADOKING LONDRES 4X10X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 30.7,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4LONNEG",
+        "Description": "ADOKING LONDRES 4X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 33.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONNAT",
+        "Description": "ADOKING LONDRES 6X10X20 NATURAL ",
+        "Unit": "MT2",
+        "Price": 32.7,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONROJ",
+        "Description": "ADOKING LONDRES 6X10X20 ROJO  ",
+        "Unit": "MT2",
+        "Price": 40.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONAMA",
+        "Description": "ADOKING LONDRES 6X10X20 AMARILLO ",
+        "Unit": "MT2",
+        "Price": 37.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6LONNEG",
+        "Description": "ADOKING LONDRES  6X10X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 41,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANAT",
+        "Description": "ADOKING CUADRADO  4X20X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 30.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAROJ",
+        "Description": "ADOKING CUADRADO 4X20X20  ROJO",
+        "Unit": "MT2",
+        "Price": 35.2,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAAMA",
+        "Description": "ADOKING CUADRADO 4X20X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 34.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANEG",
+        "Description": "ADOKING CUADRADO 4X20X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 35.8,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANAT",
+        "Description": "ADOKING CUADRADO 6X20X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 38.2,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAROJ",
+        "Description": "ADOKING CUADRADO 6X20X20 ROJO",
+        "Unit": "MT2",
+        "Price": 42.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAAMA",
+        "Description": "ADOKING CUADRADO 6X20X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 39.4,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANEG",
+        "Description": "ADOKING CUADRADO 6X20X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 43,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANAT",
+        "Description": "ADOKING CUADRADO 8X20X20 NATURAL",
+        "Unit": "MT2",
+        "Price": 41.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAROJ",
+        "Description": "ADOKING CUADRADO 8X20X20 ROJO",
+        "Unit": "MT2",
+        "Price": 51.3,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAAMA",
+        "Description": "ADOKING CUADRADO 8X20X20 AMARILLO",
+        "Unit": "MT2",
+        "Price": 44.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANEG",
+        "Description": "ADOKING CUADRADO 8X20X20 NEGRO",
+        "Unit": "MT2",
+        "Price": 51.6,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANATHS",
+        "Description": "ADOKING CUADRADO  4X20X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 32.1,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAROJHS",
+        "Description": "ADOKING CUADRADO 4X20X20  ROJO HS",
+        "Unit": "MT2",
+        "Price": 36.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUAAMAHS",
+        "Description": "ADOKING CUADRADO 4X20X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 35.3,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO4CUANEGHS",
+        "Description": "ADOKING CUADRADO 4X20X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 36.9,
+        "Weight": 90,
+        "UnitForPari": 24
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANATHS",
+        "Description": "ADOKING CUADRADO 6X20X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 40.3,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAROJHS",
+        "Description": "ADOKING CUADRADO 6X20X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 44.8,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUAAMAHS",
+        "Description": "ADOKING CUADRADO 6X20X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 42,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO6CUANEGHS",
+        "Description": "ADOKING CUADRADO 6X20X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 45.7,
+        "Weight": 135,
+        "UnitForPari": 18
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANATHS",
+        "Description": "ADOKING CUADRADO 8X20X20 NATURAL HS",
+        "Unit": "MT2",
+        "Price": 44.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAROJHS",
+        "Description": "ADOKING CUADRADO 8X20X20 ROJO HS",
+        "Unit": "MT2",
+        "Price": 54.5,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUAAMAHS",
+        "Description": "ADOKING CUADRADO 8X20X20 AMARILLO HS",
+        "Unit": "MT2",
+        "Price": 47.2,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "ADOQUINES",
+        "Code": "ADO8CUANEGHS",
+        "Description": "ADOKING CUADRADO 8X20X20 NEGRO HS",
+        "Unit": "MT2",
+        "Price": 54,
+        "Weight": 180,
+        "UnitForPari": 15.6
+    },
+    {
+        "Category": "LADRILLOS",
+        "Code": "KK25%NAT",
+        "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO I",
+        "Unit": "MLL",
+        "Price": 618.64,
+        "Weight": 4500,
+        "UnitForPari": 0.5
+    },
+    {
+        "Category": "LADRILLOS",
+        "Code": "KK25%NATHS",
+        "Description": "KING KONCRETO25% 13X9X22 NATURAL TIPO HS",
+        "Unit": "MLL",
+        "Price": 661.02,
+        "Weight": 4500,
+        "UnitForPari": 0.5
+    },
+    {
+        "Category": "BK-GRASS",
+        "Code": "BKGRASS-#",
+        "Description": "KING BLOCK GRASS TIPO MICHI ",
+        "Unit": "MT2",
+        "Price": 28.98,
+        "Weight": 123.2,
+        "UnitForPari": 14.625
+    },
+    {
+        "Category": "BK-GRASS",
+        "Code": "BKGRASS-#-HS",
+        "Description": "KING BLOCK GRASS TIPO MICHI HS",
+        "Unit": "MT2",
+        "Price": 30.68,
+        "Weight": 123.2,
+        "UnitForPari": 14.625
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL8MM",
+        "Description": "AISLADOR DE VARILLA 8 mm ",
+        "Unit": "PZA",
+        "Price": 1.15,
+        "Weight": 0.05,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL10MM",
+        "Description": "AISLADOR DE VARILLA 3\/8\" (10mm)",
+        "Unit": "PZA",
+        "Price": 1.15,
+        "Weight": 0.06,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL13MM",
+        "Description": "AISLADOR DE VARILLA  1\/2\" (13mm)",
+        "Unit": "PZA",
+        "Price": 1.15,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL16MM",
+        "Description": "AISLADOR DE VARILLA  5\/8\" (16mm)",
+        "Unit": "PZA",
+        "Price": 1.29,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    },
+    {
+        "Category": "AISLADORES",
+        "Code": "AISL19MM",
+        "Description": "AISLADOR DE VARILLA  3\/4\" (16mm)",
+        "Unit": "PZA",
+        "Price": 1.85,
+        "Weight": 0.07,
+        "UnitForPari": 100
+    }
+]
