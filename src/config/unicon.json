@@ -13,7 +13,7 @@
         "Code": "BK09MEDLISO",
         "Description": "BLOCK MEDIO LISO 9X19X19 NATURAL",
         "Unit": "PZA",
-        "Price": 1.13,
+        "Price": 1.25,
         "Weight": 6,
         "UnitForPari": 360
     },
@@ -40,7 +40,7 @@
         "Code": "BK12MEDLISO",
         "Description": "BLOCK MEDIO LISO 12X19X19 NATURAL",
         "Unit": "PZA",
-        "Price": 1.14,
+        "Price": 1.26,
         "Weight": 7,
         "UnitForPari": 300
     },
@@ -67,7 +67,7 @@
         "Code": "BK14MEDLISO",
         "Description": "BLOCK MEDIO LISO 15X19X19 NATURAL ",
         "Unit": "PZA",
-        "Price": 1.35,
+        "Price": 1.49,
         "Weight": 7.5,
         "UnitForPari": 240
     },
@@ -103,7 +103,7 @@
         "Code": "BK19MEDLISO",
         "Description": "BLOCK MEDIO LISO 20X19X19 NATURAL ",
         "Unit": "PZA",
-        "Price": 1.5,
+        "Price": 1.65,
         "Weight": 9,
         "UnitForPari": 180
     },
