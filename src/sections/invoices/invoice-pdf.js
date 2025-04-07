@@ -44,7 +44,7 @@ const generatePDF = (invoice) => {
     const formattedDateCapitalized = capitalizeFirstLetter(formattedDate);
     const validUntilFormattedCapitalized = capitalizeFirstLetter(validUntilFormatted);
 
-    const colorInvoice = [241, 206, 0];
+    const colorInvoice = [254, 225, 0];
     const textColorInvoice = [1, 53, 103];
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -59,7 +59,7 @@ const generatePDF = (invoice) => {
     doc.setDrawColor(0);
     doc.line(underlineX, 18, underlineX + titleWidth, 18);
 
-    const logoX = 15;
+    const logoX = 20;
     const logoY = 25;
     const imgData = '/assets/avatars/unicon.png';
     doc.addImage(imgData, 'PNG', logoX, logoY, 30, 30);
