@@ -59,10 +59,10 @@ const generatePDF = (invoice) => {
     doc.setDrawColor(0);
     doc.line(underlineX, 18, underlineX + titleWidth, 18);
 
-    const logoX = 20;
+    const logoX = 15;
     const logoY = 25;
     const imgData = '/assets/avatars/unicon.png';
-    doc.addImage(imgData, 'PNG', logoX, logoY, 30, 30);
+    doc.addImage(imgData, 'PNG', logoX, logoY, 35, 30);
 
     // Calcular la posición inicial y el ancho de la tabla 1
     const table1X = logoX + 45;

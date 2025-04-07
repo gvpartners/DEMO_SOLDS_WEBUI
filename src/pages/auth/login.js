@@ -91,7 +91,7 @@ const Page = () => {
     <>
       <Head>
         <title>Iniciar sesión</title>
-        <link rel="icon" href="/assets/avatars/unicon.png" lazy />
+        <link rel="icon" href="/assets/avatars/unicon_perfil.png" lazy />
       </Head>
 
       <Box

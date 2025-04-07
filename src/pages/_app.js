@@ -28,7 +28,7 @@ const App = (props) => {
         <title>
           UNICON
         </title>
-        <link rel="icon" href="/assets/avatars/unicon.png" />
+        <link rel="icon" href="/assets/avatars/unicon_perfil.png" />
 
         <meta
           name="viewport"

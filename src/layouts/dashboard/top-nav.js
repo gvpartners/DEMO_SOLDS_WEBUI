@@ -82,7 +82,7 @@ export const TopNav = (props) => {
                 width: 40,
                 backgroundColor: 'black',
               }}
-              src="/assets/avatars/unicon.png"
+              src="/assets/avatars/unicon_perfil.png"
             />
           </Stack>
         </Stack>

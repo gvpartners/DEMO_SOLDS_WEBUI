@@ -160,7 +160,7 @@ const Page = () => {
                       }}
                     >
                       <Avatar
-                        src="/assets/avatars/unicon.png"
+                        src="/assets/avatars/unicon_perfil.png"
                         sx={{ height: 80, mb: 2, width: 80 }}
                       />
                       <Typography gutterBottom variant="h5">
