@@ -33,17 +33,18 @@ export const items = [
     )
   },
   {
-    title: 'Solicitudes de clientes',
-    path: '/requests',
+    title: 'Link - Recojo en Planta',
+    path: 'https://forms.gle/NYAa1sYyQSdSLyfR7',
+    external: true,
     icon: (
       <SvgIcon fontSize="small">
-        <CloudUpload />
+        <AssignmentTurnedInIcon />
       </SvgIcon>
     )
   },
   {
     title: 'Visitas técnicas',
-    path:'/visits',
+    path: '/visits',
     icon: (
       <SvgIcon fontSize="small">
         <ContentPasteOffIcon />
@@ -65,6 +66,15 @@ export const items = [
     icon: (
       <SvgIcon fontSize="small">
         <UsersIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Solicitudes de clientes',
+    path: '/requests',
+    icon: (
+      <SvgIcon fontSize="small">
+        <CloudUpload />
       </SvgIcon>
     )
   }
