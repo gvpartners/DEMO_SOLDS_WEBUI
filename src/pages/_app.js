@@ -26,9 +26,9 @@ const App = (props) => {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          UNICON
+          UNACEM
         </title>
-        <link rel="icon" href="/assets/avatars/unicon_perfil.png" />
+        <link rel="icon" href="/assets/avatars/unacem_logo.jpg" />
 
         <meta
           name="viewport"

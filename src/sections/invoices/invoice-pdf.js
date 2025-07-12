@@ -44,11 +44,11 @@ const generatePDF = (invoice) => {
     const formattedDateCapitalized = capitalizeFirstLetter(formattedDate);
     const validUntilFormattedCapitalized = capitalizeFirstLetter(validUntilFormatted);
 
-    const colorInvoice = [254, 225, 0];
+    const colorInvoice = [225, 225, 225];
     const textColorInvoice = [1, 53, 103];
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
-    const title = `COTIZACIÓN BLOQUES UNICON / ${invoice.invoiceCode}`;
+    const title = `COTIZACIÓN BLOQUES UNACEM / ${invoice.invoiceCode}`;
     const titleWidth = doc.getStringUnitWidth(title) * doc.internal.getFontSize() / doc.internal.scaleFactor;
     const titleX = (pageWidth - titleWidth) / 2;
     doc.setTextColor(1, 53, 103);
@@ -61,7 +61,7 @@ const generatePDF = (invoice) => {
 
     const logoX = 15;
     const logoY = 25;
-    const imgData = '/assets/avatars/unicon.png';
+    const imgData = '/assets/avatars/unacem.png';
     doc.addImage(imgData, 'PNG', logoX, logoY, 35, 30);
 
     // Calcular la posición inicial y el ancho de la tabla 1
@@ -70,10 +70,10 @@ const generatePDF = (invoice) => {
 
     // Contenido de la tabla 1 (1 columna, 5 filas)
     const tableData1 = [
-        [`UNION DE CONCRETERAS S.A`],
-        [`RUC: 20297543653`],
-        [`Carretera Panamericana Sur Km 11.400 Fundo Chilcal`],
-        [`San Juan de Miraflores - Lima - Lima`]
+        [`UNACEM PERU S.A.`],
+        [`RUC: 20608552171`],
+        [`Av. Atocongo Nro. 2440 `],
+        [`Lima - Lima - Villa Maria del Triunfo`]
     ];
 
     // Configurar la tabla 1 para que sea transparente y sin bordes
@@ -357,8 +357,8 @@ const generatePDF = (invoice) => {
         const tableInfo2 = [
             ["1. Pago al Contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
             ["2. Pago al contado: Se realizará el pago en nuestra Cuenta Recaudadora (SCOTIABANK, BCP, CONTINENTAL, INTERBANK)."],
-            ["3. Pago al Contado: Para pagos presenciales dirigirse al Banco seleccionado e Indicar que desea pagar a la Cta. recaudadora de UNICON, el código será su # RUC o DNI"],
-            ["4. Pago al Contado: Para pagos a través del APP de su Banco, buscar: Pago por Servicios/UNICON/su # RUC/Seleccionar el documento de venta por pagar/Pagar/Enviar la constancia del pago."]
+            ["3. Pago al Contado: Para pagos presenciales dirigirse al Banco seleccionado e Indicar que desea pagar a la Cta. recaudadora de UNACEM, el código será su # RUC o DNI"],
+            ["4. Pago al Contado: Para pagos a través del APP de su Banco, buscar: Pago por Servicios/UNACEM/su # RUC/Seleccionar el documento de venta por pagar/Pagar/Enviar la constancia del pago."]
         ];
 
 
@@ -374,8 +374,8 @@ const generatePDF = (invoice) => {
         });
         //////////
         // const tableInfo6 = [
-        //     ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
-        //     ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
+        //     ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNACEM."],
+        //     ["• Cta BCP 193 - 0099308 - 0 - 09 (UNACEM PERU S.A.)"]
         // ];
 
 
@@ -392,8 +392,8 @@ const generatePDF = (invoice) => {
         // });
         ///////////////
         const tableInfo7 = [
-            ["5. Pago al Contado: Cta Cte BCP 193-0099308-0-09 (Unión de Concreteras S.A)"],
-            ["6. Pago al Crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["5. Pago al Contado: Cta Cte. (UNACEM PERU S.A.)"],
+            ["6. Pago al Crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNACEM, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
@@ -568,8 +568,8 @@ const generatePDF = (invoice) => {
         const tableInfo2 = [
             ["1. Pago al Contado: Una vez emitida la factura o boleta, se activará la deuda en el sistema del banco recaudador."],
             ["2. Pago al contado: Se realizará el pago en nuestra Cuenta Recaudadora (SCOTIABANK, BCP, CONTINENTAL, INTERBANK)."],
-            ["3. Pago al Contado: Para pagos presenciales dirigirse al Banco seleccionado e Indicar que desea pagar a la Cta. recaudadora de UNICON, el código será su # RUC o DNI"],
-            ["4. Pago al Contado: Para pagos a través del APP de su Banco, buscar: Pago por Servicios/UNICON/su # RUC/Seleccionar el documento de venta por pagar/Pagar/Enviar la constancia del pago."]
+            ["3. Pago al Contado: Para pagos presenciales dirigirse al Banco seleccionado e Indicar que desea pagar a la Cta. recaudadora de UNACEM, el código será su # RUC o DNI"],
+            ["4. Pago al Contado: Para pagos a través del APP de su Banco, buscar: Pago por Servicios/UNACEM/su # RUC/Seleccionar el documento de venta por pagar/Pagar/Enviar la constancia del pago."]
         ];
 
 
@@ -585,8 +585,8 @@ const generatePDF = (invoice) => {
         });
         // //////////
         // const tableInfo6 = [
-        //     ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNICON."],
-        //     ["• Cta BCP 193 - 0099308 - 0 - 09 (Unión de Concreteras S.A)"]
+        //     ["• Ingrese al banco //pago transferencias //pago de servicios //empresas diversas //UNACEM."],
+        //     ["• Cta BCP 193 - 0099308 - 0 - 09 (UNACEM PERU S.A.)"]
         // ];
 
 
@@ -603,8 +603,8 @@ const generatePDF = (invoice) => {
         // });
         ///////////////
         const tableInfo7 = [
-            ["5. Pago al Contado: Cta Cte BCP 193-0099308-0-09 (Unión de Concreteras S.A)"],
-            ["6. Pago al Crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNICON, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
+            ["5. Pago al Contado: Cta Cte. (UNACEM PERU S.A.)"],
+            ["6. Pago al Crédito: Si Ud. ya cuenta con una evaluación o línea de crédito activa en UNACEM, tendrá las mismas condiciones que tiene para la compra de concreto premezclado."]
         ];
 
 
