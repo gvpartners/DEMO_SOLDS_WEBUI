@@ -41,20 +41,9 @@ export const SideNav = (props) => {
         }}
       >
         <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}>
-          <Box
-            component={NextLink}
-            href="/"
-            sx={{
-              display: 'inline-flex',
-              height: 30,
-              width: 30,
-              marginRight: 6.5,
-            }}
-          >
-            <img src="/assets/avatars/unicon_tras.png" style={{ width: 'auto', height: '40px' }} />
-          </Box>
+          
           <Typography variant="h4" style={{ color: '#FFF', marginTop: '10px' }}>
-            UNICON
+            UNACEM S.A
           </Typography>
         </Box>
         <Divider sx={{ borderColor: 'neutral.700' }} />
