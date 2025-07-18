@@ -230,6 +230,13 @@ const Page = () => {
             .map(item => item.Description);
 
         setMeasuresOptions(measuresForCategory);
+
+        // Limpiar medidas, cantidades y camiones al cambiar de categoría
+        setSelectedMeasures([]);
+        setMeasureQuantities([]);
+        setTruck9TN(0);
+        setTruck20TN(0);
+        setTruck32TN(0);
     };
 
     const handleMeasuresChange = (event) => {
