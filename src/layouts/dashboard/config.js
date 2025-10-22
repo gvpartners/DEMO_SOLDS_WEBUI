@@ -11,6 +11,7 @@ import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
 import CloudUpload from '@mui/icons-material/CloudUpload';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import { SvgIcon } from '@mui/material';
 
 export const items = [
@@ -39,6 +40,15 @@ export const items = [
     icon: (
       <SvgIcon fontSize="small">
         <AssignmentTurnedInIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Seguimientos',
+    path: '/monitoring',
+    icon: (
+      <SvgIcon fontSize="small">
+        <TrackChangesIcon />
       </SvgIcon>
     )
   },
