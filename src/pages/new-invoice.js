@@ -148,7 +148,9 @@ const Page = () => {
     const [address, setAddress] = useState('');
     const [reference, setReference] = useState('');
     const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [isAllowedMultiMode, setIsAllowedMultiMode] = useState(false);
+    const [categoryMenuOpen, setCategoryMenuOpen] = useState(false);
     const [selectedMeasures, setSelectedMeasures] = useState([]);
     const [measuresOptions, setMeasuresOptions] = useState([]);
     const [deliveryType, setDeliveryType] = useState('');
@@ -222,16 +224,47 @@ const Page = () => {
         setReference(event.target.value);
     };
     const handleCategoryChange = (event) => {
-        const selectedCategory = event.target.value;
-        setSelectedCategory(selectedCategory);
+        const raw = event.target.value;
+        const newSelected = Array.isArray(raw) ? raw : [raw];
+        const allowed = ["ADOQUINES", "BK-GRASS"];
+        const hasDisallowed = newSelected.some(c => !allowed.includes(c));
 
-        const measuresForCategory = uniconJson
-            .filter(item => item.Category === selectedCategory)
+        let finalSelection = [];
+        let nextIsAllowedMulti = false;
+
+        if (hasDisallowed) {
+            // Single-select for any non-allowed category
+            finalSelection = [newSelected.find(c => !allowed.includes(c))];
+            nextIsAllowedMulti = false;
+            setCategoryMenuOpen(false);
+        } else {
+            // Only allowed set → multi-mode between ADOQUINES/BK-GRASS
+            finalSelection = Array.from(new Set(newSelected.filter(c => allowed.includes(c)))).slice(0, 2);
+            // multi-mode solo si hay al menos una selección permitida
+            nextIsAllowedMulti = finalSelection.length > 0;
+            if (nextIsAllowedMulti) {
+                // Si pasamos de 1 seleccion a 2, cerrar el menú automáticamente
+                if (selectedCategories.length === 1 && finalSelection.length === 2) {
+                    setCategoryMenuOpen(false);
+                } else {
+                    // Permitir marcar/deseleccionar cuando hay 0 o 1 seleccion
+                    setCategoryMenuOpen(true);
+                }
+            } else {
+                // Si se deseleccionó todo, volver a lista original (single)
+                setCategoryMenuOpen(true);
+            }
+        }
+
+        setIsAllowedMultiMode(nextIsAllowedMulti);
+        setSelectedCategories(finalSelection);
+
+        const measuresForCategories = uniconJson
+            .filter(item => finalSelection.includes(item.Category))
             .map(item => item.Description);
+        const uniqueMeasures = Array.from(new Set(measuresForCategories));
+        setMeasuresOptions(uniqueMeasures);
 
-        setMeasuresOptions(measuresForCategory);
-
-        // Limpiar medidas, cantidades y camiones al cambiar de categoría
         setSelectedMeasures([]);
         setMeasureQuantities([]);
         setTruck9TN(0);
@@ -296,7 +329,7 @@ const Page = () => {
             // !identificationType ||
             // !documentInfo ||
             // !identificationInfo ||
-            !selectedCategory ||
+            !(selectedCategories && selectedCategories.length > 0) ||
             selectedMeasures.length === 0 ||
             !address ||
             !isQuantityValid ||
@@ -594,7 +627,11 @@ const Page = () => {
                 TruckPrice: fletesJson[0]['32_TN'],
             });
 
-        const unitPiece = uniconJson.find(item => item.Category === selectedCategory)?.Unit;
+        // Unidad: si solo categorías permitidas (ADOQUINES/BK-GRASS), MT2; si es otra, tomar de la categoría seleccionada
+        const onlyAllowed = selectedCategories.length > 0 && selectedCategories.every(c => ["ADOQUINES", "BK-GRASS"].includes(c));
+        const unitPiece = onlyAllowed
+            ? 'MT2'
+            : (uniconJson.find(item => item.Category === (selectedCategories[0] || ''))?.Unit || '');
 
         const viewData = {
             identificationType,
@@ -602,7 +639,7 @@ const Page = () => {
             identificationInfo,
             telephone,
             email,
-            selectedCategory,
+            selectedCategory: (selectedCategories || []).join(', '),
             selectedMeasures,
             measureQuantities,
             deliveryType,
@@ -648,11 +685,19 @@ const Page = () => {
         setIdentificationInfo(viewData.identificationInfo);
         setTelephone(viewData.telephone);
         setEmail(viewData.email);
-        setSelectedCategory(viewData.selectedCategory);
-        const measuresForCategory = uniconJson
-            .filter(item => item.Category === viewData.selectedCategory)
+        const loadedCategories = (viewData.selectedCategory || '')
+            .split(',')
+            .map(c => c.trim())
+            .filter(c => c.length > 0);
+        const allowed = ["ADOQUINES", "BK-GRASS"];
+        const onlyAllowedLoaded = loadedCategories.length > 0 && loadedCategories.every(c => allowed.includes(c));
+        setIsAllowedMultiMode(onlyAllowedLoaded);
+        setSelectedCategories(onlyAllowedLoaded ? loadedCategories : loadedCategories.slice(0,1));
+        const measuresForCategories = uniconJson
+            .filter(item => loadedCategories.includes(item.Category))
             .map(item => item.Description);
-        setMeasuresOptions(measuresForCategory);
+        const uniqueMeasures = Array.from(new Set(measuresForCategories));
+        setMeasuresOptions(uniqueMeasures);
         setSelectedMeasures(viewData.selectedMeasures);
         setMeasureQuantities(viewData.measureQuantities);
         setDeliveryType(viewData.deliveryType);
@@ -717,7 +762,7 @@ const Page = () => {
         }
 
         // Verificar la categoría y el límite inferior
-        if (selectedCategory === "BLOQUES" && aux < 0.4 && piecesTotal > 0) {
+        if (selectedCategories && selectedCategories.includes("BLOQUES") && aux < 0.4 && piecesTotal > 0) {
             aux = 0.4;
         }
 
@@ -851,15 +896,23 @@ const Page = () => {
                     <FormControl fullWidth>
                         <label>Categoria<font color="red"> *</font></label>
 
-                        <Select value={selectedCategory} onChange={handleCategoryChange}>
-                            {categories.map((category, index) => (
+                        <Select
+                            multiple={isAllowedMultiMode}
+                            value={isAllowedMultiMode ? selectedCategories : (selectedCategories[0] || '')}
+                            onChange={handleCategoryChange}
+                            onOpen={() => setCategoryMenuOpen(true)}
+                            onClose={() => setCategoryMenuOpen(false)}
+                            open={categoryMenuOpen}
+                            renderValue={(selected) => Array.isArray(selected) ? (selected.length ? selected.join(', ') : 'Selecciona categoría') : (selected || 'Selecciona categoría')}
+                        >
+                            {((isAllowedMultiMode && selectedCategories.length > 0) ? ["ADOQUINES", "BK-GRASS"] : categories).map((category, index) => (
                                 <MenuItem key={index} value={category}>{category}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
                     <br /><br />
 
-                    {selectedCategory && (
+                    {selectedCategories && selectedCategories.length > 0 && (
                         <FormControl fullWidth>
                             <label>
                                 Medidas
@@ -890,7 +943,7 @@ const Page = () => {
                         </FormControl>
                     )}
 
-                    {selectedCategory && selectedMeasures && deliveryType === '' && (
+                    {selectedCategories && selectedCategories.length > 0 && selectedMeasures && deliveryType === '' && (
                         <FormControl fullWidth>
                             <br></br>
                             <label>
